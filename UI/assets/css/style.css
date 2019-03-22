@@ -1,0 +1,689 @@
+@import url(https://fonts.googleapis.com/css?family=Varela);
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+:root{
+    --primaryColor: #ea4c88;
+    --primaryHoverColor: #d44179;
+    --secondaryColor: #3b4148;
+    --secondaryHoverColor: #434a52;
+    --baseColor: #606468;
+    --basicColor: #363b41;
+    --bodyFontFamily: 'Open Sans';
+    --bodyFontFamilyFallback: sans-serif;
+    --limeColor: lime;
+}
+body {
+  font-size: 1em;
+  line-height: 1.4;
+  font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+/* 
+===================================================================================
+===================================================================================
+===================================================================================
+                        USER PAGES   
+===================================================================================
+===================================================================================
+===================================================================================
+*/ 
+
+
+
+
+
+/* -----------------------------STYLING LOGIN!! ----------------------------- */
+body{
+  background-image:  linear-gradient(rgb(26, 26, 26, 0.9),rgb(26, 26, 26, 0.9)), url('../images/background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.login_container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.login-wrapper, 
+.login-form {
+  /* Center elements */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form .User-ID input:focus,
+.login-form .password input:focus{
+  outline: lime solid thin;
+  background-color: var(--secondaryHoverColor);
+}
+.login-form .User-ID input:hover,
+.login-form .password input:hover{
+  
+  background-color: var(--secondaryHoverColor);
+}
+.login-wrapper {
+  width: 50%;
+  height: 320px;
+  margin-top: 10%; 
+  
+}
+@media (min-width: 484px) {
+  .login-wrapper {
+    width: 484px;
+    height: 484px;
+  }
+}
+
+.login-form {
+  z-index: 1;
+  width: 100%;
+  max-width: 380px;
+  width: 100%;
+  padding: 0 20px;
+}
+.login-form .password {
+  margin-top: 20px;
+  width: 100%;
+}
+.login-form .User-ID {
+    width: 100%;
+}
+.login-form .User-ID label,
+.login-form .password label {
+  float: left;
+  display: block;
+  width: 15%;
+  height: 55px;
+  text-align: center;
+}
+.login-form .User-ID label span,
+.login-form .password label span {
+  line-height: 55px;
+  vertical-align: middle;
+}
+.login-form .User-ID input,
+.login-form .password input {
+  float: right;
+  display: block;
+  width: 85%;
+  height: 55px;
+  padding: 15px 20px;
+  font-size: 1rem;
+}
+.login-form .btn {
+  width: 100%;
+  height: 55px;
+  margin: 26px 0 20px;
+}
+.login-form p span {
+  padding-left: 5px;
+}
+@media (min-width: 380px) {
+  .login-form {
+    padding: 0;
+  }
+}
+
+.login-form .User-ID label,
+.login-form .password label {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: #363b41;
+  background-color: rgba(54, 59, 65, 0.8);
+}
+.login-form .User-ID label span,
+.login-form .password label span {
+  font-size: 28px;
+  color: #606468;
+}
+.login-form .User-ID input,
+.login-form .password input {
+  border: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #3b4148;
+  background-color: rgba(59, 65, 72, 0.8);
+  color: white;
+}
+.login-form .User-ID input::-webkit-input-placeholder,
+.login-form .password input::-webkit-input-placeholder {
+  color: #787e83;
+  font-size: 1rem;
+}
+.login-form .User-ID input:-ms-input-placeholder,
+.login-form .password input:-ms-input-placeholder {
+  color: #787e83;
+  font-size: 1rem;
+}
+.login-form .User-ID input::-ms-input-placeholder,
+.login-form .password input::-ms-input-placeholder {
+  color: #787e83;
+  font-size: 1rem;
+}
+.login-form .User-ID input::placeholder,
+.login-form .password input::placeholder {
+  color: #787e83;
+  font-size: 1rem;
+}
+.login-form .btn {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--secondaryColor);
+  background-color: rgba(234, 77, 136, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+.login-form .btn:hover {
+  background-color: #e73679;
+  background-color: rgba(231, 54, 121, 0.9);
+}
+.login-form a {
+  font-weight: 300;
+  text-decoration: none;
+  color: lime;
+}
+a:hover {
+  color: lime;
+  text-decoration: underline;
+}
+.login-form p {
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}
+.login-wrapper h1{
+  color: aliceblue;
+  text-transform: uppercase;
+  margin: 2rem;
+}
+.login-wrapper img{
+  width: 300px;
+margin-top: 5%;
+}
+.entypo-user{
+    padding: 10px;
+}
+
+/* ---------------------    ENDING LOGIN STYLING -----------------------------*/
+
+
+
+
+/* ---------------------   SIGN UP STYLING -----------------------------*/
+.signup_container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.signup-wrapper, 
+.signup-form {
+  /* Center elements */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-form .password input:focus,
+.signup-form .f_name input:focus,
+.signup-form .s_name input:focus,
+.signup-form .email input:focus,
+.signup-form .phone input:focus{
+  outline: lime solid thin;
+  background-color: var(--secondaryHoverColor);
+}
+.signup-form .password input:hover,
+.signup-form .f_name input:hover,
+.signup-form .s_name input:hover,
+.signup-form .email input:hover,
+.signup-form .phone input:hover{
+  
+  background-color: var(--secondaryHoverColor);
+}
+.signup-wrapper {
+  width: 50%;
+  height: 320px;
+  margin-top: 10%; 
+  
+}
+@media (min-width: 484px) {
+  .signup-wrapper {
+    width: 484px;
+    height: 484px;
+  }
+}
+
+.signup-form {
+  z-index: 1;
+  width: 100%;
+  max-width: 380px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.signup-form .f_name{
+  width: 100%;
+}
+.signup-form .password,
+.signup-form .email,
+.signup-form .s_name,
+.signup-form .phone     {
+  margin-top: 20px;
+  width: 100%;
+}
+.signup-form .User-ID {
+    width: 100%;
+}
+.signup-form .password label,
+.signup-form .f_name label,
+.signup-form .s_name label,
+.signup-form .email label,
+.signup-form .phone label {
+  float: left;
+  display: block;
+  width: 15%;
+  height: 55px;
+  text-align: center;
+}
+.signup-form .password label span,
+.signup-form .f_name label span,
+.signup-form .s_name label span,
+.signup-form .email label span,
+.signup-form .phone label span {
+  line-height: 55px;
+  vertical-align: middle;
+}
+.signup-form .password input,
+.signup-form .f_name input,
+.signup-form .s_name input,
+.signup-form .email input,
+.signup-form .phone input {
+  float: right;
+  display: block;
+  width: 85%;
+  height: 55px;
+  padding: 15px 20px;
+  font-size: 1rem;
+}
+.signup-form .btn {
+  width: 100%;
+  height: 55px;
+  margin: 26px 0 20px;
+}
+.signup-form p span {
+  padding-left: 5px;
+}
+@media (min-width: 380px) {
+  .signup-form {
+    padding: 0;
+  }
+}
+
+.signup-form .password label,
+.signup-form .f_name label,
+.signup-form .s_name label,
+.signup-form .email label,
+.signup-form .phone label {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: #363b41;
+  background-color: rgba(54, 59, 65, 0.8);
+}
+.signup-form .password label span,
+.signup-form .f_name label span,
+.signup-form .s_name label span,
+.signup-form .email label span,
+.signup-form .phone label span  {
+  font-size: 28px;
+  color: #606468;
+}
+.signup-form .password input,
+.signup-form .f_name input,
+.signup-form .s_name input,
+.signup-form .email input,
+.signup-form .phone input {
+  border: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #3b4148;
+  background-color: rgba(59, 65, 72, 0.8);
+  color: white;
+}
+.signup-form .password input::-webkit-input-placeholder,
+.signup-form .f_name input::-webkit-input-placeholder,
+.signup-form .s_name input::-webkit-input-placeholder,
+.signup-form .email input::-webkit-input-placeholder,
+.signup-form .phone input::-webkit-input-placeholder  {
+  color: #787e83;
+  font-size: 1rem;
+}
+.signup-form .password input:-ms-input-placeholder,
+.signup-form .f_name input:-ms-input-placeholder,
+.signup-form .s_name input:-ms-input-placeholder,
+.signup-form .email input:-ms-input-placeholder,
+.signup-form .phone input:-ms-input-placeholder  {
+  color: #787e83;
+  font-size: 1rem;
+}
+.signup-form .password input::-ms-input-placeholder,
+.signup-form .f_name input::-ms-input-placeholder,
+.signup-form .s_name input::-ms-input-placeholder,
+.signup-form .email input::-ms-input-placeholder,
+.signup-form .phone input::-ms-input-placeholder  {
+  color: #787e83;
+  font-size: 1rem;
+}
+.signup-form .password input::placeholder,
+.signup-form .f_name input::placeholder,
+.signup-form .s_name input::placeholder,
+.signup-form .email input::placeholder,
+.signup-form .phone input::placeholder  {
+  color: #787e83;
+  font-size: 1rem;
+}
+.signup-form .btn {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--secondaryColor);
+  background-color: rgba(234, 77, 136, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+.signup-form .btn:hover {
+  background-color: #e73679;
+  background-color: rgba(231, 54, 121, 0.9);
+}
+.signup-form a {
+  font-weight: 300;
+  text-decoration: none;
+  color: lime;
+}
+a:hover {
+  color: lime;
+  text-decoration: underline;
+}
+.signup-form p {
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}
+.signup-wrapper h1{
+  color: aliceblue;
+  text-transform: uppercase;
+  margin: 2rem;
+}
+.signup-wrapper img{
+  width: 300px;
+margin-top: 40%;
+}
+
+
+/* ---------------------    ENDING SIGN UP STYLING -----------------------------*/
+
+
+
+
+/* ---------------------    USER: CREATE ACCOUNT STYLING -----------------------------*/
+
+.crtAcct_container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.crtAcct-wrapper, 
+.crtAcct-form {
+  /* Center elements */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.crtAcct-form .acct-type select:focus,
+.crtAcct-form .m_name input:focus,
+.crtAcct-form .state select:focus,
+.crtAcct-form .address input:focus,
+.crtAcct-form .bvn input:focus{
+  outline: lime solid thin;
+  background-color: var(--secondaryHoverColor);
+}
+.crtAcct-form .acct-type select:hover,
+.crtAcct-form .m_name input:hover,
+.crtAcct-form .state select:hover,
+.crtAcct-form .address input:hover,
+.crtAcct-form .bvn input:hover{
+  
+  background-color: var(--secondaryHoverColor);
+}
+.crtAcct-wrapper {
+  width: 50%;
+  height: 320px;
+  margin-top: 10%; 
+  
+}
+@media (min-width: 484px) {
+  .crtAcct-wrapper {
+    width: 484px;
+    height: 484px;
+  }
+}
+
+.crtAcct-form {
+  z-index: 1;
+  width: 100%;
+  max-width: 380px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.crtAcct-form .acct-type{
+  width: 100%;
+}
+
+.crtAcct-form .m_name,
+.crtAcct-form .address,
+.crtAcct-form .state,
+.crtAcct-form .bvn     {
+  margin-top: 20px;
+  width: 100%;
+}
+.crtAcct-form .acct-type label,
+.crtAcct-form .m_name label,
+.crtAcct-form .state label,
+.crtAcct-form .address label,
+.crtAcct-form .bvn label {
+  float: left;
+  display: block;
+  width: 15%;
+  height: 55px;
+  text-align: center;
+}
+.crtAcct-form .acct-type label span,
+.crtAcct-form .m_name label span,
+.crtAcct-form .state label span,
+.crtAcct-form .address label span,
+.crtAcct-form .bvn label span {
+  line-height: 55px;
+  vertical-align: middle;
+}
+.crtAcct-form .acct-type select,
+.crtAcct-form .m_name input,
+.crtAcct-form .state select,
+.crtAcct-form .address input,
+.crtAcct-form .bvn input {
+  float: right;
+  display: block;
+  width: 85%;
+  height: 55px;
+  padding: 15px 20px;
+  font-size: 1rem;
+}
+.crtAcct-form .btn {
+  width: 100%;
+  height: 55px;
+  margin: 26px 0 20px;
+}
+.crtAcct-form p span {
+  padding-left: 5px;
+}
+@media (min-width: 380px) {
+  .crtAcct-form {
+    padding: 0;
+  }
+}
+
+.crtAcct-form .acct-type label,
+.crtAcct-form .m_name label,
+.crtAcct-form .state label,
+.crtAcct-form .address label,
+.crtAcct-form .bvn label {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: #363b41;
+  background-color: rgba(54, 59, 65, 0.8);
+}
+.crtAcct-form .acct-type label span,
+.crtAcct-form .m_name label span,
+.crtAcct-form .state label span,
+.crtAcct-form .address label span,
+.crtAcct-form .bvn label span  {
+  font-size: 28px;
+  color: #606468;
+}
+.crtAcct-form .acct-type select,
+.crtAcct-form .state select{
+-webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0; 
+}
+.select-wrap{
+  position: relative;
+}
+.select__arrow {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-style: solid;
+  border-width: 8px 5px 0 5px;
+  border-color: black transparent transparent transparent;
+}
+.crtAcct-form .acct-type select,
+.crtAcct-form .m_name input,
+.crtAcct-form .state select,
+.crtAcct-form .address input,
+.crtAcct-form .bvn input {
+  border: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #3b4148;
+  background-color: rgba(59, 65, 72, 0.8);
+  color: white;
+}
+.crtAcct-form .acct-type select::-webkit-input-placeholder,
+.crtAcct-form .m_name input::-webkit-input-placeholder,
+.crtAcct-form .state select::-webkit-input-placeholder,
+.crtAcct-form .address input::-webkit-input-placeholder,
+.crtAcct-form .bvn input::-webkit-input-placeholder  {
+  color: #787e83;
+  font-size: 1rem;
+}
+.crtAcct-form .acct-type select:-ms-input-placeholder,
+.crtAcct-form .m_name input:-ms-input-placeholder,
+.crtAcct-form .state select:-ms-input-placeholder,
+.crtAcct-form .address input:-ms-input-placeholder,
+.crtAcct-form .bvn input:-ms-input-placeholder  {
+  color: #787e83;
+  font-size: 1rem;
+}
+.crtAcct-form .acct-type select::-ms-input-placeholder,
+.crtAcct-form .m_name input::-ms-input-placeholder,
+.crtAcct-form .state select::-ms-input-placeholder,
+.crtAcct-form .address input::-ms-input-placeholder,
+.crtAcct-form .bvn input::-ms-input-placeholder  {
+  color: #787e83;
+  font-size: 1rem;
+}
+.crtAcct-form .acct-type select::placeholder,
+.crtAcct-form .m_name input::placeholder,
+.crtAcct-form .state select::placeholder,
+.crtAcct-form .address input::placeholder,
+.crtAcct-form .bvn input::placeholder  {
+  color: #787e83;
+  font-size: 1rem;
+}
+.crtAcct-form .btn {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--secondaryColor);
+  background-color: rgba(234, 77, 136, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+.crtAcct-form .btn:hover {
+  background-color: #e73679;
+  background-color: rgba(231, 54, 121, 0.9);
+}
+.crtAcct-form a {
+  font-weight: 300;
+  text-decoration: none;
+  color: lime;
+}
+a:hover {
+  color: lime;
+  text-decoration: underline;
+}
+.crtAcct-form p {
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}
+.crtAcct-wrapper h1{
+  color: aliceblue;
+  text-transform: uppercase;
+  margin: 2rem;
+}
+.crtAcct-wrapper img{
+  width: 300px;
+margin-top: 40%;
+}
