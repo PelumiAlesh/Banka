@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/pagestyle.css">
+    <title>Banka: Dashboard</title>
+</head>
+<body>
+    <nav>
+        <div class="nav">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="logo" >
+            </div>
+                <div class="Navbar__Link Navbar__Link-toggle">
+                    <label for='toggle'><i class="fas fa-bars"></i></label>
+                </div> 
+                <input type="checkbox" id="toggle">
+
+                 <div class="navigations">
+                <div class="nav_item">
+                        <a href="#">HOME</a>
+                </div>
+                <div class="nav_item">
+                        <a href="#">TRANSACTIONS</a>
+                </div>
+                <div class="nav_item">
+                        <a href="#">ACCOUNTS</a>
+                </div>
+                <div class="nav_item">
+                    <a href="#">LOGOUT</a>
+                </div>
+                <div id="user_profile">
+                    <div class="user_img">                        
+                            <img src="../assets/images/avatar-1577909__340.png" alt="Profile Icon">
+                    </div>
+                    
+                    <span class="user_edit"><a href="#"> <i class="fas fa-sort-down"></a></i></span>
+                
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="body">
+
+        <div class="welcome_message">
+            <p><b>Hi Dave</b>, Welcome back.</p>
+        </div>
+        <!-- ------------Account Details ------------------- -->
+        <div class="account_details">
+            <div class="card_info">
+                <p id="thick">Account</p>
+                <p id="acct_num">**** **** **** 9873</p>
+                <p id="card_type">Master Card</p>
+                <p id="fade">Dave@gmail.com</p>
+            </div>
+            <div class="main_balance">
+                <p id="thick">Balance</p>
+                <p id="main_bal">8,129.04<sup>₦</sup></p>
+                <p id="fade">Previous month: ₦ 200,93.02</p>
+            </div>
+            <div class="accounts_info">
+                <div class="accounts_balance">
+                        <p class="green"><span id="fade">Savings: </span>455,123.05 NGN</p>
+                        <p class="green"><span id="fade">Investment: </span>120,432.12 NGN</p>
+                        <p class="red"><span id="fade">Credit Card: </span>-34,234 NGN</p>
+                </div>
+                <div class="full_profile_btn">
+                        <button id="btn">full profile</button>
+                </div>
+            </div>
+        </div>
+                <!-- ------------Transactions ------------------- -->
+        <div class="transaction_message">
+                <p>Recent transactions by you:</p>
+                </div>
+        <div class="transactions">
+            <div class="table_head">
+                <div class="row">
+                    <div class="column">Date</div>
+                    <div class="column">Account</div>
+                    <div class="column">Status</div>
+                    <div class="column">Amount</div>
+                </div>
+            </div>
+            <div class="table_body">
+                <div class="row">
+                    <p class="column">02-03-19</p>
+                    <p class="column">Savings</p>
+                    <p class="column" id="green">Active</p>
+                    <p class="column amt" id="recieved"> + ₦34,987</p>
+                </div>
+                <div class="row">
+                    <p class="column">02-02-19</p>
+                    <p class="column">Savings</p>
+                    <p class="column" id="green">Active</p>
+                    <p class="column amt" id="recieved">+ ₦53,787</p>
+                </div>
+                <div class="row">
+                    <p class="column">02-02-19</p>
+                    <p class="column">Credit Card</p>
+                    <p class="column" id="red">Deactivated</p>
+                    <p class="column amt" id="sent">  - ₦34,987</p>
+                </div>
+                <div class="row">
+                    <p class="column">02-01-19</p>
+                    <p class="column">Investment</p>
+                    <p class="column" id="green">Active</p>
+                    <p class="column amt" id="sent"> - ₦1,027</p>
+                </div>
+                <div class="row">
+                        <p class="column">01-03-19</p>
+                        <p class="column">Investment</p>
+                        <p class="column" id="green">Active</p>
+                        <p class="column amt" id="recieved"> + ₦70,187</p>
+                    </div>
+                <div class="row">
+                    <p class="column">02-03-19</p>
+                    <p class="column">Credit Card</p>
+                    <p class="column" id="red">Deactivated</p>
+                    <p class="column amt" id="sent"> - 3₦4,987</p>
+                </div>
+              
+            </div>
+        </div>
+<!-- --------------------------CREATE ACCOUNT DIV ------------------- -->
+        <div class="create_acct_div">
+            <p>CREATE NEW ACCOUNT NOW</p>
+            <button class="btn">CREATE ACCOUNT</button>
+        </div>
+    </section>
+
+<!-- --------------------------FOOTER ------------------- -->
+<footer>
+    <p>&copy; Copyright Banka 2019</p>
+</footer>
+</body>
+</html>

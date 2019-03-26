@@ -7,7 +7,7 @@
 :root{
     --primaryColor: #ea4c88;
     --primaryHoverColor: #d44179;
-    --secondaryColor: #3b4148;
+    --secondaryColor: rgba(59, 65, 72, 0.8);
     --secondaryHoverColor: #434a52;
     --baseColor: #606468;
     --basicColor: #363b41;
@@ -189,7 +189,6 @@ body{
   text-transform: uppercase;
   border: none;
   border-radius: 4px;
-  background-color: var(--secondaryColor);
   background-color: rgba(234, 77, 136, 0.8);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   color: white;
@@ -369,7 +368,6 @@ margin-top: 5%;
   border: none;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
-  background-color: #3b4148;
   background-color: rgba(59, 65, 72, 0.8);
   color: white;
 }
