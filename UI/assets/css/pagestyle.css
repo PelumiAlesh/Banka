@@ -1,0 +1,492 @@
+@import url(https://fonts.googleapis.com/css?family=Varela);
+@import url(https://fonts.googleapis.com/css?family=Lato:300);
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+:root {
+    --primaryColor: #ea4c88;
+    --primaryHoverColor: #d44179;
+    --secondaryColor: rgba(59, 65, 72, 0.8);
+    --secondaryHoverColor: #434a52;
+    --containerColor: #3b4148;
+    --basicColor: #363b41;
+    --bodyFontFamily: 'Open Sans';
+    --bodyFontFamilyFallback: sans-serif;
+    --limeColor: lime;
+}
+body {
+    min-width: 635px !important;
+    font-size: 1em;
+    line-height: 1.4;
+    font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
+    background-color: whitesmoke;
+   
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+a{
+    color: lime;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+li{
+    list-style: none;
+}
+footer{
+    background-color: rgba(59, 65, 72, 0.9);
+    text-align: center;
+    color: whitesmoke;
+    width: 100vw;
+}
+
+/* 
+===================================================================================
+===================================================================================
+===================================================================================
+                        USER DASHBOARD 
+===================================================================================
+===================================================================================
+===================================================================================
+*/ 
+
+
+/*----------------------- welcome message Styling --------------------- */
+section .welcome_message{
+    width: 90vh;
+    margin-top: 9rem;
+    padding: 0 3rem 0 3rem;
+    word-break: break-word;
+
+}
+@media screen and (max-width: 630px){
+    
+}
+section .welcome_message p{
+    font-size: 1.5rem;
+    line-height: 0.5rem;
+    font-weight: 0.2;
+} 
+section .transaction_message{
+    padding: 0 3rem 0 3rem;
+    margin-bottom: 3rem;
+}
+section .transaction_message p{
+    font-size: 1.5rem;
+    line-height: 0.5rem;
+    font-weight: 0.2;
+}
+/*----------------------- Account Details Styling --------------------- */
+.account_details{
+    font-family: 'Roboto Condensed', sans-serif;
+    line-height: 2rem;
+    flex-shrink: 1;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 3rem 1rem 2rem 1rem;
+    background-color: rgba(59, 65, 72, 0.9);
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-radius: 7px;
+    box-shadow: 0 .25em .25em -.125em rgba(0,0,0,.25), 0 .5em 1.25em rgba(0,0,0,.5);
+   
+}
+
+@media screen and (max-width: 960px){
+    .welcome_message{
+        padding-top: 10% ; 
+    }
+    .account_details{
+        flex-wrap: wrap;
+    }
+    .account_details .card_info{
+        width:50% !important;
+    }
+    .account_details .main_balance{
+        width:50% !important;
+    }
+    .account_details .accounts_info{
+        margin-top: 3rem !important;
+        width: 100% !important;
+    }
+}
+@media screen and (max-width: 630px){
+    .welcome_message{
+        padding-top: 5% !important; 
+        margin-top: 10% !important;
+    }
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    body{
+        width: 90vw !important;
+    }
+    .account_details{
+        flex-shrink: 1 !important;
+        width: 90vw !important;
+
+    }
+    .account_details .card_info{
+        width:100% !important;
+    }
+    .account_details .main_balance{
+        width:100% !important;
+    }
+    .account_details .accounts_info{
+        margin-top: 3rem !important;
+        flex-direction: column !important;
+    }
+    .account_details .accounts_balance {
+        flex-direction: column;
+    }
+    .account_details .accounts_balance p{
+        width: 100%;
+    }
+    .account_details .accounts_info .full_profile_btn{
+        display: flex;
+        align-items: center;    
+
+    }
+    .account_details .accounts_balance p{
+        width: 100% !important;
+    }
+    .account_details .accounts_info .full_profile_btn #btn{
+        width: 100% !important;
+    }
+}
+/* ------------------- */
+.account_details .card_info{
+    font-weight: 200;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    width: 25%;
+}
+.account_details #thick{
+    letter-spacing: 2px;
+    font-size: 1rem;
+    font-weight: bold; 
+}
+.account_details #fade{
+    color: #909497;
+    font-size: 1rem;
+    
+}
+.account_details .main_balance{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;
+}
+.account_details #main_bal{
+    color: lime;
+    font-size: 3rem ;
+    letter-spacing: 5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    line-height: 3rem;
+}
+.account_details sup{
+    color: white;
+    font-size: 2rem;
+}
+.account_details .accounts_info{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.account_details .accounts_balance{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.account_details .accounts_balance p{
+    width: 50%;
+}
+.account_details .accounts_balance .green{
+    color: lime;
+    font-weight: 100;
+}
+.account_details .accounts_balance .red{
+    color: red;
+    font-weight: 300;
+
+}
+
+.account_details .accounts_info .full_profile_btn #btn{
+    height: 4rem;
+    float: right;
+    width: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(231, 54, 121, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+.account_details .accounts_info .full_profile_btn #btn:hover{
+    background-color: rgba(234, 77, 136, 0.8);
+
+}
+
+/*----------------------- Account Transactions Styling --------------------- */
+.transactions{
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+    margin: 1rem;
+    box-shadow: 0 .25em .25em -.125em rgba(0,0,0,.25), 0 .5em 1.25em rgba(0,0,0,.5);
+
+}
+@media screen and (max-width: 630px){
+    .transactions .row .column:nth-child(3){
+        display: none;
+    }
+   .transactions{
+        width: 90vw !important;
+    }
+    .transactions .row .column{
+        white-space: nowrap;
+    }
+    .transactions .table_body .column:nth-last-child(1){
+        text-align: right !important;
+    }
+    .transactions .row{
+        justify-content: space-between !important;
+    }
+}
+.transactions .table_head{
+   background-color:rgba(59, 65, 72, 0.9);
+   border-radius: 7px 7px 0 0;
+}
+.transactions .table_head .column{
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: left;
+}
+.transactions .table_head .column:nth-last-child(1){
+    text-align: right;
+    padding-right: 1rem;
+
+}
+.transactions .table_head{
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+.transactions .table_body .row:nth-child(odd){
+    background-color: #606468;
+}
+.transactions .table_body .row:nth-child(even){
+    background-color: rgba(59, 65, 72, 0.9);
+}
+.transactions .table_body .row:nth-last-child(1){
+    border-radius: 0 0 7px 7px;
+}
+.transactions .table_body .column{
+    text-align: left;
+    line-height: 28px;
+    vertical-align: middle;
+}
+.transactions .table_body .column:nth-last-child(1){
+    text-align: right;
+    padding-right: 1rem;
+}
+.transactions .row{
+    padding: 1rem;
+    display: flex;
+}
+.transactions .row .column{
+    flex: 0 1 25%;
+}
+.transactions #green,
+.transactions #recieved{
+    color: lime;
+}
+.transactions #red,
+.transactions #sent{
+    color: #ff1a1a;
+    font-weight: bold;
+}
+.transactions .amt::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .transactions #sent::before {
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f30c";
+  }
+  .transactions #recieved::before {
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f309";
+  }
+
+  /*----------------------- Create Account Div Styling --------------------- */
+  section .create_acct_div{
+      display: flex;
+    background-color: rgba(59, 65, 72, 0.9);
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-radius: 7px;
+    box-shadow: 0 .25em .25em -.125em rgba(0,0,0,.25), 0 .5em 1.25em rgba(0,0,0,.5);
+    margin: 1rem;
+    margin-bottom: 2rem;
+    color: whitesmoke;
+  }
+  @media screen and (max-width: 630px){
+    section .create_acct_div{
+        width: 90vw;
+        flex-direction: column;
+    }
+    section .create_acct_div p{
+        font-size: 1rem !important;
+        letter-spacing: 0.3rem !important;
+        text-align: center;
+    }
+  }
+  section .create_acct_div .btn{
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(231, 54, 121, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color: white;
+    max-height: 70px;
+    min-height: 50px;
+    flex: 1 1 auto;
+}
+section .create_acct_div p{
+    font-size: 2rem;
+    letter-spacing: 0.6em;
+}
+section .create_acct_div .btn:hover{
+    background-color: rgba(234, 77, 136, 0.8);
+}
+
+
+
+/* 
+===================================================================================
+===================================================================================
+===================================================================================
+                        USER TRANSACTIONS 
+===================================================================================
+===================================================================================
+===================================================================================
+*/ 
+@media screen and (max-width: 444px){
+.trans_body{
+    width: 100vw;
+    margin-top: 15% !important;
+    box-sizing: border-box;
+}
+.trans_body h2{
+    padding-left: 25vw !important;
+    font-size: 1.5rem !important;
+
+}
+.trans_body .investment_transactions_div,
+.trans_body .savings_transaction_div,
+.trans_body .credit_transactions_div{
+    margin: 3rem 1rem 2rem 1rem ;
+    background-color: rgba(59, 65, 72, 0.9) ;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-radius: 7px;
+    box-shadow: 0 .25em .25em -.125em rgba(0,0,0,.25), 0 .5em 1.25em rgba(0,0,0,.5);
+    max-width: 90vw;
+    min-width: 19rem;
+}
+
+    .trans_body .investment_transactions_div .row .cell:nth-child(2),
+    .trans_body .savings_transaction_div .row .cell:nth-child(2),
+    .trans_body .credit_transactions_div .row .cell:nth-child(2){
+        display: none !important;
+}
+
+}
+@media screen and (max-width: 1065px){
+    .trans_body .investment_transactions_div,
+    .trans_body .savings_transaction_div,
+    .trans_body .credit_transactions_div{
+      width: 95vw !important;
+}
+  .cell{
+    display: table-cell;
+    padding: 0.3rem 5vw !important;
+}
+.trans_body{
+    margin-top: 20% !important;
+}
+}
+.trans_body{
+    margin-top: 10%;
+}
+.trans_flex{
+    display: flex;   
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex: 1 1 auto;
+}
+.trans_body .investment_transactions_div,
+.trans_body .savings_transaction_div,
+.trans_body .credit_transactions_div{
+    display: table;
+    margin: 3rem 1rem 2rem 1rem ;
+    background-color: rgba(59, 65, 72, 0.9) ;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-radius: 7px;
+    box-shadow: 0 .25em .25em -.125em rgba(0,0,0,.25), 0 .5em 1.25em rgba(0,0,0,.5);
+   width: 45%;
+}
+.trans_body .investment_transactions_div .row,
+.trans_body .savings_transaction_div .row,
+.trans_body .credit_transactions_div .row{
+    display: table-row
+}
+.cell{
+    display: table-cell;
+    padding: 0.3rem 2vw;
+}
+.trans_body td:nth-child(2),
+.trans_body th:nth-child(2){
+    display: initial;
+}
+.trans_body .row{
+    display: table-row;
+}
+.trans_body .row,
+.trans_body .row{
+    padding: 0.5rem;
+    color: rgb(212, 206, 206) !important;
+
+}
+.trans_body label{
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+}
+.trans_body h2{
+    padding-left: 35vw;
+    font-size: 3rem;
+
+}
