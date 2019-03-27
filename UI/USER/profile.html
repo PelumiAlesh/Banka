@@ -1,0 +1,154 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
+        integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/pagestyle.css">
+    <title>Banka: User Profile</title>
+</head>
+
+<body>
+    <!------------- NAVBAR  ------------------>
+    <nav>
+            <div class="nav">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" alt="logo">
+                </div>
+                <div class="Navbar__Link Navbar__Link-toggle">
+                    <label for='toggle'><i class="fas fa-bars"></i></label>
+                </div>
+                <input type="checkbox" id="toggle">
+    
+                <div class="navigations">
+                    <a href="dashboard.html">
+                    <div class="nav_item">
+                        HOME
+                    </div>
+                </a>
+                    <a href="account_transactions.html">
+                    <div class="nav_item">
+                        TRANSACTIONS
+                    </div>
+                </a>
+                    <a href="../USER/account_transactions.html">
+                    <div class="nav_item">
+                        ACCOUNTS
+                    </div>
+                </a>
+                    <a href="../login.html">
+                    <div class="nav_item">
+                        LOGOUT
+                    </div>
+                </a>
+                    <a href="../USER/profile.html">
+                        <div id="user_profile">
+                            <div class="user_img">
+                                <img src="../assets/images/avatar-1577909__340.png" alt="Profile Icon">
+                            </div>
+    
+                            <span class="user_edit"> <i class="fas fa-sort-down"></i></span>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </nav>
+    <!------------NAVBAR END------------------->
+
+
+    <!----------------BODY---------------------->
+    <section class="prof_body">
+        <div class="prof_top">
+            <div class="prof_top_left">
+                <div class="prof_pic">
+                    <div class="preview"> <img src="../assets/images/avatar-1577909__340.png" alt="User_profile"></div>
+                    <button id="triggerUpload" class="btn">Change Image</button>
+                    <input type="file" accept="image/*" id="filePicker">
+
+                </div>
+                <div class="pro_pic_details">
+                    <p>Aleshinloye Pelumi</p>
+                    <p>Male</p>
+                    <p>25 Years Old</p>
+                    <p>AleshinloyePelumi@gmail.com</p>
+                    <p class="green">Active <i class="fas fa-circle"></i></p>
+                </div>
+
+            </div>
+            <div class="main_balance">
+                <p id="thick">Balance</p>
+                <p id="main_bal">8,129.04<sup>₦</sup></p>
+                <p id="fade">Previous month: ₦ 200,93.02</p>
+                <button class="btn">Delete Account</button>
+            </div>
+
+        </div>
+        <!---------------PROFILE ACCOUNTS-------------->
+        <div class="prof_down">
+            <div class="prof_accts">
+
+                <table class="rwd-table">
+                    <tr>
+                        <th>Account Type</th>
+                        <th>Balance</th>
+                        <th>Last Month</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td data-th="Acct Type">Savings</td>
+                        <td data-th="Balance">₦435,234</td>
+                        <td data-th="Last Month">₦625,134</td>
+                        <td data-th="Status" class="green">Active <i class="fas fa-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td data-th="Acct Type">Investment</td>
+                        <td data-th="Balance">₦135,093</td>
+                        <td data-th="Last Month">₦435,123</td>
+                        <td data-th="Status" class="green">Active <i class="fas fa-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td data-th="Acct Type">Credit Card</td>
+                        <td data-th="Balance">₦12,971</td>
+                        <td data-th="Last Month">₦35,109</td>
+                        <td data-th="Status" class="red">Inactive <i class="fas fa-circle"></i></td>
+                    </tr>
+                    <tr>
+                        <td data-th="Acct Type">Current</td>
+                        <td data-th="Balance">₦12,971</td>
+                        <td data-th="Last Month">₦35,109</td>
+                        <td data-th="Status" class="green">Active <i class="fas fa-circle"></i></td>
+                    </tr>
+                </table>
+                <button class="btn">CREATE ACCOUNT</button>
+            </div>
+            <div class="prof_details">
+                <span> <label for="email">Email: </label><input type="email" placeholder="Aleshinloyelukmony@gmail.com"
+                        id="email" disabled></span>
+                <span><label for="phone">Phone: </label><input type="tel" placeholder="+234554565454" id="phone"
+                        disabled> </span>
+                <span><label for="mothers_name">Mother's Name: </label><input type="text" placeholder="Barbie"
+                        id="mothers_name" disabled></span>
+                <span><label for="state">State of origin: </label><input type="text" placeholder="Lagos" id="state"
+                        disabled></span>
+                <span><label for="address">Address: </label><input type="text" placeholder="Address" id="address"
+                        disabled></span>
+                <span><label for="BVN">BVN: </label><input type="number" placeholder="3229043477554" disabled></span>
+                <div class="edit_save">
+                    <button class="btn" onclick="editUser()">EDIT PROFILE</button>
+                    <button class="btn savee" onclick="saveUser()">SAVE</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Copyright Banka 2019</p>
+    </footer>
+    <script src="../scripts/app.js"></script>
+</body>
+
+</html>
