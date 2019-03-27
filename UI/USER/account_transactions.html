@@ -1,145 +1,160 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
+        integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/pagestyle.css">
     <title>Banka: Transactions</title>
 </head>
+
 <body>
-        <nav>
-                <div class="nav">
-                    <div class="logo">
-                        <img src="../assets/images/logo.png" alt="logo" >
-                    </div>
-                        <div class="Navbar__Link Navbar__Link-toggle">
-                            <label for='toggle'><i class="fas fa-bars"></i></label>
-                        </div> 
-                        <input type="checkbox" id="toggle">
-        
-                         <div class="navigations">
-                        <div class="nav_item">
-                                <a href="dashboard.html">HOME</a>
-                        </div>
-                        <div class="nav_item">
-                                <a href="account_transactions.html">TRANSACTIONS</a>
-                        </div>
-                        <div class="nav_item">
-                                <a href="#">ACCOUNTS</a>
-                        </div>
-                        <div class="nav_item">
-                            <a href="../login.html">LOGOUT</a>
-                        </div>
-                        <div id="user_profile">
-                            <div class="user_img">                        
-                                    <img src="../assets/images/avatar-1577909__340.png" alt="Profile Icon">
-                            </div>
-                            
-                            <span class="user_edit"><a href="#"> <i class="fas fa-sort-down"></a></i></span>
-                        
-                        </div>
-                    </div>
+    <!-----------------NAV BAR----------------->
+    <nav>
+            <div class="nav">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" alt="logo">
                 </div>
-            </nav>
-<div class="trans_body">
-    <h2>TRANSACTIONS</h2>
-    <div class="trans_flex">
-    <div class="savings_transaction_div">
-        <label for="savings_transaction_table">Savings:</label>
-        <div class="savings_transaction_table">
-            <div class="row header">
-                <div class="cell">Date</div>
-                <div class="cell">Description</div>
-                <div class="cell">Amount</div>
-                <div class="cell">Balance</div>
-            </div>   
-            <div class="row">
-                <div class="cell">03-12-19</div>
-                <div class="cell">TRANSFER</div>
-                <div class="cell">₦34,665</div>
-                <div class="cell">₦12,234</div>
+                <div class="Navbar__Link Navbar__Link-toggle">
+                    <label for='toggle'><i class="fas fa-bars"></i></label>
+                </div>
+                <input type="checkbox" id="toggle">
+    
+                <div class="navigations">
+                    <a href="dashboard.html">
+                    <div class="nav_item">
+                        HOME
+                    </div>
+                </a>
+                    <a href="account_transactions.html">
+                    <div class="nav_item">
+                        TRANSACTIONS
+                    </div>
+                </a>
+                    <a href="../USER/account_transactions.html">
+                    <div class="nav_item">
+                        ACCOUNTS
+                    </div>
+                </a>
+                    <a href="../login.html">
+                    <div class="nav_item">
+                        LOGOUT
+                    </div>
+                </a>
+                    <a href="../USER/profile.html">
+                        <div id="user_profile">
+                            <div class="user_img">
+                                <img src="../assets/images/avatar-1577909__340.png" alt="Profile Icon">
+                            </div>
+    
+                            <span class="user_edit"> <i class="fas fa-sort-down"></i></span>
+                    </a>
+                </div>
             </div>
-            <div class="row">
-                <div class="cell">03-12-19</div>
-                <div class="cell">TRANSFER</div>
-                <div class="cell">₦34,665</div>
-                <div class="cell">₦12,234</div>
             </div>
-            <div class="row">
-                <div class="cell">03-12-19</div>
-                <div class="cell">POS BUY</div>
-                <div class="cell">TRANSFER</div>
-                <div class="cell">₦12,234</div>
-            </div>
-            <div class="row">
-                <div class="cell">03-12-19</div>
-                <div class="cell">POS BUY</div>
-                <div class="cell">₦34,665</div>
-                <div class="cell">₦12,234</div>
-            </div>
-            <div class="row">
-                <div class="cell">03-12-19</div>
-                <div class="cell">POS BUY</div>
-                <div class="cell">₦34,665</div>
-                <div class="cell">₦12,234</div>
-            </div>
-            
-        </div>
-    </div>
-    <div class="investment_transactions_div">
-            <label for="investment_transaction_table">Investment:</label>
-        <div class="investment_transaction_table">
-            <div class="row">
-                <div class="cell">Date</div>
-                <div class="cell">Description</div>
-                <div class="cell">Amount</div>
-                <div class="cell">Balance</div>
-            </div>   
-            <div class="row">
-                <div class="cell">03-12-19</div>
-                <div class="cell">TRANSFER</div>
-                <div class="cell">₦34,665</div>
-                <div class="cell">₦12,234</div>
-            </div>
-            <div class="row">
-                <div class="cell">03-12-19</div>
-                <div class="cell">TRANSFER</div>
-                <div class="cell">₦34,665</div>
-                <div class="cell">₦12,234</div>
-            </div>
-            <div class="row">
-                <div class="cell">03-12-19</div>
-                <div class="cell">POS BUY</div>
-                <div class="cell">₦34,665</div>
-                <div class="cell">₦12,234</div>
-            </div>
-            <div class="row">
-                <div class="cell">03-12-19</div>
-                <div class="cell">POS BUY</div>
-                <div class="cell">₦34,665</div>
-                <div class="cell">₦12,234</div>
-            </div>
-            <div class="row">
-                <div class="cell">03-12-19</div>
-                <div class="cell">TRANSFER</div>
-                <div class="cell">₦34,665</div>
-                <div class="cell">₦12,234</div>
-            </div>
-                    
-        </div>
-    </div>
-    <div class="credit_transactions_div">
-        <label for="credit_transactions_table">Credit Card:</label>
-        <div class="credit_transactions_table">
-                <div class="row">
+        </nav>
+        <!----------------- END NAV BAR----------------->
+
+    <div class="trans_body">
+        <h2>TRANSACTIONS</h2>
+        <div class="trans_flex">
+            <div class="savings_transaction_div">
+                <label for="savings_transaction_table">Savings:</label>
+                <div class="savings_transaction_table">
+                    <div class="row header">
                         <div class="cell">Date</div>
                         <div class="cell">Description</div>
                         <div class="cell">Amount</div>
                         <div class="cell">Balance</div>
-                    </div>   
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">TRANSFER</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">TRANSFER</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">POS BUY</div>
+                        <div class="cell">TRANSFER</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">POS BUY</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">POS BUY</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="investment_transactions_div">
+                <label for="investment_transaction_table">Investment:</label>
+                <div class="investment_transaction_table">
+                    <div class="row">
+                        <div class="cell">Date</div>
+                        <div class="cell">Description</div>
+                        <div class="cell">Amount</div>
+                        <div class="cell">Balance</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">TRANSFER</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">TRANSFER</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">POS BUY</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">POS BUY</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">TRANSFER</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="credit_transactions_div">
+                <label for="credit_transactions_table">Credit Card:</label>
+                <div class="credit_transactions_table">
+                    <div class="row">
+                        <div class="cell">Date</div>
+                        <div class="cell">Description</div>
+                        <div class="cell">Amount</div>
+                        <div class="cell">Balance</div>
+                    </div>
                     <div class="row">
                         <div class="cell">03-12-19</div>
                         <div class="cell">TRANSFER</div>
@@ -170,13 +185,15 @@
                         <div class="cell">₦34,665</div>
                         <div class="cell">₦12,234</div>
                     </div>
-                        
+
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</div>
-<footer>
+    <footer>
         <p>&copy; Copyright Banka 2019</p>
     </footer>
+
 </body>
+
 </html>

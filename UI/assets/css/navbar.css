@@ -42,6 +42,7 @@ nav .nav{
     height: 5rem;
     justify-content: space-between;
     width: 100vw;
+    overflow: hidden;
 }
 nav .navigations{
     display: flex;
@@ -51,7 +52,11 @@ nav .nav_item{
     padding: calc(5rem * 0.5);
     padding-top: auto;
     align-items: center;
+    align-self: center;
     display: flex;
+    color: #787e83;
+    cursor: pointer;
+    
 }
 nav a{
     color: #787e83;
