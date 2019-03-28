@@ -47,6 +47,7 @@ li {
 footer {
   background-color: rgba(59, 65, 72, 0.9);
   text-align: center;
+  width: 100vw;
   color: whitesmoke;
   bottom: 0;
 }
