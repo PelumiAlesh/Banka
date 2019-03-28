@@ -16,7 +16,7 @@
   --bodyFontFamilyFallback: sans-serif;
   --limeColor: lime;
 }
-.body{
+body{
   overflow-x: hidden;
 }
 html, body{
