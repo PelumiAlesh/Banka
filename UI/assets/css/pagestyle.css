@@ -132,7 +132,7 @@ section .transaction_message p {
 @media screen and (max-width: 630px) {
   .welcome_message {
     padding-top: 5% !important;
-    margin-top: 10% !important;
+    margin-top: 16% !important;
   }
   html,
   body {
