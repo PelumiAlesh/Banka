@@ -964,3 +964,118 @@ Inherited from profile.html and user dashboard
   width: 6.5em;
   display: inline-block;
 }
+
+
+
+/* 
+===================================================================================
+===================================================================================
+===================================================================================
+                        STAFF DEBIT _ CREDIT ACCOUNTS
+===================================================================================
+===================================================================================
+===================================================================================
+*/
+
+.d_c{
+  display: flex;
+  flex-direction: row;
+  margin: 3rem 1rem 2rem 1rem;
+  background-color: rgba(59, 65, 72, 0.9);
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  border-radius: 7px;
+  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
+    0 0.5em 1.25em rgba(0, 0, 0, 0.5); 
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.d_c input,
+.d_c select,
+.d_c button{
+  width: 24%;
+  height: 2rem;
+  margin-right: 2px;
+  border: none;
+  cursor: pointer;
+}
+
+.d_c input,
+.d_c select{
+  border: 2px solid rgba(59, 65, 72, 0.8);;
+  border-radius: 4px;
+  background-color: #3b4148;
+  background-color: rgba(59, 65, 72, 0.8);
+  color: white;
+  font-size: 1rem;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  cursor: pointer;
+}
+.d_c input::-webkit-input-placeholder {
+  color: #787e83;
+  font-size: 1rem;
+  padding-left: 1rem;
+
+}
+.d_c input:-ms-input-placeholder {
+  color: #787e83;
+  font-size: 1rem;
+  padding-left: 1rem;
+}
+.d_c input::-ms-input-placeholder {
+  color: #787e83;
+  font-size: 1rem;
+  padding-left: 1rem;
+
+}
+.d_c input::placeholder {
+  color: #787e83;
+  font-size: 1rem;
+  padding-left: 1rem;
+
+}
+.d_c input:focus{
+  outline: lime solid thin;
+  background-color: #434a52;
+}
+.d_c input:hover{
+  background-color: #434a52;
+}
+
+.d_c button{
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--secondaryColor);
+  background-color:   rgba(231, 54, 121, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+.d_c button:hover{
+  background-color: rgba(234, 77, 136, 0.8);
+}
+#iicenter{
+  font-weight: 300px;
+  text-align: center;
+}
+@media screen and (max-width: 1031px){
+  .d_c input,
+  .d_c select,
+  .d_c button{
+    width: 48%;
+    margin-top: 1rem;
+  }
+}
+@media screen and (max-width: 630px){
+  .d_c input,
+  .d_c select,
+  .d_c button{
+    width: 100%
+  }
+}
+
