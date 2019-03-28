@@ -97,13 +97,12 @@ section .transaction_message p {
   box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
     0 0.5em 1.25em rgba(0, 0, 0, 0.5);
 }
-@media screen and (max-width: 1031px){
+@media screen and (max-width: 1031px) {
   .welcome_message {
     padding-top: 10% !important;
   }
 }
 @media screen and (max-width: 960px) {
- 
   .account_details {
     flex-wrap: wrap;
   }
@@ -272,7 +271,7 @@ section .transaction_message p {
   .transactions .row {
     justify-content: space-between !important;
   }
-  .transaction_message p{
+  .transaction_message p {
     font-size: 1.3rem !important;
   }
 }
@@ -788,5 +787,114 @@ section .create_acct_div .btn:hover,
 @media screen and (max-width: 630px) {
   .prof_details {
     width: 90vw;
+  }
+}
+
+/* 
+===================================================================================
+===================================================================================
+===================================================================================
+                        ADMIN ACCOUNTS HOME PAGE
+===================================================================================
+===================================================================================
+===================================================================================
+*/
+
+/* --------------------All Accounts Info ---------------- */
+.body #all_accounts_info {
+  display: flex;
+  flex-direction: row;
+  margin: 3rem 1rem 2rem 1rem;
+  background-color: rgba(59, 65, 72, 0.9);
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  border-radius: 7px;
+  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
+    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
+  margin-top: 10%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.body #all_accounts_info .tot_name {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: whitesmoke;
+}
+.body #all_accounts_info .tot_value {
+  color: lime;
+  font-size: 4vw;
+  letter-spacing: 5px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 3rem;
+  margin-top: 0.4rem;
+}
+.body #all_accounts_info .tot_yesterday {
+  color: #909497;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+@media screen and (max-width: 1031px) {
+  .body #all_accounts_info {
+    margin-top: 29vh;
+  }
+}
+@media screen and (max-width: 630px) {
+  .body #all_accounts_info {
+    flex-direction: column;
+    width: 90vw;
+    margin-top: 14vh !important;
+  }
+  #all_accounts_info #tot_sent,
+  #all_accounts_info #tot_recieved,
+  #all_accounts_info #tot_balance {
+    margin-top: 1rem;
+  }
+  #all_accounts_info .tot_name {
+    font-size: 1.5rem !important;
+  }
+  #all_accounts_info .tot_value {
+    font-size: 2rem !important;
+  }
+}
+
+/* ----------ALL ACCOUNTS TABEL ---------- */
+#all_bank_accounts {
+  margin: 3rem 1rem 2rem 1rem;
+  background-color: rgba(59, 65, 72, 0.9);
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  border-radius: 7px;
+  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
+    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
+  margin-top: 6%;
+}
+#all_bank_accounts .green_btn {
+  color: white;
+  width: 100%;
+  background-color: lime;
+  height: 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+#all_bank_accounts .red_btn {
+  color: white;
+  width: 100%;
+  background-color: red;
+  height: 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+@media screen and (min-width: 960px) {
+  #all_bank_accounts .rwd-table th,
+  #all_bank_accounts .rwd-table td {
+    width: 16%;
+  }
+}
+@media screen and (max-width: 630px) {
+  #all_bank_accounts {
+    width: 90vw !important;
   }
 }

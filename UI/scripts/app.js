@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-undef */
 
 /*
@@ -47,4 +48,32 @@ function saveUser() {
   document.getElementById('mothers_name').disabled = true;
   document.getElementById('state').disabled = true;
   document.getElementById('address').disabled = true;
+}
+
+
+/*
+====================
+Admin Page Script
+====================
+*/
+
+// ------------Activating and deactivating account
+function change(color, buttonStatus) {
+  if (buttonStatus.innerText === 'Activate') {
+    buttonStatus.innerText = 'Deativate';
+    buttonStatus.classList.add('red_btn');
+    buttonStatus.classList.remove('green_btn');
+    color.className = 'red';
+  } else {
+    buttonStatus.innerText = 'Activate';
+    buttonStatus.classList.add('green_btn');
+    buttonStatus.classList.remove('red_btn');
+    color.className = 'green';
+  }
+}
+// eslint-disable-next-line no-unused-vars
+function activateDeactivate(id) {
+  const color = document.getElementById(id);
+  const buttonStatus = document.querySelector(`.${id}`);
+  change(color, buttonStatus);
 }

@@ -1,0 +1,146 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
+        integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/pagestyle.css">
+    <title>Banka: Admin</title>
+</head>
+
+<body>
+    <!----------------NAV BAR------------------->
+    <nav class="navbar">
+        <a href="#"><img id="logo" src="../assets/images/logo.png" alt="logo"></a>
+        <label for="toggle"> &#9776; </label>
+        <input type="checkbox" id="toggle">
+        <ul>
+            <li> <a href="accounts.html"> Home</a></li>
+            <li> <a href="create_account.html">Create Account</a></li>
+            <li> <a href="profile.html">Profile</a></li>
+            <li> <a href="../index.html"> Log out</a></li>
+        </ul>
+    </nav>
+    <!----------------NAV BAR------------------->
+    <section class="body">
+        <!--ALL Accounts Info-->
+        <div id="all_accounts_info">
+            <div id="tot_accts">
+                <p class="tot_name">Total accounts</p>
+                <p class="tot_value">3789</p>
+                <p class="tot_yesterday">Yesterday: 3690</p>
+            </div>
+            <div id="tot_sent">
+                <p class="tot_name">Sent Today</p>
+                <p class="tot_value">₦7.13M</p>
+                <p class="tot_yesterday">Yesterday: ₦12.3M</p>
+            </div>
+            <div id="tot_recieved">
+                <p class="tot_name">Recieved Today</p>
+                <p class="tot_value">₦10.3M</p>
+                <p class="tot_yesterday">Yesterday: ₦42M</p>
+            </div>
+            <div id="tot_balance">
+                <p class="tot_name">Bank Balance</p>
+                <p class="tot_value">₦345.1M</p>
+                <p class="tot_yesterday">Yesterday: ₦742.1M</p>
+            </div>
+        </div>
+        <!--ALL BANK ACCOUNTS-->
+        <div id="all_bank_accounts">
+            <table class="rwd-table">
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Account Type</th>
+                    <th>Balance</th>
+                </tr>
+                <tr>
+                    <td data-th="Status" id="button1" class="green"><i class="fas fa-circle"></i></td>
+                    <td data-th="Name">₦625,134</td>
+                    <td data-th="Email">Active </td>
+                    <td data-th="Account Type">Savings</td>
+                    <td data-th="Balance">₦435,234</td>
+                    <td> <button value="Activate" onclick="activateDeactivate('button1')"
+                            class="button1 green_btn">Activate</button></td>
+                </tr>
+                <tr>
+                    <td data-th="Status" id="button2" class="green"><i class="fas fa-circle"></i></td>
+                    <td data-th="Name">₦435,123</td>
+                    <td data-th="Email">Active </td>
+                    <td data-th="Account Type">Investment</td>
+                    <td data-th="Balance">₦135,093</td>
+                    <td><button value="Activate" onclick="activateDeactivate('button2')"
+                            class="button2 green_btn">Activate</button></td>
+                </tr>
+                <tr>
+                    <td data-th="Status" id="button3" class="red"><i class="fas fa-circle"></i></td>
+                    <td data-th="Name">₦35,109</td>
+                    <td data-th="Email">Inactive </td>
+                    <td data-th="Account Type">Credit Card</td>
+                    <td data-th="Balance">₦12,971</td>
+                    <td><button value="Activate" onclick="activateDeactivate('button3')"
+                            class="button3 red_btn">Deactivate</button></td>
+                </tr>
+                <tr>
+                    <td data-th="Status" id="button4" class="green"><i class="fas fa-circle"></i></td>
+                    <td data-th="Name">₦35,109</td>
+                    <td data-th="Email">Active </td>
+                    <td data-th="Account Type">Current</td>
+                    <td data-th="Balance">₦12,971</td>
+                    <td><button value="Activate" onclick="activateDeactivate('button4')"
+                            class="button4 red_btn">Deactivate</button></td>
+                </tr>
+                <tr>
+                    <td data-th="Status" id="button5" class="green"><i class="fas fa-circle"></i></td>
+                    <td data-th="Name">₦35,109</td>
+                    <td data-th="Email">Active </td>
+                    <td data-th="Account Type">Current</td>
+                    <td data-th="Balance">₦12,971</td>
+                    <td><button value="Activate" onclick="activateDeactivate('button5')"
+                            class="button5 green_btn">Deactivate</button></td>
+                </tr>
+                <tr>
+                    <td data-th="Status" id="button6" class="green"><i class="fas fa-circle"></i></td>
+                    <td data-th="Name">₦35,109</td>
+                    <td data-th="Email">Active </td>
+                    <td data-th="Account Type">Current</td>
+                    <td data-th="Balance">₦12,971</td>
+                    <td><button value="Activate" onclick="activateDeactivate('button6')"
+                            class="button6 green_btn">Deactivate</button></td>
+                </tr>
+                <tr>
+                    <td data-th="Status" id="button7" class="green"><i class="fas fa-circle"></i></td>
+                    <td data-th="Name">₦35,109</td>
+                    <td data-th="Email">Active </td>
+                    <td data-th="Account Type">Current</td>
+                    <td data-th="Balance">₦12,971</td>
+                    <td><button value="Activate" onclick="activateDeactivate('button7')"
+                            class="button7 green_btn">Deactivate</button></td>
+                </tr>
+                <tr>
+                    <td data-th="Status" id="button8" class="green"><i class="fas fa-circle"></i></td>
+                    <td data-th="Name">₦35,109</td>
+                    <td data-th="Email">Active </td>
+                    <td data-th="Account Type">Current</td>
+                    <td data-th="Balance">₦12,971</td>
+                    <td><button value="Activate" onclick="activateDeactivate('button')"
+                            class="button8 red_btn">Deactivate</button></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <!------------FOOTER------------>
+    <footer>
+        <p>&copy; Copyright Banka 2019</p>
+    </footer>
+    <script src="../scripts/app.js"></script>
+</body>
+
+</html>
