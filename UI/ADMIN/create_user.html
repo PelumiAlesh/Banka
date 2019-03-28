@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
+    integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+  <link rel="stylesheet" href="../assets/css/Loginstyle.css">
+    <title>ADMIN: Create user</title>
+</head>
+<body>
+    <div class="signup_container">
+        <div class="signup-wrapper">
+          <p><img src="../assets/images/logo.png" alt="logo.png"></p>
+          <h1>Create User</h1>
+          <form class="signup-form" action="accounts.html">
+            <!-- Name -->
+            <div class="f_name">
+              <label><span class="entypo-user"><i class="fas fa-user"></i></span></label>
+              <input type="text" placeholder="Name" required />
+            </div>
+             <!-- Account Type -->
+            <div class="acct-type">
+                <div class="select-wrap">
+                  <label><span class="entypo-user"><i class="fas fa-money-check-alt"></i></span></label>
+                  <select name="acct-type" id="acct-type">
+                    <option value="" selected="selected">Account Type</option>
+                    <option value="admin-acct">Admin Account</option>
+                    <option value="staff-acct">Staff Account</option>
+                   </select>
+                  <span class="select__arrow"></span>
+                </div>
+              </div>
+            <!-- email -->
+            <div class="email">
+              <label><span class="entypo-user"><i class="fas fa-at"></i></span></label>
+              <input type="email" placeholder="E-mail" required />
+            </div>
+            <!-- phone -->
+            <div class="phone">
+              <label><span class="entypo-user"><i class="fas fa-phone"></i></span></label>
+              <input type="tel" placeholder="Phone" required />
+            </div>
+            <!-- password -->
+            <div class="password">
+              <label><span class="entypo-user"><i class="fas fa-lock"></i></span></label>
+              <input type="password" placeholder="Password" required />
+            </div>
+            <!-- button -->
+            <button class="btn">Create User</button>
+
+          </form>
+        </div> <!-- /signup-wrapper -->
+      </div> <!-- /container -->
+    </body>
+</body>
+</html>
