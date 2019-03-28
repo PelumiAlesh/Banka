@@ -18,7 +18,7 @@
 }
 @media screen and (max-width: 630px){
 body{
-  position: fixed;
+  width: 100vw;
   overflow-x: hidden;
   }
 }
