@@ -1,30 +1,32 @@
 @import url(https://fonts.googleapis.com/css?family=Varela);
-*{
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
-:root{
-    --primaryColor: #ea4c88;
-    --primaryHoverColor: #d44179;
-    --secondaryColor: rgba(59, 65, 72, 0.8);
-    --secondaryHoverColor: #434a52;
-    --baseColor: #606468;
-    --basicColor: #363b41;
-    --bodyFontFamily: 'Open Sans';
-    --bodyFontFamilyFallback: sans-serif;
-    --limeColor: lime;
+:root {
+  --primaryColor: #ea4c88;
+  --primaryHoverColor: #d44179;
+  --secondaryColor: rgba(59, 65, 72, 0.8);
+  --secondaryHoverColor: #434a52;
+  --baseColor: #606468;
+  --basicColor: #363b41;
+  --bodyFontFamily: "Open Sans";
+  --bodyFontFamilyFallback: sans-serif;
+  --limeColor: lime;
 }
 body {
   font-size: 1em;
+  width: 100%;
+  margin: 0;
   line-height: 1.4;
   font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 /* 
 ===================================================================================
@@ -34,15 +36,12 @@ input[type=number]::-webkit-outer-spin-button {
 ===================================================================================
 ===================================================================================
 ===================================================================================
-*/ 
-
-
-
-
+*/
 
 /* -----------------------------STYLING LOGIN!! ----------------------------- */
-body{
-  background-image:  linear-gradient(rgb(26, 26, 26, 0.9),rgb(26, 26, 26, 0.9)), url('../images/background.jpg');
+body {
+  background-image: linear-gradient(rgb(26, 26, 26, 0.9), rgb(26, 26, 26, 0.9)),
+    url("../images/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   -webkit-background-size: cover;
@@ -50,39 +49,37 @@ body{
   -o-background-size: cover;
   background-size: cover;
 }
-.login_container{
+.login_container {
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   max-width: 760px;
   min-width: 50vw;
   margin: 0 auto;
 }
-.login-wrapper, 
+.login-wrapper,
 .login-form {
   /* Center elements */
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .login-form .User-ID input:focus,
-.login-form .password input:focus{
+.login-form .password input:focus {
   outline: lime solid thin;
   background-color: var(--secondaryHoverColor);
 }
 .login-form .User-ID input:hover,
-.login-form .password input:hover{
-  
+.login-form .password input:hover {
   background-color: var(--secondaryHoverColor);
 }
 .login-wrapper {
   min-width: 50vw;
   height: 320px;
-  margin-top: 10%; 
-  
+  margin-top: 10%;
 }
 @media (min-width: 484px) {
   .login-wrapper {
@@ -103,7 +100,7 @@ body{
   width: 100%;
 }
 .login-form .User-ID {
-    width: 100%;
+  width: 100%;
 }
 .login-form .User-ID label,
 .login-form .password label {
@@ -141,17 +138,18 @@ body{
     padding: 0;
   }
 }
-@media (max-width: 504px){
+@media (max-width: 504px) {
   .login_container,
-  .login-wrapper{
+  .login-wrapper {
     width: 97vw;
     margin-top: 5vh;
   }
   .login-form .User-ID label span,
-.login-form .password label span {
-  font-size: 5vw !important;
+  .login-form .password label span {
+    font-size: 5vw !important;
+  }
 }
-}
+/* --- END LOGIN MEDIAS ----*/
 
 .login-form .User-ID label,
 .login-form .password label {
@@ -162,7 +160,7 @@ body{
 }
 .login-form .User-ID label span,
 .login-form .password label span {
-  font-size: 3vw;
+  font-size: 2rem;
   color: #606468;
 }
 .login-form .User-ID input,
@@ -224,26 +222,23 @@ a:hover {
   text-align: center;
   color: #fff;
 }
-.login-wrapper h1{
+.login-wrapper h1 {
   color: aliceblue;
   text-transform: uppercase;
   margin: 2rem;
 }
-.login-wrapper img{
+.login-wrapper img {
   width: 300px;
-margin-top: 5%;
+  margin-top: 5%;
 }
-.entypo-user{
-    padding: 10px;
+.entypo-user {
+  padding: 10px;
 }
 
 /* ---------------------    ENDING LOGIN STYLING -----------------------------*/
 
-
-
-
 /* ---------------------   SIGN UP STYLING -----------------------------*/
-.signup_container{
+.signup_container {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -251,7 +246,7 @@ margin-top: 5%;
   max-width: 760px;
   margin: auto auto;
 }
-.signup-wrapper, 
+.signup-wrapper,
 .signup-form {
   /* Center elements */
   align-items: center;
@@ -264,7 +259,7 @@ margin-top: 5%;
 .signup-form .f_name input:focus,
 .signup-form .s_name input:focus,
 .signup-form .email input:focus,
-.signup-form .phone input:focus{
+.signup-form .phone input:focus {
   outline: lime solid thin;
   background-color: var(--secondaryHoverColor);
 }
@@ -272,15 +267,13 @@ margin-top: 5%;
 .signup-form .f_name input:hover,
 .signup-form .s_name input:hover,
 .signup-form .email input:hover,
-.signup-form .phone input:hover{
-  
+.signup-form .phone input:hover {
   background-color: var(--secondaryHoverColor);
 }
 .signup-wrapper {
   width: 50%;
   height: 320px;
-  margin-top: 10%; 
-  
+  margin-top: 10%;
 }
 @media (min-width: 484px) {
   .signup-wrapper {
@@ -297,18 +290,18 @@ margin-top: 5%;
   padding: 0 20px;
 }
 
-.signup-form .f_name{
+.signup-form .f_name {
   width: 100%;
 }
 .signup-form .password,
 .signup-form .email,
 .signup-form .s_name,
-.signup-form .phone     {
+.signup-form .phone {
   margin-top: 20px;
   width: 100%;
 }
 .signup-form .User-ID {
-    width: 100%;
+  width: 100%;
 }
 .signup-form .password label,
 .signup-form .f_name label,
@@ -355,19 +348,19 @@ margin-top: 5%;
     padding: 0;
   }
 }
-@media screen and (max-width: 504px){
+@media screen and (max-width: 504px) {
   .signup_container,
-  .signup-wrapper{
+  .signup-wrapper {
     width: 97vw;
     margin-top: 7vh;
   }
   .signup-form .password label span,
-.signup-form .f_name label span,
-.signup-form .s_name label span,
-.signup-form .email label span,
-.signup-form .phone label span  {
-  font-size: 5vw !important;
-}
+  .signup-form .f_name label span,
+  .signup-form .s_name label span,
+  .signup-form .email label span,
+  .signup-form .phone label span {
+    font-size: 5vw !important;
+  }
 }
 
 .signup-form .password label,
@@ -384,7 +377,7 @@ margin-top: 5%;
 .signup-form .f_name label span,
 .signup-form .s_name label span,
 .signup-form .email label span,
-.signup-form .phone label span  {
+.signup-form .phone label span {
   font-size: 28px;
   color: #606468;
 }
@@ -403,7 +396,7 @@ margin-top: 5%;
 .signup-form .f_name input::-webkit-input-placeholder,
 .signup-form .s_name input::-webkit-input-placeholder,
 .signup-form .email input::-webkit-input-placeholder,
-.signup-form .phone input::-webkit-input-placeholder  {
+.signup-form .phone input::-webkit-input-placeholder {
   color: #787e83;
   font-size: 1rem;
 }
@@ -411,7 +404,7 @@ margin-top: 5%;
 .signup-form .f_name input:-ms-input-placeholder,
 .signup-form .s_name input:-ms-input-placeholder,
 .signup-form .email input:-ms-input-placeholder,
-.signup-form .phone input:-ms-input-placeholder  {
+.signup-form .phone input:-ms-input-placeholder {
   color: #787e83;
   font-size: 1rem;
 }
@@ -419,7 +412,7 @@ margin-top: 5%;
 .signup-form .f_name input::-ms-input-placeholder,
 .signup-form .s_name input::-ms-input-placeholder,
 .signup-form .email input::-ms-input-placeholder,
-.signup-form .phone input::-ms-input-placeholder  {
+.signup-form .phone input::-ms-input-placeholder {
   color: #787e83;
   font-size: 1rem;
 }
@@ -427,7 +420,7 @@ margin-top: 5%;
 .signup-form .f_name input::placeholder,
 .signup-form .s_name input::placeholder,
 .signup-form .email input::placeholder,
-.signup-form .phone input::placeholder  {
+.signup-form .phone input::placeholder {
   color: #787e83;
   font-size: 1rem;
 }
@@ -462,25 +455,21 @@ a:hover {
   text-align: center;
   color: #fff;
 }
-.signup-wrapper h1{
+.signup-wrapper h1 {
   color: aliceblue;
   text-transform: uppercase;
   margin: 2rem;
 }
-.signup-wrapper img{
+.signup-wrapper img {
   width: 300px;
-margin-top: 40%;
+  margin-top: 40%;
 }
-
 
 /* ---------------------    ENDING SIGN UP STYLING -----------------------------*/
 
-
-
-
 /* ---------------------    USER: CREATE ACCOUNT STYLING -----------------------------*/
 
-.crtAcct_container{
+.crtAcct_container {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -488,7 +477,7 @@ margin-top: 40%;
   max-width: 760px;
   margin: 0 auto;
 }
-.crtAcct-wrapper, 
+.crtAcct-wrapper,
 .crtAcct-form {
   /* Center elements */
   align-items: center;
@@ -501,7 +490,7 @@ margin-top: 40%;
 .crtAcct-form .m_name input:focus,
 .crtAcct-form .state select:focus,
 .crtAcct-form .address input:focus,
-.crtAcct-form .bvn input:focus{
+.crtAcct-form .bvn input:focus {
   outline: lime solid thin;
   background-color: var(--secondaryHoverColor);
 }
@@ -509,15 +498,13 @@ margin-top: 40%;
 .crtAcct-form .m_name input:hover,
 .crtAcct-form .state select:hover,
 .crtAcct-form .address input:hover,
-.crtAcct-form .bvn input:hover{
-  
+.crtAcct-form .bvn input:hover {
   background-color: var(--secondaryHoverColor);
 }
 .crtAcct-wrapper {
   width: 50%;
   height: 320px;
-  margin-top: 10%; 
-  
+  margin-top: 10%;
 }
 /*----- CREATE ACCT MEDIA -------*/
 @media (min-width: 484px) {
@@ -526,23 +513,22 @@ margin-top: 40%;
     height: 484px;
   }
 }
-@media screen and (max-width: 503px){
+@media screen and (max-width: 503px) {
   .crtAcct_container,
-  .crtAcct-wrapper{
+  .crtAcct-wrapper {
     width: 95vw;
     margin-top: 9vh;
   }
-.crtAcct-form .acct-type label span,
-.crtAcct-form .m_name label span,
-.crtAcct-form .state label span,
-.crtAcct-form .address label span,
-.crtAcct-form .bvn label span  {
-  font-size: 5vw !important;
-}
-.crtAcct-wrapper h1{
- font-size: 1.5rem;
-}
-
+  .crtAcct-form .acct-type label span,
+  .crtAcct-form .m_name label span,
+  .crtAcct-form .state label span,
+  .crtAcct-form .address label span,
+  .crtAcct-form .bvn label span {
+    font-size: 5vw !important;
+  }
+  .crtAcct-wrapper h1 {
+    font-size: 1.5rem;
+  }
 }
 
 .crtAcct-form {
@@ -553,14 +539,14 @@ margin-top: 40%;
   padding: 0 20px;
 }
 
-.crtAcct-form .acct-type{
+.crtAcct-form .acct-type {
   width: 100%;
 }
 
 .crtAcct-form .m_name,
 .crtAcct-form .address,
 .crtAcct-form .state,
-.crtAcct-form .bvn     {
+.crtAcct-form .bvn {
   margin-top: 20px;
   width: 100%;
 }
@@ -623,18 +609,18 @@ margin-top: 40%;
 .crtAcct-form .m_name label span,
 .crtAcct-form .state label span,
 .crtAcct-form .address label span,
-.crtAcct-form .bvn label span  {
+.crtAcct-form .bvn label span {
   font-size: 28px;
   color: #606468;
 }
 .crtAcct-form .acct-type select,
-.crtAcct-form .state select{
--webkit-appearance: none;
+.crtAcct-form .state select {
+  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0; 
+  border-radius: 0;
 }
-.select-wrap{
+.select-wrap {
   position: relative;
 }
 .select__arrow {
@@ -664,7 +650,7 @@ margin-top: 40%;
 .crtAcct-form .m_name input::-webkit-input-placeholder,
 .crtAcct-form .state select::-webkit-input-placeholder,
 .crtAcct-form .address input::-webkit-input-placeholder,
-.crtAcct-form .bvn input::-webkit-input-placeholder  {
+.crtAcct-form .bvn input::-webkit-input-placeholder {
   color: #787e83;
   font-size: 1rem;
 }
@@ -672,7 +658,7 @@ margin-top: 40%;
 .crtAcct-form .m_name input:-ms-input-placeholder,
 .crtAcct-form .state select:-ms-input-placeholder,
 .crtAcct-form .address input:-ms-input-placeholder,
-.crtAcct-form .bvn input:-ms-input-placeholder  {
+.crtAcct-form .bvn input:-ms-input-placeholder {
   color: #787e83;
   font-size: 1rem;
 }
@@ -680,7 +666,7 @@ margin-top: 40%;
 .crtAcct-form .m_name input::-ms-input-placeholder,
 .crtAcct-form .state select::-ms-input-placeholder,
 .crtAcct-form .address input::-ms-input-placeholder,
-.crtAcct-form .bvn input::-ms-input-placeholder  {
+.crtAcct-form .bvn input::-ms-input-placeholder {
   color: #787e83;
   font-size: 1rem;
 }
@@ -688,7 +674,7 @@ margin-top: 40%;
 .crtAcct-form .m_name input::placeholder,
 .crtAcct-form .state select::placeholder,
 .crtAcct-form .address input::placeholder,
-.crtAcct-form .bvn input::placeholder  {
+.crtAcct-form .bvn input::placeholder {
   color: #787e83;
   font-size: 1rem;
 }
@@ -723,13 +709,13 @@ a:hover {
   text-align: center;
   color: #fff;
 }
-.crtAcct-wrapper h1{
+.crtAcct-wrapper h1 {
   color: aliceblue;
   text-transform: uppercase;
   margin: 2rem;
   text-align: center;
 }
-.crtAcct-wrapper img{
+.crtAcct-wrapper img {
   width: 300px;
-margin-top: 40%;
+  margin-top: 40%;
 }
