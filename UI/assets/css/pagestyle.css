@@ -17,6 +17,7 @@
   --limeColor: lime;
 }
 body{
+  position: fixed;
   overflow-x: hidden;
 }
 html, body{
