@@ -18,7 +18,6 @@
 }
 body {
   min-width: 635px !important;
-  overflow-x: hidden;
   font-size: 1em;
   line-height: 1.4;
   font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
@@ -44,7 +43,6 @@ footer {
   background-color: rgba(59, 65, 72, 0.9);
   text-align: center;
   color: whitesmoke;
-  width: 100vw;
   bottom: 0;
 }
 
