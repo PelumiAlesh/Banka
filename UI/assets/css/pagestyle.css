@@ -16,6 +16,7 @@
   --bodyFontFamilyFallback: sans-serif;
   --limeColor: lime;
 }
+
 @media screen and (max-width: 630px){
 body{
   width: 100vw;
@@ -27,6 +28,7 @@ html, body{
   margin: 0;
   overflow-x: hidden !important;
 }
+
 body {
   font-size: 1em;
   line-height: 1.4;
@@ -134,7 +136,7 @@ section .transaction_message p {
   }
   html,
   body {
-    max-width: 100%;
+    width: 100vw !important;
     overflow-x: hidden;
   }
   
