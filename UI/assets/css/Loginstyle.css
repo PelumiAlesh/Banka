@@ -486,6 +486,7 @@ a:hover {
   justify-content: center;
 }
 
+.signup_container .acct-type select:focus,
 .crtAcct-form .acct-type select:focus,
 .crtAcct-form .m_name input:focus,
 .crtAcct-form .state select:focus,
@@ -494,6 +495,7 @@ a:hover {
   outline: lime solid thin;
   background-color: var(--secondaryHoverColor);
 }
+.signup_container .acct-type  select:hover,
 .crtAcct-form .acct-type select:hover,
 .crtAcct-form .m_name input:hover,
 .crtAcct-form .state select:hover,
@@ -519,6 +521,7 @@ a:hover {
     width: 95vw;
     margin-top: 9vh;
   }
+  .signup_container .acct-type  label span,
   .crtAcct-form .acct-type label span,
   .crtAcct-form .m_name label span,
   .crtAcct-form .state label span,
@@ -538,7 +541,7 @@ a:hover {
   width: 100%;
   padding: 0 20px;
 }
-
+.signup_container .acct-type ,
 .crtAcct-form .acct-type {
   width: 100%;
 }
@@ -550,6 +553,7 @@ a:hover {
   margin-top: 20px;
   width: 100%;
 }
+.signup_container .acct-type  label,
 .crtAcct-form .acct-type label,
 .crtAcct-form .m_name label,
 .crtAcct-form .state label,
@@ -561,6 +565,7 @@ a:hover {
   height: 55px;
   text-align: center;
 }
+.signup_container .acct-type label span,
 .crtAcct-form .acct-type label span,
 .crtAcct-form .m_name label span,
 .crtAcct-form .state label span,
@@ -569,14 +574,15 @@ a:hover {
   line-height: 55px;
   vertical-align: middle;
 }
+.signup_container .acct-type select,
 .crtAcct-form .acct-type select,
 .crtAcct-form .m_name input,
 .crtAcct-form .state select,
 .crtAcct-form .address input,
 .crtAcct-form .bvn input {
-  float: right;
-  display: block;
-  width: 85%;
+  float: right !important;
+  display: block !important;
+  width: 85% !important;
   height: 55px;
   padding: 15px 20px;
   font-size: 1rem;
@@ -594,7 +600,7 @@ a:hover {
     padding: 0;
   }
 }
-
+.signup_container .acct-type label,
 .crtAcct-form .acct-type label,
 .crtAcct-form .m_name label,
 .crtAcct-form .state label,
@@ -605,6 +611,7 @@ a:hover {
   background-color: #363b41;
   background-color: rgba(54, 59, 65, 0.8);
 }
+.signup_container .acct-type  label span,
 .crtAcct-form .acct-type label span,
 .crtAcct-form .m_name label span,
 .crtAcct-form .state label span,
@@ -613,6 +620,7 @@ a:hover {
   font-size: 28px;
   color: #606468;
 }
+.signup_container .acct-type select,
 .crtAcct-form .acct-type select,
 .crtAcct-form .state select {
   -webkit-appearance: none;
@@ -634,6 +642,7 @@ a:hover {
   border-width: 8px 5px 0 5px;
   border-color: black transparent transparent transparent;
 }
+.signup_container .acct-type select,
 .crtAcct-form .acct-type select,
 .crtAcct-form .m_name input,
 .crtAcct-form .state select,
@@ -646,6 +655,7 @@ a:hover {
   background-color: rgba(59, 65, 72, 0.8);
   color: white;
 }
+.signup_container .acct-type select::-webkit-input-placeholder,
 .crtAcct-form .acct-type select::-webkit-input-placeholder,
 .crtAcct-form .m_name input::-webkit-input-placeholder,
 .crtAcct-form .state select::-webkit-input-placeholder,
@@ -654,6 +664,7 @@ a:hover {
   color: #787e83;
   font-size: 1rem;
 }
+.signup_container .acct-type select:-ms-input-placeholder,
 .crtAcct-form .acct-type select:-ms-input-placeholder,
 .crtAcct-form .m_name input:-ms-input-placeholder,
 .crtAcct-form .state select:-ms-input-placeholder,
@@ -670,6 +681,7 @@ a:hover {
   color: #787e83;
   font-size: 1rem;
 }
+.signup_container .acct-type select::placeholder,
 .crtAcct-form .acct-type select::placeholder,
 .crtAcct-form .m_name input::placeholder,
 .crtAcct-form .state select::placeholder,
@@ -718,4 +730,7 @@ a:hover {
 .crtAcct-wrapper img {
   width: 300px;
   margin-top: 40%;
+}
+.signup_container .acct-type {
+  padding-top: 1rem;
 }
