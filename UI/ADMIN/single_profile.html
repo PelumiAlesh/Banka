@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
+        integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/pagestyle.css">
+    <title>Banka: Admin: Single Profile</title>
+</head>
+
+<body class="single_ppage">
+    <!------------- NAVBAR  ------------------>
+    <nav class="navbar">
+            <a href="#"><img id="logo" src="../assets/images/logo.png" alt="logo"></a>
+            <label for="toggle"> &#9776; </label>
+            <input type="checkbox" id="toggle">
+            <ul>
+                <li> <a href="accounts.html"> Home</a></li>
+                <li> <a href="create_account.html">Create Account</a></li>
+                <li> <a href="profile.html">Profile</a></li>
+                <li> <a href="../index.html"> Log out</a></li>
+            </ul>
+        </nav>
+    <!------------NAVBAR END------------------->
+
+
+    <!----------------BODY---------------------->
+    <section class="prof_body">
+        <div class="prof_top">
+            <div class="prof_top_left">
+                <div class="prof_pic">
+                    <div class="preview"> <img src="../assets/images/profile_pic.jpg" alt="User_profile"></div>
+                    
+
+                </div>
+                <div class="pro_pic_details">
+                    <p>Aleshinloye Pelumi</p>
+                    <p>Male</p>
+                    <p>25 Years Old</p>
+                    <p>AleshinloyePelumi@gmail.com</p>
+                    <p class="green">Active <i class="fas fa-circle"></i></p>
+                </div>
+
+            </div>
+            <div class="main_balance">
+                <p id="thick">Balance</p>
+                <p id="main_bal">8,129.04<sup>₦</sup></p>
+                <p id="fade">Previous month: ₦ 200,93.02</p>
+                <button class="btn">Delete Account</button>
+            </div>
+
+        </div>
+        <!---------------PROFILE ACCOUNTS-------------->
+        <div class="prof_down prof_prof">
+                    <div class="transactions">
+                        <div class="table_head">
+                            <div class="row">
+                                <div class="column">Date</div>
+                                <div class="column">Account</div>
+                                <div class="column">Status</div>
+                                <div class="column">Amount</div>
+                            </div>
+                        </div>
+                        <div class="table_body">
+                            <div class="row">
+                                <p class="column">02-03-19</p>
+                                <p class="column">Savings</p>
+                                <p class="column" id="green">Active</p>
+                                <p class="column amt" id="recieved"> + ₦34,987</p>
+                            </div>
+                            <div class="row">
+                                <p class="column">02-02-19</p>
+                                <p class="column">Savings</p>
+                                <p class="column" id="green">Active</p>
+                                <p class="column amt" id="recieved">+ ₦53,787</p>
+                            </div>
+                            <div class="row">
+                                <p class="column">02-02-19</p>
+                                <p class="column">Credit Card</p>
+                                <p class="column" id="red">Deactivated</p>
+                                <p class="column amt" id="sent"> - ₦34,987</p>
+                            </div>
+                            <div class="row">
+                                <p class="column">02-01-19</p>
+                                <p class="column">Investment</p>
+                                <p class="column" id="green">Active</p>
+                                <p class="column amt" id="sent"> - ₦1,027</p>
+                            </div>
+                            <div class="row">
+                                <p class="column">01-03-19</p>
+                                <p class="column">Investment</p>
+                                <p class="column" id="green">Active</p>
+                                <p class="column amt" id="recieved"> + ₦70,187</p>
+                            </div>
+                            <div class="row">
+                                <p class="column">02-03-19</p>
+                                <p class="column">Credit Card</p>
+                                <p class="column" id="red">Deactivated</p>
+                                <p class="column amt" id="sent"> - 3₦4,987</p>
+                            </div>
+            
+                        </div>
+                    </div>
+            <div class="prof_details">
+                <span> <label for="email">Email: </label><input type="email" placeholder="Aleshinloyelukmony@gmail.com"
+                        id="email" disabled></span>
+                <span><label for="phone">Phone: </label><input type="tel" placeholder="+234554565454" id="phone"
+                        disabled> </span>
+                <span><label for="mothers_name">Mother's Name: </label><input type="text" placeholder="Barbie"
+                        id="mothers_name" disabled></span>
+                <span><label for="state">State of origin: </label><input type="text" placeholder="Lagos" id="state"
+                        disabled></span>
+                <span><label for="address">Address: </label><input type="text" placeholder="Address" id="address"
+                        disabled></span>
+                <span><label for="BVN">BVN: </label><input type="number" placeholder="3229043477554" disabled></span>
+                
+            </div>
+
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Copyright Banka 2019</p>
+    </footer>
+    <script src="../scripts/app.js"></script>
+</body>
+
+</html>
