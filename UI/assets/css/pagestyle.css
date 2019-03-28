@@ -651,6 +651,7 @@ section .create_acct_div .btn:hover,
   width: 6.5em;
   display: inline-block;
 }
+
 .rwd-table .green {
   color: lime;
 }
@@ -704,6 +705,7 @@ section .create_acct_div .btn:hover,
 /*---------------- END Profile Accounts -----------------*/
 
 .prof_down {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -859,7 +861,7 @@ section .create_acct_div .btn:hover,
   }
 }
 
-/* ----------ALL ACCOUNTS TABEL ---------- */
+/* ----------ALL ACCOUNTS TABLE ---------- */
 #all_bank_accounts {
   margin: 3rem 1rem 2rem 1rem;
   background-color: rgba(59, 65, 72, 0.9);
@@ -877,6 +879,25 @@ section .create_acct_div .btn:hover,
   border: none;
   border-radius: 4px;
   font-size: 0.9rem;
+  cursor: pointer;
+}
+#all_bank_accounts .green_btn:hover {
+  background-color: rgb(122, 235, 122);
+}
+#all_bank_accounts .btn {
+  text-transform: uppercase;
+  border: none;
+  background-color: rgba(231, 54, 121, 0.9);
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  font-size: 0.9rem;
+  height: 2rem;
+
+}
+#all_bank_accounts .btn:hover {
+  background-color: #ea4c88;
 }
 #all_bank_accounts .red_btn {
   color: white;
@@ -886,16 +907,51 @@ section .create_acct_div .btn:hover,
   border: none;
   border-radius: 4px;
   font-size: 0.9rem;
+  cursor: pointer;
+}
+#all_bank_accounts .red_btn:hover {
+  background-color: rgb(240, 86, 86);
 }
 
 @media screen and (min-width: 960px) {
   #all_bank_accounts .rwd-table th,
   #all_bank_accounts .rwd-table td {
-    width: 16%;
+    width: 14%;
   }
 }
 @media screen and (max-width: 630px) {
   #all_bank_accounts {
     width: 90vw !important;
   }
+}
+
+/* 
+===================================================================================
+===================================================================================
+===================================================================================
+                        ADMIN SINGLE ACCOUNT
+===================================================================================
+===================================================================================
+===================================================================================
+Inherited from profile.html and user dashboard
+*/
+
+.prof_down .transactions{
+  width: 100%;
+}
+.prof_prof .prof_details{
+  width: 100%;
+  justify-content: space-between;
+}
+@media screen and (max-width: 630px){
+  .prof_prof .prof_details{
+    width: 90vw;
+  }
+}
+.rwd-table td:nth-last-child(1):before,
+.rwd-table td:nth-last-child(2):before {
+  content: none;
+  font-weight: bold;
+  width: 6.5em;
+  display: inline-block;
 }
