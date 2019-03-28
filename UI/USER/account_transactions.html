@@ -14,49 +14,19 @@
 
 <body>
     <!-----------------NAV BAR----------------->
-    <nav>
-            <div class="nav">
-                <div class="logo">
-                    <img src="../assets/images/logo.png" alt="logo">
-                </div>
-                <div class="Navbar__Link Navbar__Link-toggle">
-                    <label for='toggle'><i class="fas fa-bars"></i></label>
-                </div>
-                <input type="checkbox" id="toggle">
-    
-                <div class="navigations">
-                    <a href="dashboard.html">
-                    <div class="nav_item">
-                        HOME
-                    </div>
-                </a>
-                    <a href="account_transactions.html">
-                    <div class="nav_item">
-                        TRANSACTIONS
-                    </div>
-                </a>
-                    <a href="../USER/account_transactions.html">
-                    <div class="nav_item">
-                        ACCOUNTS
-                    </div>
-                </a>
-                    <a href="../index.html">
-                    <div class="nav_item">
-                        LOGOUT
-                    </div>
-                </a>
-                    <a href="../USER/profile.html">
-                        <div id="user_profile">
-                            <div class="user_img">
-                                <img src="../assets/images/avatar-1577909__340.png" alt="Profile Icon">
-                            </div>
-    
-                            <span class="user_edit"> <i class="fas fa-sort-down"></i></span>
-                    </a>
-                </div>
-            </div>
-            </div>
-        </nav>
+    <nav class="navbar">
+        <a href="#"><img id="logo"src="../assets/images/logo.png" alt="logo"></a>
+        <label for="toggle"> &#9776; </label>
+        <input type="checkbox" id="toggle">
+        <ul>
+          <li> <a href="dashboard.html"> Home</a></li>
+          <li> <a href="#about">Transactions </a></li>
+          <li> <a href="#patreondonate">Account</a></li>
+          <li> <a href="#">Profile</a></li>
+          <li> <a href="#Contact"> Log out</a></li>
+      
+        </ul>
+      </nav>
         <!----------------- END NAV BAR----------------->
 
     <div class="trans_body">
