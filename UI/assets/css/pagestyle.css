@@ -96,11 +96,13 @@ section .transaction_message p {
   box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
     0 0.5em 1.25em rgba(0, 0, 0, 0.5);
 }
-
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1031px){
   .welcome_message {
-    padding-top: 10%;
+    padding-top: 10% !important;
   }
+}
+@media screen and (max-width: 960px) {
+ 
   .account_details {
     flex-wrap: wrap;
   }
@@ -137,6 +139,10 @@ section .transaction_message p {
   }
   .account_details .main_balance {
     width: 100% !important;
+  }
+  .account_details #main_bal,
+  .prof_top #main_bal {
+    font-size: 2rem !important;
   }
   .account_details .accounts_info {
     margin-top: 3rem !important;
@@ -264,6 +270,9 @@ section .transaction_message p {
   }
   .transactions .row {
     justify-content: space-between !important;
+  }
+  .transaction_message p{
+    font-size: 1.3rem !important;
   }
 }
 .transactions .table_head {
