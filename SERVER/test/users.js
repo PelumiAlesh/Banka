@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../index';
@@ -19,7 +20,8 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
         password: 'password',
         type: 'user',
       };
-      chai.request(app)
+      chai
+        .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
         .end((err, res) => {
@@ -42,7 +44,8 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
         password: 'password',
         type: 'user',
       };
-      chai.request(app)
+      chai
+        .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
         .end((err, res) => (done) => {
@@ -59,7 +62,8 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
         password: 'password',
         type: 'user',
       };
-      chai.request(app)
+      chai
+        .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
         .end((err, res) => (done) => {
@@ -76,7 +80,8 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
         password: 'password',
         type: 'user',
       };
-      chai.request(app)
+      chai
+        .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
         .end((err, res) => (done) => {
@@ -92,7 +97,8 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
         email: 'pels@gmail.com',
         type: 'user',
       };
-      chai.request(app)
+      chai
+        .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
         .end((err, res) => (done) => {
@@ -110,7 +116,8 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
         password: 'password',
         type: 'user',
       };
-      chai.request(app)
+      chai
+        .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
         .end((err, res) => (done) => {
@@ -129,7 +136,8 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
         email: 'pels@gmail.com',
         password: 'password',
       };
-      chai.request(app)
+      chai
+        .request(app)
         .post(`${endpointPath}signin`)
         .send(loginBody)
         .end((err, res) => {
@@ -146,7 +154,8 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
       const loginBody = {
         password: 'password',
       };
-      chai.request(app)
+      chai
+        .request(app)
         .post(`${endpointPath}signin`)
         .send(loginBody)
         .end((err, res) => {
@@ -161,7 +170,8 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
       const loginBody = {
         email: 'pels@gmail.com',
       };
-      chai.request(app)
+      chai
+        .request(app)
         .post(`${endpointPath}signin`)
         .send(loginBody)
         .end((err, res) => {
@@ -177,7 +187,8 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
         email: 'wrong@gmai.bjd',
         password: 'wrong',
       };
-      chai.request(app)
+      chai
+        .request(app)
         .post(`${endpointPath}signin`)
         .send(loginBody)
         .end((err, res) => {
