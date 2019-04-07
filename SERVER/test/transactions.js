@@ -9,6 +9,7 @@ chai.use(chaiHttp);
 const endpointPath = '/api/v1/transactions/';
 
 describe('Transactions Test', () => {
+  // -----------CREDIT ACCOUNT--------------
   describe(`POST ${endpointPath}:accountNumber/credit`, () => {
     // return 200 and succesfully credit the account
     it('should succesfully credit an account', (done) => {
@@ -43,6 +44,7 @@ describe('Transactions Test', () => {
             });
         });
     });
+    // return 400 if amount wasnt specified
     it('should return 400 if user omit amount', (done) => {
       chai
         .request(app)
@@ -55,10 +57,67 @@ describe('Transactions Test', () => {
           done();
         });
     });
-
+    // return 400 if amount specified is not a number
     it('Should return 400 if user inputs non integer characters', (done) => {
       chai.request(app)
         .post(`${endpointPath}654321234567/credit`)
+        .send({ amount: 'lu88' })
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          done();
+        });
+    });
+  });
+  // -----------DEBIT ACCOUNT--------------
+  describe(`POST ${endpointPath}:accountNumber/debit`, () => {
+    // return 200 and succesfully debit the account
+    it('should succefully debit an account', (done) => {
+      const login = {
+        email: 'pels@gmail.com',
+        password: 'password',
+      };
+      chai
+        .request(app)
+        .post('/api/v1/auth/signin')
+        .send(login)
+        .end((logErr, logRes) => {
+          const token = `Bearer ${logRes.body.data.token}`;
+          chai
+            .request(app)
+            .post(`${endpointPath}654321234567/debit`)
+            .set('Authorization', token)
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.should.be.a('object');
+              res.body.should.have.a.property('data');
+              res.body.data.should.be.a('object');
+              res.body.data.should.have.property('amount');
+              res.body.data.should.have.property('transactionId');
+              res.body.data.should.have.property('transactionType');
+              res.body.data.should.have.property('transactionType');
+              done();
+            });
+        });
+    });
+    // return 400 if amount wasnt specified
+    it('should return 400 if user omit amount', (done) => {
+      chai
+        .request(app)
+        .post(`${endpointPath}654321234567/debit`)
+        .send({})
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          done();
+        });
+    });
+    // return 400 if amount specified is not a number
+    it('Should return 400 if user inputs non integer characters', (done) => {
+      chai.request(app)
+        .post(`${endpointPath}654321234567/debit`)
         .send({ amount: 'lu88' })
         .end((err, res) => {
           res.should.have.status(400);
