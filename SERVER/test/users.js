@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 
 const endpointPath = '/api/v1/auth/';
 
-describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
+describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
   // ---------USER SIGNUP TESTS--------
   describe(`POST ${endpointPath}signup`, () => {
     // return 201 if new user was succesfully created
@@ -31,6 +31,7 @@ describe('Test for Authentication(SignIn and SignUp) Endpoints', () => {
           res.body.data.should.have.property('firstName');
           res.body.data.should.have.property('lastName');
           res.body.data.should.have.property('email');
+          res.body.data.should.have.property('token');
           res.body.data.should.have.property('password');
           res.body.data.should.have.property('type');
           done();
