@@ -1,14 +1,14 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+import InputValidator from '../middlewares/inputValidation';
+import UserController from '../controllers/userControllers';
 
-const Router = express.Router();
+const router = express.Router();
+router.use(bodyParser.json());
 
-
-Router.post('/signup', (req, res) => {
-  res.send('jdfhhdhdfkjd');
-});
-Router.post('/signin', (req, res) => {
+router.post('/signup', InputValidator, UserController.signUp);
+router.post('/signin', (req, res) => {
   res.send('hdflhflkhf');
 });
 
-
-export default Router;
+export default router;
