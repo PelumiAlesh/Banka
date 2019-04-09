@@ -18,7 +18,7 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         lastName: 'Aleshinloye',
         email: 'pels@gmail.com',
         password: 'password',
-        type: 'user',
+        type: 'client',
       };
       chai
         .request(app)
@@ -32,13 +32,11 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
           res.body.data.should.have.property('lastName');
           res.body.data.should.have.property('email');
           res.body.data.should.have.property('token');
-          res.body.data.should.have.property('password');
-          res.body.data.should.have.property('type');
           done();
         });
     });
     // return 401 if firstName field was left empty
-    it('should return 401 if user ommit firstName', () => {
+    it('should return 401 if user ommit firstName', (done) => {
       const user = {
         lastName: 'Aleshinloye',
         email: 'pels@gmail.com',
@@ -49,14 +47,14 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
-        .end((err, res) => (done) => {
+        .end((err, res) => {
           res.should.have.status(401);
           res.should.have.property('error');
           done();
         });
     });
     // return 401 if lastName field was left empty
-    it('should return 401 if user ommit LastName', () => {
+    it('should return 401 if user ommit LastName', (done) => {
       const user = {
         firstName: 'Pelumi',
         email: 'pels@gmail.com',
@@ -67,14 +65,14 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
-        .end((err, res) => (done) => {
+        .end((err, res) => {
           res.should.have.status(401);
           res.should.have.property('error');
           done();
         });
     });
     // return 401 if email field was left empty
-    it('should return 401 if user ommit email', () => {
+    it('should return 401 if user ommit email', (done) => {
       const user = {
         firstName: 'Pelumi',
         lastName: 'Aleshinloye',
@@ -85,14 +83,14 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
-        .end((err, res) => (done) => {
+        .end((err, res) => {
           res.should.have.status(401);
           res.should.have.property('error');
           done();
         });
     });
     // return 401 if password field was left empty
-    it('should return 401 if user ommit password', () => {
+    it('should return 401 if user ommit password', (done) => {
       const user = {
         firstName: 'Pelumi',
         email: 'pels@gmail.com',
@@ -102,14 +100,14 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
-        .end((err, res) => (done) => {
+        .end((err, res) => {
           res.should.have.status(401);
           res.should.have.property('error');
           done();
         });
     });
-    // return 422 if email already exist
-    it('should return 422 if email already exist', () => {
+    // return 409 if email already exist
+    it('should return 409 if email already exist', (done) => {
       const user = {
         firstName: 'Pelumi',
         lastName: 'Aleshinloye',
@@ -121,8 +119,8 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .request(app)
         .post(`${endpointPath}signup`)
         .send(user)
-        .end((err, res) => (done) => {
-          res.should.have.status(422);
+        .end((err, res) => {
+          res.should.have.status(409);
           res.should.be.a('object');
           res.should.have.property('error');
           done();
@@ -147,8 +145,8 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
           res.body.should.have.property('data');
           res.body.data.should.have.a('object');
           res.body.data.should.have.property('token');
+          done();
         });
-      done();
     });
     // return 401 if email field was left empty
     it('should return error 401 if user omit email', (done) => {
@@ -163,8 +161,8 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
           res.should.have.status(401);
           res.body.should.a('object');
           res.body.should.have.property('error');
+          done();
         });
-      done();
     });
     // return 401 if password was left empty
     it('should return error 401 if user omit password', (done) => {
@@ -179,8 +177,8 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
           res.should.have.status(401);
           res.should.be.a('object');
           res.should.have.property('error');
+          done();
         });
-      done();
     });
     // return error 201 if password and email does not match
     it('should return error 201 if email and password does not match', (done) => {
