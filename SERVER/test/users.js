@@ -16,9 +16,8 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
       const user = {
         firstName: 'Pelumi',
         lastName: 'Aleshinloye',
-        email: 'pels@gmail.com',
+        email: 'pelss@gmail.com',
         password: 'password',
-        type: 'client',
       };
       chai
         .request(app)
@@ -41,7 +40,6 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         lastName: 'Aleshinloye',
         email: 'pels@gmail.com',
         password: 'password',
-        type: 'user',
       };
       chai
         .request(app)
@@ -59,7 +57,6 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         firstName: 'Pelumi',
         email: 'pels@gmail.com',
         password: 'password',
-        type: 'user',
       };
       chai
         .request(app)
@@ -77,7 +74,6 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         firstName: 'Pelumi',
         lastName: 'Aleshinloye',
         password: 'password',
-        type: 'user',
       };
       chai
         .request(app)
@@ -94,7 +90,6 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
       const user = {
         firstName: 'Pelumi',
         email: 'pels@gmail.com',
-        type: 'user',
       };
       chai
         .request(app)
@@ -113,7 +108,6 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         lastName: 'Aleshinloye',
         email: 'pels@gmail.com',
         password: 'password',
-        type: 'user',
       };
       chai
         .request(app)
@@ -129,10 +123,10 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
   });
   // ------------USER SIGNIN TEST---------
   describe(`POST ${endpointPath}signin`, () => {
-    // return 200 and return a token if valid credentials were provided
+    // return 201 and return a token if valid credentials were provided
     it('Should login the user succesfully and return a token', (done) => {
       const loginBody = {
-        email: 'pels@gmail.com',
+        email: 'pelss@gmail.com',
         password: 'password',
       };
       chai
@@ -140,7 +134,7 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .post(`${endpointPath}signin`)
         .send(loginBody)
         .end((err, res) => {
-          res.should.have.status(200);
+          res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
           res.body.data.should.have.a('object');
@@ -180,8 +174,8 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
           done();
         });
     });
-    // return error 201 if password and email does not match
-    it('should return error 201 if email and password does not match', (done) => {
+    // return error 401 if password and email does not match
+    it('should return error 401 if email and password does not match', (done) => {
       const loginBody = {
         email: 'wrong@gmai.bjd',
         password: 'wrong',
@@ -191,10 +185,10 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .post(`${endpointPath}signin`)
         .send(loginBody)
         .end((err, res) => {
-          res.should.have.status(201);
+          res.should.have.status(401);
           res.body.should.be.a('object');
           res.body.should.have.property('error');
-          res.body.error.should.equal('Authentication Failed');
+          res.body.error.should.equal('Authentication Failed: Email or Password is incorrect');
           done();
         });
     });
