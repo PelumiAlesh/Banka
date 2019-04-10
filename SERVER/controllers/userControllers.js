@@ -25,7 +25,7 @@ class UserController {
       });
     }
     const newUser = users.create(userInput);
-    const token = helper.generateToken({ email: userInput.email, id: userInput.id });
+    const token = helper.generateToken({ email: userInput.email, id: newUser.id });
     return res.status(201).json({
       status: 201,
       data: {
@@ -47,7 +47,12 @@ class UserController {
         error: 'Authentication Failed: Email or Password is incorrect',
       });
     }
-    const token = helper.generateToken({ email: userInput.email, password: userInput.password });
+    const token = helper.generateToken({
+      email: userDetails.email,
+      firstName: userDetails.firstName,
+      lastName: userDetails.lastName,
+      id: userDetails.id,
+    });
     return res.status(201).json({
       status: res.statusCode,
       data: {

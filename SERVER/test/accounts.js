@@ -21,12 +21,12 @@ describe('Test for all account Endpoints', () => {
         };
         chai
           .request(app)
-          .post(endpointPath)
+          .post('/api/v1/auth/signin')
           .send(login)
-          .end((logErr, logRes) => {
-            const token = `Bearer ${logRes.body.data.token}`;
+          .end((logErr, Res) => {
+            const token = `Bearer ${Res.body.data.token}`;
             const input = {
-              type: 'current',
+              type: 'savings',
               initialDeposit: 2341.4,
             };
             chai
@@ -39,9 +39,11 @@ describe('Test for all account Endpoints', () => {
                 res.body.should.be.a('object');
                 res.body.should.have.property('data');
                 res.body.data.should.be.a('object');
+                res.body.data.should.have.property('accountNumber');
                 res.body.data.should.have.property('firstName');
-                res.body.data.should.have.property('secondName');
-                res.body.data.should.have.property('type').eql('current');
+                res.body.data.should.have.property('lastName');
+                res.body.data.should.have.property('email');
+                res.body.data.should.have.property('type');
                 done();
               });
           });
