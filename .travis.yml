@@ -1,3 +1,5 @@
 language: node_js
 node_js:
 - '10'
+script:
+- mocha server/test/* --require @babel/register --timeout 50000 --exit
