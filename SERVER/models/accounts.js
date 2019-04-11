@@ -30,6 +30,17 @@ class Account {
   }
 
   /**
+   * @method checkAccount
+   * @description Checks and return account details if account is found
+   * @param {string} acctNo - Account number to be checked in accounts database
+   * @returns {object} Account details if found
+   */
+  static checkAccount(acctNo) {
+    const acctDetails = accounts.find((account => account.accountNumber === parseInt(acctNo, 10)));
+    return acctDetails;
+  }
+
+  /**
    * @param  {Number} sliceStart - A number specifying the slicing index.
    * @method deleteAccount
    * @description  - Method to delete an account

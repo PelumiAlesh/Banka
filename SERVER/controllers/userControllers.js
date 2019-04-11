@@ -52,6 +52,7 @@ class UserController {
       firstName: userDetails.firstName,
       lastName: userDetails.lastName,
       id: userDetails.id,
+      type: userDetails.type,
     });
     return res.status(201).json({
       status: res.statusCode,
