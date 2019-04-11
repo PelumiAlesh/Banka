@@ -2,4 +2,4 @@ language: node_js
 node_js:
  - 'stable'
 script:
-- mocha server/test/* --require @babel/register --exit
+- mocha server/test/*.js --require @babel/register --exit
