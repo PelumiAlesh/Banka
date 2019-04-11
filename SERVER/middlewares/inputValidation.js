@@ -1,4 +1,12 @@
-import { check, validationResult, oneOf } from 'express-validator/check';
+/* eslint-disable eqeqeq */
+import {
+  check,
+  validationResult,
+  oneOf,
+  param,
+} from 'express-validator/check';
+import accounts from '../models/mock_data/accounts';
+
 
 const message = 'Invalid Account Type: Account Type can be either "savings" or "current';
 const validateUser = {
@@ -70,5 +78,32 @@ const validateUser = {
       return next();
     },
   ],
+  // --------------- Change Account status ------------
+  changeAccountStatus: [
+    param('accountNumber').custom(async (acctNo) => {
+      const isFound = await accounts.find((account => account.accountNumber == acctNo));
+      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
+    }),
+    check('status').not().isEmpty().withMessage('Please input status'),
+    oneOf([
+      check('status').equals('active'),
+      check('status').equals('dormant'),
+    ], 'Account status can only be "active" or "dormant"'),
+    (req, res, next) => {
+      const errors = validationResult(req);
+      const errMessages = [];
+      if (!errors.isEmpty()) {
+        errors.array().forEach((err) => {
+          errMessages.push(err.msg);
+        });
+        return res.status(400).json({
+          status: res.statusCode,
+          error: errMessages,
+        });
+      }
+      return next();
+    },
+  ],
+
 };
 export default validateUser;

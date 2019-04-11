@@ -1,6 +1,6 @@
 import users from '../models/users';
 import helper from '../helpers/helper';
-import exist from '../helpers/emailExist';
+import Exist from '../helpers/Exist';
 
 /**
  * @class UserController
@@ -17,7 +17,7 @@ class UserController {
    */
   static signUp(req, res) {
     const userInput = { ...req.body };
-    const emailExist = exist(userInput.email, false);
+    const emailExist = Exist.emailExist(userInput.email, false);
     if (emailExist) {
       return res.status(409).json({
         status: res.statusCode,
@@ -40,7 +40,7 @@ class UserController {
 
   static signIn(req, res) {
     const userInput = { ...req.body };
-    const { userDetails, emailExists } = exist(userInput.email, true);
+    const { userDetails, emailExists } = Exist.emailExist(userInput.email, true);
     if (!emailExists || !helper.verifyPassword(userInput.password, userDetails.password)) {
       return res.status(401).json({
         status: res.statusCode,
