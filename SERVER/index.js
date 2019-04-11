@@ -5,7 +5,7 @@ import env from '../config';
 // -----Routes-------
 import userRoute from './routes/users';
 import accountsRoutes from './routes/accounts';
-// import transactionRoutes from './routes/transactions';
+import transactionRoutes from './routes/transactions';
 
 const { PORT } = env;
 const app = express();
@@ -17,7 +17,7 @@ app.get('/api', (req, res) => res.status(301).redirect('/api/v1'));
 
 app.use('/api/v1/auth', userRoute);
 app.use('/api/v1/accounts', accountsRoutes);
-// app.use('/api/v1/transactions', transactionRoutes);
+app.use('/api/v1/transactions', transactionRoutes);
 
 app.get('/api/v1', (req, res) => {
   res.json({

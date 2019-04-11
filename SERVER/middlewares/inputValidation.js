@@ -5,7 +5,7 @@ import {
   oneOf,
   param,
 } from 'express-validator/check';
-import accounts from '../models/mock_data/accounts';
+import Account from '../models/accounts';
 
 
 const message = 'Invalid Account Type: Account Type can be either "savings" or "current';
@@ -81,7 +81,7 @@ const validateUser = {
   // --------------- Change Account status ------------
   changeAccountStatus: [
     param('accountNumber').custom(async (acctNo) => {
-      const isFound = await accounts.find((account => account.accountNumber == acctNo));
+      const isFound = await Account.checkAccount(acctNo);
       if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
     }),
     check('status').not().isEmpty().withMessage('Please input status'),
@@ -107,7 +107,45 @@ const validateUser = {
   // --------------- Delete Account ------------
   deleteAccount: [
     param('accountNumber').custom(async (acctNo) => {
-      const isFound = await accounts.find((account => account.accountNumber == acctNo));
+      const isFound = await Account.checkAccount(acctNo);
+      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
+    }),
+    (req, res, next) => {
+      const errors = validationResult(req);
+      const errMessages = [];
+      if (!errors.isEmpty()) {
+        errors.array().forEach((err) => {
+          errMessages.push(err.msg);
+        });
+        return res.status(404).json({
+          status: res.statusCode,
+          error: errMessages,
+        });
+      }
+      return next();
+    },
+  ],
+  // ------------------- Validate Amount --------------
+  validateAmount: [
+    check('amount').not().isEmpty().withMessage('Amount can not left Empty!.'),
+    (req, res, next) => {
+      const errors = validationResult(req);
+      const errMessages = [];
+      if (!errors.isEmpty()) {
+        errors.array().forEach((err) => {
+          errMessages.push(err.msg);
+        });
+        return res.status(400).json({
+          status: res.statusCode,
+          error: errMessages,
+        });
+      }
+      return next();
+    },
+  ],
+  validateAccountURL: [
+    param('accountNumber').custom(async (acctNo) => {
+      const isFound = await Account.checkAccount(acctNo);
       if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
     }),
     (req, res, next) => {

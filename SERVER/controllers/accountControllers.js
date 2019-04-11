@@ -12,7 +12,7 @@ class AccountController {
    * @description Create a new account
    * @param {object} req - The user Request Object
    * @param {object} res - The user Response Object
-   * @returns {object} Json file containing User details
+   * @returns {object} API RESPONSE IN JSON FORMAT
    */
   static createAccount(req, res) {
     const newAccount = Account.createAccount(req.body, req);
@@ -33,16 +33,16 @@ class AccountController {
    * @description method to change user status
    * @param  {object} req - The User Request Object
    * @param  {object} res - The user Response Object
+   * @returns {object} API RESPONSE IN JSON FORMAT
    */
   static changeStatus(req, res) {
     const { accountNumber } = req.params;
     const { status } = req.body;
 
-    // eslint-disable-next-line eqeqeq
-    const acct = accounts.find(account_ => account_.accountNumber == accountNumber);
+    const acct = Account.checkAccount(req.params.accountNumber);
 
     acct.status = status;
-    res.status(200).json({
+    return res.status(200).json({
       status: res.statusCode,
       data: {
         accountNumber,
@@ -58,8 +58,7 @@ class AccountController {
    * @param  {object} res - The user Response Object
    */
   static deleteAccount(req, res) {
-    // eslint-disable-next-line eqeqeq
-    const acctInfo = accounts.find((account => account.accountNumber == req.params.accountNumber));
+    const acctInfo = Account.checkAccount(req.params.accountNumber);
 
     const index = accounts.indexOf(acctInfo) + 1;
     Account.deleteAccount(index);
