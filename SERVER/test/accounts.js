@@ -23,7 +23,7 @@ describe('Test for all account Endpoints', () => {
           .request(app)
           .post('/api/v1/auth/signin')
           .send(login)
-          .end((logErr, Res) => {
+          .end((_logErr, Res) => {
             const token = `Bearer ${Res.body.data.token}`;
             const input = {
               type: 'savings',
@@ -34,7 +34,7 @@ describe('Test for all account Endpoints', () => {
               .post(endpointPath)
               .set('Authorization', token)
               .send(input)
-              .end((err, res) => {
+              .end((_err, res) => {
                 res.should.have.status(201);
                 res.body.should.be.a('object');
                 res.body.should.have.property('data');
@@ -44,6 +44,36 @@ describe('Test for all account Endpoints', () => {
                 res.body.data.should.have.property('lastName');
                 res.body.data.should.have.property('email');
                 res.body.data.should.have.property('type');
+                done();
+              });
+          });
+      });
+      // return 401 if token authentication fails
+      it('should return 401 when the token couldnt be verified', (done) => {
+        const login = {
+          email: 'pels@gmail.com',
+          password: 'password',
+        };
+        chai
+          .request(app)
+          .post('/api/v1/auth/signin')
+          .send(login)
+          // eslint-disable-next-line no-unused-vars
+          .end((_logErr, _Res) => {
+            const token = 'Bearer dfsW262gvh829Bv_hgvs#%^#';
+            const input = {
+              type: 'savings',
+              initialDeposit: 2341.4,
+            };
+            chai
+              .request(app)
+              .post(endpointPath)
+              .set('Authorization', token)
+              .send(input)
+              .end((_err, res) => {
+                res.should.have.status(401);
+                res.body.should.be.a('object');
+                res.body.should.have.property('error');
                 done();
               });
           });
@@ -66,14 +96,15 @@ describe('Test for all account Endpoints', () => {
           .request(app)
           .post('/api/v1/auth/signin')
           .send(login)
-          .end((logErr, logRes) => {
+          .end((_logErr, logRes) => {
             const token = `Bearer ${logRes.body.data.token}`;
 
             chai
-              .patch(`${endpointPath}/:accountNumber`)
+              .request(app)
+              .patch(`${endpointPath}/1234567890`)
               .set('Authorization', token)
               .send(status)
-              .end((err, res) => {
+              .end((_err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('data');
                 res.body.data.should.have.property('accountNumber');
@@ -88,7 +119,7 @@ describe('Test for all account Endpoints', () => {
           .request(app)
           .patch(`${endpointPath}/:accountNumber`)
           .send({})
-          .end((err, res) => {
+          .end((_err, res) => {
             res.should.have.status(400);
             res.body.should.have.be.a('object');
             res.body.should.have.property('error');
@@ -101,42 +132,17 @@ describe('Test for all account Endpoints', () => {
           .request(app)
           .patch(`${endpointPath}/:accountNumber`)
           .send({ status: 'actibe' })
-          .end((err, res) => {
+          .end((_err, res) => {
             res.should.have.status(400);
             res.body.should.have.be.a('object');
             res.body.should.have.property('error');
             done();
           });
       });
-      // return error 404 if email does not exist
-      it('should return error 201 if email and password does not match', (done) => {
-        const loginBody = {
-          email: 'wrong@gmai.bjd',
-          password: 'wrong',
-        };
-        chai
-          .request(app)
-          .post('/api/v1/auth/signin')
-          .send(loginBody)
-          .end((logErr, logRes) => {
-            const token = `Bearer ${logRes.body.data.token}`;
-            const accountNumber = 654321234567;
-            chai
-              .request(app)
-              .patch(`${endpointPath}/${accountNumber}`)
-              .set('Authorizainr', token)
-              .send({ status: 'dormant' })
-              .end((err, res) => {
-                res.should.have.status(404);
-                done();
-              });
-          });
-      });
     });
   });
   // ------------------DELETE ACCOUNT-------------
   describe('Delete Account Test', () => {
-    // ----------------DELETE ACCOUNT--------------
     describe(`DELETE ${endpointPath}/:accountNumber`, () => {
       // return 200 and create account succesfully
       it('should delete account successfully', (done) => {
@@ -148,14 +154,14 @@ describe('Test for all account Endpoints', () => {
           .request(app)
           .post('/api/v1/auth/signin')
           .send(login)
-          .end((logErr, logRes) => {
+          .end((_logErr, logRes) => {
             const token = `Bearer ${logRes.body.data.token}`;
             const accountNumber = 654321234567;
             chai
               .request(app)
               .delete(`${endpointPath}/${accountNumber}`)
               .set('Authorization', token)
-              .end((err, res) => {
+              .end((_err, res) => {
                 res.should.have.status(200);
                 res.body.should.be.a('object');
                 res.body.should.have.property('message');
@@ -173,13 +179,13 @@ describe('Test for all account Endpoints', () => {
           .request(app)
           .post('/api/v1/auth/signin')
           .send(login)
-          .end((logErr, logRes) => {
+          .end((_logErr, logRes) => {
             const token = `Bearer ${logRes.body.data.token}`;
             const accountNumber = 654321234567;
             chai
               .delete(`${endpointPath}/${accountNumber}`)
               .set('Authorization', token)
-              .end((err, res) => {
+              .end((_err, res) => {
                 res.should.have.status(404);
                 res.body.should.be.a('object');
                 done();
