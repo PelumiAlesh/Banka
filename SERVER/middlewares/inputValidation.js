@@ -104,6 +104,27 @@ const validateUser = {
       return next();
     },
   ],
+  // --------------- Delete Account ------------
+  deleteAccount: [
+    param('accountNumber').custom(async (acctNo) => {
+      const isFound = await accounts.find((account => account.accountNumber == acctNo));
+      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
+    }),
+    (req, res, next) => {
+      const errors = validationResult(req);
+      const errMessages = [];
+      if (!errors.isEmpty()) {
+        errors.array().forEach((err) => {
+          errMessages.push(err.msg);
+        });
+        return res.status(404).json({
+          status: res.statusCode,
+          error: errMessages,
+        });
+      }
+      return next();
+    },
+  ],
 
 };
 export default validateUser;

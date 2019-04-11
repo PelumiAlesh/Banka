@@ -144,7 +144,7 @@ describe('Test for all account Endpoints', () => {
   // ------------------DELETE ACCOUNT-------------
   describe('Delete Account Test', () => {
     describe(`DELETE ${endpointPath}/:accountNumber`, () => {
-      // return 200 and create account succesfully
+      // return 200 and delete account succesfully
       it('should delete account successfully', (done) => {
         const login = {
           email: 'pels@gmail.com',
@@ -156,7 +156,7 @@ describe('Test for all account Endpoints', () => {
           .send(login)
           .end((_logErr, logRes) => {
             const token = `Bearer ${logRes.body.data.token}`;
-            const accountNumber = 654321234567;
+            const accountNumber = 1234567890;
             chai
               .request(app)
               .delete(`${endpointPath}/${accountNumber}`)
@@ -169,7 +169,7 @@ describe('Test for all account Endpoints', () => {
               });
           });
       });
-      // return 400 if user tries to delete account that doesnt exist
+      // return 404 if user tries to delete account that doesnt exist
       it('should return 404 if account does not exist', (done) => {
         const login = {
           email: 'pels@gmail.com',
@@ -181,8 +181,9 @@ describe('Test for all account Endpoints', () => {
           .send(login)
           .end((_logErr, logRes) => {
             const token = `Bearer ${logRes.body.data.token}`;
-            const accountNumber = 654321234567;
+            const accountNumber = 1987634567890;
             chai
+              .request(app)
               .delete(`${endpointPath}/${accountNumber}`)
               .set('Authorization', token)
               .end((_err, res) => {
