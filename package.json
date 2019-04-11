@@ -8,7 +8,7 @@
     "build": "npm run clean && babel SERVER --out-dir transpiled",
     "dev": "nodemon --exec babel-node SERVER/index.js",
     "start": "npm run build && node transpiled/index.js",
-    "test": "mocha server/test/* --require @babel/register --timeout 50000 --exit"
+    "test": "mocha SERVER/test/*.test.js' --require @babel/register --timeout 50000 --exit"
   },
   "repository": {
     "type": "git",
