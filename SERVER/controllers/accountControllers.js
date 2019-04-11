@@ -1,5 +1,5 @@
 import Account from '../models/accounts';
-import account from '../models/mock_data/accounts';
+import accounts from '../models/mock_data/accounts';
 
 /**
  * @class AccountController
@@ -28,12 +28,18 @@ class AccountController {
     });
   }
 
+  /**
+   * @method changeStatus
+   * @description method to change user status
+   * @param  {object} req - The User Request Object
+   * @param  {object} res - The user Response Object
+   */
   static changeStatus(req, res) {
     const { accountNumber } = req.params;
     const { status } = req.body;
 
     // eslint-disable-next-line eqeqeq
-    const acct = account.find(account_ => account_.accountNumber == accountNumber);
+    const acct = accounts.find(account_ => account_.accountNumber == accountNumber);
 
     acct.status = status;
     res.status(200).json({
@@ -42,6 +48,25 @@ class AccountController {
         accountNumber,
         status: req.body.status,
       },
+    });
+  }
+
+  /**
+   * @method deleteAccount
+   * @description Deletes the account with the given account Number
+   * @param  {object} req - The User Request Object
+   * @param  {object} res - The user Response Object
+   */
+  static deleteAccount(req, res) {
+    // eslint-disable-next-line eqeqeq
+    const acctInfo = accounts.find((account => account.accountNumber == req.params.accountNumber));
+
+    const index = accounts.indexOf(acctInfo) + 1;
+    Account.deleteAccount(index);
+
+    res.status(200).json({
+      status: res.statusCode,
+      message: 'Account Succefully deleted',
     });
   }
 }

@@ -28,6 +28,15 @@ class Account {
     accounts.push(accountDetails);
     return accountDetails;
   }
+
+  /**
+   * @param  {Number} sliceStart - A number specifying the slicing index.
+   * @method deleteAccount
+   * @description  - Method to delete an account
+   */
+  static deleteAccount(sliceStart) {
+    accounts.slice(sliceStart, 1);
+  }
 }
 
 export default Account;
