@@ -7,8 +7,9 @@
     "clean": "rm -rf transpiled",
     "build": "npm run clean && babel SERVER --out-dir transpiled",
     "dev": "nodemon --exec babel-node SERVER/index.js",
-    "start": "babel-node -r @babel/cli -r @babel/core  -r @babel/register server/* --timeout=5000 --exit",
-    "test": "mocha ./test/**.js --require @babel/register --exit"
+    "start": "node ./transpiled/index.js",
+    "test": "mocha ./test/**.js --require @babel/register --exit",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",

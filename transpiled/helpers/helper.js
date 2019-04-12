@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+require("dotenv/config");
+
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 var _bcrypt = _interopRequireDefault(require("bcrypt"));
-
-var _config = _interopRequireDefault(require("../../config"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -19,14 +19,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var SALT_ROUNDS = _config["default"].SALT_ROUNDS,
-    SECRET_KEY = _config["default"].SECRET_KEY;
 /**
  * @class Helper
  * @description Contains method for hasing password and genrating tokens
  * @export Auth
  */
-
 var Helper =
 /*#__PURE__*/
 function () {
@@ -44,7 +41,7 @@ function () {
      * @returns {string} The hashed password
      */
     value: function hashPassword(password) {
-      return _bcrypt["default"].hashSync(password, parseInt(SALT_ROUNDS, 10));
+      return _bcrypt["default"].hashSync(password, parseInt(process.env.SALT_ROUNDS, 10));
     }
     /**
      * @method verifyPassword
@@ -69,7 +66,7 @@ function () {
   }, {
     key: "generateToken",
     value: function generateToken(payload) {
-      var token = _jsonwebtoken["default"].sign(payload, SECRET_KEY, {
+      var token = _jsonwebtoken["default"].sign(payload, process.env.SECRET_KEY, {
         expiresIn: '1h'
       });
 
@@ -85,7 +82,7 @@ function () {
   }, {
     key: "verifyToken",
     value: function verifyToken(token) {
-      var decoded = _jsonwebtoken["default"].verify(token, SECRET_KEY);
+      var decoded = _jsonwebtoken["default"].verify(token, process.env.SECRET_KEY);
 
       return decoded;
     }
