@@ -1,9 +1,8 @@
+import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import env from '../../config';
 
 
-const { SALT_ROUNDS, SECRET_KEY } = env;
 /**
  * @class Helper
  * @description Contains method for hasing password and genrating tokens
@@ -17,7 +16,7 @@ class Helper {
    * @returns {string} The hashed password
    */
   static hashPassword(password) {
-    return bcrypt.hashSync(password, parseInt(SALT_ROUNDS, 10));
+    return bcrypt.hashSync(password, parseInt(process.env.SALT_ROUNDS, 10));
   }
 
   /**
@@ -38,7 +37,7 @@ class Helper {
    * @returns {string} Token in form of a string
    */
   static generateToken(payload) {
-    const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '1h' });
     return token;
   }
 
@@ -49,7 +48,7 @@ class Helper {
   * @returns {object} The payload of the token
   */
   static verifyToken(token) {
-    const decoded = jwt.verify(token, SECRET_KEY);
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
     return decoded;
   }
 
