@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/PelumiAlesh/Banka.svg?branch=Develop)](https://travis-ci.org/PelumiAlesh/Banka)
 # Banka
 BBanka is a light-weight core banking application that powers banking operations like account
 creation, customer deposit and withdrawals. This app is meant to support a single bank, where
