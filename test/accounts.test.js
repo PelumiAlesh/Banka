@@ -85,7 +85,7 @@ describe('Test for all account Endpoints', () => {
       // return 200 and change account status successfully
       it('should change account status succesfully', (done) => {
         const login = {
-          email: 'pels@gmail.com',
+          email: 'ayo@gmail.com',
           password: 'password',
         };
         const status = {
@@ -146,7 +146,7 @@ describe('Test for all account Endpoints', () => {
       // return 200 and delete account succesfully
       it('should delete account successfully', (done) => {
         const login = {
-          email: 'pels@gmail.com',
+          email: 'ayo@gmail.com',
           password: 'password',
         };
         chai
@@ -171,7 +171,7 @@ describe('Test for all account Endpoints', () => {
       // return 404 if user tries to delete account that doesnt exist
       it('should return 404 if account does not exist', (done) => {
         const login = {
-          email: 'pels@gmail.com',
+          email: 'ayo@gmail.com',
           password: 'password',
         };
         chai
