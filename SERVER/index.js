@@ -22,7 +22,7 @@ app.use('/api/v1/transactions', transactionRoutes);
 
 app.get('/api/v1', (req, res) => {
   res.json({
-    status: res.sendStatus,
+    status: 200,
     message: 'Welcome to Version 1 of Banka Api...',
   });
 });
@@ -35,8 +35,6 @@ app.use('*', (req, res) => {
 });
 
 
-app.listen(port || 5000, () => {
-  console.log(`server listening on port ${port}...`);
-});
+app.listen(port || 5000);
 
 export default app;
