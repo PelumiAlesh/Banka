@@ -116,7 +116,7 @@ describe('Test for all account Endpoints', () => {
       it('should return error 400 if new status is left empty', (done) => {
         chai
           .request(app)
-          .patch(`${endpointPath}/:accountNumber`)
+          .patch(`${endpointPath}/1234567890`)
           .send({})
           .end((_err, res) => {
             res.should.have.status(400);
@@ -129,8 +129,21 @@ describe('Test for all account Endpoints', () => {
       it('should return error 400 if new status in valid', (done) => {
         chai
           .request(app)
-          .patch(`${endpointPath}/:accountNumber`)
+          .patch(`${endpointPath}/1234567890`)
           .send({ status: 'actibe' })
+          .end((_err, res) => {
+            res.should.have.status(400);
+            res.body.should.have.be.a('object');
+            res.body.should.have.property('error');
+            done();
+          });
+      });
+      // return 400 if account was not found
+      it('should return error 400 if the account number could not be found', (done) => {
+        chai
+          .request(app)
+          .patch(`${endpointPath}/12345678`)
+          .send({ status: 'active' })
           .end((_err, res) => {
             res.should.have.status(400);
             res.body.should.have.be.a('object');

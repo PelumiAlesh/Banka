@@ -53,4 +53,30 @@ describe('Test for all protected endpoints', () => {
           });
       });
   });
+  // return 401 if token couldnt be Authenticated
+  it('should return 401 if token couldnt be Authenticated', (done) => {
+    const login = {
+      email: 'ayo@gmail.com',
+      password: 'password',
+    };
+    chai
+      .request(app)
+      .post('/api/v1/auth/signin')
+      .send(login)
+      .end(() => {
+        chai
+          .request(app)
+          .patch(`${endpointPath}1234567890`)
+          .set('Authorization', 'invalidToken')
+          .send({
+            status: 'dormant',
+          })
+          .end((err, res) => {
+            res.should.have.status(401);
+            res.body.should.be.a('object');
+            res.body.should.have.property('error');
+            done();
+          });
+      });
+  });
 });

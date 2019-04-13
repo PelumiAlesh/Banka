@@ -2,6 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import { getMaxListeners } from 'cluster';
 import app from '../SERVER/index';
 
 chai.should();
@@ -64,6 +65,31 @@ describe('Transactions Test', () => {
             .send({})
             .end((err, res) => {
               res.should.have.status(400);
+              res.body.should.be.a('object');
+              res.body.should.have.property('error');
+              done();
+            });
+        });
+    });
+    // return 404 if accountNumber was not be found
+    it('should return 404 if account number was not found', (done) => {
+      const login = {
+        email: 'ayo@gmail.com',
+        password: 'password',
+      };
+      chai
+        .request(app)
+        .post('/api/v1/auth/signin')
+        .send(login)
+        .end((logErr, logRes) => {
+          const token = `Bearer ${logRes.body.data.token}`;
+          chai
+            .request(app)
+            .post(`${endpointPath}99874321/credit`)
+            .set('Authorization', token)
+            .send({})
+            .end((err, res) => {
+              res.should.have.status(404);
               res.body.should.be.a('object');
               res.body.should.have.property('error');
               done();
