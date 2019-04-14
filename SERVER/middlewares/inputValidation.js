@@ -7,6 +7,11 @@ import {
 } from 'express-validator/check';
 import Account from '../models/accounts';
 
+const accountCheck = () => { return param('accountNumber').custom(async (acctNo) => {
+  const isFound = await Account.checkAccount(acctNo);
+  if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
+});
+};
 
 const message = 'Invalid Account Type: Account Type can be either "savings" or "current';
 const validateUser = {
@@ -80,10 +85,7 @@ const validateUser = {
   ],
   // --------------- Change Account status ------------
   changeAccountStatus: [
-    param('accountNumber').custom(async (acctNo) => {
-      const isFound = await Account.checkAccount(acctNo);
-      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
-    }),
+    accountCheck(),
     check('status').not().isEmpty().withMessage('Please input status'),
     oneOf([
       check('status').equals('active'),
@@ -106,10 +108,7 @@ const validateUser = {
   ],
   // --------------- Delete Account ------------
   deleteAccount: [
-    param('accountNumber').custom(async (acctNo) => {
-      const isFound = await Account.checkAccount(acctNo);
-      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
-    }),
+    accountCheck(),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];
