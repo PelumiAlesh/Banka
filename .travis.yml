@@ -6,6 +6,13 @@ script:
 cache:
   directories:
     - node_modules
+env:
+  global:
+    - CC_TEST_REPORTER_ID=ABC123
+addons:
+  code_climate:
+    repo_token:
+      secure: "6419a54757be43502d3697848a6e1f81b6454131530413b5427326546f58c476"
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
