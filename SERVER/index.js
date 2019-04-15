@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import config from 'dotenv/config';
 import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -8,6 +8,7 @@ import userRoute from './routes/users';
 import accountsRoutes from './routes/accounts';
 import transactionRoutes from './routes/transactions';
 
+config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -31,6 +32,6 @@ app.use('*', (req, res) => res.status(404).json({
 }));
 
 
-app.listen(port || 5000, console.log('Listening. . . . . . '));
+app.listen(port, () => console.log(`Listening to port ${port}`));
 
 export default app;
