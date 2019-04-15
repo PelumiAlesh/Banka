@@ -7,4 +7,4 @@ cache:
   directories:
     - node_modules
 script:
-- "npm run testcoverage"
+- "npm run coverage"
