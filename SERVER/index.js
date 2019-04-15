@@ -20,21 +20,17 @@ app.use('/api/v1/auth', userRoute);
 app.use('/api/v1/accounts', accountsRoutes);
 app.use('/api/v1/transactions', transactionRoutes);
 
-app.get('/api/v1', (req, res) => {
-  res.json({
-    status: 200,
-    message: 'Welcome to Version 1 of Banka Api...',
-  });
-});
+app.get('/api/v1', (req, res) => res.json({
+  status: 200,
+  message: 'Welcome to Version 1 of Banka Api...',
+}));
 
-app.use('*', (req, res) => {
-  res.status(404).json({
-    status: 404,
-    message: 'Endpoint not found, Please check your url again...',
-  });
-});
+app.use('*', (req, res) => res.status(404).json({
+  status: 404,
+  message: 'Endpoint not found, Please check your url again...',
+}));
 
 
-app.listen(port || 5000);
+app.listen(port || 5000, console.log('Listening. . . . . . '));
 
 export default app;

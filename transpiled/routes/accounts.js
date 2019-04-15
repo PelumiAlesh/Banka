@@ -19,9 +19,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var router = _express["default"].Router();
 
-router.use(_bodyParser["default"].json());
-router.post('/', _inputValidation["default"].creatAccount, _auth["default"].verifyClient, _accountControllers["default"].createAccount);
-router.patch('/:accountNumber', _inputValidation["default"].changeAccountStatus, _accountControllers["default"].changeStatus);
-router["delete"]('/:accountNumber', _inputValidation["default"].deleteAccount, _accountControllers["default"].deleteAccount);
+router.use(_bodyParser["default"].json()); // Create new account
+
+router.post('/', _inputValidation["default"].creatAccount, _auth["default"].verifyClient, _accountControllers["default"].createAccount); // Activate or Deactivate Account
+
+router.patch('/:accountNumber', _inputValidation["default"].changeAccountStatus, _auth["default"].verifyStaff, _accountControllers["default"].changeStatus); // Delete an Account
+
+router["delete"]('/:accountNumber', _inputValidation["default"].deleteAccount, _auth["default"].verifyStaff, _accountControllers["default"].deleteAccount);
 var _default = router;
 exports["default"] = _default;

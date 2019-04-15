@@ -34,7 +34,7 @@ app.use('/api/v1/accounts', _accounts["default"]);
 app.use('/api/v1/transactions', _transactions["default"]);
 app.get('/api/v1', function (req, res) {
   res.json({
-    status: res.sendStatus,
+    status: 200,
     message: 'Welcome to Version 1 of Banka Api...'
   });
 });
@@ -44,8 +44,6 @@ app.use('*', function (req, res) {
     message: 'Endpoint not found, Please check your url again...'
   });
 });
-app.listen(port || 5000, function () {
-  console.log("server listening on port ".concat(port, "..."));
-});
+app.listen(port || 5000);
 var _default = app;
 exports["default"] = _default;

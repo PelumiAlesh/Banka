@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../SERVER/index';
+import app from '../index';
 
 chai.should();
 chai.use(chaiHttp);
