@@ -38,6 +38,13 @@ class UserController {
     });
   }
 
+  /**
+   * @method signIn
+   * @description Method to sign in a user
+   * @param {object} req - The Request Object
+   * @param {object} res - The Response Object
+   * @returns {object} User informations
+   */
   static signIn(req, res) {
     const userInput = { ...req.body };
     const { userDetails, emailExists } = Exist.emailExist(userInput.email, true);

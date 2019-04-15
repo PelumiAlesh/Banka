@@ -1,4 +1,4 @@
-import config from 'dotenv/config';
+import 'dotenv/config';
 import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -8,12 +8,13 @@ import userRoute from './routes/users';
 import accountsRoutes from './routes/accounts';
 import transactionRoutes from './routes/transactions';
 
-config();
 
 const app = express();
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 5000;
+
+app.listen(port, () => console.log(`Listening to port ${port}`));
 // -------Redirect all api endpoint to version 1---------
 app.get('/api', (req, res) => res.status(301).redirect('/api/v1'));
 
@@ -31,7 +32,5 @@ app.use('*', (req, res) => res.status(404).json({
   message: 'Endpoint not found, Please check your url again...',
 }));
 
-
-app.listen(port, () => console.log(`Listening to port ${port}`));
 
 export default app;
