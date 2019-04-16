@@ -250,7 +250,7 @@ section .transaction_message p {
   border: none;
   border-radius: 4px;
   background-color: rgba(231, 54, 121, 0.9);
-  color: black;
+  color:whitesmoke;
 }
 .account_details .accounts_info .full_profile_btn #btn:hover {
   background-color: rgba(234, 77, 136, 0.8);
@@ -395,7 +395,7 @@ section .create_acct_div .btn,
   border-radius: 4px;
   background-color: rgba(231, 54, 121, 0.9);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  color: black;
+  color: whitesmoke;
   max-height: 70px;
   min-height: 50px;
   flex: 1 1 auto;
@@ -568,7 +568,7 @@ section .create_acct_div .btn:hover,
   border-bottom-right-radius: 4px;
   background-color: rgba(231, 54, 121, 0.9);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  color: black;
+  color: whitesmoke;
   cursor: pointer;
   padding: 0.5rem;
   font-size: calc(9px + 1vw) !important;
@@ -809,7 +809,7 @@ section .create_acct_div .btn:hover,
   border-radius: 4px;
   background-color: rgba(231, 54, 121, 0.9);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  color: black;
+  color: whitesmoke;
   flex: 1 1 auto;
   margin: 1vw;
   max-height: 3rem;
@@ -902,7 +902,7 @@ section .create_acct_div .btn:hover,
   margin-top: 3%;
 }
 #all_bank_accounts .green_btn {
-  color: black;
+  color: whitesmoke;
   width: 100%;
   background-color: yellowgreen;
   height: 2rem;
@@ -1073,7 +1073,7 @@ Inherited from profile.html and user dashboard
   border-radius: 4px;
   background-color: var(--secondaryColor);
   background-color:   rgba(231, 54, 121, 0.9);
-  color: black;
+  color: whitesmoke;
 }
 .d_c button:hover{
   background-color: rgba(234, 77, 136, 0.8);
