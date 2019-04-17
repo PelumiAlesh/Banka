@@ -25,7 +25,7 @@ describe('Test for Endpoits', () => {
     it('should return 404 if endpoint is unknow', (done) => {
       chai
         .request(app)
-        .get('*')
+        .get('/api/v1/qwe')
         .end((err, res) => {
           res.should.have.status(404);
           done();

@@ -47,6 +47,34 @@ describe('Test for all account Endpoints', () => {
               });
           });
       });
+      // retunr 401 if account type is not specified
+      it('should return 401 if user omit account type ', (done) => {
+        const login = {
+          email: 'pels@gmail.com',
+          password: 'password',
+        };
+        chai
+          .request(app)
+          .post('/api/v1/auth/signin')
+          .send(login)
+          .end((_logErr, Res) => {
+            const token = `Bearer ${Res.body.data.token}`;
+            const input = {
+              initialDeposit: 2341.4,
+            };
+            chai
+              .request(app)
+              .post(endpointPath)
+              .set('Authorization', token)
+              .send(input)
+              .end((_err, res) => {
+                res.should.have.status(401);
+                res.body.should.be.a('object');
+                res.body.should.have.property('error');
+                done();
+              });
+          });
+      });
       // return 401 if token authentication fails
       it('should return 401 when the token couldnt be verified', (done) => {
         const login = {

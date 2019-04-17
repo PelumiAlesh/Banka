@@ -2,7 +2,7 @@ import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
-
+const saltrounds = parseInt(process.env.SALT_ROUNDS, 10);
 /**
  * @class Helper
  * @description Contains method for hasing password and genrating tokens
@@ -16,7 +16,7 @@ class Helper {
    * @returns {string} The hashed password
    */
   static hashPassword(password) {
-    return bcrypt.hashSync(password, parseInt(process.env.SALT_ROUNDS, 10));
+    return bcrypt.hashSync(password, saltrounds);
   }
 
   /**
