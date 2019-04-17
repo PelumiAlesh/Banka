@@ -21,11 +21,9 @@
         <ul>
           <li> <a href="dashboard.html"> Home</a></li>
           <li> <a href="../USER/account_transactions.html">Transactions </a></li>
-          <li> <a href="create_account.html">Create Account</a></li>
-          <li> <a href="#">Profile</a></li>
           <li> <a href="../index.html"> Log out</a></li>
-      
         </ul>
+        <div class="prof_name"><a href="./profile.html"><img src="../assets/images/avatar-1577909__340.png" alt="img_you"></a> <p>Pelumi A.</p></div>
       </nav>
     <!------------NAVBAR END------------------->
 
@@ -60,7 +58,6 @@
         <!---------------PROFILE ACCOUNTS-------------->
         <div class="prof_down">
             <div class="prof_accts">
-
                 <table class="rwd-table">
                     <tr>
                         <th>Account Type</th>
@@ -93,7 +90,8 @@
                         <td data-th="Status" class="green">Active <i class="fas fa-circle"></i></td>
                     </tr>
                 </table>
-                <button class="btn" onclick="window.location.href='create_account.html'">CREATE ACCOUNT</button>
+                <button class="btn" onclick="toggleCreateAccoutn()">CREATE ACCOUNT</button>
+                
             </div>
             <div class="prof_details">
                 <span> <label for="email">Email: </label><input type="email" placeholder="Aleshinloyelukmony@gmail.com"
@@ -114,6 +112,38 @@
             </div>
 
         </div>
+        <div id="create_account_modal">
+                <div class="modal_content">
+                    <span class="close" onclick="closemodal()">&times;</span>
+                <form action="">
+                      <!-- Account Type -->
+            <div class="acct-type">
+                    <div class="select-wrap">
+                      <label>Account Typer</label>
+                      <select name="acct-type" id="acct-type">
+                        <option value="" selected="selected">Account Type</option>
+                        <option value="savings-acct">Savings Account</option>
+                        <option value="Checkings-acct">Checkings Account</option>
+                        <option value="Retirement-acct">Retirement Account</option>
+                        <option value="Budget-acct">Budget Account</option>
+                        <option value="Property-acct">Property Account</option>
+                      </select>
+                      <span class="select__arrow"></span>
+                    </div>
+                  </div>
+                  <!-- password -->
+                  <div class="bvn">
+                    <label>Initial Deposit</label>
+                    <input type="number" placeholder="Initial Deposit " required />
+                  </div>
+                  <!-- button -->
+                  <button class="btn">CREATE </button>
+                  <p>
+                    By clicking create account. It means you agree to our <a href="#" class="link">terms and condition? <span
+                        class="entypo-right-thin"></span></a>
+                  </p>
+                </form>
+            </div>
     </section>
     <footer>
         <p>&copy; Copyright Banka 2019</p>
