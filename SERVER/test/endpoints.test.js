@@ -1,6 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../SERVER/index';
+import app from '../index';
 
 chai.should();
 
@@ -18,6 +18,16 @@ describe('Test for Endpoits', () => {
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.have.property('message');
+          done();
+        });
+    });
+    // return 404 if users makes request to unknown endpoint
+    it('should return 404 if endpoint is unknow', (done) => {
+      chai
+        .request(app)
+        .get('/api/v1/qwe')
+        .end((err, res) => {
+          res.should.have.status(404);
           done();
         });
     });

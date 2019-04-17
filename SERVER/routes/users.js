@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import InputValidator from '../middlewares/inputValidation';
 import UserController from '../controllers/userControllers';
+import InputValidator from '../middlewares/inputValidation';
 
 const router = express.Router();
 router.use(bodyParser.json());
