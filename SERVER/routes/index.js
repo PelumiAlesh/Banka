@@ -16,6 +16,5 @@ route.get('/', (req, res) => res.json({
 route.use('/auth', userRoute);
 route.use('/accounts', accountsRoutes);
 route.use('/transactions', transactionRoutes);
-console.log('adf');
 
 export default route;

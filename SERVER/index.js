@@ -6,13 +6,11 @@ import router from './routes/index';
 
 const app = express();
 app.use(bodyParser.json());
-console.log('afff');
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Listening to port ${port}`));
+app.listen(port);
 
 // -------Redirect all api endpoint to version 1---------
-console.log('afff');
 app.use('/api/v1', router);
 
 app.use('*', (req, res) => res.status(404).json({
