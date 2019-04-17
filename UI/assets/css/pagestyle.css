@@ -42,7 +42,7 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none !important;
 }
 a {
-  color: lime;
+  color: yellowgreen;
   text-decoration: none;
 }
 a:hover {
@@ -57,6 +57,10 @@ footer {
   max-width: 100vw;
   color: whitesmoke;
   bottom: 0;
+  padding: 1rem;
+}
+table {
+  border-collapse: collapse;
 }
 
 /* 
@@ -97,17 +101,16 @@ section .transaction_message p {
   font-family: "Roboto Condensed", sans-serif;
   line-height: 2rem;
   flex-shrink: 1;
-  color: whitesmoke;
+  color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 3rem 1rem 2rem 1rem;
-  background-color: rgba(59, 65, 72, 0.9);
+  background-color: white;
   padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 7px;
-  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
+  border: 0.9px solid #95bbdf;
 }
 @media screen and (max-width: 1031px) {
   .welcome_message {
@@ -202,7 +205,7 @@ section .transaction_message p {
 }
 .account_details #main_bal,
 .prof_top #main_bal {
-  color: lime;
+  color: yellowgreen;
   font-size: 4vw;
   letter-spacing: 5px;
   font-family: "Lato", sans-serif;
@@ -210,7 +213,7 @@ section .transaction_message p {
   line-height: 3rem;
 }
 .account_details sup {
-  color: white;
+  color: yellowgreen;
   font-size: 2rem;
 }
 .account_details .accounts_info {
@@ -227,7 +230,7 @@ section .transaction_message p {
   width: 50%;
 }
 .account_details .accounts_balance .green {
-  color: lime;
+  color: yellowgreen;
   font-weight: 100;
 }
 .account_details .accounts_balance .red {
@@ -247,8 +250,7 @@ section .transaction_message p {
   border: none;
   border-radius: 4px;
   background-color: rgba(231, 54, 121, 0.9);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  color: white;
+  color:whitesmoke;
 }
 .account_details .accounts_info .full_profile_btn #btn:hover {
   background-color: rgba(234, 77, 136, 0.8);
@@ -256,14 +258,13 @@ section .transaction_message p {
 
 /*----------------------- Account Transactions Styling --------------------- */
 .transactions {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: white;
   border-radius: 7px;
   display: flex;
   flex-direction: column;
-  color: whitesmoke;
+  color: black;
   margin: 1rem;
-  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
+  border: 0.9px solid #95bbdf;
 }
 @media screen and (max-width: 630px) {
   .transactions .row .column:nth-child(3) {
@@ -286,7 +287,7 @@ section .transaction_message p {
   }
 }
 .transactions .table_head {
-  background-color: rgba(59, 65, 72, 0.9);
+  border-bottom: 1px solid black !important;
   border-radius: 7px 7px 0 0;
 }
 .transactions .table_head .column {
@@ -304,13 +305,18 @@ section .transaction_message p {
 }
 
 .transactions .table_body .row:nth-child(odd) {
-  background-color: #606468;
+  background-color: white;
+  border-bottom: 1px solid black !important;
 }
 .transactions .table_body .row:nth-child(even) {
-  background-color: rgba(59, 65, 72, 0.9);
+  background-color: white;
+  border-bottom: 1px solid black !important;
+
 }
 .transactions .table_body .row:nth-last-child(1) {
   border-radius: 0 0 7px 7px;
+  border-bottom: none!important;
+
 }
 .transactions .table_body .column {
   text-align: left;
@@ -336,7 +342,6 @@ section .transaction_message p {
 .transactions #red,
 .transactions #sent {
   color: #ff1a1a;
-  font-weight: bold;
 }
 .transactions .amt::before {
   display: inline-block;
@@ -360,14 +365,13 @@ section .transaction_message p {
 /*----------------------- Create Account Div Styling --------------------- */
 section .create_acct_div {
   display: flex;
-  background-color: rgba(59, 65, 72, 0.9);
+  background-color: white;
   padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 7px;
-  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
+  border: 0.9px solid #95bbdf;
   margin: 1rem;
   margin-bottom: 2rem;
-  color: whitesmoke;
+  color: black;
 }
 @media screen and (max-width: 630px) {
   section .create_acct_div {
@@ -391,7 +395,7 @@ section .create_acct_div .btn,
   border-radius: 4px;
   background-color: rgba(231, 54, 121, 0.9);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  color: white;
+  color: whitesmoke;
   max-height: 70px;
   min-height: 50px;
   flex: 1 1 auto;
@@ -428,13 +432,18 @@ section .create_acct_div .btn:hover,
   .trans_body .savings_transaction_div,
   .trans_body .credit_transactions_div {
     margin: 3rem 1rem 2rem 1rem;
-    background-color: rgba(59, 65, 72, 0.9);
+    background-color: white;
     padding: 1rem 1.5rem 1rem 1.5rem;
     border-radius: 7px;
-    box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-      0 0.5em 1.25em rgba(0, 0, 0, 0.5);
+    border: 0.9px solid #95bbdf !important;
     max-width: 90vw;
     min-width: 19rem;
+    overflow: scroll;
+  }
+  .trans_body .investment_transactions_table,
+  .trans_body .savings_transaction_table,
+  .trans_body .credit_transactions_table {
+    overflow: scroll;
   }
 
   .trans_body .investment_transactions_div .row .cell:nth-child(2),
@@ -442,6 +451,18 @@ section .create_acct_div .btn:hover,
   .trans_body .credit_transactions_div .row .cell:nth-child(2) {
     display: none !important;
   }
+}
+.trans_body .investment_transactions_div .cell,
+.trans_body .savings_transaction_div .cell,
+.trans_body .credit_transactions_div .cell {
+  display: table-cell;
+  padding: 0.3rem 5vw !important;
+}
+.trans_body .investment_transactions_div .header,
+.trans_body .savings_transaction_div .header,
+.trans_body .credit_transactions_div .header {
+  color: #d44179 !important;
+  font-weight: bold !important;
 }
 @media screen and (max-width: 1065px) {
   .trans_body .investment_transactions_div,
@@ -471,18 +492,18 @@ section .create_acct_div .btn:hover,
 .trans_body .credit_transactions_div {
   display: table;
   margin: 3rem 1rem 2rem 1rem;
-  background-color: rgba(59, 65, 72, 0.9);
+  background-color: white;
   padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 7px;
-  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
-  width: 45%;
+  border: 0.9px solid #95bbdf;
+  width: 98%;
 }
 .trans_body .investment_transactions_div .row,
 .trans_body .savings_transaction_div .row,
 .trans_body .credit_transactions_div .row {
   display: table-row;
 }
+
 .cell {
   display: table-cell;
   padding: 0.3rem 2vw;
@@ -497,11 +518,11 @@ section .create_acct_div .btn:hover,
 .trans_body .row,
 .trans_body .row {
   padding: 0.5rem;
-  color: rgb(212, 206, 206) !important;
+  color: black !important;
 }
 .trans_body label {
   text-transform: uppercase;
-  color: white;
+  color: black;
   font-weight: bold;
 }
 .trans_body h2 {
@@ -523,11 +544,10 @@ section .create_acct_div .btn:hover,
   display: flex;
   flex-direction: row;
   margin: 3rem 1rem 2rem 1rem;
-  background-color: rgba(59, 65, 72, 0.9);
+  background-color: white;
   padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 7px;
-  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
+  border: 0.9px solid #95bbdf;
   margin-top: 10%;
   box-sizing: border-box;
   justify-content: space-between;
@@ -548,7 +568,7 @@ section .create_acct_div .btn:hover,
   border-bottom-right-radius: 4px;
   background-color: rgba(231, 54, 121, 0.9);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  color: white;
+  color: whitesmoke;
   cursor: pointer;
   padding: 0.5rem;
   font-size: calc(9px + 1vw) !important;
@@ -573,12 +593,12 @@ section .create_acct_div .btn:hover,
   padding-top: 1rem;
 }
 .prof_top .pro_pic_details p {
-  color: whitesmoke;
+  color: black;
   padding: 0rem;
   font-size: 1rem;
 }
 .prof_top #thick {
-  color: white;
+  color: black;
 }
 @media screen and (max-width: 626px) {
   .prof_top {
@@ -619,12 +639,11 @@ section .create_acct_div .btn:hover,
 .prof_accts {
   display: flex;
   flex-direction: column;
-  margin: 3rem 1rem 2rem 1rem;
-  background-color: rgba(59, 65, 72, 0.9);
+  margin: 1rem 1rem 3rem 1rem;
+  background-color: white;
   border-radius: 7px;
-  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
-  width: 46vw;
+  border: 0.9px solid #95bbdf;
+  width: 48vw;
   overflow: hidden;
   justify-content: space-between;
 }
@@ -635,8 +654,7 @@ section .create_acct_div .btn:hover,
   min-width: 300px;
 }
 .rwd-table tr {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+ border-bottom: 1px solid black !important;
 }
 .rwd-table th {
   display: none;
@@ -646,7 +664,7 @@ section .create_acct_div .btn:hover,
 }
 .rwd-table td {
   display: block;
-  color: whitesmoke;
+  color: black;
 }
 .rwd-table td:first-child {
   padding-top: 0.5em;
@@ -670,6 +688,9 @@ section .create_acct_div .btn:hover,
 @media (max-width: 630px) {
   .prof_accts {
     width: 90vw;
+  }
+  .rwd-table td {
+    border:none !important;
   }
 }
 @media (min-width: 960px) {
@@ -722,60 +743,62 @@ section .create_acct_div .btn:hover,
 .prof_details {
   display: flex;
   flex-direction: column;
-  margin: 3rem 1rem 2rem 1rem;
-  background-color: rgba(59, 65, 72, 0.9);
+  margin: 1rem 1rem 3rem 1rem;
+  background-color: white;
   border-radius: 7px;
-  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
+  border: 0.9px solid #95bbdf;
   box-sizing: border-box;
-  width: calc(47vw - 4px);
+  width: 47vw;
   justify-content: space-between;
   overflow: hidden;
 }
-@media screen and (max-width: 853px) and (min-width: 630px) {
-  .prof_accts {
-    width: 43vw;
+@media screen and (min-width: 630px) {
+  .prof_details {
+    width: 47vw;
   }
 }
 .prof_details input:enabled {
-  background-color: rgba(59, 65, 72, 0.8);
+  background-color: rgba(197, 201, 206, 0.8);
   border-radius: 4px;
   border: none;
   height: 1.3rem;
   flex: 1 1 auto;
   margin-left: 1rem;
   padding-left: 0.5rem;
-  color: rgb(243, 236, 236);
+  color: black;
   font-size: 1rem;
+  padding: 1rem;
 }
 .prof_details input:disabled {
   border: none;
+  padding: 1rem;
   height: 1.3rem;
   flex: 1 1 auto;
   padding-left: 1rem;
   background-color: transparent !important;
   font-size: 1rem;
-  color: rgb(243, 236, 236);
+  color: black;
 }
 .prof_details span {
   padding: 1.5vw;
   display: flex;
 }
 .prof_details input::placeholder {
-  color: rgb(243, 236, 236);
+  color: rgb(3, 3, 3);
   font-size: 1rem;
 }
 .prof_details label {
-  color: white;
+  color: black;
+  padding: 0.3rem;
 }
 .prof_details .edit_save {
   display: flex;
 }
 .prof_details .edit_save .savee {
-  background-color: lime !important;
+  background-color: yellowgreen !important;
 }
 .prof_details .edit_save .savee:hover {
-  background-color: rgb(152, 209, 152, 0.99) !important;
+  background-color: rgb(174, 228, 66) !important;
 }
 .prof_accts .btn,
 .prof_details .btn {
@@ -786,7 +809,7 @@ section .create_acct_div .btn:hover,
   border-radius: 4px;
   background-color: rgba(231, 54, 121, 0.9);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  color: white;
+  color: whitesmoke;
   flex: 1 1 auto;
   margin: 1vw;
   max-height: 3rem;
@@ -816,12 +839,11 @@ section .create_acct_div .btn:hover,
 .body #all_accounts_info {
   display: flex;
   flex-direction: row;
-  margin: 3rem 1rem 2rem 1rem;
-  background-color: rgba(59, 65, 72, 0.9);
+  margin: 2rem 1rem 1rem 1rem;
+  background-color: white;
   padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 7px;
-  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
+  border: 0.9px solid #95bbdf;
   margin-top: 10%;
   box-sizing: border-box;
   justify-content: space-between;
@@ -830,10 +852,10 @@ section .create_acct_div .btn:hover,
 .body #all_accounts_info .tot_name {
   font-size: 2rem;
   text-transform: uppercase;
-  color: whitesmoke;
+  color: black
 }
 .body #all_accounts_info .tot_value {
-  color: lime;
+  color: yellowgreen;
   font-size: 4vw;
   letter-spacing: 5px;
   font-family: "Lato", sans-serif;
@@ -872,18 +894,17 @@ section .create_acct_div .btn:hover,
 
 /* ----------ALL ACCOUNTS TABLE ---------- */
 #all_bank_accounts {
-  margin: 3rem 1rem 2rem 1rem;
-  background-color: rgba(59, 65, 72, 0.9);
+  margin: 2rem 1rem 3rem 1rem;
+  background-color: white;
   padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 7px;
-  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-    0 0.5em 1.25em rgba(0, 0, 0, 0.5);
-  margin-top: 6%;
+  border: 0.9px solid #95bbdf;
+  margin-top: 3%;
 }
 #all_bank_accounts .green_btn {
-  color: white;
+  color: whitesmoke;
   width: 100%;
-  background-color: lime;
+  background-color: yellowgreen;
   height: 2rem;
   border: none;
   border-radius: 4px;
@@ -891,14 +912,14 @@ section .create_acct_div .btn:hover,
   cursor: pointer;
 }
 #all_bank_accounts .green_btn:hover {
-  background-color: rgb(122, 235, 122);
+  background-color: rgb(165, 216, 63);
 }
 #all_bank_accounts .btn {
   text-transform: uppercase;
   border: none;
   background-color: rgba(231, 54, 121, 0.9);
   border-radius: 4px;
-  color: white;
+  color: black;
   cursor: pointer;
   width: 100%;
   font-size: 0.9rem;
@@ -909,7 +930,7 @@ section .create_acct_div .btn:hover,
   background-color: #ea4c88;
 }
 #all_bank_accounts .red_btn {
-  color: white;
+  color: black;
   width: 100%;
   background-color: red;
   height: 2rem;
@@ -933,6 +954,7 @@ section .create_acct_div .btn:hover,
     width: 90vw !important;
   }
 }
+
 
 /* 
 ===================================================================================
@@ -981,11 +1003,10 @@ Inherited from profile.html and user dashboard
   display: flex;
   flex-direction: row;
   margin: 3rem 1rem 2rem 1rem;
-  background-color: rgba(59, 65, 72, 0.9);
+  background-color: white;
   padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 7px;
-  box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25),
-    0 0.5em 1.25em rgba(0, 0, 0, 0.5); 
+  border: 0.9px solid #95bbdf;
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -1001,11 +1022,10 @@ Inherited from profile.html and user dashboard
 
 .d_c input,
 .d_c select{
-  border: 2px solid rgba(59, 65, 72, 0.8);;
+  border: 0.9px solid #95bbdf;
   border-radius: 4px;
-  background-color: #3b4148;
-  background-color: rgba(59, 65, 72, 0.8);
-  color: white;
+  background-color: whitesmoke;
+  color: black;
   font-size: 1rem;
   -webkit-appearance:none;
   -moz-appearance:none;
@@ -1037,10 +1057,10 @@ Inherited from profile.html and user dashboard
 }
 .d_c input:focus{
   outline: lime solid thin;
-  background-color: #434a52;
+  background-color: white;
 }
 .d_c input:hover{
-  background-color: #434a52;
+  background-color: white;
 }
 
 .d_c button{
@@ -1053,8 +1073,7 @@ Inherited from profile.html and user dashboard
   border-radius: 4px;
   background-color: var(--secondaryColor);
   background-color:   rgba(231, 54, 121, 0.9);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  color: white;
+  color: whitesmoke;
 }
 .d_c button:hover{
   background-color: rgba(234, 77, 136, 0.8);
@@ -1079,3 +1098,77 @@ Inherited from profile.html and user dashboard
   }
 }
 
+/* 
+===================================================================================
+===================================================================================
+===================================================================================
+                        CREATE ACCOUNT MODAL
+===================================================================================
+===================================================================================
+===================================================================================
+*/
+#create_account_modal {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.modal_content {
+  background-color: #fefefe;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#create_account_modal input,
+#create_account_modal select {
+  border: 1px solid #95bbdf;
+  height: 2.5rem;
+  width: 40%;
+  border-radius: 6px;
+  margin: 0.3rem;
+  font-size: 1rem;
+  padding-left: 0.3rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+#create_account_modal .btn {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(234, 77, 136, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: white;
+  width: 50%;
+  height: 2rem;
+}
+#create_account_modal .btn:hover {
+background-color: rgba(231, 54, 121, 0.9);
+}

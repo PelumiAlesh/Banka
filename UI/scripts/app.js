@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-undef */
 
@@ -76,4 +77,20 @@ function activateDeactivate(id) {
   const color = document.getElementById(id);
   const buttonStatus = document.querySelector(`.${id}`);
   change(color, buttonStatus);
+}
+
+/*
+====================
+Create Account Modal
+====================
+*/
+
+function toggleCreateAccoutn() {
+  const modal = document.getElementById('create_account_modal');
+  modal.style.display = 'block';
+}
+
+function closemodal() {
+  const modal = document.getElementById('create_account_modal');
+  modal.style.display = 'none';
 }
