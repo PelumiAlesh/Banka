@@ -303,7 +303,6 @@ section .transaction_message p {
   line-height: 30px;
   vertical-align: middle;
 }
-
 .transactions .table_body .row:nth-child(odd) {
   background-color: white;
   border-bottom: 1px solid black !important;
@@ -396,8 +395,8 @@ section .create_acct_div .btn,
   background-color: rgba(231, 54, 121, 0.9);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   color: whitesmoke;
-  max-height: 70px;
-  min-height: 50px;
+  max-height: 4rem;
+  min-height: 3rempx;
   flex: 1 1 auto;
 }
 section .create_acct_div p {
@@ -457,6 +456,12 @@ section .create_acct_div .btn:hover,
 .trans_body .credit_transactions_div .cell {
   display: table-cell;
   padding: 0.3rem 5vw !important;
+  width: 15%;
+}
+.trans_body .investment_transactions_div .cell:nth-child(2),
+.trans_body .savings_transaction_div .cell:nth-child(2),
+.trans_body .credit_transactions_div .cell:nth-child(2) {
+  width: 40%;
 }
 .trans_body .investment_transactions_div .header,
 .trans_body .savings_transaction_div .header,
@@ -501,7 +506,8 @@ section .create_acct_div .btn:hover,
 .trans_body .investment_transactions_div .row,
 .trans_body .savings_transaction_div .row,
 .trans_body .credit_transactions_div .row {
-  display: table-row;
+  display: flex;
+  border-bottom: 1px solid black;
 }
 
 .cell {
@@ -511,9 +517,6 @@ section .create_acct_div .btn:hover,
 .trans_body td:nth-child(2),
 .trans_body th:nth-child(2) {
   display: initial;
-}
-.trans_body .row {
-  display: table-row;
 }
 .trans_body .row,
 .trans_body .row {
