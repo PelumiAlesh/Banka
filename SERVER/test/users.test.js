@@ -123,7 +123,7 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
   });
   // ------------USER SIGNIN TEST---------
   describe(`POST ${endpointPath}signin`, () => {
-    // return 201 and return a token if valid credentials were provided
+    // return 200 and return a token if valid credentials were provided
     it('Should login the user succesfully and return a token', (done) => {
       const loginBody = {
         email: 'pelss@gmail.com',
@@ -134,7 +134,7 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .post(`${endpointPath}signin`)
         .send(loginBody)
         .end((err, res) => {
-          res.should.have.status(201);
+          res.should.have.status(200);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
           res.body.data.should.have.a('object');

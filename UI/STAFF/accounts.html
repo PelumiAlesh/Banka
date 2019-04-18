@@ -19,11 +19,28 @@
         <a href="#"><img id="logo" src="../assets/images/logo.png" alt="logo"></a>
         <label for="toggle"> &#9776; </label>
         <input type="checkbox" id="toggle">
-        <ul>
-            <li> <a href="accounts.html"> Home</a></li>
-            <li> <a href="staff_login.html"> Log out</a></li>
-            <li> <b> | </b> Staff</a></li>
+        <ul class="desktop">
+            <li> <a href="accounts.html"> <i class="fas fa-home" title="Home"></i></a></li>
+            <li onclick="toggleDropdown()">
+                <img src="../assets/images/avatar-1577909__340.png" alt="img_you">
+            </li>
+            <li onclick="toggleDropdown()">
+                <div>Baba A. |STAFF. <i class="fas fa-sort-down"></i></div>
+            </li>
+            <div id="dropdown-content">
+                <a href="../index.html"> Log out</a>
+                <a href="../USER/profile.html">User</a>
+                <a href="../USER/dashboard.html">Admin</a>
+            </div>
         </ul>
+        <ol>
+            <li>
+                <a href="accounts.html">Home</a>
+            </li>
+            <li> <a href="../index.html"> Log out</a></li>
+            <li><a href="../USER/profile.html">User</a></li>
+            <li> <a href="../STAFF/accounts.html">Admin</a></li>
+        </ol>
     </nav>
     <!----------------NAV BAR------------------->
     <section class="body">
@@ -70,17 +87,19 @@
                     <td data-th="Balance">₦435,234</td>
                     <td> <button value="Activate" onclick="activateDeactivate('button1')"
                             class="button1 green_btn">Activate</button></td>
-                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button></td>
+                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button>
+                    </td>
                 </tr>
                 <tr>
                     <td data-th="Status" id="button2" class="green"><i class="fas fa-circle"></i></td>
-                    <td data-th="Name">Dayo  chuku</td>
+                    <td data-th="Name">Dayo chuku</td>
                     <td data-th="Email">Active </td>
                     <td data-th="Account Type">Investment</td>
                     <td data-th="Balance">₦135,093</td>
                     <td><button value="Activate" onclick="activateDeactivate('button2')"
                             class="button2 green_btn">Activate</button></td>
-                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button></td>
+                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button>
+                    </td>
 
                 </tr>
                 <tr>
@@ -91,9 +110,10 @@
                     <td data-th="Balance">₦12,971</td>
                     <td><button value="Activate" onclick="activateDeactivate('button3')"
                             class="button3 red_btn">Deactivate</button></td>
-                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button></td>
+                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button>
+                    </td>
 
-                 </tr>
+                </tr>
                 <tr>
                     <td data-th="Status" id="button4" class="red"><i class="fas fa-circle"></i></td>
                     <td data-th="Name">Lao leo</td>
@@ -102,7 +122,8 @@
                     <td data-th="Balance">₦12,971</td>
                     <td><button value="Activate" onclick="activateDeactivate('button4')"
                             class="button4 red_btn">Deactivate</button></td>
-                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button></td>
+                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button>
+                    </td>
                 </tr>
                 <tr>
                     <td data-th="Status" id="button5" class="green"><i class="fas fa-circle"></i></td>
@@ -112,7 +133,8 @@
                     <td data-th="Balance">₦12,971</td>
                     <td><button value="Activate" onclick="activateDeactivate('button5')"
                             class="button5 green_btn">Activate</button></td>
-                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button></td>
+                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button>
+                    </td>
 
                 </tr>
                 <tr>
@@ -123,7 +145,8 @@
                     <td data-th="Balance">₦12,971</td>
                     <td><button value="Activate" onclick="activateDeactivate('button6')"
                             class="button6 red_btn">Deactivate</button></td>
-                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button></td>
+                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button>
+                    </td>
 
                 </tr>
                 <tr>
@@ -134,9 +157,10 @@
                     <td data-th="Balance">₦12,971</td>
                     <td><button value="Activate" onclick="activateDeactivate('button7')"
                             class="button7 red_btn">Deactivate</button></td>
-                            <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button></td>
+                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button>
+                    </td>
 
-                        </tr>
+                </tr>
                 <tr>
                     <td data-th="Status" id="button8" class="green"><i class="fas fa-circle"></i></td>
                     <td data-th="Name">Tunde ednut</td>
@@ -145,7 +169,8 @@
                     <td data-th="Balance">₦12,971</td>
                     <td><button value="Activate" onclick="activateDeactivate('button8')"
                             class="button8 green_btn">Activate</button></td>
-                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button></td>
+                    <td><button class="btn" onclick="window.location.href='single_profile.html'">FULL PROFILE</button>
+                    </td>
 
                 </tr>
             </table>

@@ -61,7 +61,7 @@ class UserController {
       id: userDetails.id,
       type: userDetails.type,
     });
-    return res.status(201).json({
+    return res.status(200).json({
       status: res.statusCode,
       data: {
         token,

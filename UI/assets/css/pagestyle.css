@@ -14,7 +14,7 @@
   --basicColor: #363b41;
   --bodyFontFamily: "Open Sans";
   --bodyFontFamilyFallback: sans-serif;
-  --limeColor: lime;
+  --yellowgreenColor: yellowgreen;
 }
 
 @media screen and (max-width: 630px){
@@ -42,11 +42,10 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none !important;
 }
 a {
-  color: yellowgreen;
   text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 li {
   list-style: none;
@@ -336,7 +335,7 @@ section .transaction_message p {
 .transactions #green,
 .transactions #recieved,
 .pro_pic_details .green {
-  color: lime !important;
+  color: yellowgreen !important;
 }
 .transactions #red,
 .transactions #sent {
@@ -527,6 +526,7 @@ section .create_acct_div .btn:hover,
   text-transform: uppercase;
   color: black;
   font-weight: bold;
+  border-bottom: 2px solid black;
 }
 .trans_body h2 {
   padding-left: 35vw;
@@ -567,6 +567,8 @@ section .create_acct_div .btn:hover,
   max-width: 13rem;
   text-transform: uppercase;
   border: none;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: rgba(231, 54, 121, 0.9);
@@ -642,11 +644,11 @@ section .create_acct_div .btn:hover,
 .prof_accts {
   display: flex;
   flex-direction: column;
-  margin: 1rem 1rem 3rem 1rem;
+  margin: 1rem 1vw 3rem 1.5vw;
   background-color: white;
   border-radius: 7px;
   border: 0.9px solid #95bbdf;
-  width: 48vw;
+  width: 47vw;
   overflow: hidden;
   justify-content: space-between;
 }
@@ -683,10 +685,14 @@ section .create_acct_div .btn:hover,
 }
 
 .rwd-table .green {
-  color: lime;
+  color: yellowgreen;
 }
 .rwd-table .red {
   color: red;
+}
+.prof_accts h1{
+  text-align: center;
+  padding-top: 1rem;
 }
 @media (max-width: 630px) {
   .prof_accts {
@@ -746,7 +752,7 @@ section .create_acct_div .btn:hover,
 .prof_details {
   display: flex;
   flex-direction: column;
-  margin: 1rem 1rem 3rem 1rem;
+  margin: 1rem 1vw 3rem 1.5vw;
   background-color: white;
   border-radius: 7px;
   border: 0.9px solid #95bbdf;
@@ -793,6 +799,10 @@ section .create_acct_div .btn:hover,
 .prof_details label {
   color: black;
   padding: 0.3rem;
+}
+.prof_details h1{
+  text-align: center;
+  padding-top: 1rem;
 }
 .prof_details .edit_save {
   display: flex;
@@ -920,7 +930,7 @@ section .create_acct_div .btn:hover,
 #all_bank_accounts .btn {
   text-transform: uppercase;
   border: none;
-  background-color: rgba(231, 54, 121, 0.9);
+  border: 1px solid black;
   border-radius: 4px;
   color: black;
   cursor: pointer;
@@ -933,7 +943,7 @@ section .create_acct_div .btn:hover,
   background-color: #ea4c88;
 }
 #all_bank_accounts .red_btn {
-  color: black;
+  color: white;
   width: 100%;
   background-color: red;
   height: 2rem;
@@ -976,6 +986,9 @@ Inherited from profile.html and user dashboard
 .prof_prof .prof_details{
   width: 100%;
   justify-content: space-between;
+}
+.prof_prof h1{
+  padding-left: 1rem;
 }
 @media screen and (max-width: 630px){
   .prof_prof .prof_details{
@@ -1059,7 +1072,7 @@ Inherited from profile.html and user dashboard
 
 }
 .d_c input:focus{
-  outline: lime solid thin;
+  outline: yellowgreen solid thin;
   background-color: white;
 }
 .d_c input:hover{
@@ -1121,7 +1134,11 @@ Inherited from profile.html and user dashboard
   height: 100%; 
   overflow: auto;
   background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.637);
+}
+.content_header{
+ border-bottom: 1px solid black;
+ margin-bottom: 2rem;
 }
 .modal_content {
   background-color: #fefefe;
@@ -1129,13 +1146,15 @@ Inherited from profile.html and user dashboard
   text-align: center;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 40%;
+  height: 50%;
 }
 .close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .close:hover,
@@ -1147,9 +1166,9 @@ Inherited from profile.html and user dashboard
 
 #create_account_modal input,
 #create_account_modal select {
-  border: 1px solid #95bbdf;
+  border: 1px solid #d44179;
   height: 2.5rem;
-  width: 40%;
+  width: 60%;
   border-radius: 6px;
   margin: 0.3rem;
   font-size: 1rem;
@@ -1157,6 +1176,7 @@ Inherited from profile.html and user dashboard
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  margin-bottom: 1rem;
 }
 #create_account_modal .btn {
   cursor: pointer;
@@ -1169,8 +1189,8 @@ Inherited from profile.html and user dashboard
   background-color: rgba(234, 77, 136, 0.8);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   color: white;
-  width: 50%;
-  height: 2rem;
+  width: 63%;
+  height: 3rem;
 }
 #create_account_modal .btn:hover {
 background-color: rgba(231, 54, 121, 0.9);

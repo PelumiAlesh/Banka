@@ -12,19 +12,40 @@
     <title>Banka: User Profile</title>
 </head>
 
-<body> 
+<body>
     <!------------- NAVBAR  ------------------>
     <nav class="navbar">
-        <a href="#"><img id="logo"src="../assets/images/logo.png" alt="logo"></a>
+        <a href="#"><img id="logo" src="../assets/images/logo.png" alt="logo"></a>
         <label for="toggle"> &#9776; </label>
         <input type="checkbox" id="toggle">
-        <ul>
-          <li> <a href="dashboard.html"> Home</a></li>
-          <li> <a href="../USER/account_transactions.html">Transactions </a></li>
-          <li> <a href="../index.html"> Log out</a></li>
+        <ul class="desktop">
+            <li> <a href="dashboard.html"> <i class="fas fa-home" title="Home"></i></a></li>
+            <li> <a href="../USER/account_transactions.html"><i class="fas fa-exchange-alt" title="Transactions"></i>
+                </a></li>
+            <li onclick="toggleDropdown()">
+                <img src="../assets/images/avatar-1577909__340.png" alt="img_you">
+            </li>
+            <li onclick="toggleDropdown()">
+                <div>Pelumi Alesh. <i class="fas fa-sort-down"></i></div>
+            </li>
+            <div id="dropdown-content">
+                <a href="./profile.html">Profile</a>
+                <a href="../index.html"> Log out</a>
+                <a href="../ADMIN/accounts.html">Admin</a>
+                <a href="../STAFF/accounts.html">Staff</a>
+            </div>
         </ul>
-        <div class="prof_name"><a href="./profile.html"><img src="../assets/images/avatar-1577909__340.png" alt="img_you"></a> <p>Pelumi A.</p></div>
-      </nav>
+        <ol>
+            <li>
+                <a href="dashboard.html">Home</a>
+            </li>
+            <li><a href="account_transactions.html">Transactions</a> </li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li> <a href="../index.html"> Log out</a></li>
+            <li><a href="../ADMIN/accounts.html">Admin</a></li>
+            <li> <a href="../STAFF/accounts.html">Staff</a></li>
+        </ol>
+    </nav>
     <!------------NAVBAR END------------------->
 
 
@@ -58,6 +79,7 @@
         <!---------------PROFILE ACCOUNTS-------------->
         <div class="prof_down">
             <div class="prof_accts">
+                <h1>Account details</h1>
                 <table class="rwd-table">
                     <tr>
                         <th>Account Type</th>
@@ -91,9 +113,10 @@
                     </tr>
                 </table>
                 <button class="btn" onclick="toggleCreateAccoutn()">CREATE ACCOUNT</button>
-                
+
             </div>
             <div class="prof_details">
+                <h1>User details</h1>
                 <span> <label for="email">Email: </label><input type="email" placeholder="Aleshinloyelukmony@gmail.com"
                         id="email" disabled></span>
                 <span><label for="phone">Phone: </label><input type="tel" placeholder="+234554565454" id="phone"
@@ -113,37 +136,42 @@
 
         </div>
         <div id="create_account_modal">
-                <div class="modal_content">
+
+            <div class="modal_content">
+                <div class="content_header">
                     <span class="close" onclick="closemodal()">&times;</span>
-                <form action="">
-                      <!-- Account Type -->
-            <div class="acct-type">
+                    <h1>Create new account</h1>
+                    <form action="">
+                </div>
+                <!-- Account Type -->
+                <div class="acct-type">
+                    <label>Account type:</label>
                     <div class="select-wrap">
-                      <label>Account Typer</label>
-                      <select name="acct-type" id="acct-type">
-                        <option value="" selected="selected">Account Type</option>
-                        <option value="savings-acct">Savings Account</option>
-                        <option value="Checkings-acct">Checkings Account</option>
-                        <option value="Retirement-acct">Retirement Account</option>
-                        <option value="Budget-acct">Budget Account</option>
-                        <option value="Property-acct">Property Account</option>
-                      </select>
-                      <span class="select__arrow"></span>
+                        <select name="acct-type" id="acct-type">
+                            <option value="" selected="selected">Account Type</option>
+                            <option value="savings-acct">Savings Account</option>
+                            <option value="Checkings-acct">Checkings Account</option>
+                            <option value="Retirement-acct">Retirement Account</option>
+                            <option value="Budget-acct">Budget Account</option>
+                            <option value="Property-acct">Property Account</option>
+                        </select>
+                        <span class="select__arrow"></span>
                     </div>
-                  </div>
-                  <!-- password -->
-                  <div class="bvn">
-                    <label>Initial Deposit</label>
+                </div>
+                <!-- password -->
+                <label>Initial deposit:</label>
+                <div class="bvn">
                     <input type="number" placeholder="Initial Deposit " required />
-                  </div>
-                  <!-- button -->
-                  <button class="btn">CREATE </button>
-                  <p>
-                    By clicking create account. It means you agree to our <a href="#" class="link">terms and condition? <span
-                        class="entypo-right-thin"></span></a>
-                  </p>
+                </div>
+                <!-- button -->
+                <button class="btn">CREATE </button>
+                <p>
+                    By clicking create. It means you agree to our <a href="#" class="link">terms and condition? <span
+                            class="entypo-right-thin"></span></a>
+                </p>
                 </form>
             </div>
+        </div>
     </section>
     <footer>
         <p>&copy; Copyright Banka 2019</p>

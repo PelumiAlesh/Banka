@@ -94,3 +94,16 @@ function closemodal() {
   const modal = document.getElementById('create_account_modal');
   modal.style.display = 'none';
 }
+/*
+====================
+Navbar dropdown
+====================
+*/
+function toggleDropdown() {
+  const content = document.getElementById('dropdown-content');
+  if (content.style.display === 'none') {
+    content.style.display = 'flex';
+  } else {
+    content.style.display = 'none';
+  }
+}

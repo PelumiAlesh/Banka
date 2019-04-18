@@ -15,15 +15,32 @@
 <body class="single_ppage">
     <!------------- NAVBAR  ------------------>
     <nav class="navbar">
-            <a href="#"><img id="logo" src="../assets/images/logo.png" alt="logo"></a>
-            <label for="toggle"> &#9776; </label>
-            <input type="checkbox" id="toggle">
-            <ul>
-                <li> <a href="accounts.html"> Home</a></li>
-                <li> <a href="user_login.html"> Log out</a></li>
-                <li> <b> | </b> Staff</a></li>
-            </ul>
-        </nav>
+        <a href="#"><img id="logo" src="../assets/images/logo.png" alt="logo"></a>
+        <label for="toggle"> &#9776; </label>
+        <input type="checkbox" id="toggle">
+        <ul class="desktop">
+            <li> <a href="accounts.html"> <i class="fas fa-home" title="Home"></i></a></li>
+            <li onclick="toggleDropdown()">
+                <img src="../assets/images/avatar-1577909__340.png" alt="img_you">
+            </li>
+            <li onclick="toggleDropdown()">
+                <div>Baba A. |STAFF. <i class="fas fa-sort-down"></i></div>
+            </li>
+            <div id="dropdown-content">
+                <a href="../index.html"> Log out</a>
+                <a href="../USER/profile.html">User</a>
+                <a href="../ADMIN/accounts.html">Admin</a>
+            </div>
+        </ul>
+        <ol>
+            <li>
+                <a href="accounts.html">Home</a>
+            </li>
+            <li> <a href="../index.html"> Log out</a></li>
+            <li><a href="../USER/profile.html">User</a></li>
+            <li> <a href="../ADMIN/accounts.html">Admin</a></li>
+        </ol>
+    </nav>
     <!------------NAVBAR END------------------->
 
 
@@ -33,7 +50,7 @@
             <div class="prof_top_left">
                 <div class="prof_pic">
                     <div class="preview"> <img src="../assets/images/profile_pic.jpg" alt="User_profile"></div>
-                    
+
 
                 </div>
                 <div class="pro_pic_details">
@@ -56,65 +73,66 @@
         <!-------------------DEBIT n CREDIT---------------->
         <p id="iicenter">DEBIT OR CREDIT USER</p>
         <div class="d_c">
-                <select name="D_C" id="action">
-                    <option value="Credit">Credit</option>
-                    <option value="Debit">Debit</option>
-                </select>
+            <select name="D_C" id="action">
+                <option value="Credit">Credit</option>
+                <option value="Debit">Debit</option>
+            </select>
             <input type="text" class="amt" placeholder="Amount">
             <input type="text" class="desc" placeholder="Description">
             <button>COMPLETE</button>
         </div>
         <!---------------PROFILE ACCOUNTS-------------->
         <div class="prof_down prof_prof">
-                    <div class="transactions">
-                        <div class="table_head">
-                            <div class="row">
-                                <div class="column">Date</div>
-                                <div class="column">Account</div>
-                                <div class="column">Status</div>
-                                <div class="column">Amount</div>
-                            </div>
-                        </div>
-                        <div class="table_body">
-                            <div class="row">
-                                <p class="column">02-03-19</p>
-                                <p class="column">Savings</p>
-                                <p class="column" id="green">Active</p>
-                                <p class="column amt" id="recieved"> + ₦34,987</p>
-                            </div>
-                            <div class="row">
-                                <p class="column">02-02-19</p>
-                                <p class="column">Savings</p>
-                                <p class="column" id="green">Active</p>
-                                <p class="column amt" id="recieved">+ ₦53,787</p>
-                            </div>
-                            <div class="row">
-                                <p class="column">02-02-19</p>
-                                <p class="column">Credit Card</p>
-                                <p class="column" id="red">Deactivated</p>
-                                <p class="column amt" id="sent"> - ₦34,987</p>
-                            </div>
-                            <div class="row">
-                                <p class="column">02-01-19</p>
-                                <p class="column">Investment</p>
-                                <p class="column" id="green">Active</p>
-                                <p class="column amt" id="sent"> - ₦1,027</p>
-                            </div>
-                            <div class="row">
-                                <p class="column">01-03-19</p>
-                                <p class="column">Investment</p>
-                                <p class="column" id="green">Active</p>
-                                <p class="column amt" id="recieved"> + ₦70,187</p>
-                            </div>
-                            <div class="row">
-                                <p class="column">02-03-19</p>
-                                <p class="column">Credit Card</p>
-                                <p class="column" id="red">Deactivated</p>
-                                <p class="column amt" id="sent"> - 3₦4,987</p>
-                            </div>
-            
-                        </div>
+                <h1>Recent Transactions:</h1>
+            <div class="transactions">
+                <div class="table_head">
+                    <div class="row">
+                        <div class="column">Date</div>
+                        <div class="column">Account</div>
+                        <div class="column">Status</div>
+                        <div class="column">Amount</div>
                     </div>
+                </div>
+                <div class="table_body">
+                    <div class="row">
+                        <p class="column">02-03-19</p>
+                        <p class="column">Savings</p>
+                        <p class="column" id="green">Active</p>
+                        <p class="column amt" id="recieved"> + ₦34,987</p>
+                    </div>
+                    <div class="row">
+                        <p class="column">02-02-19</p>
+                        <p class="column">Savings</p>
+                        <p class="column" id="green">Active</p>
+                        <p class="column amt" id="recieved">+ ₦53,787</p>
+                    </div>
+                    <div class="row">
+                        <p class="column">02-02-19</p>
+                        <p class="column">Credit Card</p>
+                        <p class="column" id="red">Deactivated</p>
+                        <p class="column amt" id="sent"> - ₦34,987</p>
+                    </div>
+                    <div class="row">
+                        <p class="column">02-01-19</p>
+                        <p class="column">Investment</p>
+                        <p class="column" id="green">Active</p>
+                        <p class="column amt" id="sent"> - ₦1,027</p>
+                    </div>
+                    <div class="row">
+                        <p class="column">01-03-19</p>
+                        <p class="column">Investment</p>
+                        <p class="column" id="green">Active</p>
+                        <p class="column amt" id="recieved"> + ₦70,187</p>
+                    </div>
+                    <div class="row">
+                        <p class="column">02-03-19</p>
+                        <p class="column">Credit Card</p>
+                        <p class="column" id="red">Deactivated</p>
+                        <p class="column amt" id="sent"> - 3₦4,987</p>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
     <footer>
