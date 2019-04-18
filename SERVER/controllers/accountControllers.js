@@ -24,7 +24,7 @@ class AccountController {
         email: req.user.email,
         accountNumber: newAccount.accountNumber,
         type: newAccount.type,
-        initialDeposit: newAccount.initialDeposit,
+        initialDeposit: newAccount.balance,
       },
     });
   }

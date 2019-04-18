@@ -34,7 +34,7 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
           done();
         });
     });
-    // return 401 if firstName field was left empty
+    // return 400 if firstName field was left empty
     it('should return 401 if user ommit firstName', (done) => {
       const user = {
         lastName: 'Aleshinloye',
@@ -46,12 +46,12 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .post(`${endpointPath}signup`)
         .send(user)
         .end((err, res) => {
-          res.should.have.status(401);
+          res.should.have.status(400);
           res.should.have.property('error');
           done();
         });
     });
-    // return 401 if lastName field was left empty
+    // return 400 if lastName field was left empty
     it('should return 401 if user ommit LastName', (done) => {
       const user = {
         firstName: 'Pelumi',
@@ -63,12 +63,12 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .post(`${endpointPath}signup`)
         .send(user)
         .end((err, res) => {
-          res.should.have.status(401);
+          res.should.have.status(400);
           res.should.have.property('error');
           done();
         });
     });
-    // return 401 if email field was left empty
+    // return 400 if email field was left empty
     it('should return 401 if user ommit email', (done) => {
       const user = {
         firstName: 'Pelumi',
@@ -80,12 +80,12 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .post(`${endpointPath}signup`)
         .send(user)
         .end((err, res) => {
-          res.should.have.status(401);
+          res.should.have.status(400);
           res.should.have.property('error');
           done();
         });
     });
-    // return 401 if password field was left empty
+    // return 400 if password field was left empty
     it('should return 401 if user ommit password', (done) => {
       const user = {
         firstName: 'Pelumi',
@@ -96,7 +96,7 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .post(`${endpointPath}signup`)
         .send(user)
         .end((err, res) => {
-          res.should.have.status(401);
+          res.should.have.status(400);
           res.should.have.property('error');
           done();
         });
@@ -142,7 +142,7 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
           done();
         });
     });
-    // return 401 if email field was left empty
+    // return 400 if email field was left empty
     it('should return error 401 if user omit email', (done) => {
       const loginBody = {
         password: 'password',
@@ -152,13 +152,13 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .post(`${endpointPath}signin`)
         .send(loginBody)
         .end((err, res) => {
-          res.should.have.status(401);
+          res.should.have.status(400);
           res.body.should.a('object');
           res.body.should.have.property('error');
           done();
         });
     });
-    // return 401 if password was left empty
+    // return 400 if password was left empty
     it('should return error 401 if user omit password', (done) => {
       const loginBody = {
         email: 'pels@gmail.com',
@@ -168,13 +168,13 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         .post(`${endpointPath}signin`)
         .send(loginBody)
         .end((err, res) => {
-          res.should.have.status(401);
+          res.should.have.status(400);
           res.should.be.a('object');
           res.should.have.property('error');
           done();
         });
     });
-    // return error 401 if password and email does not match
+    // return error 400 if password and email does not match
     it('should return error 401 if email and password does not match', (done) => {
       const loginBody = {
         email: 'wrong@gmai.bjd',
