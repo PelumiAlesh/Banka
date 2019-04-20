@@ -66,7 +66,7 @@ class AccountController {
 
     res.status(200).json({
       status: res.statusCode,
-      message: 'Account Succefully deleted',
+      message: 'Account Successfully deleted',
     });
   }
 }

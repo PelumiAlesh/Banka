@@ -103,13 +103,18 @@
 
 ol {
   display: none !important;
-  background-color: rgb(126, 122, 122);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-top: none;
 }
 ol a{
   color: black;
 }
+ol li:hover a{
+  color: white;
+}
 ol li:hover{
-  background-color: rgb(107, 103, 103)
+  background-color: rgb(107, 103, 103);
 }
 /*navbar media*/
 

@@ -136,17 +136,17 @@
             <!-- --------------------------CREATE ACCOUNT DIV ------------------- -->
             <div class="create_acct_div">
                 <p>CREATE NEW ACCOUNT NOW</p>
-                <button class="ctp btn" onclick="toggleCreateAccoutn()">CREATE ACCOUNT</button>
+                <button class="ctp btn" onclick="toggleCreateAccoutn('create_account_modal_')">CREATE ACCOUNT</button>
             </div>
-            <div id="create_account_modal">
+            <div id="create_account_modal_">
 
                 <div class="modal_content">
                     <div class="content_header">
-                        <span class="close" onclick="closemodal()">&times;</span>
+                        <span class="close" onclick="closemodal('create_account_modal_')">&times;</span>
                         <h1>Create new account</h1>
-                        <form action="">
                     </div>
                     <!-- Account Type -->
+                    <form action="">
                     <div class="acct-type">
                         <label>Account type:</label>
                         <div class="select-wrap">
