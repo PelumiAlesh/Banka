@@ -47,8 +47,8 @@ describe('Test for all account Endpoints', () => {
               });
           });
       });
-      // retunr 401 if account type is not specified
-      it('should return 401 if user omit account type ', (done) => {
+      // retunr 400 if account type is not specified
+      it('should return 400 if user omit account type ', (done) => {
         const login = {
           email: 'pels@gmail.com',
           password: 'password',
@@ -68,7 +68,7 @@ describe('Test for all account Endpoints', () => {
               .set('Authorization', token)
               .send(input)
               .end((_err, res) => {
-                res.should.have.status(401);
+                res.should.have.status(400);
                 res.body.should.be.a('object');
                 res.body.should.have.property('error');
                 done();

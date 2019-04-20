@@ -27,8 +27,8 @@ const validateUser = {
         errors.array().forEach((err) => {
           errMessages.push(err.msg);
         });
-        return res.status(401).json({
-          status: 401,
+        return res.status(400).json({
+          status: 400,
           error: errMessages,
         });
       }
@@ -47,8 +47,8 @@ const validateUser = {
         errors.array().forEach((err) => {
           errMessages.push(err.msg);
         });
-        return res.status(401).json({
-          status: 401,
+        return res.status(400).json({
+          status: 400,
           error: errMessages,
         });
       }
@@ -58,6 +58,10 @@ const validateUser = {
   // --------------- Create Account validations ------------
   creatAccount: [
     check('type').not().isEmpty().withMessage('Please specify account type'),
+    oneOf([
+      check('initialDeposit').not().isEmpty(),
+      check('initialDeposit').isCurrency(),
+    ], 'Initial deposit cant be left empty'),
     oneOf([
       check('type').equals('savings'),
       check('type').equals('current'),
@@ -69,8 +73,8 @@ const validateUser = {
         errors.array().forEach((err) => {
           errMessages.push(err.msg);
         });
-        return res.status(401).json({
-          status: 401,
+        return res.status(400).json({
+          status: 400,
           error: errMessages,
         });
       }

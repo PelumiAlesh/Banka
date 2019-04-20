@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-undef */
@@ -14,24 +15,28 @@ const upInput = document.querySelector('#filePicker');
 const preview = document.querySelector('.preview');
 
 // ---------force triggering the file upload here...
-triggerUpload.onclick = () => {
-  upInput.click();
-};
+try {
+  triggerUpload.onclick = () => {
+    upInput.click();
+  };
 
-upInput.onchange = (e) => {
-  function showPreview() {
-    preview.innerHTML = "<div class='loadingLogo'></div>";
-    preview.innerHTML += '<img id="img-preview" />';
-    const reader = new FileReader();
-    reader.onload = () => {
-      const img = document.getElementById('img-preview');
-      img.src = reader.result;
-    };
-    reader.readAsDataURL(e.target.files[0]);
-    preview.removeChild(document.querySelector('.loadingLogo'));
-  }
-  showPreview();
-};
+  upInput.onchange = (e) => {
+    function showPreview() {
+      preview.innerHTML = "<div class='loadingLogo'></div>";
+      preview.innerHTML += '<img id="img-preview" />';
+      const reader = new FileReader();
+      reader.onload = () => {
+        const img = document.getElementById('img-preview');
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(e.target.files[0]);
+      preview.removeChild(document.querySelector('.loadingLogo'));
+    }
+    showPreview();
+  };
+} catch (err) {
+  console.log('Something went wrong');
+}
 
 // -------------Function to enable and saveprofile edit
 // eslint-disable-next-line no-unused-vars
@@ -85,12 +90,38 @@ Create Account Modal
 ====================
 */
 
-function toggleCreateAccoutn() {
-  const modal = document.getElementById('create_account_modal');
+function toggleCreateAccoutn(id) {
+  const modal = document.getElementById(id);
   modal.style.display = 'block';
 }
 
-function closemodal() {
-  const modal = document.getElementById('create_account_modal');
+function closemodal(id) {
+  const modal = document.getElementById(id);
   modal.style.display = 'none';
 }
+const modal = document.getElementById('create_account_modal');
+const modall = document.getElementById('create_account_modal_');
+
+window.onclick = function (event) {
+  if (event.target == modall) {
+    modall.style.display = 'none';
+  }
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+};
+
+/*
+====================
+Navbar dropdown
+====================
+*/
+function toggleDropdown() {
+  const content = document.getElementById('dropdown-content');
+  if (content.style.display === 'none') {
+    content.style.display = 'flex';
+  } else {
+    content.style.display = 'none';
+  }
+}
+// document.getElementById('create_account_modal').addEventListener('click', window.onclick());
