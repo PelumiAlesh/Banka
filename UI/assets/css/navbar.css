@@ -191,11 +191,11 @@ ol li:hover{
     width: 40px;
     position: fixed;
   }
-
-  #toggle[type=checkbox]:checked ~ ol {
-    display: block !important;
-  }
   .prof_name{
     display: none;
   }
+  #toggle[type=checkbox]:checked ~ ol {
+    display: block !important;
+  }
+
 }
