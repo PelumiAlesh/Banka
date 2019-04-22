@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import { Pool } from 'pg';
 import createTableQuery from './createTables';
 import dropTableQuery from './dropTables';
-import seed from './seed';
+import seed from './seeds';
 
 dotenv.config();
 
