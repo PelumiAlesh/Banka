@@ -23,19 +23,21 @@
               <li onclick="toggleDropdown()">
                 <img src="../assets/images/avatar-1577909__340.png" alt="img_you">
             </li>
-            <li onclick="toggleDropdown()"><div>Ayo Alesh |ADMIN. <i class="fas fa-sort-down"></i></div></li>
-            <div id="dropdown-content">
-                    <a href="#" onclick="toggleCreateAccoutn()">Create User</a>
-                    <a href="../index.html"> Log out</a>
-                    <a href="../USER/profile.html">User</a>
-                    <a href="../STAFF/accounts.html">Staff</a>
+            <div class="dropdown">
+                    <button class="dropbtn">Ayo Alesh |ADMIN. <i class="fas fa-sort-down"></i></button>
+                    <div class="dropdown-content">
+                            <a href="#" onclick="toggleCreateAccoutn('create_account_modal_')">Create User</a>
+                            <a href="../index.html"> Log out</a>
+                            <a href="../USER/profile.html">User</a>
+                            <a href="../STAFF/accounts.html">Staff</a>
+                    </div>
             </div>
             </ul>
             <ol>                                                                                                   
                     <li>
                         <a href="accounts.html">Home</a>
                     </li>
-                    <li><a href="#">Create User</a></li>
+                    <li><a href="#" onclick="toggleCreateAccoutn('create_account_modal_')">Create User</a></li>
                    <li> <a href="../index.html"> Log out</a></li>
                     <li><a href="../USER/profile.html">User</a></li>
                     <li> <a href="../STAFF/accounts.html">Staff</a></li>
@@ -128,11 +130,11 @@
         <p>&copy; Copyright Banka 2019</p>
     </footer>
     <!-------------Create User Modal------------>
-    <div id="create_account_modal">
+    <div id="create_account_modal_">
 
             <div class="modal_content">
                 <div class="content_header">
-                    <span class="close" onclick="closemodal()">&times;</span>
+                    <span class="close" onclick="closemodal('create_account_modal_')">&times;</span>
                     <h1>Create User</h1>
                 </div>
                     <form class="signup-form" action="accounts.html">
