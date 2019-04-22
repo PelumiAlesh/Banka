@@ -90,8 +90,13 @@ Create Account Modal
 ====================
 */
 
+
+const modal = document.getElementById('create_account_modal');
+const modall = document.getElementById('create_account_modal_');
+
 function toggleCreateAccoutn(id) {
   const modal = document.getElementById(id);
+  toggle.checked = false;
   modal.style.display = 'block';
 }
 
@@ -99,29 +104,26 @@ function closemodal(id) {
   const modal = document.getElementById(id);
   modal.style.display = 'none';
 }
-const modal = document.getElementById('create_account_modal');
-const modall = document.getElementById('create_account_modal_');
+
+
+/*
+====================
+Close by clicking anywhere
+====================
+*/
 
 window.onclick = function (event) {
+  console.log('Clicked');
   if (event.target == modall) {
     modall.style.display = 'none';
   }
   if (event.target == modal) {
     modal.style.display = 'none';
   }
-};
-
-/*
-====================
-Navbar dropdown
-====================
-*/
-function toggleDropdown() {
-  const content = document.getElementById('dropdown-content');
-  if (content.style.display === 'none') {
-    content.style.display = 'flex';
-  } else {
-    content.style.display = 'none';
+  const toggle = document.getElementById('toggle');
+  event.stopPropagation();
+  if (event.target.closest('#toggle')) return;
+  if (true) {
+     toggle.checked = false;
   }
-}
-// document.getElementById('create_account_modal').addEventListener('click', window.onclick());
+};
