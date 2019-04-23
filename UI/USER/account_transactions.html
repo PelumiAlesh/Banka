@@ -15,29 +15,51 @@
 <body>
     <!-----------------NAV BAR----------------->
     <nav class="navbar">
-        <a href="#"><img id="logo"src="../assets/images/logo.png" alt="logo"></a>
+        <a href="#"><img id="logo" src="../assets/images/logo.png" alt="logo"></a>
         <label for="toggle"> &#9776; </label>
         <input type="checkbox" id="toggle">
-        <ul>
-          <li> <a href="dashboard.html"> Home</a></li>
-          <li> <a href="../USER/account_transactions.html">Transactions </a></li>
-          <li> <a href="../index.html"> Log out</a></li>
+        <ul class="desktop">
+            <li> <a href="dashboard.html"> <i class="fas fa-home" title="Home"></i></a></li>
+            <li> <a href="../USER/account_transactions.html"><i class="fas fa-exchange-alt" title="Transactions"></i>
+                </a></li>
+            <li onclick="toggleDropdown()">
+                <img src="../assets/images/avatar-1577909__340.png" alt="img_you">
+            </li>
+            <div class="dropdown">
+                    <button class="dropbtn">Pelumi Alesh. <i class="fas fa-sort-down"></i></button>
+                    <div class="dropdown-content">
+                            <a href="./profile.html">Profile</a>
+                            <a href="../index.html"> Log out</a>
+                            <a href="../ADMIN/accounts.html">Admin</a>
+                            <a href="../STAFF/accounts.html">Staff</a>
+                    </div>
+            </div>
         </ul>
-        <div class="prof_name"><a href="./profile.html"><img src="../assets/images/avatar-1577909__340.png" alt="img_you"></a> <p>Pelumi A.</p></div>
-      </nav>
-        <!----------------- END NAV BAR----------------->
+        <ol>
+            <li>
+                <a href="dashboard.html">Home</a>
+            </li>
+            <li><a href="account_transactions.html">Transactions</a> </li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li> <a href="../index.html"> Log out</a></li>
+            <li><a href="../ADMIN/accounts.html">Admin</a></li>
+            <li> <a href="../STAFF/accounts.html">Staff</a></li>
+        </ol>
+    </nav>
+    <!----------------- END NAV BAR----------------->
 
     <div class="trans_body">
         <h2>TRANSACTIONS</h2>
         <div class="trans_flex">
-            <div class="savings_transaction_div">
                 <label for="savings_transaction_table">Savings:</label>
+            <div class="savings_transaction_div">
                 <div class="savings_transaction_table">
                     <div class="row header">
                         <div class="cell">Date</div>
                         <div class="cell">Description</div>
                         <div class="cell">Credit</div>
                         <div class="cell">Debit</div>
+                        <div class="cell">Amount</div>
                         <div class="cell">Balance</div>
                     </div>
                     <div class="row">
@@ -47,6 +69,7 @@
                         </div>
                         <div class="cell">₦34,665</div>
                         <div class="cell">-</div>
+                        <div class="cell">₦34,665</div>
                         <div class="cell">₦12,234</div>
                     </div>
                     <div class="row">
@@ -56,6 +79,7 @@
                         </div>
                         <div class="cell">-</div>
                         <div class="cell">₦34,665</div>
+                        <div class="cell">₦34,665</div>
                         <div class="cell">₦62,314</div>
                     </div>
                     <div class="row">
@@ -64,6 +88,7 @@
                         </div>
                         <div class="cell">-</div>
                         <div class="cell">₦12,234</div>
+                        <div class="cell">₦12,234</div>
                         <div class="cell">₦90,134</div>
                     </div>
                     <div class="row">
@@ -71,126 +96,140 @@
                         <div class="cell">ATM Transfer at Lado Oil Agbado</div>
                         <div class="cell">-</div>
                         <div class="cell">₦41,234</div>
+                        <div class="cell">₦41,234</div>
                         <div class="cell">₦12,134</div>
                     </div>
                     <div class="row">
                         <div class="cell">03-12-19</div>
                         <div class="cell">
-                                Mobile transfer to Ayola #12344332
+                            Mobile transfer to Ayola #12344332
                         </div>
                         <div class="cell">₦34,665</div>
                         <div class="cell">-</div>
+                        <div class="cell">₦34,665</div>
                         <div class="cell">₦12,234</div>
                     </div>
 
                 </div>
             </div>
-            <div class="investment_transactions_div">
-                <label for="investment_transaction_table">Investment:</label>
+            <label for="investment_transaction_table">Investment:</label>
+            <div class="investment_transactions_div">                              
                 <div class="investment_transaction_table">
-                        <div class="row header">
-                                <div class="cell">Date</div>
-                                <div class="cell">Description</div>
-                                <div class="cell">Credit</div>
-                                <div class="cell">Debit</div>
-                                <div class="cell">Balance</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">03-12-19</div>
-                                <div class="cell">
-                                    Mobile transfer to Ayola #12344332
-                                </div>
-                                <div class="cell">₦34,665</div>
-                                <div class="cell">-</div>
-                                <div class="cell">₦12,234</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">03-12-19</div>
-                                <div class="cell">
-                                    POS Transactions at No 12. Baba Filling station
-                                </div>
-                                <div class="cell">-</div>
-                                <div class="cell">₦34,665</div>
-                                <div class="cell">₦62,314</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">03-12-19</div>
-                                <div class="cell">ATM withdraw from Ayo Oil Agbado
-                                </div>
-                                <div class="cell">-</div>
-                                <div class="cell">₦12,234</div>
-                                <div class="cell">₦90,134</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">03-12-19</div>
-                                <div class="cell">ATM Transfer at Lado Oil Agbado</div>
-                                <div class="cell">-</div>
-                                <div class="cell">₦41,234</div>
-                                <div class="cell">₦12,134</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">03-12-19</div>
-                                <div class="cell">
-                                        Mobile transfer to Ayola #12344332
-                                </div>
-                                <div class="cell">₦34,665</div>
-                                <div class="cell">-</div>
-                                <div class="cell">₦12,234</div>
-                            </div>
+                    <div class="row header">
+                        <div class="cell">Date</div>
+                        <div class="cell">Description</div>
+                        <div class="cell">Credit</div>
+                        <div class="cell">Debit</div>
+                        <div class="cell">Amount</div>
+                        <div class="cell">Balance</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">
+                            Mobile transfer to Ayola #12344332
+                        </div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">-</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">
+                            POS Transactions at No 12. Baba Filling station
+                        </div>
+                        <div class="cell">-</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦62,314</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">ATM withdraw from Ayo Oil Agbado
+                        </div>
+                        <div class="cell">-</div>
+                        <div class="cell">₦12,234</div>
+                        <div class="cell">₦12,234</div>
+                        <div class="cell">₦90,134</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">ATM Transfer at Lado Oil Agbado</div>
+                        <div class="cell">-</div>
+                        <div class="cell">₦41,234</div>
+                        <div class="cell">₦41,234</div>
+                        <div class="cell">₦12,134</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">
+                            Mobile transfer to Ayola #12344332
+                        </div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">-</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
                 </div>
-            </div>
+            </div>            
+            <label for="credit_transactions_table">Credit Card:</label>
             <div class="credit_transactions_div">
-                <label for="credit_transactions_table">Credit Card:</label>
                 <div class="credit_transactions_table">
-                        <div class="row header">
-                                <div class="cell">Date</div>
-                                <div class="cell">Description</div>
-                                <div class="cell">Credit</div>
-                                <div class="cell">Debit</div>
-                                <div class="cell">Balance</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">03-12-19</div>
-                                <div class="cell">
-                                    Mobile transfer to Ayola #12344332
-                                </div>
-                                <div class="cell">₦34,665</div>
-                                <div class="cell">-</div>
-                                <div class="cell">₦12,234</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">03-12-19</div>
-                                <div class="cell">
-                                    POS Transactions at No 12. Baba Filling station
-                                </div>
-                                <div class="cell">-</div>
-                                <div class="cell">₦34,665</div>
-                                <div class="cell">₦62,314</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">03-12-19</div>
-                                <div class="cell">ATM withdraw from Ayo Oil Agbado
-                                </div>
-                                <div class="cell">-</div>
-                                <div class="cell">₦12,234</div>
-                                <div class="cell">₦90,134</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">03-12-19</div>
-                                <div class="cell">ATM Transfer at Lado Oil Agbado</div>
-                                <div class="cell">-</div>
-                                <div class="cell">₦41,234</div>
-                                <div class="cell">₦12,134</div>
-                            </div>
-                            <div class="row">
-                                <div class="cell">03-12-19</div>
-                                <div class="cell">
-                                        Mobile transfer to Ayola #12344332
-                                </div>
-                                <div class="cell">₦34,665</div>
-                                <div class="cell">-</div>
-                                <div class="cell">₦12,234</div>
-                            </div>
+                    <div class="row header">
+                        <div class="cell">Date</div>
+                        <div class="cell">Description</div>
+                        <div class="cell">Credit</div>
+                        <div class="cell">Debit</div>
+                        <div class="cell">Amount</div>
+                        <div class="cell">Balance</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">
+                            Mobile transfer to Ayola #12344332
+                        </div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">-</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">
+                            POS Transactions at No 12. Baba Filling station
+                        </div>
+                        <div class="cell">-</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦62,314</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">ATM withdraw from Ayo Oil Agbado
+                        </div>
+                        <div class="cell">-</div>
+                        <div class="cell">₦12,234</div>
+                        <div class="cell">₦12,234</div>
+                        <div class="cell">₦90,134</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">ATM Transfer at Lado Oil Agbado</div>
+                        <div class="cell">-</div>
+                        <div class="cell">₦41,234</div>
+                        <div class="cell">₦41,234</div>
+                        <div class="cell">₦12,134</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">03-12-19</div>
+                        <div class="cell">
+                            Mobile transfer to Ayola #12344332
+                        </div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">-</div>
+                        <div class="cell">₦34,665</div>
+                        <div class="cell">₦12,234</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -198,7 +237,7 @@
     <footer>
         <p>&copy; Copyright Banka 2019</p>
     </footer>
-
+<script src="../scripts/app.js"></script>
 </body>
 
 </html>

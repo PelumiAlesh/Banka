@@ -14,7 +14,7 @@
   --basicColor: #363b41;
   --bodyFontFamily: "Open Sans";
   --bodyFontFamilyFallback: sans-serif;
-  --limeColor: lime;
+  --yellowgreenColor: yellowgreen;
 }
 
 @media screen and (max-width: 630px){
@@ -42,11 +42,10 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none !important;
 }
 a {
-  color: yellowgreen;
   text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 li {
   list-style: none;
@@ -81,6 +80,10 @@ section .welcome_message {
   word-break: break-word;
 }
 @media screen and (max-width: 630px) {
+  section .welcome_message {
+    margin-top: 6rem !important;
+    padding-left: 10vw;
+  }
 }
 section .welcome_message p {
   font-size: 1.5rem;
@@ -336,7 +339,7 @@ section .transaction_message p {
 .transactions #green,
 .transactions #recieved,
 .pro_pic_details .green {
-  color: lime !important;
+  color: yellowgreen !important;
 }
 .transactions #red,
 .transactions #sent {
@@ -379,14 +382,24 @@ section .create_acct_div {
   }
   section .create_acct_div p {
     font-size: 1rem !important;
-    letter-spacing: 0.3rem !important;
+    letter-spacing: 0rem !important;
     text-align: center;
+  }
+  section .create_acct_div .btn,
+  .prof_top .btn {
+    height: 2rem;;
+  }
+}
+@media screen and (max-width: 768px) {
+  section .create_acct_div p {
+    letter-spacing: 0.1rem !important;
+    font-size: 1.4rem
   }
 }
 section .create_acct_div .btn,
 .prof_top .btn {
   cursor: pointer;
-  font-size: calc(13px + 1vw) !important;
+  font-size: 1rem !important;
   font-weight: 400;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -395,13 +408,12 @@ section .create_acct_div .btn,
   background-color: rgba(231, 54, 121, 0.9);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   color: whitesmoke;
-  max-height: 4rem;
-  min-height: 3rempx;
+  max-height: 3rem;
   flex: 1 1 auto;
 }
 section .create_acct_div p {
   font-size: 2rem;
-  letter-spacing: 0.6em;
+  letter-spacing: 0.3rem;
 }
 section .create_acct_div .btn:hover,
 .main_balance .btn:hover {
@@ -435,20 +447,27 @@ section .create_acct_div .btn:hover,
     padding: 1rem 1.5rem 1rem 1.5rem;
     border-radius: 7px;
     border: 0.9px solid #95bbdf !important;
-    max-width: 90vw;
-    min-width: 19rem;
-    overflow: scroll;
+    min-width: 93vw;
+    overflow: hidden;
   }
-  .trans_body .investment_transactions_table,
-  .trans_body .savings_transaction_table,
-  .trans_body .credit_transactions_table {
-    overflow: scroll;
-  }
-
   .trans_body .investment_transactions_div .row .cell:nth-child(2),
   .trans_body .savings_transaction_div .row .cell:nth-child(2),
   .trans_body .credit_transactions_div .row .cell:nth-child(2) {
     display: none !important;
+  }
+}
+@media screen and (max-width: 650px) {
+  .trans_body .cell:nth-child(5) {
+    display: table-cell !important;
+  }
+  .trans_body .cell:nth-child(3),
+  .trans_body .cell:nth-child(4) {
+    display: none !important;
+  }
+  .trans_body .investment_transactions_div .cell,
+  .trans_body .savings_transaction_div .cell,
+  .trans_body .credit_transactions_div .cell {
+    width: 33% !important;
   }
 }
 .trans_body .investment_transactions_div .cell,
@@ -456,12 +475,17 @@ section .create_acct_div .btn:hover,
 .trans_body .credit_transactions_div .cell {
   display: table-cell;
   padding: 0.3rem 5vw !important;
-  width: 15%;
+  width: 12%;
 }
 .trans_body .investment_transactions_div .cell:nth-child(2),
 .trans_body .savings_transaction_div .cell:nth-child(2),
 .trans_body .credit_transactions_div .cell:nth-child(2) {
   width: 40%;
+}
+.trans_body .investment_transactions_div .cell:nth-child(1),
+.trans_body .savings_transaction_div .cell:nth-child(1),
+.trans_body .credit_transactions_div .cell:nth-child(1) {
+  width: 20%  
 }
 .trans_body .investment_transactions_div .header,
 .trans_body .savings_transaction_div .header,
@@ -496,12 +520,12 @@ section .create_acct_div .btn:hover,
 .trans_body .savings_transaction_div,
 .trans_body .credit_transactions_div {
   display: table;
-  margin: 3rem 1rem 2rem 1rem;
+  margin: 1rem 1rem 2rem 1rem;
   background-color: white;
   padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 7px;
   border: 0.9px solid #95bbdf;
-  width: 98%;
+  width: 98vw;
 }
 .trans_body .investment_transactions_div .row,
 .trans_body .savings_transaction_div .row,
@@ -513,6 +537,10 @@ section .create_acct_div .btn:hover,
 .cell {
   display: table-cell;
   padding: 0.3rem 2vw;
+}
+.trans_body .cell:nth-child(5),
+.trans_body .cell:nth-child(5) {
+  display: none;
 }
 .trans_body td:nth-child(2),
 .trans_body th:nth-child(2) {
@@ -527,6 +555,8 @@ section .create_acct_div .btn:hover,
   text-transform: uppercase;
   color: black;
   font-weight: bold;
+  margin-left: 1rem;
+  border-bottom: 2px solid black;
 }
 .trans_body h2 {
   padding-left: 35vw;
@@ -567,6 +597,8 @@ section .create_acct_div .btn:hover,
   max-width: 13rem;
   text-transform: uppercase;
   border: none;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: rgba(231, 54, 121, 0.9);
@@ -642,11 +674,11 @@ section .create_acct_div .btn:hover,
 .prof_accts {
   display: flex;
   flex-direction: column;
-  margin: 1rem 1rem 3rem 1rem;
+  margin: 1rem 1vw 3rem 1.5vw;
   background-color: white;
   border-radius: 7px;
   border: 0.9px solid #95bbdf;
-  width: 48vw;
+  width: 47vw;
   overflow: hidden;
   justify-content: space-between;
 }
@@ -683,14 +715,19 @@ section .create_acct_div .btn:hover,
 }
 
 .rwd-table .green {
-  color: lime;
+  color: yellowgreen;
 }
 .rwd-table .red {
   color: red;
 }
+.prof_accts h1{
+  text-align: center;
+  padding-top: 1rem;
+}
 @media (max-width: 630px) {
   .prof_accts {
     width: 90vw;
+    margin: auto;
   }
   .rwd-table td {
     border:none !important;
@@ -746,7 +783,6 @@ section .create_acct_div .btn:hover,
 .prof_details {
   display: flex;
   flex-direction: column;
-  margin: 1rem 1rem 3rem 1rem;
   background-color: white;
   border-radius: 7px;
   border: 0.9px solid #95bbdf;
@@ -754,10 +790,12 @@ section .create_acct_div .btn:hover,
   width: 47vw;
   justify-content: space-between;
   overflow: hidden;
+  margin: 1rem auto 3rem auto;
 }
 @media screen and (min-width: 630px) {
   .prof_details {
     width: 47vw;
+    
   }
 }
 .prof_details input:enabled {
@@ -793,6 +831,10 @@ section .create_acct_div .btn:hover,
 .prof_details label {
   color: black;
   padding: 0.3rem;
+}
+.prof_details h1{
+  text-align: center;
+  padding-top: 1rem;
 }
 .prof_details .edit_save {
   display: flex;
@@ -920,8 +962,9 @@ section .create_acct_div .btn:hover,
 #all_bank_accounts .btn {
   text-transform: uppercase;
   border: none;
-  background-color: rgba(231, 54, 121, 0.9);
+  border: 1px solid black;
   border-radius: 4px;
+  background-color: transparent;
   color: black;
   cursor: pointer;
   width: 100%;
@@ -931,11 +974,12 @@ section .create_acct_div .btn:hover,
 }
 #all_bank_accounts .btn:hover {
   background-color: #ea4c88;
+  color: white;
 }
 #all_bank_accounts .red_btn {
-  color: black;
+  color: white;
   width: 100%;
-  background-color: red;
+  background-color: #ea4c88;
   height: 2rem;
   border: none;
   border-radius: 4px;
@@ -943,7 +987,7 @@ section .create_acct_div .btn:hover,
   cursor: pointer;
 }
 #all_bank_accounts .red_btn:hover {
-  background-color: rgb(240, 86, 86);
+  background-color: rgb(240, 104, 86);
 }
 
 @media screen and (min-width: 960px) {
@@ -977,13 +1021,15 @@ Inherited from profile.html and user dashboard
   width: 100%;
   justify-content: space-between;
 }
+.prof_prof h1{
+  padding-left: 1rem;
+}
 @media screen and (max-width: 630px){
   .prof_prof .prof_details{
     width: 90vw;
   }
 }
-.rwd-table td:nth-last-child(1):before,
-.rwd-table td:nth-last-child(2):before {
+.rwd-table td:nth-last-child(1):before{
   content: none;
   font-weight: bold;
   width: 6.5em;
@@ -1005,7 +1051,7 @@ Inherited from profile.html and user dashboard
 .d_c{
   display: flex;
   flex-direction: row;
-  margin: 3rem 1rem 2rem 1rem;
+  margin: 1rem 1rem 2rem 1rem;
   background-color: white;
   padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 7px;
@@ -1059,7 +1105,7 @@ Inherited from profile.html and user dashboard
 
 }
 .d_c input:focus{
-  outline: lime solid thin;
+  outline: yellowgreen solid thin;
   background-color: white;
 }
 .d_c input:hover{
@@ -1082,8 +1128,9 @@ Inherited from profile.html and user dashboard
   background-color: rgba(234, 77, 136, 0.8);
 }
 #iicenter{
-  font-weight: 300px;
-  text-align: center;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  font-weight: bold;
 }
 @media screen and (max-width: 1031px){
   .d_c input,
@@ -1110,7 +1157,8 @@ Inherited from profile.html and user dashboard
 ===================================================================================
 ===================================================================================
 */
-#create_account_modal {
+#create_account_modal,
+#create_account_modal_ {
   display: none;
   position: fixed;
   z-index: 1; 
@@ -1121,21 +1169,50 @@ Inherited from profile.html and user dashboard
   height: 100%; 
   overflow: auto;
   background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.637);
+}
+@media screen and (max-width: 960px){
+  .modal_content {
+    width: 90% !important; 
+  }
+  #create_account_modal input,
+  #create_account_modal select,
+  #create_account_modal_ input,
+  #create_account_modal_ select  {
+  width: 90% !important;
+  }
+  #create_account_modal .btn,
+  #create_account_modal_ .btn  {
+    width: 90% !important;
+  }
+}
+@media screen and (max-width: 960px){
+  #create_account_modal i,
+  #create_account_modal_ i {
+    display: none;
+  }
+}
+.content_header{
+ border-bottom: 1px solid black;
+ margin-bottom: 2rem;
+ padding: 0.7rem;
+ background-color: #ea4c88;
 }
 .modal_content {
   background-color: #fefefe;
   margin: auto;
   text-align: center;
-  padding: 20px;
+  padding-bottom: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 60%;
+  height: auto;
 }
 .close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .close:hover,
@@ -1146,10 +1223,12 @@ Inherited from profile.html and user dashboard
 }
 
 #create_account_modal input,
-#create_account_modal select {
-  border: 1px solid #95bbdf;
+#create_account_modal select,
+#create_account_modal_ input,
+#create_account_modal_ select {
+  border: 1px solid #d44179;
   height: 2.5rem;
-  width: 40%;
+  width: 70%;
   border-radius: 6px;
   margin: 0.3rem;
   font-size: 1rem;
@@ -1157,8 +1236,10 @@ Inherited from profile.html and user dashboard
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  margin-bottom: 1rem;
 }
-#create_account_modal .btn {
+#create_account_modal .btn,
+#create_account_modal_ .btn  {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 400;
@@ -1169,9 +1250,10 @@ Inherited from profile.html and user dashboard
   background-color: rgba(234, 77, 136, 0.8);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   color: white;
-  width: 50%;
-  height: 2rem;
+  width: 70%;
+  height: 3rem;
 }
-#create_account_modal .btn:hover {
+#create_account_modal .btn:hover,
+#create_account_modal_ .btn:hover {
 background-color: rgba(231, 54, 121, 0.9);
 }

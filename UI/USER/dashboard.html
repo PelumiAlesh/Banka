@@ -14,148 +14,174 @@
 
 <body>
     <div class="body">
-    <!------------------NAV BAR----------------->
-    <nav class="navbar">
-        <a href="#"><img id="logo"src="../assets/images/logo.png" alt="logo"></a>
-        <label for="toggle"> &#9776; </label>
-        <input type="checkbox" id="toggle">
-        <ul>
-          <li> <a href="dashboard.html"> Home</a></li>
-          <li> <a href="../USER/account_transactions.html">Transactions </a></li>
-          <li> <a href="../index.html"> Log out</a></li>
-        </ul>
-        <div class="prof_name"><a href="./profile.html"><img src="../assets/images/avatar-1577909__340.png" alt="img_you"></a> <p>Pelumi A.</p></div>
-      </nav>
+        <!------------------NAV BAR----------------->
+        <nav class="navbar">
+            <a href="#"><img id="logo" src="../assets/images/logo.png" alt="logo"></a>
+            <label for="toggle"> &#9776; </label>
+            <input type="checkbox" id="toggle">
+            <ul class="desktop">
+                <li> <a href="dashboard.html"> <i class="fas fa-home" title="Home"></i></a></li>
+                <li> <a href="../USER/account_transactions.html"><i class="fas fa-exchange-alt"
+                            title="Transactions"></i> </a></li>
+                <li onclick="toggleDropdown()">
+                    <img src="../assets/images/avatar-1577909__340.png" alt="img_you">
+                </li>
+                <div class="dropdown">
+                        <button class="dropbtn">Pelumi Alesh. <i class="fas fa-sort-down"></i></button>
+                        <div class="dropdown-content">
+                                <a href="./profile.html">Profile</a>
+                                <a href="../index.html"> Log out</a>
+                                <a href="../ADMIN/accounts.html">Admin</a>
+                                <a href="../STAFF/accounts.html">Staff</a>
+                        </div>
+                </div>
+            </ul>
+            <ol>
+                <li>
+                    <a href="dashboard.html">Home</a>
+                </li>
+                <li><a href="account_transactions.html">Transactions</a> </li>
+                <li><a href="./profile.html">Profile</a></li>
+                <li> <a href="../index.html"> Log out</a></li>
+                <li><a href="../ADMIN/accounts.html">Admin</a></li>
+                <li> <a href="../STAFF/accounts.html">Staff</a></li>
+            </ol>
+        </nav>
         <!----------------- END NAV BAR----------------->
 
 
-    <section class="body">
+        <section class="body">
 
-        <div class="welcome_message">
-            <p><b>Hi Dave</b>, Welcome back.</p>
-        </div>
-        <!-- ------------Account Details ------------------- -->
-        <div class="account_details">
-            <div class="card_info">
-                <p id="thick">Account</p>
-                <p id="acct_num">**** **** **** 9873</p>
-                <p id="card_type">Master Card</p>
-                <p id="fade">Dave@gmail.com</p>
+            <div class="welcome_message">
+                <p><b>Hi Dave</b>, Welcome back.</p>
             </div>
-            <div class="main_balance">
-                <p id="thick">Balance</p>
-                <p id="main_bal">8,129.04<sup>₦</sup></p>
-                <p id="fade">Previous month: ₦ 200,93.02</p>
-            </div>
-            <div class="accounts_info">
-                <div class="accounts_balance">
-                    <p class="green"><span id="fade">Savings: </span>455,123.05 NGN</p>
-                    <p class="green"><span id="fade">Investment: </span>120,432.12 NGN</p>
-                    <p class="red"><span id="fade">Credit Card: </span>-34,234 NGN</p>
+            <!-- ------------Account Details ------------------- -->
+            <div class="account_details">
+                <div class="card_info">
+                    <p id="thick">Account</p>
+                    <p id="acct_num">**** **** **** 9873</p>
+                    <p id="card_type">Master Card</p>
+                    <p id="fade">Dave@gmail.com</p>
                 </div>
-                <div class="full_profile_btn">
-                    <input type="button" id="btn" value="full profile" onclick="window.location.href='profile.html'">
+                <div class="main_balance">
+                    <p id="thick">Balance</p>
+                    <p id="main_bal">8,129.04<sup>₦</sup></p>
+                    <p id="fade">Previous month: ₦ 200,93.02</p>
                 </div>
-            </div>
-        </div>
-        <!-- ------------Transactions ------------------- -->
-        <div class="transaction_message">
-            <p>Recent transactions by you:</p>
-        </div>
-        <div class="transactions">
-            <div class="table_head">
-                <div class="row">
-                    <div class="column">Date</div>
-                    <div class="column">Account</div>
-                    <div class="column">Status</div>
-                    <div class="column">Amount</div>
+                <div class="accounts_info">
+                    <div class="accounts_balance">
+                        <p class="green"><span id="fade">Savings: </span>455,123.05 NGN</p>
+                        <p class="green"><span id="fade">Investment: </span>120,432.12 NGN</p>
+                        <p class="red"><span id="fade">Credit Card: </span>-34,234 NGN</p>
+                    </div>
+                    <div class="full_profile_btn">
+                        <input type="button" id="btn" value="full profile"
+                            onclick="window.location.href='profile.html'">
+                    </div>
                 </div>
             </div>
-            <div class="table_body">
-                <div class="row">
-                    <p class="column">02-03-19</p>
-                    <p class="column">Savings</p>
-                    <p class="column" id="green">Active</p>
-                    <p class="column amt" id="recieved"> + ₦34,987</p>
+            <!-- ------------Transactions ------------------- -->
+            <div class="transaction_message">
+                <p>Recent transactions by you:</p>
+            </div>
+            <div class="transactions">
+                <div class="table_head">
+                    <div class="row">
+                        <div class="column">Date</div>
+                        <div class="column">Account</div>
+                        <div class="column">Status</div>
+                        <div class="column">Amount</div>
+                    </div>
                 </div>
-                <div class="row">
-                    <p class="column">02-02-19</p>
-                    <p class="column">Savings</p>
-                    <p class="column" id="green">Active</p>
-                    <p class="column amt" id="recieved">+ ₦53,787</p>
-                </div>
-                <div class="row">
-                    <p class="column">02-02-19</p>
-                    <p class="column">Credit Card</p>
-                    <p class="column" id="red">Deactivated</p>
-                    <p class="column amt" id="sent"> - ₦34,987</p>
-                </div>
-                <div class="row">
-                    <p class="column">02-01-19</p>
-                    <p class="column">Investment</p>
-                    <p class="column" id="green">Active</p>
-                    <p class="column amt" id="sent"> - ₦1,027</p>
-                </div>
-                <div class="row">
-                    <p class="column">01-03-19</p>
-                    <p class="column">Investment</p>
-                    <p class="column" id="green">Active</p>
-                    <p class="column amt" id="recieved"> + ₦70,187</p>
-                </div>
-                <div class="row">
-                    <p class="column">02-03-19</p>
-                    <p class="column">Credit Card</p>
-                    <p class="column" id="red">Deactivated</p>
-                    <p class="column amt" id="sent"> - ₦4,987</p>
-                </div>
+                <div class="table_body">
+                    <div class="row">
+                        <p class="column">02-03-19</p>
+                        <p class="column">Savings</p>
+                        <p class="column" id="green">Active</p>
+                        <p class="column amt" id="recieved"> + ₦34,987</p>
+                    </div>
+                    <div class="row">
+                        <p class="column">02-02-19</p>
+                        <p class="column">Savings</p>
+                        <p class="column" id="green">Active</p>
+                        <p class="column amt" id="recieved">+ ₦53,787</p>
+                    </div>
+                    <div class="row">
+                        <p class="column">02-02-19</p>
+                        <p class="column">Credit Card</p>
+                        <p class="column" id="red">Deactivated</p>
+                        <p class="column amt" id="sent"> - ₦34,987</p>
+                    </div>
+                    <div class="row">
+                        <p class="column">02-01-19</p>
+                        <p class="column">Investment</p>
+                        <p class="column" id="green">Active</p>
+                        <mp class="column amt" id="sent"> - ₦1,027</mp>
+                    </div>
+                    <div class="row">
+                        <p class="column">01-03-19</p>
+                        <p class="column">Investment</p>
+                        <p class="column" id="green">Active</p>
+                        <p class="column amt" id="recieved"> + ₦70,187</p>
+                    </div>
+                    <div class="row">
+                        <p class="column">02-03-19</p>
+                        <p class="column">Credit Card</p>
+                        <p class="column" id="red">Deactivated</p>
+                        <p class="column amt" id="sent"> - ₦4,987</p>
+                    </div>
 
-            </div>
-        </div>
-        <!-- --------------------------CREATE ACCOUNT DIV ------------------- -->
-        <div class="create_acct_div">
-            <p>CREATE NEW ACCOUNT NOW</p>
-            <button class="ctp btn" onclick="toggleCreateAccoutn()">CREATE ACCOUNT</button>
-        </div>
-        <div id="create_account_modal">
-            <div class="modal_content">
-                <span class="close" onclick="closemodal()">&times;</span>
-            <form action="">
-                  <!-- Account Type -->
-        <div class="acct-type">
-                <div class="select-wrap">
-                  <label>Account Typer</label>
-                  <select name="acct-type" id="acct-type">
-                    <option value="" selected="selected">Account Type</option>
-                    <option value="savings-acct">Savings Account</option>
-                    <option value="Checkings-acct">Checkings Account</option>
-                    <option value="Retirement-acct">Retirement Account</option>
-                    <option value="Budget-acct">Budget Account</option>
-                    <option value="Property-acct">Property Account</option>
-                  </select>
-                  <span class="select__arrow"></span>
                 </div>
-              </div>
-              <!-- password -->
-              <div class="bvn">
-                <label>Initial Deposit</label>
-                <input type="number" placeholder="Initial Deposit " required />
-              </div>
-              <!-- button -->
-              <button class="btn">CREATE </button>
-              <p>
-                By clicking create account. It means you agree to our <a href="#" class="link">terms and condition? <span
-                    class="entypo-right-thin"></span></a>
-              </p>
-            </form>
-        </div>
-        </div>
-    </section>
+            </div>
+            <!-- --------------------------CREATE ACCOUNT DIV ------------------- -->
+            <div class="create_acct_div">
+                <p>CREATE NEW ACCOUNT NOW</p>
+                <button class="ctp btn" onclick="toggleCreateAccoutn('create_account_modal_')">CREATE ACCOUNT</button>
+            </div>
+            <div id="create_account_modal_">
 
-    <!-- --------------------------FOOTER ------------------- -->
-    <footer>
-        <p>&copy; Copyright Banka 2019</p>
-    </footer>
-    <script src="../scripts/app.js"></script>
+                <div class="modal_content">
+                    <div class="content_header">
+                        <span class="close" onclick="closemodal('create_account_modal_')">&times;</span>
+                        <h1>Create new account</h1>
+                    </div>
+                    <!-- Account Type -->
+                    <form action="">
+                    <div class="acct-type">
+                        <label>Account type:</label>
+                        <div class="select-wrap">
+                            <select name="acct-type" id="acct-type">
+                                <option value="" selected="selected">Account Type</option>
+                                <option value="savings-acct">Savings Account</option>
+                                <option value="Checkings-acct">Checkings Account</option>
+                                <option value="Retirement-acct">Retirement Account</option>
+                                <option value="Budget-acct">Budget Account</option>
+                                <option value="Property-acct">Property Account</option>
+                            </select>
+                            <span class="select__arrow"></span>
+                        </div>
+                    </div>
+                    <!-- password -->
+                    <label>Initial deposit:</label>
+                    <div class="bvn">
+                        <input type="number" placeholder="Initial Deposit " required />
+                    </div>
+                    <!-- button -->
+                    <button class="btn">CREATE </button>
+                    <p>
+                        By clicking create. It means you agree to our <a href="#" class="link">terms and condition?
+                            <span class="entypo-right-thin"></span></a>
+                    </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- --------------------------FOOTER ------------------- -->
+        <footer>
+            <p>&copy; Copyright Banka 2019</p>
+        </footer>
+        <script src="../scripts/app.js"></script>
     </div>
 </body>
 

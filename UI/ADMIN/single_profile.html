@@ -15,16 +15,34 @@
 <body class="single_ppage">
     <!------------- NAVBAR  ------------------>
     <nav class="navbar">
-            <a href="#"><img id="logo" src="../assets/images/logo.png" alt="logo"></a>
+            <a href="#"><img id="logo"src="../assets/images/logo.png" alt="logo"></a>
             <label for="toggle"> &#9776; </label>
             <input type="checkbox" id="toggle">
-            <ul>
-                <li> <a href="accounts.html"> Home</a></li>
-                <li> <a href="create_account.html">Create Account</a></li>
-                <li> <a href="admin_login.html"> Log out</a></li>
-                <li> <b> | </b> Admin</a></li>
+            <ul class="desktop">
+              <li> <a href="accounts.html"> <i class="fas fa-home" title="Home"></i></a></li>
+              <li onclick="toggleDropdown()">
+                <img src="../assets/images/avatar-1577909__340.png" alt="img_you">
+            </li>
+            <div class="dropdown">
+                    <button class="dropbtn">Ayo Alesh |ADMIN. <i class="fas fa-sort-down"></i></button>
+                    <div class="dropdown-content">
+                            <a href="#" onclick="toggleCreateAccoutn('create_account_modal_')">Create User</a>
+                            <a href="../index.html"> Log out</a>
+                            <a href="../USER/profile.html">User</a>
+                            <a href="../STAFF/accounts.html">Staff</a>
+                    </div>
+            </div>
             </ul>
-        </nav>
+            <ol>                                                                                                   
+                    <li>
+                        <a href="accounts.html">Home</a>
+                    </li>
+                    <li><a href="#" onclick="toggleCreateAccoutn('create_account_modal_')">Create User</a></li>
+                   <li> <a href="../index.html"> Log out</a></li>
+                    <li><a href="../USER/profile.html">User</a></li>
+                    <li> <a href="../STAFF/accounts.html">Staff</a></li>
+                </ol>
+          </nav>
     <!------------NAVBAR END------------------->
 
 
@@ -56,6 +74,7 @@
         </div>
         <!---------------PROFILE ACCOUNTS-------------->
         <div class="prof_down prof_prof">
+            <h1>Recent Transactions:</h1>
                     <div class="transactions">
                         <div class="table_head">
                             <div class="row">
@@ -110,6 +129,53 @@
     <footer>
         <p>&copy; Copyright Banka 2019</p>
     </footer>
+    <!-------------Create User Modal------------>
+    <div id="create_account_modal_">
+
+            <div class="modal_content">
+                <div class="content_header">
+                    <span class="close" onclick="closemodal('create_account_modal_')">&times;</span>
+                    <h1>Create User</h1>
+                </div>
+                    <form class="signup-form" action="accounts.html">
+                      <!-- Name -->
+                      <div class="f_name">
+                        <label><span class="entypo-user"><i class="fas fa-user"></i></span></label>
+                        <input type="text" placeholder="Name" required />
+                      </div>
+                       <!-- Account Type -->
+                      <div class="acct-type">
+                          <div class="select-wrap">
+                            <label><span class="entypo-user"><i class="fas fa-money-check-alt"></i></span></label>
+                            <select name="acct-type" id="acct-type">
+                              <option value="" selected="selected">Account Type</option>
+                              <option value="admin-acct">Admin Account</option>
+                              <option value="staff-acct">Staff Account</option>
+                             </select>
+                            <span class="select__arrow"></span>
+                          </div>
+                        </div>
+                      <!-- email -->
+                      <div class="email">
+                        <label><span class="entypo-user"><i class="fas fa-at"></i></span></label>
+                        <input type="email" placeholder="E-mail" required />
+                      </div>
+                      <!-- phone -->
+                      <div class="phone">
+                        <label><span class="entypo-user"><i class="fas fa-phone"></i></span></label>
+                        <input type="tel" placeholder="Phone" required />
+                      </div>
+                      <!-- password -->
+                      <div class="password">
+                        <label><span class="entypo-user"><i class="fas fa-lock"></i></span></label>
+                        <input type="password" placeholder="Password" required />
+                      </div>
+                      <!-- button -->
+                      <button class="btn">Create User</button>
+          
+                    </form>
+                </div>
+            </div>
     <script src="../scripts/app.js"></script>
 </body>
 
