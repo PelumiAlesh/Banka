@@ -1,4 +1,5 @@
-import accounts from './mock_data/accounts';
+import moment from 'moment';
+import db from './migrations/db';
 import helper from '../helpers/helper';
 
 /**
@@ -15,18 +16,12 @@ class Account {
    * @returns {pbject} The new account Details
    */
   static createAccount(data, req) {
-    const accountDetails = {
-      id: accounts.length + 1,
-      accountNumber: helper.generateAccountNumber(),
-      createdOn: new Date(),
-      owner: req.user.id,
-      type: data.type,
-      status: 'active',
-      balance: parseFloat(data.initialDeposit, 10),
-    };
-
-    accounts.push(accountDetails);
-    return accountDetails;
+    const queryText = `INSERT INTO accounts (owner, accountnumber, createdon, type, status, balance) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
+    const accountNumber = helper.generateAccountNumber();
+    const balance = parseFloat(data.initialDeposit, 10);
+    const values = [req.user.id, accountNumber, moment(new Date()), data.type, 'active', balance];
+    const response = db.query(queryText, values);
+    return response;
   }
 
   /**
@@ -40,14 +35,14 @@ class Account {
     return acctDetails;
   }
 
-  /**
-   * @param  {Number} sliceStart - A number specifying the slicing index.
-   * @method deleteAccount
-   * @description  - Method to delete an account
-   */
-  static deleteAccount(sliceStart) {
-    accounts.slice(sliceStart, 1);
-  }
+  // /**
+  //  * @param  {Number} sliceStart - A number specifying the slicing index.
+  //  * @method deleteAccount
+  //  * @description  - Method to delete an account
+  //  */
+  // static deleteAccount(sliceStart) {
+  //   accounts.slice(sliceStart, 1);
+  // }
 }
 
 export default Account;

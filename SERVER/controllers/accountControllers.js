@@ -14,19 +14,26 @@ class AccountController {
    * @param {object} res - The user Response Object
    * @returns {object} API RESPONSE IN JSON FORMAT
    */
-  static createAccount(req, res) {
-    const newAccount = Account.createAccount(req.body, req);
-    return res.status(201).json({
-      status: res.statusCode,
-      data: {
-        firstName: req.user.firstName,
-        lastName: req.user.lastName,
-        email: req.user.email,
-        accountNumber: newAccount.accountNumber,
-        type: newAccount.type,
-        initialDeposit: newAccount.balance,
-      },
-    });
+  static async createAccount(req, res) {
+    try {
+      const { rows } = await Account.createAccount(req.body, req);
+      return res.status(201).json({
+        status: res.statusCode,
+        data: [{
+          firstName: req.user.firstname,
+          lastName: req.user.lastname,
+          email: req.user.email,
+          accountNumber: rows[0].accountNumber,
+          type: rows[0].type,
+          initialDeposit: rows[0].balance,
+        }],
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.statusCode,
+        error: error.detail,
+      });
+    }
   }
 
   /**
