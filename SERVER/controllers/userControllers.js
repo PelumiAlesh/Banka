@@ -47,31 +47,28 @@ class UserController {
    * @param {object} res - The Response Object
    * @returns {object} User informations
    */
-  static signIn(req, res) {
-    const userInput = { ...req.body };
-    const { userDetails, emailExists } = Exist.emailExist(userInput.email, true);
-    if (!emailExists || !helper.verifyPassword(userInput.password, userDetails.password)) {
+  static async signIn(req, res) {
+    const { email, password } = req.body;
+    const response = await Exist.emailExist(email);
+
+    if (response.rowCount < 1 || !helper.verifyPassword(password, response.rows[0].password)) {
       return res.status(401).json({
         status: res.statusCode,
         error: 'Authentication Failed: Email or Password is incorrect',
       });
     }
-    const token = helper.generateToken({
-      email: userDetails.email,
-      firstName: userDetails.firstName,
-      lastName: userDetails.lastName,
-      id: userDetails.id,
-      type: userDetails.type,
-    });
+    const user = { ...response.rows[0] };
+    const token = helper.generateToken(user);
+
     return res.status(200).json({
-      status: res.statusCode,
-      data: {
+      status: 200,
+      data: [{
         token,
-        id: userDetails.id,
-        firstName: userDetails.firstName,
-        lastName: userDetails.lastName,
-        email: userDetails.email,
-      },
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+      }],
     });
   }
 }

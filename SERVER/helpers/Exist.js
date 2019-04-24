@@ -1,4 +1,4 @@
-import users from '../models/mock_data/users';
+import db from '../models/migrations/db';
 
 class Exist {
   /**
@@ -6,19 +6,10 @@ class Exist {
  * @param {string} email - user email
  * @param {boolean} returnUser -Boolean to confirm if user should be returned or not
  */
-  static emailExist(email, returnUser) {
-    let emailExists = false;
-    let userDetails;
-    users.forEach((user) => {
-      if (user.email === email) {
-        userDetails = user;
-        emailExists = true;
-      }
-    });
-    if (returnUser) {
-      return { userDetails, emailExists };
-    }
-    return emailExists;
+  static emailExist(email) {
+    const queryText = `SELECT * FROM users WHERE email=$1;`;
+    const response = db.query(queryText, [email]);
+    return response;
   }
 }
 
