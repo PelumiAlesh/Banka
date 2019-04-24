@@ -8,9 +8,10 @@
     "build": "npm run clean && babel SERVER --out-dir transpiled",
     "dev": "nodemon --exec babel-node ./SERVER/index.js",
     "start": "node ./transpiled/**.js",
-    "test": "mocha ./SERVER/test/**.js  --require @babel/register --exit",
+    "test": "export TEST_ENV=true && npm run migrations && mocha ./SERVER/test/**.js  --require @babel/register --exit",
     "heroku-postbuild": "npm run build",
-    "coverage": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls",
+    "migrations": "babel-node ./SERVER/models/migrations/dropTables && babel-node ./SERVER/models/migrations/createTables && babel-node ./SERVER/models/migrations/seeds"
   },
   "repository": {
     "type": "git",

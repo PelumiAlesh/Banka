@@ -1,5 +1,5 @@
 import Account from '../models/accounts';
-import accounts from '../models/mock_data/accounts';
+
 
 /**
  * @class AccountController
@@ -23,7 +23,7 @@ class AccountController {
           firstName: req.user.firstname,
           lastName: req.user.lastname,
           email: req.user.email,
-          accountNumber: rows[0].accountNumber,
+          accountNumber: rows[0].accountnumber,
           type: rows[0].type,
           initialDeposit: rows[0].balance,
         }],
@@ -63,32 +63,35 @@ class AccountController {
         error: error.detail,
       });
     }
-    // return res.status(200).json({
-    //   status: res.statusCode,
-    //   data: {
-    //     accountNumber,
-    //     status: req.body.status,
-    //   },
-    // });
   }
 
-  // /**
-  //  * @method deleteAccount
-  //  * @description Deletes the account with the given account Number
-  //  * @param  {object} req - The User Request Object
-  //  * @param  {object} res - The user Response Object
-  //  */
-  // static deleteAccount(req, res) {
-  //   const acctInfo = Account.checkAccount(req.params.accountNumber);
-
-  //   const index = accounts.indexOf(acctInfo) + 1;
-  //   Account.deleteAccount(index);
-
-  //   res.status(200).json({
-  //     status: res.statusCode,
-  //     message: 'Account Successfully deleted',
-  //   });
-  // }
+  /**
+   * @method deleteAccount
+   * @description Deletes the account with the given account Number
+   * @param  {object} req - The User Request Object
+   * @param  {object} res - The user Response Object
+   */
+  static async deleteAccount(req, res) {
+    try {
+      const accountNumber = parseInt(req.params.accountNumber, 10);
+      const response = await Account.deleteAccount(accountNumber);
+      if (response.rowCount < 1) {
+        return res.status(404).json({
+          status: res.statusCode,
+          error: `Account with account number ${accountNumber} does not exist`,
+        });
+      }
+      return res.status(200).json({
+        status: res.statusCode,
+        message: 'Account successfully deleted',
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.statusCode,
+        error: error.detail,
+      });
+    }
+  }
 }
 
 export default AccountController;

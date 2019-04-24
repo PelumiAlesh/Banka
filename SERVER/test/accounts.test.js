@@ -23,7 +23,7 @@ describe('Test for all account Endpoints', () => {
           .post('/api/v1/auth/signin')
           .send(login)
           .end((_logErr, Res) => {
-            const token = `Bearer ${Res.body.data.token}`;
+            const token = `Bearer ${Res.body.data[0].token}`;
             const input = {
               type: 'savings',
               initialDeposit: 2341.4,
@@ -37,12 +37,12 @@ describe('Test for all account Endpoints', () => {
                 res.should.have.status(201);
                 res.body.should.be.a('object');
                 res.body.should.have.property('data');
-                res.body.data.should.be.a('object');
-                res.body.data.should.have.property('accountNumber');
-                res.body.data.should.have.property('firstName');
-                res.body.data.should.have.property('lastName');
-                res.body.data.should.have.property('email');
-                res.body.data.should.have.property('type');
+                res.body.data[0].should.be.a('object');
+                res.body.data[0].should.have.property('accountNumber');
+                res.body.data[0].should.have.property('firstName');
+                res.body.data[0].should.have.property('lastName');
+                res.body.data[0].should.have.property('email');
+                res.body.data[0].should.have.property('type');
                 done();
               });
           });
@@ -58,7 +58,7 @@ describe('Test for all account Endpoints', () => {
           .post('/api/v1/auth/signin')
           .send(login)
           .end((_logErr, Res) => {
-            const token = `Bearer ${Res.body.data.token}`;
+            const token = `Bearer ${Res.body.data[0].token}`;
             const input = {
               initialDeposit: 2341.4,
             };
@@ -113,7 +113,7 @@ describe('Test for all account Endpoints', () => {
       // return 200 and change account status successfully
       it('should change account status succesfully', (done) => {
         const login = {
-          email: 'ayo@gmail.com',
+          email: 'luk@gmail.com',
           password: 'password',
         };
         const status = {
@@ -124,18 +124,18 @@ describe('Test for all account Endpoints', () => {
           .post('/api/v1/auth/signin')
           .send(login)
           .end((_logErr, logRes) => {
-            const token = `Bearer ${logRes.body.data.token}`;
+            const token = `Bearer ${logRes.body.data[0].token}`;
 
             chai
               .request(app)
-              .patch(`${endpointPath}/1234567890`)
+              .patch(`${endpointPath}/1234567898`)
               .set('Authorization', token)
               .send(status)
               .end((_err, res) => {
                 res.should.have.status(200);
                 res.body.should.have.property('data');
-                res.body.data.should.have.property('accountNumber');
-                res.body.data.should.have.property('status').eql('dormant');
+                res.body.data[0].should.have.property('accountNumber');
+                res.body.data[0].should.have.property('status').eql('dormant');
                 done();
               });
           });
@@ -168,15 +168,27 @@ describe('Test for all account Endpoints', () => {
       });
       // return 400 if account was not found
       it('should return error 400 if the account number could not be found', (done) => {
+        const login = {
+          email: 'luk@gmail.com',
+          password: 'password',
+        };
         chai
           .request(app)
-          .patch(`${endpointPath}/12345678`)
-          .send({ status: 'active' })
-          .end((_err, res) => {
-            res.should.have.status(400);
-            res.body.should.have.be.a('object');
-            res.body.should.have.property('error');
-            done();
+          .post('/api/v1/auth/signin')
+          .send(login)
+          .end((_logErr, logRes) => {
+            const token = `Bearer ${logRes.body.data[0].token}`;
+            chai
+              .request(app)
+              .patch(`${endpointPath}/12345678`)
+              .set('Authorization', token)
+              .send({ status: 'active' })
+              .end((_err, res) => {
+                res.should.have.status(400);
+                res.body.should.have.be.a('object');
+                res.body.should.have.property('error');
+                done();
+              });
           });
       });
     });
@@ -187,7 +199,7 @@ describe('Test for all account Endpoints', () => {
       // return 200 and delete account succesfully
       it('should delete account successfully', (done) => {
         const login = {
-          email: 'ayo@gmail.com',
+          email: 'luk@gmail.com',
           password: 'password',
         };
         chai
@@ -195,11 +207,10 @@ describe('Test for all account Endpoints', () => {
           .post('/api/v1/auth/signin')
           .send(login)
           .end((_logErr, logRes) => {
-            const token = `Bearer ${logRes.body.data.token}`;
-            const accountNumber = 1234567890;
+            const token = `Bearer ${logRes.body.data[0].token}`;
             chai
               .request(app)
-              .delete(`${endpointPath}/${accountNumber}`)
+              .delete(`${endpointPath}/1234567898`)
               .set('Authorization', token)
               .end((_err, res) => {
                 res.should.have.status(200);
@@ -212,7 +223,7 @@ describe('Test for all account Endpoints', () => {
       // return 404 if user tries to delete account that doesnt exist
       it('should return 404 if account does not exist', (done) => {
         const login = {
-          email: 'ayo@gmail.com',
+          email: 'luk@gmail.com',
           password: 'password',
         };
         chai
@@ -220,8 +231,8 @@ describe('Test for all account Endpoints', () => {
           .post('/api/v1/auth/signin')
           .send(login)
           .end((_logErr, logRes) => {
-            const token = `Bearer ${logRes.body.data.token}`;
-            const accountNumber = 1987634567890;
+            const token = `Bearer ${logRes.body.data[0].token}`;
+            const accountNumber = 1234567898;
             chai
               .request(app)
               .delete(`${endpointPath}/${accountNumber}`)

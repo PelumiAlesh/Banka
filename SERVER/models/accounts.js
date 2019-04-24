@@ -42,14 +42,17 @@ class Account {
     return response;
   }
 
-  // /**
-  //  * @param  {Number} sliceStart - A number specifying the slicing index.
-  //  * @method deleteAccount
-  //  * @description  - Method to delete an account
-  //  */
-  // static deleteAccount(sliceStart) {
-  //   accounts.slice(sliceStart, 1);
-  // }
+  /**
+   * @param  {Number} sliceStart - A number specifying the slicing index.
+   * @method deleteAccount
+   * @description  - Method to delete an account
+   * @returns {object} Account details
+   */
+  static deleteAccount(accountNumber) {
+    const query = 'DELETE FROM accounts WHERE accountnumber = $1';
+    const response = db.query(query, [accountNumber]);
+    return response;
+  }
 }
 
 export default Account;
