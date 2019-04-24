@@ -84,8 +84,8 @@ const validateUser = {
   // --------------- Change Account status ------------
   changeAccountStatus: [
     param('accountNumber').custom(async (acctNo) => {
-      const isFound = await Account.checkAccount(acctNo);
-      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
+      const response = await Account.checkAccount(acctNo);
+      if (response.rowCount < 1) throw new Error(`No account with the account Number "${acctNo}" was found`);
     }),
     check('status').not().isEmpty().withMessage('Please input status'),
     oneOf([
