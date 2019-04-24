@@ -1,4 +1,4 @@
-import users from './mock_data/users';
+import db from './migrations/db';
 import helper from '../helpers/helper';
 
 /**
@@ -11,17 +11,16 @@ class User {
    * @method create()
    * @returns {object} New User informations
    */
-  static create(data) {
-    const newUser = {
-      id: users.length + 1,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      password: helper.hashPassword(data.password),
-      type: 'client',
-    };
-    users.push(newUser);
-    return newUser;
+  static async signUp(data) {
+    const queryText = `INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING *;`;
+    const {
+      firstName, lastName, email, password,
+    } = data;
+
+    const hashedPassword = helper.hashPassword(password);
+    const values = [firstName, lastName, email, hashedPassword];
+    const response = await db.query(queryText, values);
+    return response;
   }
 }
 
