@@ -15,12 +15,18 @@ class Account {
    * @param  {object} req - The payload from verfiy token
    * @returns {pbject} The new account Details
    */
-  static createAccount(data, req) {
+  static async createAccount(data, req) {
     const queryText = `INSERT INTO accounts (owner, accountnumber, createdon, type, status, balance) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
     const accountNumber = helper.generateAccountNumber();
     const balance = parseFloat(data.initialDeposit, 10);
     const values = [req.user.id, accountNumber, moment(new Date()), data.type, 'active', balance];
-    const response = db.query(queryText, values);
+    const response = await db.query(queryText, values);
+    return response;
+  }
+
+  static async updateStatus(accountNumber, status) {
+    const queryText = `UPDATE accounts SET status=$1 WHERE accountnumber=$2 RETURNING *;`;
+    const response = await db.query(queryText, [status, accountNumber]);
     return response;
   }
 
@@ -31,8 +37,9 @@ class Account {
    * @returns {object} Account details if found
    */
   static checkAccount(acctNo) {
-    const acctDetails = accounts.find((account => account.accountNumber === parseInt(acctNo, 10)));
-    return acctDetails;
+    const queryText = `SELECT * FROM accounts WHERE accountnumber=$1;`;
+    const response = db.query(queryText, [acctNo]);
+    return response;
   }
 
   // /**

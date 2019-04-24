@@ -43,39 +43,52 @@ class AccountController {
    * @param  {object} res - The user Response Object
    * @returns {object} API RESPONSE IN JSON FORMAT
    */
-  static changeStatus(req, res) {
-    const { accountNumber } = req.params;
-    const { status } = req.body;
+  static async changeStatus(req, res) {
+    try {
+      const { accountNumber } = req.params;
+      const { status } = req.body;
 
-    const acct = Account.checkAccount(req.params.accountNumber);
-
-    acct.status = status;
-    return res.status(200).json({
-      status: res.statusCode,
-      data: {
-        accountNumber,
-        status: req.body.status,
-      },
-    });
+      const response = await Account.updateStatus(accountNumber, status);
+      const acctDetails = response.rows[0];
+      return res.status(200).json({
+        status: res.statusCode,
+        data: [{
+          accountNumber: acctDetails.accountnumber,
+          status: acctDetails.status,
+        }],
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.statusCode,
+        error: error.detail,
+      });
+    }
+    // return res.status(200).json({
+    //   status: res.statusCode,
+    //   data: {
+    //     accountNumber,
+    //     status: req.body.status,
+    //   },
+    // });
   }
 
-  /**
-   * @method deleteAccount
-   * @description Deletes the account with the given account Number
-   * @param  {object} req - The User Request Object
-   * @param  {object} res - The user Response Object
-   */
-  static deleteAccount(req, res) {
-    const acctInfo = Account.checkAccount(req.params.accountNumber);
+  // /**
+  //  * @method deleteAccount
+  //  * @description Deletes the account with the given account Number
+  //  * @param  {object} req - The User Request Object
+  //  * @param  {object} res - The user Response Object
+  //  */
+  // static deleteAccount(req, res) {
+  //   const acctInfo = Account.checkAccount(req.params.accountNumber);
 
-    const index = accounts.indexOf(acctInfo) + 1;
-    Account.deleteAccount(index);
+  //   const index = accounts.indexOf(acctInfo) + 1;
+  //   Account.deleteAccount(index);
 
-    res.status(200).json({
-      status: res.statusCode,
-      message: 'Account Successfully deleted',
-    });
-  }
+  //   res.status(200).json({
+  //     status: res.statusCode,
+  //     message: 'Account Successfully deleted',
+  //   });
+  // }
 }
 
 export default AccountController;

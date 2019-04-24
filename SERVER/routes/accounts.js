@@ -14,5 +14,5 @@ router.post('/', InputValidator.creatAccount, Authenticate.verifyClient, Account
 router.patch('/:accountNumber', InputValidator.changeAccountStatus, Authenticate.verifyStaff, AccountController.changeStatus);
 
 // Delete an Account
-router.delete('/:accountNumber', InputValidator.deleteAccount, Authenticate.verifyStaff, AccountController.deleteAccount);
+// router.delete('/:accountNumber', InputValidator.deleteAccount, Authenticate.verifyStaff, AccountController.deleteAccount);
 export default router;
