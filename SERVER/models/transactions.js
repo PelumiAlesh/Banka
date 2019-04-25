@@ -1,5 +1,6 @@
-import transactions from './mock_data/transactions';
+import moment from 'moment';
 import Account from './accounts';
+import db from './migrations/db';
 
 /**
  * @class Transactions
@@ -15,26 +16,43 @@ class Transactions {
    * @param {string} type - Credit or Debit
    * @returns {object} Transaction details
    */
-  static transact(req, res, type) {
-    const acctDetail = Account.checkAccount(req.params.accountNumber);
-    const transaction = {
-      id: transactions.length + 1,
-      createdOn: new Date(),
-      type,
-      accountNumber: parseInt(req.params.accountNumber, 10),
-      cashier: req.user.id,
-      amount: parseFloat(req.body.amount),
-      oldBalance: acctDetail.balance,
-      newBalance: type === 'credit' ? parseFloat((acctDetail
-        .balance + parseFloat(req.body.amount))
-        .toFixed(2)) : parseFloat((acctDetail
-        .balance - parseFloat(req.body.amount)).toFixed(2)),
-    };
+  static async transact(req, res, type) {
+    const queryText = 'UPDATE accounts SET balance = $1 WHERE accountnumber = $2 RETURNING *;';
+    const { accountNumber } = req.params;
+    const accountDetails = await Account.checkAccount(accountNumber);
+    const oldBalance = Number(accountDetails.rows[0].balance);
+    const amount = Number(req.body.amount);
 
-    acctDetail.balance = transaction.newBalance;
-    transactions.push(transaction);
+    const newBalance = type === 'credit' ? await oldBalance + amount : await oldBalance - amount;
+    await db.query(queryText, [newBalance, accountNumber]);
 
-    return transaction;
+    const insertText = `
+     INSERT INTO transactions (createdon, type, accountnumber, cashier, amount, oldbalance, newbalance) 
+          VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
+          `;
+    const values = [moment(new Date()), type, accountNumber, req.user.id, amount, oldBalance, newBalance];
+    const response = await db.query(insertText, values);
+
+    return response;
+
+    // const transaction = {
+    //   id: transactions.length + 1,
+    //   createdOn: new Date(),
+    //   type,
+    //   accountNumber: parseInt(req.params.accountNumber, 10),
+    //   cashier: req.user.id,
+    //   amount: parseFloat(req.body.amount),
+    //   oldBalance: acctDetail.balance,
+    //   newBalance: type === 'credit' ? parseFloat((acctDetail
+    //     .balance + parseFloat(req.body.amount))
+    //     .toFixed(2)) : parseFloat((acctDetail
+    //     .balance - parseFloat(req.body.amount)).toFixed(2)),
+    // };
+
+    // acctDetail.balance = transaction.newBalance;
+    // transactions.push(transaction);
+
+    // return transaction;
   }
 }
 

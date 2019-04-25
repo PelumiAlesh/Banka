@@ -131,6 +131,9 @@ const validateUser = {
   // ------------------- Validate Amount --------------
   validateAmount: [
     check('amount').not().isEmpty().withMessage('Amount can not left Empty!.'),
+    check('amount').custom(async (value) => {
+      if (Number(value) < 1) throw new Error('Please specify a valid amount');
+    }),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];

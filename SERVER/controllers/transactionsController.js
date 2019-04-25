@@ -8,20 +8,28 @@ class TransactionController {
   * @param {object} res - The Response Object
   * @returns {object} API Response
   */
-  static credit(req, res) {
-    const transactionDetails = Transactions.transact(req, res, 'credit');
-
-    return res.status(201).json({
-      status: res.stausCode,
-      data: {
-        transactionId: transactionDetails.id,
-        accountNumber: transactionDetails.accountNumber,
-        amount: transactionDetails.amount,
-        cashier: transactionDetails.cashier,
-        transactionType: transactionDetails.type,
-        accountBalance: transactionDetails.newBalance,
-      },
-    });
+  static async credit(req, res) {
+    try {
+      const response = await Transactions.transact(req, res, 'credit');
+      const transactionDetails = response.rows[0];
+      return res.status(201).json({
+        status: res.stausCode,
+        data: [{
+          transactionId: transactionDetails.id,
+          accountNumber: transactionDetails.accountnumber,
+          amount: transactionDetails.amount,
+          cashier: transactionDetails.cashier,
+          transactionType: transactionDetails.type,
+          oldBalance: transactionDetails.oldBalance,
+          accountBalance: transactionDetails.newbalance,
+        }],
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.stausCode,
+        error: error.detail,
+      });
+    }
   }
 
   /**
@@ -31,20 +39,28 @@ class TransactionController {
   * @param {object} res - The Response Object
   * @returns {object} API Response
   */
-  static debit(req, res) {
-    const transactionDetails = Transactions.transact(req, res, 'debit');
-
-    return res.status(201).json({
-      status: res.stausCode,
-      data: {
-        transactionId: transactionDetails.id,
-        accountNumber: transactionDetails.accountNumber,
-        amount: transactionDetails.amount,
-        cashier: transactionDetails.cashier,
-        transactionType: transactionDetails.type,
-        accountBalance: transactionDetails.newBalance,
-      },
-    });
+  static async debit(req, res) {
+    try {
+      const response = await Transactions.transact(req, res, 'debit');
+      const transactionDetails = response.rows[0];
+      return res.status(201).json({
+        status: res.stausCode,
+        data: [{
+          transactionId: transactionDetails.id,
+          accountNumber: transactionDetails.accountnumber,
+          amount: transactionDetails.amount,
+          cashier: transactionDetails.cashier,
+          transactionType: transactionDetails.type,
+          oldBalance: transactionDetails.oldBalance,
+          accountBalance: transactionDetails.newbalance,
+        }],
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.stausCode,
+        error: error.detail,
+      });
+    }
   }
 }
 
