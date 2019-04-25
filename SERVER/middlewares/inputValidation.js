@@ -131,6 +131,9 @@ const validateUser = {
   // ------------------- Validate Amount --------------
   validateAmount: [
     check('amount').not().isEmpty().withMessage('Amount can not left Empty!.'),
+    check('amount').custom(async (value) => {
+      if (Number(value) < 1) throw new Error('Please specify a valid amount');
+    }),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];
@@ -149,7 +152,7 @@ const validateUser = {
   validateAccountURL: [
     param('accountNumber').custom(async (acctNo) => {
       const isFound = await Account.checkAccount(acctNo);
-      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
+      if (isFound.rows < 1) throw new Error(`No account with the account Number "${acctNo}" was found`);
     }),
     (req, res, next) => {
       const errors = validationResult(req);
