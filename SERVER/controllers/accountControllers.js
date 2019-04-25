@@ -151,7 +151,7 @@ class AccountController {
         });
       }
       const resRows = response.rows[0];
-      const query = `SELECT email, id FROM users WHERE id = $1;`;
+      const query = 'SELECT email, id FROM users WHERE id = $1;';
       const { id } = resRows;
       const { rows } = await db.query(query, [id]);
       if (resRows.owner !== req.user.id) {
@@ -181,6 +181,26 @@ class AccountController {
 
   static async getAllAccount(req, res) {
     try {
+      if (req.query) {
+        const { status } = req.query;
+        if (!status) {
+          return res.status(401).json({
+            status: res.statusCode,
+            error: 'query does not exist, use "status" ',
+          });
+        }
+        if (status !== 'dormant' && status !== 'active' && status !== 'draft') {
+          return res.status(401).json({
+            status: res.statusCode,
+            error: 'status can only be "dormant" or "active" ',
+          });
+        }
+        const { rows } = await Account.getByStatus(req.query.status);
+        return res.status(200).json({
+          status: res.statusCode,
+          data: rows,
+        });
+      }
       const { rows } = await Account.getAllAccount();
       return res.status(200).json({
         status: res.statusCode,
