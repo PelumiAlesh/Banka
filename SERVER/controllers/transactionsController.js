@@ -66,8 +66,8 @@ class TransactionController {
   static async getTransactions(req, res) {
     try {
       const response = await Transactions.getTransaction(req);
-      const acctDetails = response.rows[0];
-      
+      const acctDetails = await response.rows[0];
+
       if (!acctDetails) {
         return res.status(404).json({
           status: res.statusCode,
@@ -75,7 +75,7 @@ class TransactionController {
         });
       }
       return res.status(200).json({
-        status: res.stausCode,
+        status: res.statusCode,
         data: acctDetails,
       });
     } catch (error) {
