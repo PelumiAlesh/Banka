@@ -117,8 +117,8 @@ class AccountController {
   /**
    * @method getAllAccountsOwnedByUser
    * @description returns the JSON response
-   * @param  {object} req
-   * @param  {object} res
+   * @param  {object} req - The Request object
+   * @param  {object} res - the Response body
    */
   static async getAllAccountsOwnedByUser(req, res) {
     try {
@@ -135,6 +135,12 @@ class AccountController {
     }
   }
 
+  /**
+   * @method getAccount
+   * @description get a account with the the given accountNumber
+   * @param  {object} req - The request body
+   * @param  {object} res - The response body
+   */
   static async getAccount(req, res) {
     try {
       const response = await Account.getAccount(req.params.accountNumber);
@@ -169,6 +175,21 @@ class AccountController {
       return res.status(400).json({
         status: res.statusCode,
         error,
+      });
+    }
+  }
+
+  static async getAllAccount(req, res) {
+    try {
+      const { rows } = await Account.getAllAccount();
+      return res.status(200).json({
+        status: res.statusCode,
+        data: rows,
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.statusCode,
+        error: error.message,
       });
     }
   }
