@@ -92,6 +92,21 @@ class AccountController {
       });
     }
   }
+
+  static async getTransactionsHistory(req, res) {
+    try {
+      const response = await Account.getTransactionsHistory(req.params.accountNumber);
+      return res.status(200).json({
+        status: res.statusCode,
+        data: response.rows,
+      });
+    } catch (error) {
+      return res.status(404).json({
+        status: res.statusCode,
+        error: 'Account Number does not exist or history is empty',
+      });
+    }
+  }
 }
 
 export default AccountController;

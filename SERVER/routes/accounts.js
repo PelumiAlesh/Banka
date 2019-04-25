@@ -15,4 +15,6 @@ router.patch('/:accountNumber', InputValidator.changeAccountStatus, Authenticate
 
 // Delete an Account
 router.delete('/:accountNumber', InputValidator.deleteAccount, Authenticate.verifyStaff, AccountController.deleteAccount);
+
+router.get('/:accountNumber/transactions', AccountController.getTransactionsHistory);
 export default router;
