@@ -43,14 +43,26 @@ class Account {
   }
 
   /**
-   * @param  {Number} sliceStart - A number specifying the slicing index.
+   * @param  {Number} accountNumber - The account number
    * @method deleteAccount
    * @description  - Method to delete an account
    * @returns {object} Account details
    */
   static deleteAccount(accountNumber) {
-    const query = 'DELETE FROM accounts WHERE accountnumber = $1';
-    const response = db.query(query, [accountNumber]);
+    const queryText = 'DELETE FROM accounts WHERE accountnumber = $1';
+    const response = db.query(queryText, [accountNumber]);
+    return response;
+  }
+
+  /**
+   * @param  {Number} accountNumber - The account number
+   * @method getTransactionsHistory
+   * @description  - Method to get account transaction history
+   * @returns {object} Account details
+   */
+  static getTransactionsHistory(accountNumber) {
+    const queryText = `SELECT * FROM transactions WHERE accountnumber = $1;`;
+    const response = db.query(queryText, [accountNumber]);
     return response;
   }
 }
