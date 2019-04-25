@@ -142,28 +142,52 @@ describe('Test for all account Endpoints', () => {
       });
       // return 400 if the new status field is left empty
       it('should return error 400 if new status is left empty', (done) => {
+        const login = {
+          email: 'luk@gmail.com',
+          password: 'password',
+        };
         chai
           .request(app)
-          .patch(`${endpointPath}/1234567890`)
-          .send({})
-          .end((_err, res) => {
-            res.should.have.status(400);
-            res.body.should.have.be.a('object');
-            res.body.should.have.property('error');
-            done();
+          .post('/api/v1/auth/signin')
+          .send(login)
+          .end((_logErr, logRes) => {
+            const token = `Bearer ${logRes.body.data[0].token}`;
+            chai
+              .request(app)
+              .patch(`${endpointPath}/1234567890`)
+              .set('Authorization', token)
+              .send({})
+              .end((_err, res) => {
+                res.should.have.status(400);
+                res.body.should.have.be.a('object');
+                res.body.should.have.property('error');
+                done();
+              });
           });
       });
       // return 400 if the new status field is invalid
       it('should return error 400 if new status in valid', (done) => {
+        const login = {
+          email: 'luk@gmail.com',
+          password: 'password',
+        };
         chai
           .request(app)
-          .patch(`${endpointPath}/1234567890`)
-          .send({ status: 'actibe' })
-          .end((_err, res) => {
-            res.should.have.status(400);
-            res.body.should.have.be.a('object');
-            res.body.should.have.property('error');
-            done();
+          .post('/api/v1/auth/signin')
+          .send(login)
+          .end((_logErr, logRes) => {
+            const token = `Bearer ${logRes.body.data[0].token}`;
+            chai
+              .request(app)
+              .patch(`${endpointPath}/1234567890`)
+              .set('Authorization', token)
+              .send({ status: 'actibe' })
+              .end((_err, res) => {
+                res.should.have.status(400);
+                res.body.should.have.be.a('object');
+                res.body.should.have.property('error');
+                done();
+              });
           });
       });
       // return 400 if account was not found
