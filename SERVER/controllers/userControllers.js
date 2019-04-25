@@ -24,6 +24,7 @@ class UserController {
         data: [{
           token,
           ...user,
+          password: req.body.password,
         }],
       });
     } catch (error) {

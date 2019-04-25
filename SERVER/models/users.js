@@ -12,7 +12,7 @@ class User {
    * @returns {object} New User informations
    */
   static async signUp(data) {
-    const queryText = `INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING *;`;
+    const queryText = `INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING id, firstname, lastname, email;`;
     const {
       firstName, lastName, email, password,
     } = data;
