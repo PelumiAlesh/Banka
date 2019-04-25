@@ -113,6 +113,21 @@ class AccountController {
       });
     }
   }
+
+  static async getAllAccountsOwnedByUser(req, res) {
+    try {
+      const { rows } = await Account.getAllAccountsOwnedByUser(req, res);
+      return res.status(200).json({
+        status: res.statusCode,
+        accounts: rows,
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.statusCode,
+        error,
+      });
+    }
+  }
 }
 
 export default AccountController;

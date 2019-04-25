@@ -65,6 +65,22 @@ class Account {
     const response = db.query(queryText, [accountNumber]);
     return response;
   }
+
+  static async getAllAccountsOwnedByUser(req, res) {
+    const userQuery = `SELECT id FROM users WHERE email = $1;`;
+    const { email } = req.params;
+    const { rows } = await db.query(userQuery, [email]);
+    if (!rows[0]) {
+      return res.status(404).json({
+        status: res.statusCode,
+        error: `Email does not exist, check the url email again`,
+      });
+    }
+    const { id } = rows[0];
+    const queryText = `SELECT * FROM accounts WHERE owner = $1;`;
+    const response = await db.query(queryText, [id]);
+    return response;
+  }
 }
 
 export default Account;

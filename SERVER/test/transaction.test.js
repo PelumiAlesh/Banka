@@ -159,7 +159,6 @@ describe('Transactions Test', () => {
             .end((err, res) => {
               res.should.have.status(404);
               res.body.should.be.a('object');
-              // res.body.data[0].should.have.property('status');
               done();
             });
         });
