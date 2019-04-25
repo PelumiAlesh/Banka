@@ -99,6 +99,19 @@ class Account {
     const response = db.query(queryText, [accountNumber]);
     return response;
   }
+
+  /**
+   * @method getAllAccount
+   * @returns {object} API JSON Response
+   */
+  static async getAllAccount() {
+    const queryText = `SELECT accounts.createdon, accounts.accountnumber,
+    users.email AS owneremail, accounts.type, accounts.status, accounts.balance
+    FROM accounts
+    JOIN users ON accounts."owner" = users.id`;
+    const response = db.query(queryText);
+    return response;
+  }
 }
 
 export default Account;

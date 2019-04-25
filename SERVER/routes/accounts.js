@@ -9,23 +9,30 @@ router.use(bodyParser.json());
 
 // Create new account
 router.post('/',
-  InputValidator.creatAccount,
   Authenticate.verifyClient,
+  InputValidator.creatAccount,
   AccountController.createAccount);
+
+// Get all accounts
+router.get('/',
+  Authenticate.verifyStaff,
+  AccountController.getAllAccount);
 
 // Activate or Deactivate Account
 router.patch('/:accountNumber',
+  Authenticate.verifyStaff,
   InputValidator.changeAccountStatus,
-  Authenticate.verifyStaff, AccountController.changeStatus);
+  AccountController.changeStatus);
 
 // Delete an Account
 router.delete('/:accountNumber',
-  InputValidator.deleteAccount,
   Authenticate.verifyStaff,
+  InputValidator.deleteAccount,
   AccountController.deleteAccount);
 
 // Get account transactions
 router.get('/:accountNumber/transactions',
+  Authenticate.verifyClient,
   InputValidator.validateAccountURL,
   AccountController.getTransactionsHistory);
 
@@ -34,4 +41,5 @@ router.get('/:accountNumber',
   Authenticate.verifyClient,
   InputValidator.validateAccountURL,
   AccountController.getAccount);
+
 export default router;
