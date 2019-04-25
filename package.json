@@ -11,7 +11,8 @@
     "test": "export TEST_ENV=true && npm run migrations && mocha ./SERVER/test/**.js  --require @babel/register --exit",
     "heroku-postbuild": "npm run build",
     "coverage": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls",
-    "migrations": "babel-node ./SERVER/models/migrations/dropTables && babel-node ./SERVER/models/migrations/createTables && babel-node ./SERVER/models/migrations/seeds"
+    "migrations": "babel-node ./SERVER/models/migrations/dropTables && babel-node ./SERVER/models/migrations/createTables && babel-node ./SERVER/models/migrations/seeds",
+    "x": "nyc npm test"
   },
   "repository": {
     "type": "git",

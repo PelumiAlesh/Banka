@@ -65,8 +65,8 @@ class UserController {
       data: [{
         token,
         id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
+        firstName: user.firstname,
+        lastName: user.lastname,
         email: user.email,
       }],
     });

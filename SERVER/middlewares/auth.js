@@ -22,7 +22,7 @@ class AuthenticateUser {
     } catch (error) {
       return res.status(401).json({
         status: res.statusCode,
-        error: 'Authentication Failed: Cant create account.',
+        error: 'Authentication Failed',
       });
     }
   }
