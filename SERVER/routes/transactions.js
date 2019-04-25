@@ -19,4 +19,8 @@ router.post('/:accountNumber/debit',
   inputValidator.validateAmount,
   transactionController.debit);
 
+router.get('/:id',
+  Authenticate.verifyClient,
+  transactionController.getTransactions);
+
 export default router;
