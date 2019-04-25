@@ -66,6 +66,13 @@ class Account {
     return response;
   }
 
+  /**
+   * @method getAllAccountsOwnedByUser
+   * @description get all the accounts owned by a user
+   * @param  {object} req -  The Request body
+   * @param  {object} res - The Response body
+   * @returns {object} API JSON response
+   */
   static async getAllAccountsOwnedByUser(req, res) {
     const userQuery = `SELECT id FROM users WHERE email = $1;`;
     const { email } = req.params;
@@ -79,6 +86,17 @@ class Account {
     const { id } = rows[0];
     const queryText = `SELECT * FROM accounts WHERE owner = $1;`;
     const response = await db.query(queryText, [id]);
+    return response;
+  }
+
+  /**
+   * @method getAccount
+   * @param  {number} accountNumber - Account Number to be searched
+   * @returns {object} API JSON Response
+   */
+  static async getAccount(accountNumber) {
+    const queryText = `SELECT * FROM accounts WHERE accountnumber = $1;`;
+    const response = db.query(queryText, [accountNumber]);
     return response;
   }
 }

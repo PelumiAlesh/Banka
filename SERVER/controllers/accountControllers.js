@@ -1,5 +1,5 @@
 import Account from '../models/accounts';
-
+import db from '../models/migrations/db';
 
 /**
  * @class AccountController
@@ -114,12 +114,56 @@ class AccountController {
     }
   }
 
+  /**
+   * @method getAllAccountsOwnedByUser
+   * @description returns the JSON response
+   * @param  {object} req
+   * @param  {object} res
+   */
   static async getAllAccountsOwnedByUser(req, res) {
     try {
       const { rows } = await Account.getAllAccountsOwnedByUser(req, res);
       return res.status(200).json({
         status: res.statusCode,
         accounts: rows,
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.statusCode,
+        error,
+      });
+    }
+  }
+
+  static async getAccount(req, res) {
+    try {
+      const response = await Account.getAccount(req.params.accountNumber);
+      if (response.rowCount < 1) {
+        return res.status(404).json({
+          status: res.statusCode,
+          error: 'Account number does not exist, please check and try again',
+        });
+      }
+      const resRows = response.rows[0];
+      const query = `SELECT email, id FROM users WHERE id = $1;`;
+      const { id } = resRows;
+      const { rows } = await db.query(query, [id]);
+      if (resRows.owner !== req.user.id) {
+        return res.status(403).json({
+          status: res.statusCode,
+          error: 'You are not authorized to view this account\'s details',
+        });
+      }
+      return res.status(200).json({
+        status: res.statusCode,
+        data: [{
+          createdOn: resRows.createdon,
+          accountNumber: resRows.accountnumber,
+          ownerEmail: rows[0].email,
+          type: resRows.type,
+          status: resRows.status,
+          balance: resRows.balance,
+        }],
       });
     } catch (error) {
       return res.status(400).json({

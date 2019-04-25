@@ -28,4 +28,10 @@ router.delete('/:accountNumber',
 router.get('/:accountNumber/transactions',
   InputValidator.validateAccountURL,
   AccountController.getTransactionsHistory);
+
+// Get account details
+router.get('/:accountNumber',
+  Authenticate.verifyClient,
+  InputValidator.validateAccountURL,
+  AccountController.getAccount);
 export default router;
