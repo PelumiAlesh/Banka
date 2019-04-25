@@ -112,6 +112,23 @@ class Account {
     const response = db.query(queryText);
     return response;
   }
+
+  /**
+  * @method getByStatus
+  * @description Returns all accounts based on the given status
+  * @param {string} status - a string
+  * @returns {object} the account details
+  */
+  static getByStatus(status) {
+    const query = `
+      SELECT accounts.createdon, accounts.accountNumber::FLOAT,
+      users.email AS owneremail, accounts.type, accounts.status, accounts.balance::FLOAT
+      FROM accounts
+      JOIN users ON accounts.owner = users.id
+      WHERE accounts.status = $1`;
+    const response = db.query(query, [status]);
+    return response;
+  }
 }
 
 export default Account;
