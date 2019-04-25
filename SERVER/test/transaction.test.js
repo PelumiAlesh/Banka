@@ -52,7 +52,7 @@ describe('Transactions Test', () => {
         .post('/api/v1/auth/signin')
         .send(login)
         .end((logErr, logRes) => {
-          const token = `Bearer ${logRes.body.data.token}`;
+          const token = `Bearer ${logRes.body.data[0].token}`;
           chai
             .request(app)
             .post(`${endpointPath}1234565434/credit`)
@@ -73,10 +73,10 @@ describe('Transactions Test', () => {
         .post('/api/v1/auth/signin')
         .send(login)
         .end((logErr, logRes) => {
-          const token = `Bearer ${logRes.body.data.token}`;
+          const token = `Bearer ${logRes.body.data[0].token}`;
           chai
             .request(app)
-            .post(`${endpointPath}1234565434/credit`)
+            .post(`${endpointPath}123456434/credit`)
             .set('Authorization', token)
             .send({})
             .end((err, res) => {
@@ -97,7 +97,7 @@ describe('Transactions Test', () => {
         .post('/api/v1/auth/signin')
         .send(login)
         .end((logErr, logRes) => {
-          const token = `Bearer ${logRes.body.data.token}`;
+          const token = `Bearer ${logRes.body.data[0].token}`;
           chai
             .request(app)
             .post(`${endpointPath}1234565434/debit`)
@@ -107,11 +107,10 @@ describe('Transactions Test', () => {
               res.should.have.status(201);
               res.should.be.a('object');
               res.body.should.have.a.property('data');
-              res.body.data.should.be.a('object');
-              res.body.data.should.have.property('amount');
-              res.body.data.should.have.property('transactionId');
-              res.body.data.should.have.property('transactionType');
-              res.body.data.should.have.property('transactionType');
+              res.body.data[0].should.be.a('object');
+              res.body.data[0].should.have.property('amount');
+              res.body.data[0].should.have.property('transactionId');
+              res.body.data[0].should.have.property('transactionType');
               done();
             });
         });
@@ -123,7 +122,7 @@ describe('Transactions Test', () => {
         .post('/api/v1/auth/signin')
         .send(login)
         .end((logErr, logRes) => {
-          const token = `Bearer ${logRes.body.data.token}`;
+          const token = `Bearer ${logRes.body.data[0].token}`;
           chai
             .request(app)
             .post(`${endpointPath}1234565434/debit`)

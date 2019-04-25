@@ -34,25 +34,6 @@ class Transactions {
     const response = await db.query(insertText, values);
 
     return response;
-
-    // const transaction = {
-    //   id: transactions.length + 1,
-    //   createdOn: new Date(),
-    //   type,
-    //   accountNumber: parseInt(req.params.accountNumber, 10),
-    //   cashier: req.user.id,
-    //   amount: parseFloat(req.body.amount),
-    //   oldBalance: acctDetail.balance,
-    //   newBalance: type === 'credit' ? parseFloat((acctDetail
-    //     .balance + parseFloat(req.body.amount))
-    //     .toFixed(2)) : parseFloat((acctDetail
-    //     .balance - parseFloat(req.body.amount)).toFixed(2)),
-    // };
-
-    // acctDetail.balance = transaction.newBalance;
-    // transactions.push(transaction);
-
-    // return transaction;
   }
 }
 

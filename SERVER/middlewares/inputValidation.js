@@ -152,7 +152,7 @@ const validateUser = {
   validateAccountURL: [
     param('accountNumber').custom(async (acctNo) => {
       const isFound = await Account.checkAccount(acctNo);
-      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
+      if (isFound.rows < 1) throw new Error(`No account with the account Number "${acctNo}" was found`);
     }),
     (req, res, next) => {
       const errors = validationResult(req);
