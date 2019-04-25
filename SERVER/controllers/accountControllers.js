@@ -181,8 +181,14 @@ class AccountController {
 
   static async getAllAccount(req, res) {
     try {
-      if (req.query.status) {
+      if (req.query) {
         const { status } = req.query;
+        if (!status) {
+          return res.status(401).json({
+            status: res.statusCode,
+            error: 'query does not exist, use "status" ',
+          });
+        }
         if (status !== 'dormant' && status !== 'active' && status !== 'draft') {
           return res.status(401).json({
             status: res.statusCode,
