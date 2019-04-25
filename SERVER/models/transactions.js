@@ -35,6 +35,24 @@ class Transactions {
 
     return response;
   }
+
+  /**
+  * @method getOne
+  * @description Fetches a specific transaction
+  * @param {object} req - The request object
+  * @returns {object} Response
+  */
+  static async getTransaction(req) {
+    const queryText = `
+    SELECT transactions.id AS transactionsID, transactions.createdon AS createdOn, transactions.type AS type, transactions.accountnumber AS accountNumber, amount, oldbalance, newbalance
+    FROM transactions
+    JOIN accounts ON transactions.accountnumber = accounts.accountnumber
+    WHERE transactions.id = $1 AND accounts.owner = $2;
+    `;
+    const values = [req.params.id, req.user.id];
+    const response = db.query(queryText, values);
+    return response;
+  }
 }
 
 

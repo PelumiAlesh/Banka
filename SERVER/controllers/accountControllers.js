@@ -93,6 +93,12 @@ class AccountController {
     }
   }
 
+  /**
+   * @method  getTransactionsHistory
+   * @description Returns a account's transactions
+   * @param  {object} req - The request body
+   * @param  {object} res - The response body
+   */
   static async getTransactionsHistory(req, res) {
     try {
       const response = await Account.getTransactionsHistory(req.params.accountNumber);

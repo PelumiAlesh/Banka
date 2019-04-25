@@ -137,4 +137,29 @@ describe('Transactions Test', () => {
         });
     });
   });
+
+  // -----------Get Transactions--------------
+  describe(`GET ${endpointPath}:id`, () => {
+    // should return 200 and get transaction succesfully
+    it('should get transaction succesfully', (done) => {
+      chai
+        .request(app)
+        .post('/api/v1/auth/signin')
+        .send(login)
+        .end((logErr, logRes) => {
+          const token = `Bearer ${logRes.body.data[0].token}`;
+          chai
+            .request(app)
+            .get(`${endpointPath}1`)
+            .set('Authorization', token)
+            .end((err, res) => {
+              res.should.have.status(200);
+              res.body.should.be.a('object');
+              res.body.data[0].should.have.property('status');
+              res.body.data[0].should.have.property('data');
+            });
+          done();
+        });
+    });
+  });
 });

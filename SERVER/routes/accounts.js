@@ -8,13 +8,24 @@ const router = express.Router();
 router.use(bodyParser.json());
 
 // Create new account
-router.post('/', InputValidator.creatAccount, Authenticate.verifyClient, AccountController.createAccount);
+router.post('/',
+  InputValidator.creatAccount,
+  Authenticate.verifyClient,
+  AccountController.createAccount);
 
 // Activate or Deactivate Account
-router.patch('/:accountNumber', InputValidator.changeAccountStatus, Authenticate.verifyStaff, AccountController.changeStatus);
+router.patch('/:accountNumber',
+  InputValidator.changeAccountStatus,
+  Authenticate.verifyStaff, AccountController.changeStatus);
 
 // Delete an Account
-router.delete('/:accountNumber', InputValidator.deleteAccount, Authenticate.verifyStaff, AccountController.deleteAccount);
+router.delete('/:accountNumber',
+  InputValidator.deleteAccount,
+  Authenticate.verifyStaff,
+  AccountController.deleteAccount);
 
-router.get('/:accountNumber/transactions', AccountController.getTransactionsHistory);
+// Get account transactions
+router.get('/:accountNumber/transactions',
+  InputValidator.validateAccountURL,
+  AccountController.getTransactionsHistory);
 export default router;

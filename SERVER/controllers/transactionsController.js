@@ -62,6 +62,29 @@ class TransactionController {
       });
     }
   }
+
+  static async getTransactions(req, res) {
+    try {
+      const response = await Transactions.getTransaction(req);
+      const acctDetails = response.rows[0];
+      
+      if (!acctDetails) {
+        return res.status(404).json({
+          status: res.statusCode,
+          error: `You do not have any transactions with id ${req.params.id}`,
+        });
+      }
+      return res.status(200).json({
+        status: res.stausCode,
+        data: acctDetails,
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.stausCode,
+        error: error.detail,
+      });
+    }
+  }
 }
 
 export default TransactionController;
