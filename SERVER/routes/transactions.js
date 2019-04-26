@@ -7,18 +7,21 @@ import transactionController from '../controllers/transactionsController';
 const router = express.Router();
 router.use(bodyParser.json());
 
+// Credit an account
 router.post('/:accountNumber/credit',
   Authenticate.verifyStaff,
   inputValidator.validateAccountURL,
   inputValidator.validateAmount,
   transactionController.credit);
 
+// Debit an account
 router.post('/:accountNumber/debit',
   Authenticate.verifyStaff,
   inputValidator.validateAccountURL,
   inputValidator.validateAmount,
   transactionController.debit);
 
+// Get a specific transaction
 router.get('/:id',
   Authenticate.verifyClient,
   transactionController.getTransactions);
