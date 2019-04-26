@@ -8,7 +8,6 @@ router.use(bodyParser.json());
 
 router.get('/:email/accounts',
   Authenticate.verifyStaff,
-
   AccountController.getAllAccountsOwnedByUser);
 
 export default router;

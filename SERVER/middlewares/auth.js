@@ -18,6 +18,12 @@ class AuthenticateUser {
       const decoded = helper.verifyToken(token);
 
       req.user = decoded;
+      if (req.user.type !== 'client') {
+        return res.status(403).send({
+          status: res.statusCode,
+          error: 'You are not authorized to view this endpoint',
+        });
+      }
       return next();
     } catch (error) {
       return res.status(401).json({

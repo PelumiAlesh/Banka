@@ -1,6 +1,8 @@
 import db from './migrations/db';
 import helper from '../helpers/helper';
+import queries from './migrations/queries';
 
+const { signUpQuery } = queries;
 /**
  * @class User
  * @description Contains methods for creating and login user
@@ -12,14 +14,13 @@ class User {
    * @returns {object} New User informations
    */
   static async signUp(data) {
-    const queryText = `INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING id, firstname, lastname, email;`;
     const {
       firstName, lastName, email, password,
     } = data;
 
     const hashedPassword = helper.hashPassword(password);
     const values = [firstName, lastName, email, hashedPassword];
-    const response = await db.query(queryText, values);
+    const response = await db.query(signUpQuery, values);
     return response;
   }
 }

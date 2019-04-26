@@ -32,14 +32,14 @@ router.delete('/:accountNumber',
 
 // Get account transactions
 router.get('/:accountNumber/transactions',
-  Authenticate.verifyClient,
   InputValidator.validateAccountURL,
+  Authenticate.verifyClient,
   AccountController.getTransactionsHistory);
 
 // Get account details
 router.get('/:accountNumber',
-  Authenticate.verifyClient,
   InputValidator.validateAccountURL,
+  Authenticate.verifyClient,
   AccountController.getAccount);
 
 export default router;

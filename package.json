@@ -12,7 +12,7 @@
     "heroku-postbuild": "npm run build",
     "coverage": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls",
     "migrations": "babel-node ./SERVER/models/migrations/dropTables && babel-node ./SERVER/models/migrations/createTables && babel-node ./SERVER/models/migrations/seeds",
-    "nyctest": "nyc npm test"
+    "nyct": "nyc npm test"
   },
   "repository": {
     "type": "git",
