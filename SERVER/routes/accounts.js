@@ -30,7 +30,7 @@ router.delete('/:accountNumber',
   InputValidator.deleteAccount,
   AccountController.deleteAccount);
 
-// Get account transactions
+// Get account transactions History
 router.get('/:accountNumber/transactions',
   InputValidator.validateAccountURL,
   Authenticate.verifyClient,
