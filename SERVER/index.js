@@ -5,7 +5,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import swaggerUi from 'swagger-ui-express';
 import router from './routes/index';
-import swaggerDocument from './swagger.json';
+import swaggerDocument from '../swagger.json';
 
 const app = express();
 app.use(bodyParser.json());
