@@ -1,5 +1,8 @@
 import Account from '../models/accounts';
 import db from '../models/migrations/db';
+import queries from '../models/migrations/queries';
+
+const { getuserid } = queries;
 
 /**
  * @class AccountController
@@ -102,6 +105,13 @@ class AccountController {
   static async getTransactionsHistory(req, res) {
     try {
       const response = await Account.getTransactionsHistory(req.params.accountNumber);
+      const { rows } = await db.query(getuserid, [req.params.accountNumber]);
+      if (rows[0].id !== req.user.id) {
+        return res.status(403).json({
+          status: res.statusCode,
+          error: 'You don\'t have access to view this account',
+        });
+      }
       return res.status(200).json({
         status: res.statusCode,
         data: response.rows,
@@ -109,7 +119,7 @@ class AccountController {
     } catch (error) {
       return res.status(404).json({
         status: res.statusCode,
-        error: 'Account Number does not exist or history is empty',
+        error: 'History is empty',
       });
     }
   }
@@ -123,6 +133,12 @@ class AccountController {
   static async getAllAccountsOwnedByUser(req, res) {
     try {
       const { rows } = await Account.getAllAccountsOwnedByUser(req, res);
+      if (!rows[0]) {
+        return res.status(200).json({
+          status: 200,
+          accounts: 'This user currently has no account',
+        });
+      }
       return res.status(200).json({
         status: res.statusCode,
         accounts: rows,
@@ -181,7 +197,8 @@ class AccountController {
 
   static async getAllAccount(req, res) {
     try {
-      if (req.query) {
+      const isQuery = Object.keys(req.query).length === 0;
+      if (!isQuery) {
         const { status } = req.query;
         if (!status) {
           return res.status(401).json({

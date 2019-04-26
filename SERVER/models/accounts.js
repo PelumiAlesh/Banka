@@ -1,6 +1,19 @@
 import moment from 'moment';
 import db from './migrations/db';
 import helper from '../helpers/helper';
+import queries from './migrations/queries';
+
+const {
+  insertAccount,
+  updateStatus,
+  checkAccount,
+  getTransHis,
+  deleteAccount,
+  getAllAccountUser,
+  selectAccounts,
+  getAllAccount,
+  getByStatus,
+} = queries;
 
 /**
  * @exports Account
@@ -16,17 +29,15 @@ class Account {
    * @returns {pbject} The new account Details
    */
   static async createAccount(data, req) {
-    const queryText = `INSERT INTO accounts (owner, accountnumber, createdon, type, status, balance) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
     const accountNumber = helper.generateAccountNumber();
     const balance = parseFloat(data.initialDeposit, 10);
     const values = [req.user.id, accountNumber, moment(new Date()), data.type, 'active', balance];
-    const response = await db.query(queryText, values);
+    const response = await db.query(insertAccount, values);
     return response;
   }
 
   static async updateStatus(accountNumber, status) {
-    const queryText = `UPDATE accounts SET status=$1 WHERE accountnumber=$2 RETURNING *;`;
-    const response = await db.query(queryText, [status, accountNumber]);
+    const response = await db.query(updateStatus, [status, accountNumber]);
     return response;
   }
 
@@ -37,8 +48,7 @@ class Account {
    * @returns {object} Account details if found
    */
   static checkAccount(acctNo) {
-    const queryText = `SELECT * FROM accounts WHERE accountnumber=$1;`;
-    const response = db.query(queryText, [acctNo]);
+    const response = db.query(checkAccount, [acctNo]);
     return response;
   }
 
@@ -49,8 +59,7 @@ class Account {
    * @returns {object} Account details
    */
   static deleteAccount(accountNumber) {
-    const queryText = 'DELETE FROM accounts WHERE accountnumber = $1';
-    const response = db.query(queryText, [accountNumber]);
+    const response = db.query(deleteAccount, [accountNumber]);
     return response;
   }
 
@@ -61,8 +70,7 @@ class Account {
    * @returns {object} Account details
    */
   static getTransactionsHistory(accountNumber) {
-    const queryText = `SELECT * FROM transactions WHERE accountnumber = $1;`;
-    const response = db.query(queryText, [accountNumber]);
+    const response = db.query(getTransHis, [accountNumber]);
     return response;
   }
 
@@ -73,19 +81,17 @@ class Account {
    * @param  {object} res - The Response body
    * @returns {object} API JSON response
    */
-  static async getAllAccountsOwnedByUser(req, res) {
-    const userQuery = `SELECT id FROM users WHERE email = $1;`;
+  static getAllAccountsOwnedByUser(req, res) {
     const { email } = req.params;
-    const { rows } = await db.query(userQuery, [email]);
+    const { rows } = db.query(getAllAccountUser, [email]);
     if (!rows[0]) {
       return res.status(404).json({
         status: res.statusCode,
-        error: `Email does not exist, check the url email again`,
+        error: 'Email does not exist, check the url email again',
       });
     }
     const { id } = rows[0];
-    const queryText = `SELECT * FROM accounts WHERE owner = $1;`;
-    const response = await db.query(queryText, [id]);
+    const response = db.query(selectAccounts, [id]);
     return response;
   }
 
@@ -94,9 +100,8 @@ class Account {
    * @param  {number} accountNumber - Account Number to be searched
    * @returns {object} API JSON Response
    */
-  static async getAccount(accountNumber) {
-    const queryText = `SELECT * FROM accounts WHERE accountnumber = $1;`;
-    const response = db.query(queryText, [accountNumber]);
+  static getAccount(accountNumber) {
+    const response = db.query(checkAccount, [accountNumber]);
     return response;
   }
 
@@ -104,12 +109,8 @@ class Account {
    * @method getAllAccount
    * @returns {object} API JSON Response
    */
-  static async getAllAccount() {
-    const queryText = `SELECT accounts.createdon, accounts.accountnumber,
-    users.email AS owneremail, accounts.type, accounts.status, accounts.balance
-    FROM accounts
-    JOIN users ON accounts."owner" = users.id`;
-    const response = db.query(queryText);
+  static getAllAccount() {
+    const response = db.query(getAllAccount);
     return response;
   }
 
@@ -120,13 +121,7 @@ class Account {
   * @returns {object} the account details
   */
   static getByStatus(status) {
-    const query = `
-      SELECT accounts.createdon, accounts.accountNumber::FLOAT,
-      users.email AS owneremail, accounts.type, accounts.status, accounts.balance::FLOAT
-      FROM accounts
-      JOIN users ON accounts.owner = users.id
-      WHERE accounts.status = $1`;
-    const response = db.query(query, [status]);
+    const response = db.query(getByStatus, [status]);
     return response;
   }
 }
