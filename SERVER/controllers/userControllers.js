@@ -18,9 +18,7 @@ class UserController {
     try {
       const response = await users.signUp(req.body);
       const user = response.rows[0];
-      const token = helper.generateToken({
-        email: user.email, id: user.id, isadmin: user.isAdmin, type: user.type,
-      });
+      const token = helper.generateToken(user);
       return res.status(201).json({
         status: res.statusCode,
         data: [{
@@ -60,9 +58,7 @@ class UserController {
       });
     }
     const user = { ...response.rows[0] };
-    const token = helper.generateToken({
-      email: user.email, id: user.id, isadmin: user.isAdmin, type: user.type,
-    });
+    const token = helper.generateToken(user);
 
     return res.status(200).json({
       status: 200,
@@ -87,9 +83,7 @@ class UserController {
     try {
       const response = await users.createUser(req.body);
       const user = response.rows[0];
-      const token = helper.generateToken({
-        email: user.email, id: user.id, isadmin: user.isAdmin, type: user.type,
-      });
+      const token = helper.generateToken(user);
       return res.status(201).json({
         status: res.statusCode,
         data: [{
