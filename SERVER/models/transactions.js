@@ -26,6 +26,12 @@ class Transactions {
     const amount = Number(req.body.amount);
 
     const newBalance = type === 'credit' ? await oldBalance + amount : await oldBalance - amount;
+    if (newBalance < 1) {
+      return res.status(200).json({
+        status: res.statusCode,
+        message: 'Oops, this account has insufficient fund!',
+      });
+    }
     await db.query(updateAccount, [newBalance, accountNumber]);
 
     const values = [moment(new Date()), type, accountNumber, req.user.id, amount, oldBalance, newBalance];

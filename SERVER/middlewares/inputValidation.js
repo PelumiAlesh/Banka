@@ -60,6 +60,60 @@ const validateUser = {
       return next();
     },
   ],
+  createUser: [
+    check('password')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('Password should not empty: input password')
+      .trim()
+      .isLength({ min: 7 })
+      .withMessage('Password Length should be at least 8 Characters'),
+    check('firstName')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('firstName should not be left empty: input firstName')
+      .isAlpha()
+      .trim()
+      .withMessage('firstName can only contain letters: remove invalid characters')
+      .customSanitizer(value => value.toLowerCase()),
+    check('lastName')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('lastName should not be left empty: input lastName')
+      .isAlpha()
+      .trim()
+      .withMessage('lastName can ony contain letters: remove invalid characters')
+      .customSanitizer(value => value.toLowerCase()),
+    check('email')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('email should not be left empty: input email address')
+      .isEmail()
+      .trim()
+      .withMessage('input a valid email address')
+      .normalizeEmail(),
+    check('isAdmin')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('isAdmin should not be left empty: specify isAdmin')
+      .toBoolean()
+      .isIn([true, false])
+      .withMessage('isAdmin can either be "true" or "false"'),
+    (req, res, next) => {
+      const errors = validationResult(req);
+      const errMessages = [];
+      if (!errors.isEmpty()) {
+        errors.array({ onlyFirstError: true }).forEach((err) => {
+          errMessages.push(err.msg);
+        });
+        return res.status(400).json({
+          status: 400,
+          error: errMessages,
+        });
+      }
+      return next();
+    },
+  ],
   // --------------- SignIn validations ------------
   signin: [
     check('email')
@@ -176,7 +230,9 @@ const validateUser = {
     check('amount')
       .not()
       .isEmpty({ ignore_whitespace: true })
-      .withMessage('Amount should not left Empty: inout amount.')
+      .withMessage('Amount should not left Empty: input amount.')
+      .toFloat()
+      .withMessage('Invalid amount: amount can accept numbers only')
       .custom(async (value) => {
         if (Number(value) < 1) throw new Error('Please specify a valid amount');
       })

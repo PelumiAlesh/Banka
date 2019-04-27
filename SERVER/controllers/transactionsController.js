@@ -13,7 +13,7 @@ class TransactionController {
       const response = await Transactions.transact(req, res, 'credit');
       const transactionDetails = response.rows[0];
       return res.status(201).json({
-        status: res.stausCode,
+        status: res.statusCode,
         data: [{
           transactionId: transactionDetails.id,
           accountNumber: transactionDetails.accountnumber,
@@ -26,7 +26,7 @@ class TransactionController {
       });
     } catch (error) {
       return res.status(400).json({
-        status: res.stausCode,
+        status: res.statusCode,
         error: error.detail,
       });
     }
@@ -44,7 +44,7 @@ class TransactionController {
       const response = await Transactions.transact(req, res, 'debit');
       const transactionDetails = response.rows[0];
       return res.status(201).json({
-        status: res.stausCode,
+        status: res.statusCode,
         data: [{
           transactionId: transactionDetails.id,
           accountNumber: transactionDetails.accountnumber,
@@ -57,7 +57,7 @@ class TransactionController {
       });
     } catch (error) {
       return res.status(400).json({
-        status: res.stausCode,
+        status: res.statusCode,
         error: error.detail,
       });
     }
@@ -80,7 +80,7 @@ class TransactionController {
       });
     } catch (error) {
       return res.status(400).json({
-        status: res.stausCode,
+        status: res.statusCode,
         error: error.detail,
       });
     }
