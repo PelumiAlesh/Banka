@@ -3,6 +3,8 @@ export default {
 
   signUpQuery: `INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING id, firstname, lastname, email;`,
 
+  createAccountQuery: `INSERT INTO users (firstname, lastname, email, password, type, isAdmin) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, firstname, lastname, email, type, isAdmin;`,
+
   getTransactions: `
   SELECT transactions.id AS transactionsID, transactions.createdon AS createdOn, transactions.type AS type, transactions.accountnumber AS accountNumber, amount, oldbalance, newbalance
   FROM transactions

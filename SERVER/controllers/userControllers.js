@@ -18,13 +18,12 @@ class UserController {
     try {
       const response = await users.signUp(req.body);
       const user = response.rows[0];
-      const token = helper.generateToken({ email: user.email, id: user.id });
+      const token = helper.generateToken(user);
       return res.status(201).json({
         status: res.statusCode,
         data: [{
           token,
           ...user,
-          password: req.body.password,
         }],
       });
     } catch (error) {
@@ -71,6 +70,40 @@ class UserController {
         email: user.email,
       }],
     });
+  }
+
+  /**
+   * @method createUser
+   * @description Method to create a staff/admin user
+   * @param {object} req - The Request Object
+   * @param {object} res - The Response Object
+   * @returns {object} New user informations
+   */
+  static async createUser(req, res) {
+    try {
+      const response = await users.createUser(req.body);
+      const user = response.rows[0];
+      const token = helper.generateToken(user);
+      return res.status(201).json({
+        status: res.statusCode,
+        data: [{
+          token,
+          ...user,
+          password: req.body.password,
+        }],
+      });
+    } catch (error) {
+      if (error.code === '23505') {
+        return res.status(409).json({
+          status: res.statusCode,
+          error: 'Email is been used by another user',
+        });
+      }
+      return res.status(500).json({
+        status: 500,
+        error,
+      });
+    }
   }
 }
 
