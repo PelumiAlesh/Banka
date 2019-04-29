@@ -374,6 +374,7 @@ section .create_acct_div {
   margin: 1rem;
   margin-bottom: 2rem;
   color: black;
+  justify-content: space-between;
 }
 @media screen and (max-width: 630px) {
   section .create_acct_div {
@@ -410,6 +411,10 @@ section .create_acct_div .btn,
   color: whitesmoke;
   max-height: 3rem;
   flex: 1 1 auto;
+}
+section .create_acct_div .btn{
+  flex: 0 1 auto !important;
+  padding: 1rem;
 }
 section .create_acct_div p {
   font-size: 2rem;
