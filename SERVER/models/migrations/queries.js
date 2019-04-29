@@ -17,8 +17,8 @@ export default {
   insertTransactions: `
   INSERT INTO transactions ("createdOn", type, "accountNumber", cashier, amount, "oldBalance", "newBalance") 
        VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
-       `,
-  insertAccount: `INSERT INTO accounts (owner, "accountNumber", "createdOn", type, status, balance) VALUES ($1, $2, $3, $4, $5, $6) RETURNING "accountNumber"::FLOAT, type, balance`,
+       ;`,
+  insertAccount: `INSERT INTO accounts (owner, "accountNumber", "createdOn", type, status, balance) VALUES ($1, $2, $3, $4, $5, $6) RETURNING "accountNumber"::FLOAT, type, balance;`,
 
   updateStatus: `UPDATE accounts SET status=$1 WHERE "accountNumber"=$2 RETURNING "accountNumber"::FLOAT, status;`,
 
@@ -31,12 +31,13 @@ export default {
   getAllAccount: `SELECT accounts."createdOn", accounts."accountNumber"::FLOAT,
   users.email AS "ownerEmail", accounts.type, accounts.status, accounts.balance::FLOAT
   FROM accounts
-  JOIN users ON accounts."owner" = users.id`,
+  JOIN users ON accounts."owner" = users.id;`,
   getByStatus: `
   SELECT accounts."createdOn", accounts."accountNumber"::FLOAT,
   users.email AS "ownerEmail", accounts.type, accounts.status, accounts.balance::FLOAT
   FROM accounts
   JOIN users ON accounts.owner = users.id
-  WHERE accounts.status = $1`,
-  getuserid: 'SELECT users.id FROM users JOIN accounts ON accounts.owner = users.id WHERE accounts."accountNumber" = $1',
+  WHERE accounts.status = $1;`,
+  getuserid: 'SELECT users.id FROM users JOIN accounts ON accounts.owner = users.id WHERE accounts."accountNumber" = $1;',
+  getEmail: `SELECT email FROM users JOIN accounts ON users.id = accounts.owner WHERE "accountNumber"= $1;`,
 };

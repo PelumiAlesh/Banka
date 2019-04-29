@@ -3,7 +3,12 @@ import Account from './accounts';
 import db from './migrations/db';
 import queries from './migrations/queries';
 
-const { getTransactions, updateAccount, insertTransactions } = queries;
+const {
+  getTransactions,
+  updateAccount,
+  insertTransactions,
+  getEmail,
+} = queries;
 
 /**
  * @class Transactions
@@ -38,6 +43,13 @@ class Transactions {
     const response = await db.query(insertTransactions, values);
 
     return response;
+  }
+
+  static async getEmail(accountNumber) {
+    const response = await db.query(getEmail, [accountNumber]);
+    const { rows } = response;
+    const { email } = rows[0];
+    return email;
   }
 
   /**
