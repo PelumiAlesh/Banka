@@ -6,7 +6,7 @@ export default {
   createAccountQuery: `INSERT INTO users ("firstName", "lastName", email, password, type, "isAdmin") VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, "firstName", "lastName", email, type, "isAdmin";`,
 
   getTransactions: `
-  SELECT transactions.id AS transactionsID, transactions."createdOn" AS "createdOn", transactions.type AS type, transactions."accountNumber" AS "accountNumber", amount, "oldBalance"::FLOAT, "newBalance"::FLOAT
+  SELECT transactions.id AS transactionsID, transactions."createdOn" AS "createdOn", transactions.type AS type, transactions."accountNumber" AS "accountNumber", amount::FLOAT, "oldBalance"::FLOAT, "newBalance"::FLOAT
   FROM transactions
   JOIN accounts ON transactions."accountNumber" = accounts."accountNumber"
   WHERE transactions.id = $1 AND accounts.owner = $2;
@@ -16,9 +16,9 @@ export default {
 
   insertTransactions: `
   INSERT INTO transactions ("createdOn", type, "accountNumber", cashier, amount, "oldBalance", "newBalance") 
-       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
-       `,
-  insertAccount: `INSERT INTO accounts (owner, "accountNumber", "createdOn", type, status, balance) VALUES ($1, $2, $3, $4, $5, $6) RETURNING "accountNumber"::FLOAT, type, balance`,
+       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, "accountNumber", amount::FLOAT, cashier, type, "oldBalance"::FLOAT, "newBalance"::FLOAT;
+       ;`,
+  insertAccount: `INSERT INTO accounts (owner, "accountNumber", "createdOn", type, status, balance) VALUES ($1, $2, $3, $4, $5, $6) RETURNING "accountNumber"::FLOAT, type, balance::FLOAT;`,
 
   updateStatus: `UPDATE accounts SET status=$1 WHERE "accountNumber"=$2 RETURNING "accountNumber"::FLOAT, status;`,
 
@@ -31,12 +31,13 @@ export default {
   getAllAccount: `SELECT accounts."createdOn", accounts."accountNumber"::FLOAT,
   users.email AS "ownerEmail", accounts.type, accounts.status, accounts.balance::FLOAT
   FROM accounts
-  JOIN users ON accounts."owner" = users.id`,
+  JOIN users ON accounts."owner" = users.id;`,
   getByStatus: `
   SELECT accounts."createdOn", accounts."accountNumber"::FLOAT,
   users.email AS "ownerEmail", accounts.type, accounts.status, accounts.balance::FLOAT
   FROM accounts
   JOIN users ON accounts.owner = users.id
-  WHERE accounts.status = $1`,
-  getuserid: 'SELECT users.id FROM users JOIN accounts ON accounts.owner = users.id WHERE accounts."accountNumber" = $1',
+  WHERE accounts.status = $1;`,
+  getuserid: 'SELECT users.id FROM users JOIN accounts ON accounts.owner = users.id WHERE accounts."accountNumber" = $1;',
+  getEmail: `SELECT email FROM users JOIN accounts ON users.id = accounts.owner WHERE "accountNumber"= $1;`,
 };

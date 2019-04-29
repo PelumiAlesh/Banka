@@ -168,8 +168,8 @@ class AccountController {
       }
       const resRows = response.rows[0];
       const query = 'SELECT email, id FROM users WHERE id = $1;';
-      const { id } = resRows;
-      const { rows } = await db.query(query, [id]);
+      const { owner } = resRows;
+      const { rows } = await db.query(query, [owner]);
       if (resRows.owner !== req.user.id) {
         return res.status(403).json({
           status: res.statusCode,
@@ -201,9 +201,9 @@ class AccountController {
       if (!isQuery) {
         const { status } = req.query;
         if (!status) {
-          return res.status(401).json({
+          return res.status(404).json({
             status: res.statusCode,
-            error: 'query does not exist, use "status" ',
+            error: 'Url not found.',
           });
         }
         if (status !== 'dormant' && status !== 'active' && status !== 'draft') {
