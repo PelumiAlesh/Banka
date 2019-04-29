@@ -21,7 +21,7 @@ class TransactionController {
           cashier: transactionDetails.cashier,
           transactionType: transactionDetails.type,
           oldBalance: transactionDetails.oldBalance,
-          accountBalance: transactionDetails.newbalance,
+          accountBalance: transactionDetails.newBalance,
         }],
       });
     } catch (error) {

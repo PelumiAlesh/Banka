@@ -27,8 +27,8 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
-          res.body.data[0].should.have.property('firstname');
-          res.body.data[0].should.have.property('lastname');
+          res.body.data[0].should.have.property('firstName');
+          res.body.data[0].should.have.property('lastName');
           res.body.data[0].should.have.property('email');
           res.body.data[0].should.have.property('token');
           done();
