@@ -8,7 +8,7 @@
       "email": "aleshinloyelukmony@gmail.com"
     }
   },
-  "host": "pelumi-banka.herokuapp.com",
+  "host": "localhost:3000",
   "basePath": "/api/v1",
   "tags": [
     {
