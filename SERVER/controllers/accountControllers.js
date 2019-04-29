@@ -201,9 +201,9 @@ class AccountController {
       if (!isQuery) {
         const { status } = req.query;
         if (!status) {
-          return res.status(401).json({
+          return res.status(404).json({
             status: res.statusCode,
-            error: 'query does not exist, use "status" ',
+            error: 'Url not found.',
           });
         }
         if (status !== 'dormant' && status !== 'active' && status !== 'draft') {
