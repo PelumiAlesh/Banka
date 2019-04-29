@@ -188,7 +188,6 @@ class AccountController {
         }],
       });
     } catch (error) {
-      console.log(error);
       return res.status(400).json({
         status: res.statusCode,
         error,
