@@ -33,7 +33,6 @@ class User {
     const {
       firstName, lastName, email, password, isAdmin,
     } = data;
-
     const hashedPassword = helper.hashPassword(password);
     const values = [firstName, lastName, email, hashedPassword, 'staff', isAdmin];
     const response = await db.query(createAccountQuery, values);

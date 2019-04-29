@@ -23,12 +23,12 @@ class AccountController {
       return res.status(201).json({
         status: res.statusCode,
         data: [{
-          firstName: req.user.firstname,
-          lastName: req.user.lastname,
+          firstName: req.user.firstName,
+          lastName: req.user.lastName,
           email: req.user.email,
-          accountNumber: rows[0].accountnumber,
+          accountNumber: rows[0].accountNumber,
           type: rows[0].type,
-          initialDeposit: rows[0].balance,
+          openingBalance: rows[0].balance,
         }],
       });
     } catch (error) {
@@ -56,7 +56,7 @@ class AccountController {
       return res.status(200).json({
         status: res.statusCode,
         data: [{
-          accountNumber: acctDetails.accountnumber,
+          accountNumber: acctDetails.accountNumber,
           status: acctDetails.status,
         }],
       });
@@ -179,8 +179,8 @@ class AccountController {
       return res.status(200).json({
         status: res.statusCode,
         data: [{
-          createdOn: resRows.createdon,
-          accountNumber: resRows.accountnumber,
+          createdOn: resRows.createdOn,
+          accountNumber: resRows.accountNumber,
           ownerEmail: rows[0].email,
           type: resRows.type,
           status: resRows.status,
@@ -188,6 +188,7 @@ class AccountController {
         }],
       });
     } catch (error) {
+      console.log(error);
       return res.status(400).json({
         status: res.statusCode,
         error,

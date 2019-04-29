@@ -16,7 +16,7 @@ class TransactionController {
         status: res.statusCode,
         data: [{
           transactionId: transactionDetails.id,
-          accountNumber: transactionDetails.accountnumber,
+          accountNumber: transactionDetails.accountNumber,
           amount: transactionDetails.amount,
           cashier: transactionDetails.cashier,
           transactionType: transactionDetails.type,

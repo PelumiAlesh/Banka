@@ -41,10 +41,6 @@ const validateUser = {
       .trim()
       .withMessage('input a valid email address')
       .normalizeEmail(),
-    check('type')
-      .not()
-      .isString()
-      .withMessage('Type is not allowed'),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];
@@ -96,7 +92,6 @@ const validateUser = {
       .not()
       .isEmpty({ ignore_whitespace: true })
       .withMessage('isAdmin should not be left empty: specify isAdmin')
-      .toBoolean()
       .isIn([true, false])
       .withMessage('isAdmin can either be "true" or "false"'),
     (req, res, next) => {
@@ -157,8 +152,12 @@ const validateUser = {
       .isEmpty({ ignore_whitespace: true })
       .withMessage('Initial deposit cant be left empty: specify initial deposit')
       .toFloat()
-      .withMessage('Please input a valid number for initialDeposit'),
-
+      .withMessage('Please input a valid number for initialDeposit')
+      .custom(async (value) => {
+        if (Number(value) < 1) throw new Error('Please specify a valid amount');
+      })
+      .toFloat()
+      .withMessage('Please enter a valid amount'),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];

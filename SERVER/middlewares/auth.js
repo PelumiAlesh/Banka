@@ -74,7 +74,7 @@ class AuthenticateUser {
       const decoded = helper.verifyToken(token);
 
       req.user = decoded;
-      if (req.user.isadmin !== true) {
+      if (req.user.isAdmin !== true) {
         return res.status(403).send({
           status: res.statusCode,
           error: 'You are not authorized to view this endpoint',
@@ -85,7 +85,29 @@ class AuthenticateUser {
     } catch (error) {
       return res.status(401).send({
         status: res.statusCode,
-        error: 'Authentication Failed',
+        error: 'Oops, Authentication Failed',
+      });
+    }
+  }
+
+  static verifyCashier(req, res, next) {
+    try {
+      const token = req.headers.authorization.split(' ')[1];
+      const decoded = helper.verifyToken(token);
+
+      req.user = decoded;
+      if (req.user.isAdmin == true || req.user.type !== 'staff') {
+        return res.status(403).send({
+          status: res.statusCode,
+          error: 'You are not authorized to view this endpoint',
+        });
+      }
+
+      return next();
+    } catch (error) {
+      return res.status(401).send({
+        status: res.statusCode,
+        error: 'Oops, Authentication Failed',
       });
     }
   }

@@ -29,7 +29,7 @@ class Account {
    * @returns {pbject} The new account Details
    */
   static async createAccount(data, req) {
-    const accountNumber = helper.generateAccountNumber();
+    const accountNumber = await helper.generateAccountNumber();
     const balance = parseFloat(data.initialDeposit, 10);
     const values = [req.user.id, accountNumber, moment(new Date()), data.type, 'active', balance];
     const response = await db.query(insertAccount, values);
@@ -81,9 +81,10 @@ class Account {
    * @param  {object} res - The Response body
    * @returns {object} API JSON response
    */
-  static getAllAccountsOwnedByUser(req, res) {
+  static async getAllAccountsOwnedByUser(req, res) {
     const { email } = req.params;
-    const { rows } = db.query(getAllAccountUser, [email]);
+    const decodemail = decodeURI(email);
+    const { rows } = await db.query(getAllAccountUser, [decodemail]);
     if (!rows[0]) {
       return res.status(404).json({
         status: res.statusCode,
