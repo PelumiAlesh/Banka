@@ -8,20 +8,28 @@ class TransactionController {
   * @param {object} res - The Response Object
   * @returns {object} API Response
   */
-  static credit(req, res) {
-    const transactionDetails = Transactions.transact(req, res, 'credit');
-
-    return res.status(201).json({
-      status: res.stausCode,
-      data: {
-        transactionId: transactionDetails.id,
-        accountNumber: transactionDetails.accountNumber,
-        amount: transactionDetails.amount,
-        cashier: transactionDetails.cashier,
-        transactionType: transactionDetails.type,
-        accountBalance: transactionDetails.newBalance,
-      },
-    });
+  static async credit(req, res) {
+    try {
+      const response = await Transactions.transact(req, res, 'credit');
+      const transactionDetails = response.rows[0];
+      return res.status(201).json({
+        status: res.statusCode,
+        data: [{
+          transactionId: transactionDetails.id,
+          accountNumber: transactionDetails.accountNumber,
+          amount: transactionDetails.amount,
+          cashier: transactionDetails.cashier,
+          transactionType: transactionDetails.type,
+          oldBalance: transactionDetails.oldBalance,
+          accountBalance: transactionDetails.newBalance,
+        }],
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.statusCode,
+        error: error.detail,
+      });
+    }
   }
 
   /**
@@ -31,20 +39,51 @@ class TransactionController {
   * @param {object} res - The Response Object
   * @returns {object} API Response
   */
-  static debit(req, res) {
-    const transactionDetails = Transactions.transact(req, res, 'debit');
+  static async debit(req, res) {
+    try {
+      const response = await Transactions.transact(req, res, 'debit');
+      const transactionDetails = response.rows[0];
+      return res.status(201).json({
+        status: res.statusCode,
+        data: [{
+          transactionId: transactionDetails.id,
+          accountNumber: transactionDetails.accountnumber,
+          amount: transactionDetails.amount,
+          cashier: transactionDetails.cashier,
+          transactionType: transactionDetails.type,
+          oldBalance: transactionDetails.oldBalance,
+          accountBalance: transactionDetails.newbalance,
+        }],
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.statusCode,
+        error: error.detail,
+      });
+    }
+  }
 
-    return res.status(201).json({
-      status: res.stausCode,
-      data: {
-        transactionId: transactionDetails.id,
-        accountNumber: transactionDetails.accountNumber,
-        amount: transactionDetails.amount,
-        cashier: transactionDetails.cashier,
-        transactionType: transactionDetails.type,
-        accountBalance: transactionDetails.newBalance,
-      },
-    });
+  static async getTransactions(req, res) {
+    try {
+      const response = await Transactions.getTransaction(req);
+      const acctDetails = await response.rows[0];
+
+      if (!acctDetails) {
+        return res.status(404).json({
+          status: res.statusCode,
+          error: `You do not have any transactions with id ${req.params.id}`,
+        });
+      }
+      return res.status(200).json({
+        status: res.statusCode,
+        data: acctDetails,
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: res.statusCode,
+        error: error.detail,
+      });
+    }
   }
 }
 

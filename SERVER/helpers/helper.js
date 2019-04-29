@@ -57,7 +57,23 @@ class Helper {
    * @returns {string} Random account Number
    */
   static generateAccountNumber() {
-    const accountNumber = Math.random().toString().slice(2, 12);
+    let accountNumber = Math.random().toString().slice(2, 12);
+    const fDigit = accountNumber[0];
+    // eslint-disable-next-line eqeqeq
+    if (fDigit == 0) {
+      accountNumber += 4;
+      if (fDigit > 1) {
+        const halfNumber = accountNumber.slice(0, -1);
+        const accountNumbe = `1${halfNumber}`;
+        return accountNumbe;
+      }
+      return accountNumber;
+    }
+    if (fDigit > 1) {
+      const halfNumber = accountNumber.slice(0, -1);
+      const accountNumbe = `1${halfNumber}`;
+      return accountNumbe;
+    }
     return accountNumber;
   }
 }

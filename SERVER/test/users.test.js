@@ -16,7 +16,7 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
       const user = {
         firstName: 'Pelumi',
         lastName: 'Aleshinloye',
-        email: 'pelss@gmail.com',
+        email: 'pelsis@gmail.com',
         password: 'password',
       };
       chai
@@ -27,15 +27,15 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
-          res.body.data.should.have.property('firstName');
-          res.body.data.should.have.property('lastName');
-          res.body.data.should.have.property('email');
-          res.body.data.should.have.property('token');
+          res.body.data[0].should.have.property('firstName');
+          res.body.data[0].should.have.property('lastName');
+          res.body.data[0].should.have.property('email');
+          res.body.data[0].should.have.property('token');
           done();
         });
     });
-    // return 400 if firstName field was left empty
-    it('should return 401 if user ommit firstName', (done) => {
+    // return 400 if firstname field was left empty
+    it('should return 401 if user ommit firstname', (done) => {
       const user = {
         lastName: 'Aleshinloye',
         email: 'pels@gmail.com',
@@ -52,7 +52,7 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
         });
     });
     // return 400 if lastName field was left empty
-    it('should return 401 if user ommit LastName', (done) => {
+    it('should return 401 if user ommit Lastname', (done) => {
       const user = {
         firstName: 'Pelumi',
         email: 'pels@gmail.com',
@@ -126,7 +126,7 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
     // return 200 and return a token if valid credentials were provided
     it('Should login the user succesfully and return a token', (done) => {
       const loginBody = {
-        email: 'pelss@gmail.com',
+        email: 'pels@gmail.com',
         password: 'password',
       };
       chai
@@ -137,8 +137,8 @@ describe('Test for Authentication (SignIn and SignUp) Endpoints', () => {
           res.should.have.status(200);
           res.body.should.be.a('object');
           res.body.should.have.property('data');
-          res.body.data.should.have.a('object');
-          res.body.data.should.have.property('token');
+          res.body.data[0].should.have.a('object');
+          res.body.data[0].should.have.property('token');
           done();
         });
     });

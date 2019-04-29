@@ -1,7 +1,6 @@
 import users from '../models/users';
 import helper from '../helpers/helper';
 import Exist from '../helpers/Exist';
-
 /**
  * @class UserController
  * @description Controller for signup and signin
@@ -15,27 +14,30 @@ class UserController {
    * @param {object} res - The Response Object
    * @returns {object} New user informations
    */
-  static signUp(req, res) {
-    const userInput = { ...req.body };
-    const emailExist = Exist.emailExist(userInput.email, false);
-    if (emailExist) {
-      return res.status(409).json({
+  static async signUp(req, res) {
+    try {
+      const response = await users.signUp(req.body);
+      const user = response.rows[0];
+      const token = helper.generateToken(user);
+      return res.status(201).json({
         status: res.statusCode,
-        error: 'Email already exist!',
+        data: [{
+          token,
+          ...user,
+        }],
+      });
+    } catch (error) {
+      if (error.code === '23505') {
+        return res.status(409).json({
+          status: res.statusCode,
+          error: 'Email is been used by another user',
+        });
+      }
+      return res.status(500).json({
+        status: 500,
+        error,
       });
     }
-    const newUser = users.create(userInput);
-    const token = helper.generateToken({ email: userInput.email, id: newUser.id });
-    return res.status(201).json({
-      status: 201,
-      data: {
-        token,
-        id: newUser.id,
-        firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        email: newUser.email,
-      },
-    });
   }
 
   /**
@@ -45,32 +47,62 @@ class UserController {
    * @param {object} res - The Response Object
    * @returns {object} User informations
    */
-  static signIn(req, res) {
-    const userInput = { ...req.body };
-    const { userDetails, emailExists } = Exist.emailExist(userInput.email, true);
-    if (!emailExists || !helper.verifyPassword(userInput.password, userDetails.password)) {
+  static async signIn(req, res) {
+    const { email, password } = req.body;
+    const response = await Exist.emailExist(email);
+
+    if (response.rowCount < 1 || !helper.verifyPassword(password, response.rows[0].password)) {
       return res.status(401).json({
         status: res.statusCode,
         error: 'Authentication Failed: Email or Password is incorrect',
       });
     }
-    const token = helper.generateToken({
-      email: userDetails.email,
-      firstName: userDetails.firstName,
-      lastName: userDetails.lastName,
-      id: userDetails.id,
-      type: userDetails.type,
-    });
+    const user = { ...response.rows[0] };
+    const token = helper.generateToken(user);
+
     return res.status(200).json({
-      status: res.statusCode,
-      data: {
+      status: 200,
+      data: [{
         token,
-        id: userDetails.id,
-        firstName: userDetails.firstName,
-        lastName: userDetails.lastName,
-        email: userDetails.email,
-      },
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+      }],
     });
+  }
+
+  /**
+   * @method createUser
+   * @description Method to create a staff/admin user
+   * @param {object} req - The Request Object
+   * @param {object} res - The Response Object
+   * @returns {object} New user informations
+   */
+  static async createUser(req, res) {
+    try {
+      const response = await users.createUser(req.body, res);
+      const user = response.rows[0];
+      const token = helper.generateToken(user);
+      return res.status(201).json({
+        status: res.statusCode,
+        data: [{
+          token,
+          ...user,
+        }],
+      });
+    } catch (error) {
+      if (error.code === '23505') {
+        return res.status(409).json({
+          status: res.statusCode,
+          error: 'Email is been used by another user',
+        });
+      }
+      return res.status(500).json({
+        status: 500,
+        error,
+      });
+    }
   }
 }
 

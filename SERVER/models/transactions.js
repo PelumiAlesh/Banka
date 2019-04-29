@@ -1,5 +1,9 @@
-import transactions from './mock_data/transactions';
+import moment from 'moment';
 import Account from './accounts';
+import db from './migrations/db';
+import queries from './migrations/queries';
+
+const { getTransactions, updateAccount, insertTransactions } = queries;
 
 /**
  * @class Transactions
@@ -15,26 +19,37 @@ class Transactions {
    * @param {string} type - Credit or Debit
    * @returns {object} Transaction details
    */
-  static transact(req, res, type) {
-    const acctDetail = Account.checkAccount(req.params.accountNumber);
-    const transaction = {
-      id: transactions.length + 1,
-      createdOn: new Date(),
-      type,
-      accountNumber: parseInt(req.params.accountNumber, 10),
-      cashier: req.user.id,
-      amount: parseFloat(req.body.amount),
-      oldBalance: acctDetail.balance,
-      newBalance: type === 'credit' ? parseFloat((acctDetail
-        .balance + parseFloat(req.body.amount))
-        .toFixed(2)) : parseFloat((acctDetail
-        .balance - parseFloat(req.body.amount)).toFixed(2)),
-    };
+  static async transact(req, res, type) {
+    const { accountNumber } = req.params;
+    const accountDetails = await Account.checkAccount(accountNumber);
+    const oldBalance = Number(accountDetails.rows[0].balance);
+    const amount = Number(req.body.amount);
 
-    acctDetail.balance = transaction.newBalance;
-    transactions.push(transaction);
+    const newBalance = type === 'credit' ? await oldBalance + amount : await oldBalance - amount;
+    if (newBalance < 1) {
+      return res.status(200).json({
+        status: res.statusCode,
+        message: 'Oops, this account has insufficient fund!',
+      });
+    }
+    await db.query(updateAccount, [newBalance, accountNumber]);
 
-    return transaction;
+    const values = [moment(new Date()), type, accountNumber, req.user.id, amount, oldBalance, newBalance];
+    const response = await db.query(insertTransactions, values);
+
+    return response;
+  }
+
+  /**
+  * @method getOne
+  * @description Fetches a specific transaction
+  * @param {object} req - The request object
+  * @returns {object} Response
+  */
+  static getTransaction(req) {
+    const values = [req.params.id, req.user.id];
+    const response = db.query(getTransactions, values);
+    return response;
   }
 }
 

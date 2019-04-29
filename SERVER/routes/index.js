@@ -3,6 +3,7 @@ import express from 'express';
 
 // --------Routes--------
 import userRoute from './users';
+import otherRoutes from './others';
 import accountsRoutes from './accounts';
 import transactionRoutes from './transactions';
 
@@ -14,6 +15,7 @@ route.get('/', (req, res) => res.json({
 }));
 
 route.use('/auth', userRoute);
+route.use('/user', otherRoutes);
 route.use('/accounts', accountsRoutes);
 route.use('/transactions', transactionRoutes);
 

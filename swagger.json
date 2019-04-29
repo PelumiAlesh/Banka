@@ -1,0 +1,1240 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online, but must visit the branch to withdraw or deposit money.",
+    "version": "1.0.0",
+    "title": "Banka API V1",
+    "contact": {
+      "email": "aleshinloyelukmony@gmail.com"
+    }
+  },
+  "host": "pelumi-banka.herokuapp.com",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "Sign-up, Sign-in"
+    },
+    {
+      "name": "Accounts",
+      "description": "Create new account, Get all accounts, Activate or Deactivate Account, Delete an Account, Get account transactions, Get account details"
+    },
+    {
+      "name": "Transactions",
+      "description": "Credit an account, Debit an account, Get a specific transactions"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Creates a new user",
+        "summary": "User sign up",
+        "operationId": "ApiV1AuthSignupPost",
+        "deprecated": false,
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "The user object",
+            "schema": {
+              "type": "object",
+              "required": [
+                "firstName",
+                "lastName",
+                "email",
+                "password"
+              ],
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account successfully created",
+            "schema": {
+              "$ref": "#/definitions/userSignupResponse"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/badRequest"
+            }
+          },
+          "422": {
+            "description": "User already exists (Unprocessible entity)",
+            "schema": {
+              "$ref": "#/definitions/userExists"
+            }
+          }
+        }
+      }
+    },
+    "/user/create": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Creates a new user",
+        "summary": "Admin create staff/admin",
+        "operationId": "ApiV1UserCreate",
+        "deprecated": false,
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "The user object",
+            "schema": {
+              "type": "object",
+              "required": [
+                "firstName",
+                "lastName",                
+                "email",
+                "password",
+                "isAdmin"
+              ],
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "isAdmin": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account successfully created",
+            "schema": {
+              "$ref": "#/definitions/createUserResponse"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/badRequest"
+            }
+          },
+          "422": {
+            "description": "User already exists (Unprocessible entity)",
+            "schema": {
+              "$ref": "#/definitions/userExists"
+            }
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Creates an account for a new user",
+        "summary": "User sign in",
+        "operationId": "ApiV1AuthSigninPost",
+        "deprecated": false,
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userLogin",
+            "description": "The user Login",
+            "schema": {
+              "type": "object",
+              "required": [
+                "email",
+                "password"
+              ],
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login Successful",
+            "schema": {
+              "$ref": "#/definitions/userSignupResponse"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/badRequest"
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "schema": {
+              "$ref": "#/definitions/userNotExists"
+            }
+          }
+        }
+      }
+    },
+    "/accounts": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Creates a new account",
+        "summary": "Create a new account",
+        "operationId": "ApiV1BankAcc",
+        "deprecated": false,
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "accDetails",
+            "description": "New account details",
+            "schema": {
+              "type": "object",
+              "required": [
+                "type",
+                "initialDeposit"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "initialDeposit": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account Created Successfully",
+            "schema": {
+              "$ref": "#/definitions/newAccResponse"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/badRequest"
+            }
+          },
+          "401": {
+            "description": "Authentication error",
+            "schema": {
+              "$ref": "#/definitions/UnauthorizedError"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "A list of all bank accounts.",
+        "summary": "Get all bank accounts",
+        "operationId": "ApiV1GetAllAcc",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "type": "string",
+            "description": "The status of the accounts to be fetched"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Accounts fetched Successfully",
+            "schema": {
+              "$ref": "#/definitions/newAccResponse"
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Authentication error",
+            "schema": {
+              "$ref": "#/definitions/UnauthorizedError"
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{account-number}": {
+      "patch": {
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Activate or deactivate an account. Specify the new ​status ​in​ ​the request body.",
+        "summary": "Activate or deactivate an account",
+        "operationId": "ApiV1StatusUpdate",
+        "deprecated": false,
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "account-number",
+            "required": true,
+            "type": "integer",
+            "description": "The account to be updated"
+          },
+          {
+            "in": "body",
+            "name": "newStatus",
+            "description": "The status to update the account to.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "status"
+              ],
+              "properties": {
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account updated successfully",
+            "schema": {
+              "$ref": "#/definitions/updateAccResponse"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/badRequest"
+            }
+          },
+          "401": {
+            "description": "Authentication error",
+            "schema": {
+              "$ref": "#/definitions/UnauthorizedError"
+            }
+          },
+          "403": {
+            "description": "Access token does not have the required scope",
+            "schema": {
+              "$ref": "#/definitions/forbiddenError"
+            }
+          },
+          "404": {
+            "description": "Account not found",
+            "schema": {
+              "$ref": "#/definitions/userNotExists"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Deletes an account if the account exists",
+        "summary": "Delete an account",
+        "operationId": "ApiV1DeleteAcc",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "account-number",
+            "required": true,
+            "type": "integer",
+            "description": "The account number to be deleted"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account deleted successfully",
+            "schema": {
+              "$ref": "#/definitions/deleteAccResponse"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/badRequest"
+            }
+          },
+          "401": {
+            "description": "Authentication error",
+            "schema": {
+              "$ref": "#/definitions/UnauthorizedError"
+            }
+          },
+          "403": {
+            "description": "Access token does not have the required scope",
+            "schema": {
+              "$ref": "#/definitions/forbiddenError"
+            }
+          },
+          "404": {
+            "description": "Account not found",
+            "schema": {
+              "$ref": "#/definitions/userNotExists"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "View a specific account's details",
+        "summary": "View a specific account's details",
+        "operationId": "ApiV1viewAcctDetails",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "account-number",
+            "required": true,
+            "type": "integer",
+            "description": "The account number details to be viewed"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account's transactions fetched successfully",
+            "schema": {
+              "$ref": "#/definitions/emailAcc"
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Authentication error",
+            "schema": {
+              "$ref": "#/definitions/UnauthorizedError"
+            }
+          },
+          "404": {
+            "description": "Account not found",
+            "schema": {
+              "$ref": "#/definitions/userNotExists"
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{account-number}/credit": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Credits a account and creates a transaction entry",
+        "summary": "Credit transaction on an account",
+        "operationId": "ApiV1creditAccount",
+        "deprecated": false,
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "account-number",
+            "required": true,
+            "type": "integer",
+            "description": "The account number to be credited"
+          },
+          {
+            "in": "body",
+            "name": "transactionDetails",
+            "description": "The basic details of the transaction",
+            "schema": {
+              "type": "object",
+              "required": [
+                "amount"
+              ],
+              "properties": {
+                "amount": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account credited and transaction entry created successfully",
+            "schema": {
+              "$ref": "#/definitions/transaction"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/badRequest"
+            }
+          },
+          "401": {
+            "description": "Authentication error",
+            "schema": {
+              "$ref": "#/definitions/UnauthorizedError"
+            }
+          },
+          "403": {
+            "description": "Access token does not have the required scope",
+            "schema": {
+              "$ref": "#/definitions/forbiddenError"
+            }
+          },
+          "404": {
+            "description": "Account not found",
+            "schema": {
+              "$ref": "#/definitions/userNotExists"
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{account-number}/debit": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Credits a user account and creates a new transaction entry",
+        "summary": "Debit transaction on an account",
+        "operationId": "ApiV1debitAccount",
+        "deprecated": false,
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "account-number",
+            "required": true,
+            "type": "integer",
+            "description": "The account number to be debited"
+          },
+          {
+            "in": "body",
+            "name": "transactionDetails",
+            "description": "The basic details of the transaction",
+            "schema": {
+              "type": "object",
+              "required": [
+                "amount"
+              ],
+              "properties": {
+                "amount": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account debited and transaction entry created successfully",
+            "schema": {
+              "$ref": "#/definitions/transaction"
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/badRequest"
+            }
+          },
+          "401": {
+            "description": "Authentication error",
+            "schema": {
+              "$ref": "#/definitions/UnauthorizedError"
+            }
+          },
+          "403": {
+            "description": "Access token does not have the required scope",
+            "schema": {
+              "$ref": "#/definitions/forbiddenError"
+            }
+          },
+          "404": {
+            "description": "Account not found",
+            "schema": {
+              "$ref": "#/definitions/userNotExists"
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{account-number}/transactions": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "View an account's transaction history",
+        "summary": "View all transactions on an account",
+        "operationId": "ApiV1viewAcctTransactions",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "account-number",
+            "required": true,
+            "type": "integer",
+            "description": "The account number transaction to be viewed"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account's transactions fetched successfully",
+            "schema": {
+              "$ref": "#/definitions/multiTransaction"
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Authentication error",
+            "schema": {
+              "$ref": "#/definitions/UnauthorizedError"
+            }
+          },
+          "404": {
+            "description": "Account not found",
+            "schema": {
+              "$ref": "#/definitions/userNotExists"
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{transactionId}": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "View a specific transaction",
+        "summary": "View a specific transaction",
+        "operationId": "ApiV1viewSpecifictTransaction",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "transactionId",
+            "required": true,
+            "type": "integer",
+            "description": "The id of the transaction to be fetched"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction fetched successfully",
+            "schema": {
+              "$ref": "#/definitions/multiTransaction"
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Authentication error",
+            "schema": {
+              "$ref": "#/definitions/UnauthorizedError"
+            }
+          },
+          "404": {
+            "description": "Transaction with transactionId not found",
+            "schema": {
+              "$ref": "#/definitions/userNotExists"
+            }
+          }
+        }
+      }
+    },
+    "/user/{user-email-address}/accounts": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "View all accounts owned by a specific user",
+        "summary": "View all accounts owned by a specific user",
+        "operationId": "ApiV1viewUserAccts",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user-email-address",
+            "required": true,
+            "type": "string",
+            "description": "The email of the user's' accounts to be fetched"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction fetched successfully",
+            "schema": {
+              "$ref": "#/definitions/getEmailAcc"
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Authentication error",
+            "schema": {
+              "$ref": "#/definitions/UnauthorizedError"
+            }
+          },
+          "404": {
+            "description": "Transaction with transactionId not found",
+            "schema": {
+              "$ref": "#/definitions/userNotExists"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "userSignupResponse": {
+      "title": "userSignupResponse",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/signUp"
+          }
+        }
+      }
+    },
+    "signUp": {
+      "title": "signUp",
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number",
+          "format": "int64"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "createUserResponse": {
+      "title": "createUserResponse",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/createUser"
+          }
+        }
+      }
+    },
+    "createUser": {
+      "title": "createUser",
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number",
+          "format": "int64"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "isAdmin": {
+          "type": "boolean"
+        }
+      }
+    },
+    "userExists": {
+      "title": "userExists",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 422
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "userNotExists": {
+      "title": "userNotExists",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 404
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "badRequest": {
+      "title": "badRequest",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 400
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "UnauthorizedError": {
+      "title": "noAuth",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 401
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "forbiddenError": {
+      "title": "forbidden",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 403
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "newAccResponse": {
+      "title": "newAccResponse",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 201
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/newAccData"
+          }
+        }
+      }
+    },
+    "newAccData": {
+      "title": "newAccData",
+      "type": "object",
+      "properties": {
+        "accountNumber": {
+          "type": "number",
+          "format": "int64",
+          "example": 1234567890
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "openingBalance": {
+          "type": "number",
+          "format": "float",
+          "example": 5000
+        }
+      }
+    },
+    "updateAccResponse": {
+      "title": "updateAccResponse",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 200
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/accUpdate"
+          }
+        }
+      }
+    },
+    "deleteAccResponse": {
+      "title": "updateAccResponse",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 200
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "accUpdate": {
+      "title": "accUpdate",
+      "type": "object",
+      "properties": {
+        "accountNumber": {
+          "type": "number",
+          "format": "int64",
+          "example": 1234567890
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "transaction": {
+      "title": "transaction",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 201
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/transBody"
+          }
+        }
+      }
+    },
+    "transBody": {
+      "title": "transBody",
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "number",
+          "format": "int64",
+          "example": 1
+        },
+        "accountNumber": {
+          "type": "number",
+          "format": "int64",
+          "example": 1234567890
+        },
+        "amount": {
+          "type": "number",
+          "format": "double",
+          "example": 25000.58
+        },
+        "cashier": {
+          "type": "number",
+          "format": "int64",
+          "example": 1
+        },
+        "transactionType": {
+          "type": "string"
+        },
+        "accountBalance": {
+          "type": "string"
+        }
+      }
+    },
+    "multiTransaction": {
+      "title": "transaction",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 200
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/multiTransBody"
+          }
+        }
+      }
+    },
+    "multiTransBody": {
+      "title": "multiTransBody",
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "number",
+          "format": "int64",
+          "example": 1
+        },
+        "createdOn": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2017-07-21T17:32:28Z"
+        },
+        "type": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "number",
+          "format": "int",
+          "example": 1234567890
+        },
+        "amount": {
+          "type": "number",
+          "format": "double",
+          "example": 25000.58
+        },
+        "oldBalance": {
+          "type": "number",
+          "format": "double",
+          "example": 25000.58
+        },
+        "newBalance": {
+          "type": "number",
+          "format": "double",
+          "example": 50000.58
+        }
+      }
+    },
+    "getEmailAcc": {
+      "title": "getEmailAcc",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "format": "int64",
+          "example": 201
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/emailAcc"
+          }
+        }
+      }
+    },
+    "emailAcc": {
+      "title": "emailAcc",
+      "type": "object",
+      "properties": {
+        "createdOn": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2017-07-21T17:32:28Z"
+        },
+        "accountNumber": {
+          "type": "number",
+          "format": "int64",
+          "example": 1234567890
+        },
+        "type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "balance": {
+          "type": "number",
+          "format": "float",
+          "example": 5000
+        }
+      }
+    }
+  }
+}

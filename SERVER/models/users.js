@@ -1,6 +1,8 @@
-import users from './mock_data/users';
+import db from './migrations/db';
 import helper from '../helpers/helper';
+import queries from './migrations/queries';
 
+const { signUpQuery, createAccountQuery } = queries;
 /**
  * @class User
  * @description Contains methods for creating and login user
@@ -8,20 +10,33 @@ import helper from '../helpers/helper';
 class User {
   /**
    * @param  {object} data - Fields client inputed
-   * @method create()
+   * @method signUp()
    * @returns {object} New User informations
    */
-  static create(data) {
-    const newUser = {
-      id: users.length + 1,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      password: helper.hashPassword(data.password),
-      type: 'client',
-    };
-    users.push(newUser);
-    return newUser;
+  static async signUp(data) {
+    const {
+      firstName, lastName, email, password,
+    } = data;
+
+    const hashedPassword = helper.hashPassword(password);
+    const values = [firstName, lastName, email, hashedPassword];
+    const response = await db.query(signUpQuery, values);
+    return response;
+  }
+
+  /**
+   * @param  {object} data - Fields client inputed
+   * @method createUser()
+   * @returns {object} New User informations
+   */
+  static async createUser(data) {
+    const {
+      firstName, lastName, email, password, isAdmin,
+    } = data;
+    const hashedPassword = helper.hashPassword(password);
+    const values = [firstName, lastName, email, hashedPassword, 'staff', isAdmin];
+    const response = await db.query(createAccountQuery, values);
+    return response;
   }
 }
 

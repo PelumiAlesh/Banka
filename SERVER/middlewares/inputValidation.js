@@ -2,7 +2,6 @@
 import {
   check,
   validationResult,
-  oneOf,
   param,
 } from 'express-validator/check';
 import Account from '../models/accounts';
@@ -11,20 +10,95 @@ const message = 'Invalid Account Type: Account Type can be either "savings" or "
 const validateUser = {
   // --------------- SignUp validations ------------
   signup: [
-    check('password').isLength({ min: 7 }).withMessage('Password Length should be at least 8 Characters'),
-    check('firstName').not().isEmpty().withMessage('FirstName should not be left empty'),
-    check('lastName').not().isEmpty().withMessage('LastName should not be left empty'),
-    check('firstName').isAlpha().trim().withMessage('firstName can ony contain letters'),
-    check('lastName').isAlpha().trim().withMessage('lastName can ony contain letters'),
-    check('email').isEmail().trim().withMessage('input a valid email address'),
-    check('email').not().isEmpty().withMessage('input email address'),
-    check('password').not().isEmpty().withMessage('input password'),
-    check('type').not().isString().withMessage('Type is not allowed'),
+    check('password')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('Password should not empty: input password')
+      .trim()
+      .isLength({ min: 7 })
+      .withMessage('Password Length should be at least 8 Characters'),
+    check('firstName')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('firstName should not be left empty: input firstName')
+      .isAlpha()
+      .trim()
+      .withMessage('firstName can only contain letters: remove invalid characters')
+      .customSanitizer(value => value.toLowerCase()),
+    check('lastName')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('lastName should not be left empty: input lastName')
+      .isAlpha()
+      .trim()
+      .withMessage('lastName can ony contain letters: remove invalid characters')
+      .customSanitizer(value => value.toLowerCase()),
+    check('email')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('email should not be left empty: input email address')
+      .isEmail()
+      .trim()
+      .withMessage('input a valid email address')
+      .normalizeEmail(),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];
       if (!errors.isEmpty()) {
-        errors.array().forEach((err) => {
+        errors.array({ onlyFirstError: true }).forEach((err) => {
+          errMessages.push(err.msg);
+        });
+        return res.status(400).json({
+          status: 400,
+          error: errMessages,
+        });
+      }
+      return next();
+    },
+  ],
+  createUser: [
+    check('password')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('Password should not empty: input password')
+      .trim()
+      .isLength({ min: 7 })
+      .withMessage('Password Length should be at least 8 Characters'),
+    check('firstName')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('firstName should not be left empty: input firstName')
+      .isAlpha()
+      .trim()
+      .withMessage('firstName can only contain letters: remove invalid characters')
+      .customSanitizer(value => value.toLowerCase()),
+    check('lastName')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('lastName should not be left empty: input lastName')
+      .isAlpha()
+      .trim()
+      .withMessage('lastName can ony contain letters: remove invalid characters')
+      .customSanitizer(value => value.toLowerCase()),
+    check('email')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('email should not be left empty: input email address')
+      .isEmail()
+      .trim()
+      .withMessage('input a valid email address')
+      .normalizeEmail(),
+    check('isAdmin')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('isAdmin should not be left empty: specify isAdmin')
+      .isIn([true, false])
+      .withMessage('isAdmin can either be "true" or "false"'),
+    (req, res, next) => {
+      const errors = validationResult(req);
+      const errMessages = [];
+      if (!errors.isEmpty()) {
+        errors.array({ onlyFirstError: true }).forEach((err) => {
           errMessages.push(err.msg);
         });
         return res.status(400).json({
@@ -37,14 +111,23 @@ const validateUser = {
   ],
   // --------------- SignIn validations ------------
   signin: [
-    check('email').isEmail().trim().withMessage('input a valid email address'),
-    check('email').not().isEmpty().withMessage('input email address'),
-    check('password').not().isEmpty().withMessage('input password'),
+    check('email')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('email should not be left empty: input email address')
+      .isEmail()
+      .trim()
+      .withMessage('input a valid email address'),
+
+    check('password')
+      .not()
+      .isEmpty()
+      .withMessage('password should not be left empty: input password'),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];
       if (!errors.isEmpty()) {
-        errors.array().forEach((err) => {
+        errors.array({ onlyFirstError: true }).forEach((err) => {
           errMessages.push(err.msg);
         });
         return res.status(400).json({
@@ -57,20 +140,29 @@ const validateUser = {
   ],
   // --------------- Create Account validations ------------
   creatAccount: [
-    check('type').not().isEmpty().withMessage('Please specify account type'),
-    oneOf([
-      check('initialDeposit').not().isEmpty(),
-      check('initialDeposit').isCurrency(),
-    ], 'Initial deposit cant be left empty'),
-    oneOf([
-      check('type').equals('savings'),
-      check('type').equals('current'),
-    ], message),
+    check('type')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('type should not be left empty: Please specify account type')
+      .trim()
+      .isIn(['savings', 'current'])
+      .withMessage(message),
+    check('initialDeposit')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('Initial deposit cant be left empty: specify initial deposit')
+      .toFloat()
+      .withMessage('Please input a valid number for initialDeposit')
+      .custom(async (value) => {
+        if (Number(value) < 1) throw new Error('Please specify a valid amount');
+      })
+      .toFloat()
+      .withMessage('Please enter a valid amount'),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];
       if (!errors.isEmpty()) {
-        errors.array().forEach((err) => {
+        errors.array({ onlyFirstError: true }).forEach((err) => {
           errMessages.push(err.msg);
         });
         return res.status(400).json({
@@ -83,20 +175,23 @@ const validateUser = {
   ],
   // --------------- Change Account status ------------
   changeAccountStatus: [
-    param('accountNumber').custom(async (acctNo) => {
-      const isFound = await Account.checkAccount(acctNo);
-      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
-    }),
-    check('status').not().isEmpty().withMessage('Please input status'),
-    oneOf([
-      check('status').equals('active'),
-      check('status').equals('dormant'),
-    ], 'Account status can only be "active" or "dormant"'),
+    param('accountNumber')
+      .custom(async (acctNo) => {
+        const response = await Account.checkAccount(acctNo);
+        if (response.rowCount < 1) throw new Error(`No account with the account Number "${acctNo}" was found`);
+      }),
+    check('status')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('status should not be left empty: Please input status')
+      .trim()
+      .isIn(['active', 'dormant'])
+      .withMessage('Account status can only be "active" or "dormant"'),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];
       if (!errors.isEmpty()) {
-        errors.array().forEach((err) => {
+        errors.array({ onlyFirstError: true }).forEach((err) => {
           errMessages.push(err.msg);
         });
         return res.status(400).json({
@@ -109,15 +204,16 @@ const validateUser = {
   ],
   // --------------- Delete Account ------------
   deleteAccount: [
-    param('accountNumber').custom(async (acctNo) => {
-      const isFound = await Account.checkAccount(acctNo);
-      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
-    }),
+    param('accountNumber')
+      .custom(async (acctNo) => {
+        const isFound = await Account.checkAccount(acctNo);
+        if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
+      }),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];
       if (!errors.isEmpty()) {
-        errors.array().forEach((err) => {
+        errors.array({ onlyFirstError: true }).forEach((err) => {
           errMessages.push(err.msg);
         });
         return res.status(404).json({
@@ -130,12 +226,22 @@ const validateUser = {
   ],
   // ------------------- Validate Amount --------------
   validateAmount: [
-    check('amount').not().isEmpty().withMessage('Amount can not left Empty!.'),
+    check('amount')
+      .not()
+      .isEmpty({ ignore_whitespace: true })
+      .withMessage('Amount should not left Empty: input amount.')
+      .toFloat()
+      .withMessage('Invalid amount: amount can accept numbers only')
+      .custom(async (value) => {
+        if (Number(value) < 1) throw new Error('Please specify a valid amount');
+      })
+      .toFloat()
+      .withMessage('Please enter a valid amount'),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];
       if (!errors.isEmpty()) {
-        errors.array().forEach((err) => {
+        errors.array({ onlyFirstError: true }).forEach((err) => {
           errMessages.push(err.msg);
         });
         return res.status(400).json({
@@ -147,15 +253,16 @@ const validateUser = {
     },
   ],
   validateAccountURL: [
-    param('accountNumber').custom(async (acctNo) => {
-      const isFound = await Account.checkAccount(acctNo);
-      if (!isFound) throw new Error(`No account with the account Number "${acctNo}" was found`);
-    }),
+    param('accountNumber')
+      .custom(async (acctNo) => {
+        const isFound = await Account.checkAccount(acctNo);
+        if (isFound.rows < 1) throw new Error(`No account with the account Number "${acctNo}" was found`);
+      }),
     (req, res, next) => {
       const errors = validationResult(req);
       const errMessages = [];
       if (!errors.isEmpty()) {
-        errors.array().forEach((err) => {
+        errors.array({ onlyFirstError: true }).forEach((err) => {
           errMessages.push(err.msg);
         });
         return res.status(404).json({
