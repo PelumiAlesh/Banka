@@ -65,8 +65,8 @@ class UserController {
       data: [{
         token,
         id: user.id,
-        firstName: user.firstname,
-        lastName: user.lastname,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
       }],
     });
@@ -81,7 +81,7 @@ class UserController {
    */
   static async createUser(req, res) {
     try {
-      const response = await users.createUser(req.body);
+      const response = await users.createUser(req.body, res);
       const user = response.rows[0];
       const token = helper.generateToken(user);
       return res.status(201).json({
@@ -89,7 +89,6 @@ class UserController {
         data: [{
           token,
           ...user,
-          password: req.body.password,
         }],
       });
     } catch (error) {

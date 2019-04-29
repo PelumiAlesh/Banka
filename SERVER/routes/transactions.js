@@ -9,14 +9,14 @@ router.use(bodyParser.json());
 
 // Credit an account
 router.post('/:accountNumber/credit',
-  Authenticate.verifyStaff,
+  Authenticate.verifyCashier,
   inputValidator.validateAccountURL,
   inputValidator.validateAmount,
   transactionController.credit);
 
 // Debit an account
 router.post('/:accountNumber/debit',
-  Authenticate.verifyStaff,
+  Authenticate.verifyCashier,
   inputValidator.validateAccountURL,
   inputValidator.validateAmount,
   transactionController.debit);

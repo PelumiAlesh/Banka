@@ -25,7 +25,6 @@
     }
   ],
   "consumes": [
-    "application/x-www-form-urlencoded",
     "application/json"
   ],
   "produces": [
@@ -116,8 +115,13 @@
         "tags": [
           "Users"
         ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
         "description": "Creates a new user",
-        "summary": "User sign up",
+        "summary": "Admin create staff/admin",
         "operationId": "ApiV1UserCreate",
         "deprecated": false,
         "consumes": [
@@ -135,7 +139,7 @@
               "type": "object",
               "required": [
                 "firstName",
-                "lastName",
+                "lastName",                
                 "email",
                 "password",
                 "isAdmin"
@@ -359,8 +363,8 @@
             "Bearer": []
           }
         ],
-        "description": "Edits the user account status",
-        "summary": "Changes account status",
+        "description": "Activate or deactivate an account. Specify the new ​status ​in​ ​the request body.",
+        "summary": "Activate or deactivate an account",
         "operationId": "ApiV1StatusUpdate",
         "deprecated": false,
         "consumes": [
@@ -516,7 +520,7 @@
           "200": {
             "description": "Account's transactions fetched successfully",
             "schema": {
-              "$ref": "#/definitions/multiTransaction"
+              "$ref": "#/definitions/emailAcc"
             },
             "headers": {}
           },
@@ -899,7 +903,7 @@
       }
     },
     "createUser": {
-      "title": "signUp",
+      "title": "createUser",
       "type": "object",
       "properties": {
         "token": {
