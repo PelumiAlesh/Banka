@@ -6,7 +6,7 @@ export default {
   createAccountQuery: `INSERT INTO users ("firstName", "lastName", email, password, type, "isAdmin") VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, "firstName", "lastName", email, type, "isAdmin";`,
 
   getTransactions: `
-  SELECT transactions.id AS transactionsID, transactions."createdOn" AS "createdOn", transactions.type AS type, transactions."accountNumber" AS "accountNumber", amount, "oldBalance"::FLOAT, "newBalance"::FLOAT
+  SELECT transactions.id AS transactionsID, transactions."createdOn" AS "createdOn", transactions.type AS type, transactions."accountNumber" AS "accountNumber", amount::FLOAT, "oldBalance"::FLOAT, "newBalance"::FLOAT
   FROM transactions
   JOIN accounts ON transactions."accountNumber" = accounts."accountNumber"
   WHERE transactions.id = $1 AND accounts.owner = $2;
@@ -16,7 +16,7 @@ export default {
 
   insertTransactions: `
   INSERT INTO transactions ("createdOn", type, "accountNumber", cashier, amount, "oldBalance", "newBalance") 
-       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
+       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id, "accountNumber", amount::FLOAT, cashier, type, "oldBalance"::FLOAT, "newBalance"::FLOAT;
        ;`,
   insertAccount: `INSERT INTO accounts (owner, "accountNumber", "createdOn", type, status, balance) VALUES ($1, $2, $3, $4, $5, $6) RETURNING "accountNumber"::FLOAT, type, balance::FLOAT;`,
 
