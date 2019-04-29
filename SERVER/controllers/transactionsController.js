@@ -1,4 +1,6 @@
 import Transactions from '../models/transactions';
+import notificationEmail from '../helpers/emailNotification';
+
 
 class TransactionController {
   /**
@@ -12,6 +14,9 @@ class TransactionController {
     try {
       const response = await Transactions.transact(req, res, 'credit');
       const transactionDetails = response.rows[0];
+      const email = await Transactions.getEmail(req.params.accountNumber);
+
+      await notificationEmail.alert(email, 'credit', transactionDetails, req);
       return res.status(201).json({
         status: res.statusCode,
         data: [{
@@ -43,6 +48,9 @@ class TransactionController {
     try {
       const response = await Transactions.transact(req, res, 'debit');
       const transactionDetails = response.rows[0];
+      const email = await Transactions.getEmail(req.params.accountNumber);
+
+      await notificationEmail.alert(email, 'debit', transactionDetails, req);
       return res.status(201).json({
         status: res.statusCode,
         data: [{
