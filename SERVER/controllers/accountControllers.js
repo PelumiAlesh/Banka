@@ -168,8 +168,8 @@ class AccountController {
       }
       const resRows = response.rows[0];
       const query = 'SELECT email, id FROM users WHERE id = $1;';
-      const { id } = resRows;
-      const { rows } = await db.query(query, [id]);
+      const { owner } = resRows;
+      const { rows } = await db.query(query, [owner]);
       if (resRows.owner !== req.user.id) {
         return res.status(403).json({
           status: res.statusCode,

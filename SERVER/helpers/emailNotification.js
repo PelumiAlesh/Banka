@@ -20,10 +20,9 @@ class notificationEmail {
       service: 'gmail',
       auth: {
         user: 'bankaalert@gmail.com',
-        pass: process.env.EMAIL_PASS,
+        pass: 'Lukmon17_',
       },
     });
-
     const mailOptions = {
       from: 'Banka <BankaAlert@gmail.com>',
       to: email,
@@ -62,7 +61,7 @@ class notificationEmail {
       `,
     };
 
-    transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions, (err, info) => (err ? console.log(err) : console.log(info)));
   }
 }
 

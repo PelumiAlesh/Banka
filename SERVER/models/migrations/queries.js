@@ -18,7 +18,7 @@ export default {
   INSERT INTO transactions ("createdOn", type, "accountNumber", cashier, amount, "oldBalance", "newBalance") 
        VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;
        ;`,
-  insertAccount: `INSERT INTO accounts (owner, "accountNumber", "createdOn", type, status, balance) VALUES ($1, $2, $3, $4, $5, $6) RETURNING "accountNumber"::FLOAT, type, balance;`,
+  insertAccount: `INSERT INTO accounts (owner, "accountNumber", "createdOn", type, status, balance) VALUES ($1, $2, $3, $4, $5, $6) RETURNING "accountNumber"::FLOAT, type, balance::FLOAT;`,
 
   updateStatus: `UPDATE accounts SET status=$1 WHERE "accountNumber"=$2 RETURNING "accountNumber"::FLOAT, status;`,
 
