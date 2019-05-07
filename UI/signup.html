@@ -16,31 +16,29 @@
     <div class="signup-wrapper">
       <p><img src="assets/images/logo.png" alt="logo.png"></p>
       <h1>Sign-Up</h1>
-      <form class="signup-form" action="USER/create_account.html">
+      <div class="errorDiv">
+        <p id="errDiv"></p>
+      </div>
+      <form class="signup-form" method="POST">
         <!-- First Name -->
         <div class="f_name">
           <label><span class="entypo-user"><i class="fas fa-user"></i></span></label>
-          <input type="text" placeholder="First Name" required />
+          <input type="text" id="firstName"placeholder="First Name" required />
         </div>
         <!-- Second Name -->
         <div class="s_name">
           <label><span class="entypo-user"><i class="fas fa-user"></i></span></label>
-          <input type="text" placeholder="Second Name" required />
+          <input type="text" id="lastName" placeholder="Last Name" required />
         </div>
         <!-- email -->
         <div class="email">
           <label><span class="entypo-user"><i class="fas fa-at"></i></span></label>
-          <input type="email" placeholder="E-mail" required />
+          <input type="email" id="email" placeholder="E-mail" required />
         </div>
         <!-- phone -->
         <div class="phone">
           <label><span class="entypo-user"><i class="fas fa-phone fa-flip-vertical"></i></span></label>
-          <input type="tel" placeholder="Phone" required />
-        </div>
-        <!-- Mother's Name -->
-        <div class="m_name">
-          <label><span class="entypo-user"><i class="fas fa-user"></i></span></label>
-          <input type="text" placeholder="Mother's Maiden Name" required />
+          <input type="tel" id="phone" placeholder="Phone" required />
         </div>
         <!-- State of Origin -->
         <div class="state">
@@ -98,17 +96,19 @@
         <!-- password -->
         <div class="password">
           <label><span class="entypo-user"><i class="fas fa-lock"></i></span></label>
-          <input type="password" placeholder="Password" required />
+          <input type="password" id="password" placeholder="Password" required />
         </div>
         <!-- button -->
-        <button class="btn">Sign Up</button>
+        <button type="submit" id="submit" class="btn">Sign Up</button>
         <p>
           Already have an account? <a href="index.html" class="link">Sign in now <span
               class="entypo-right-thin"></span></a>
         </p>
       </form>
+    
     </div> <!-- /signup-wrapper -->
   </div> <!-- /container -->
+  <script src="scripts/signup.js"></script>
 </body>
 
 </html>
