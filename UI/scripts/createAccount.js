@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 const create = document.querySelector('#createAcct');
 const errorDiv = document.getElementById('errDiv');
+// eslint-disable-next-line no-var
+const isModal = document.getElementById('boolean').innerText;
 
 create.addEventListener('click', (e) => {
   e.preventDefault();
@@ -10,7 +12,7 @@ create.addEventListener('click', (e) => {
 
   const userDetails = JSON.parse(localStorage.getItem('userDetails'));
   const bearer = `Bearer ${userDetails[0].token}`;
-  fetch('https://pelumi-banka.herokuapp.com/api/v1/accounts', {
+  fetch('http://localhost:3000/api/v1/accounts', {
     headers: {
       Authorization: bearer,
       'Content-Type': 'application/json',
@@ -32,7 +34,7 @@ create.addEventListener('click', (e) => {
         });
         errorDiv.innerHTML = errors;
       }
-      if (response.status === 201) {
+      if (response.status === 201 && isModal === 'true') {
         errorDiv.style.border = '0px solid transparent';
         errorDiv.style.padding = '0rem';
         errorDiv.innerHTML = '';
@@ -40,6 +42,15 @@ create.addEventListener('click', (e) => {
         x.className = 'show';
 
         setTimeout(() => { x.className = x.className.replace('show', ''); }, 3000);
+      }
+      if (response.status === 201 && isModal === 'false') {
+        errorDiv.style.border = '0px solid transparent';
+        errorDiv.style.padding = '0rem';
+        errorDiv.innerHTML = '';
+
+        setTimeout(() => {
+          window.location = './dashboard.html';
+        }, 2000);
       }
     });
 });

@@ -26,6 +26,7 @@ class AuthenticateUser {
       }
       return next();
     } catch (error) {
+      console.log(error);
       return res.status(401).json({
         status: res.statusCode,
         error: 'Authentication Failed',
