@@ -16,6 +16,9 @@
     <div class="crtAcct-wrapper">
       <p><img src="../assets/images/logo.png" alt="logo.png"></p>
       <h1>CREATE ACCOUNT</h1>
+      <div class="errorDiv">
+        <p id="errDiv"></p>
+        </div>
       <form class="crtAcct-form" action="dashboard.html">
         <!-- Account Type -->
         <div class="acct-type">
@@ -23,11 +26,8 @@
             <label><span class="entypo-user"><i class="fas fa-money-check-alt"></i></span></label>
             <select name="acct-type" id="acct-type">
               <option value="" selected="selected">Account Type</option>
-              <option value="savings-acct">Savings Account</option>
-              <option value="Checkings-acct">Checkings Account</option>
-              <option value="Retirement-acct">Retirement Account</option>
-              <option value="Budget-acct">Budget Account</option>
-              <option value="Property-acct">Property Account</option>
+              <option value="savings">Savings Account</option>
+              <option value="Checkings">Checkings Account</option>
             </select>
             <span class="select__arrow"></span>
           </div>
@@ -35,10 +35,10 @@
         <!-- password -->
         <div class="bvn">
           <label><span class="entypo-user"><i class="fas fa-dollar-sign"></i></span></label>
-          <input type="number" placeholder="Initial Deposit " required />
+          <input type="number" id="initialDeposit" placeholder="Initial Deposit " required />
         </div>
         <!-- button -->
-        <button class="btn" onclick="window.location.href='profile.html'">CREATE </button>
+        <button class="btn" id="createAcct">CREATE </button>
         <p>
           By clicking create account. It means you agree to our <a href="#" class="link">terms and condition? <span
               class="entypo-right-thin"></span></a>
@@ -46,6 +46,8 @@
       </form>
     </div> <!-- /crtAcct-wrapper -->
   </div> <!-- /container -->
+  <p id="boolean" style="color:transparent;">false</p>
+  <script src="../scripts/createAccount.js"></script>
 </body>
 
-</html> defauw
+</html>
