@@ -141,44 +141,46 @@
             <div class="modal_content">
                 <div class="content_header">
                     <span class="close" onclick="closemodal('create_account_modal')">&times;</span>
-                    <h1>Create new account</h1>
-                    <form action="">
+                    <h1>Create new account</h1>             
                 </div>
+                <div class="errorDiv">
+                    <p id="errDiv"></p>
+                  </div>
                 <!-- Account Type -->
+                <form method="POST">
                 <div class="acct-type">
                     <label>Account type:</label>
                     <div class="select-wrap">
                         <select name="acct-type" id="acct-type">
                             <option value="" selected="selected">Account Type</option>
-                            <option value="savings-acct">Savings Account</option>
-                            <option value="Checkings-acct">Checkings Account</option>
-                            <option value="Retirement-acct">Retirement Account</option>
-                            <option value="Budget-acct">Budget Account</option>
-                            <option value="Property-acct">Property Account</option>
+                            <option value="savings">Savings Account</option>
+                            <option value="current">Current Account</option>
                         </select>
                         <span class="select__arrow"></span>
                     </div>
                 </div>
-                <!-- password -->
+                <!-- Initial deposit -->
                 <label>Initial deposit:</label>
                 <div class="bvn">
-                    <input type="number" placeholder="Initial Deposit " required />
+                    <input type="number" id="initialDeposit" placeholder="Initial Deposit " required />
                 </div>
                 <!-- button -->
-                <button class="btn">CREATE </button>
+                <button class="btn" id="createAcct">CREATE </button>
                 <p>
-                    By clicking create. It means you agree to our <a href="#" class="link">terms and condition? <span
-                            class="entypo-right-thin"></span></a>
+                    By clicking create. It means you agree to our <a href="#" class="link">terms and condition?
+                        <span class="entypo-right-thin"></span></a>
                 </p>
                 </form>
             </div>
         </div>
+        <div id="snackbar">Account created succcesfully...</div>
     </section>
     <footer>
         <p>&copy; Copyright Banka 2019</p>
     </footer>
     <script src="../scripts/app.js"></script>
     <script src="../scripts/dashboard.js"></script>
+    <script src="../scripts/createAccount.js"></script>
 </body>
 
 </html>
