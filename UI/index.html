@@ -16,25 +16,29 @@
     <div class="login-wrapper">
       <p><img src="assets/images/logo.png" alt=""></p>
       <h1>Login</h1>
-      <form class="login-form" action="../UI/USER/dashboard.html">
+      <div class="errorDiv">
+        <p id="errDiv"></p>
+      </div>
+      <form class="login-form" method="POST">
         <!-- email -->
         <div class="User-ID">
           <label><span class="entypo-user"><i class="fas fa-at"></i></span></label>
-          <input type="text" placeholder="E-mail" required />
+          <input type="text"  id="email" placeholder="E-mail" required />
         </div>
         <!-- password -->
         <div class="password">
           <label><span class="entypo-user"><i class="fas fa-lock"></i></span></label>
-          <input type="password" placeholder="Password" required />
+          <input type="password" id="password" placeholder="Password" required />
         </div>
         <!-- button -->
-        <button class="btn">Sign in</button>
+        <button class="btn" id="submit">Sign in</button>
         <p>
           Not a member? <a href="signup.html" class="link">Sign up now <span class="entypo-right-thin"></span></a>
         </p>
       </form>
     </div> <!-- /login-wrapper -->
   </div> <!-- /container -->
+  <script src="./scripts/login.js"></script>
 </body>
 
 </html>
