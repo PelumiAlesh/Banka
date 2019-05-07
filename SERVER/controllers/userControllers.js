@@ -68,6 +68,8 @@ class UserController {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
+        type: user.type,
+        isAdmin: user.isAdmin,
       }],
     });
   }

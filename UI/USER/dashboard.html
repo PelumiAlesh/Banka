@@ -27,7 +27,7 @@
                     <img src="../assets/images/avatar-1577909__340.png" alt="img_you">
                 </li>
                 <div class="dropdown">
-                        <button class="dropbtn">Pelumi Alesh. <i class="fas fa-sort-down"></i></button>
+                        <button class="dropbtn"> <span id="userName"></span> <i class="fas fa-sort-down"></i></button>
                         <div class="dropdown-content">
                                 <a href="./profile.html">Profile</a>
                                 <a href="../index.html"> Log out</a>
@@ -53,7 +53,7 @@
         <section class="body">
 
             <div class="welcome_message">
-                <p><b>Hi Dave</b>, Welcome back.</p>
+                <p><b>Hi <span id="firstName"></span></b>, Welcome back.</p>
             </div>
             <!-- ------------Account Details ------------------- -->
             <div class="account_details">
@@ -61,7 +61,7 @@
                     <p id="thick">Account</p>
                     <p id="acct_num">**** **** **** 9873</p>
                     <p id="card_type">Master Card</p>
-                    <p id="fade">Dave@gmail.com</p>
+                    <p id="fade" class="userEmail"></p>
                 </div>
                 <div class="main_balance">
                     <p id="thick">Balance</p>
@@ -182,6 +182,7 @@
             <p>&copy; Copyright Banka 2019</p>
         </footer>
         <script src="../scripts/app.js"></script>
+        <script src="../scripts/dashboard.js"></script>
     </div>
 </body>
 
