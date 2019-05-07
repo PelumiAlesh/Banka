@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable func-names */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
@@ -35,7 +36,7 @@ try {
     showPreview();
   };
 } catch (err) {
-  console.log('Something went wrong');
+  console.log('');
 }
 
 // -------------Function to enable and saveprofile edit
@@ -95,14 +96,14 @@ const modal = document.getElementById('create_account_modal');
 const modall = document.getElementById('create_account_modal_');
 
 function toggleCreateAccoutn(id) {
-  const modal = document.getElementById(id);
+  const modalr = document.getElementById(id);
   toggle.checked = false;
-  modal.style.display = 'block';
+  modalr.style.display = 'block';
 }
 
 function closemodal(id) {
-  const modal = document.getElementById(id);
-  modal.style.display = 'none';
+  const modale = document.getElementById(id);
+  modale.style.display = 'none';
 }
 
 
@@ -113,7 +114,6 @@ Close by clicking anywhere
 */
 
 window.onclick = function (event) {
-  console.log('Clicked');
   if (event.target == modall) {
     modall.style.display = 'none';
   }
@@ -123,7 +123,8 @@ window.onclick = function (event) {
   const toggle = document.getElementById('toggle');
   event.stopPropagation();
   if (event.target.closest('#toggle')) return;
+  // eslint-disable-next-line no-constant-condition
   if (true) {
-     toggle.checked = false;
+    toggle.checked = false;
   }
 };
