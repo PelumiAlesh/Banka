@@ -5,14 +5,13 @@ const errorDiv = document.getElementById('errDiv');
 const isModal = document.getElementById('boolean').innerText;
 const profile = document.getElementById('isProfile').innerText;
 
-
 // ---------------- Load all user account to dashboard
 const loadAccounts = () => {
   const userDetails = JSON.parse(localStorage.getItem('userDetails'));
   const { email } = userDetails[0];
   const url = `https://pelumi-banka.herokuapp.com/api/v1/user/${email}/accounts`;
 
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJheW9AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYXlvIiwibGFzdE5hbWUiOiJhbGVzaCIsInBhc3N3b3JkIjoiJDJiJDEwJEx5SUp6R3FKbjd5NDNvZzU3NG5LNS5pcmR6T3kzSjJXWWVTUVBKN0NxdmhOWi5ObkI3QVAuIiwidHlwZSI6InN0YWZmIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU1NzQwODEwMCwiZXhwIjo5OTk5OTk5OTk5fQ.3FCJeOMooeUTAE4aAQHVvf_qlLNQtqIuv1D7vjaMc7Y';
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJheW9AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYXlvIiwibGFzdE5hbWUiOiJhbGVzaCIsInBhc3N3b3JkIjoiJDJiJDEwJEx5SUp6R3FKbjd5NDNvZzU3NG5LNS5pcmR6T3kzSjJXWWVTUVBKN0NxdmhOWi5ObkI3QVAuIiwidHlwZSI6InN0YWZmIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU1NzQxMTI0MiwiZXhwIjoxODgxNDExMjQyfQ.4OsSAw3VI0-fN1Nf9KRLaVowXRqtaQ9lSZLITMDt0Do';
   const options = {
     method: 'GET',
     headers: {
