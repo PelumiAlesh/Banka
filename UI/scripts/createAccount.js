@@ -4,7 +4,9 @@ const errorDiv = document.getElementById('errDiv');
 // eslint-disable-next-line no-var
 const isModal = document.getElementById('boolean').innerText;
 const profile = document.getElementById('isProfile').innerText;
-// Load all user account to dashboard
+
+
+// ---------------- Load all user account to dashboard
 const loadAccounts = () => {
   const userDetails = JSON.parse(localStorage.getItem('userDetails'));
   const { email } = userDetails[0];
@@ -26,7 +28,7 @@ const loadAccounts = () => {
     .then((response) => {
       if (response.error) {
         const x = document.getElementById('snackbar');
-        x.innerText = 'Something Went Wrong! Try again...';
+        x.innerText = 'Something Went Wrong!...';
         x.className = 'show';
         setTimeout(() => { x.className = x.className.replace('show', ''); }, 3000);
       }
@@ -60,7 +62,7 @@ if (profile === 'true') {
   loadAccounts();
 }
 
-// Create account
+// ------------------------- Create account
 create.addEventListener('click', (e) => {
   e.preventDefault();
 
