@@ -1,17 +1,20 @@
 /* eslint-disable no-undef */
+import dotenv from 'dotenv';
+
 const create = document.querySelector('#createAcct');
 const errorDiv = document.getElementById('errDiv');
 // eslint-disable-next-line no-var
 const isModal = document.getElementById('boolean').innerText;
 const profile = document.getElementById('isProfile').innerText;
 
+dotenv.config();
 // ---------------- Load all user account to dashboard
 const loadAccounts = () => {
   const userDetails = JSON.parse(localStorage.getItem('userDetails'));
   const { email } = userDetails[0];
   const url = `https://pelumi-banka.herokuapp.com/api/v1/user/${email}/accounts`;
 
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJheW9AZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiYXlvIiwibGFzdE5hbWUiOiJhbGVzaCIsInBhc3N3b3JkIjoiJDJiJDEwJEx5SUp6R3FKbjd5NDNvZzU3NG5LNS5pcmR6T3kzSjJXWWVTUVBKN0NxdmhOWi5ObkI3QVAuIiwidHlwZSI6InN0YWZmIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU1NzQxMTI0MiwiZXhwIjoxODgxNDExMjQyfQ.4OsSAw3VI0-fN1Nf9KRLaVowXRqtaQ9lSZLITMDt0Do';
+  const token = process.env.ADMIN_TOKEN;
   const options = {
     method: 'GET',
     headers: {
