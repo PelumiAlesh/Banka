@@ -37,7 +37,7 @@ class Helper {
    * @returns {string} Token in form of a string
    */
   static generateToken(payload) {
-    const token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '90000h' });
     return token;
   }
 

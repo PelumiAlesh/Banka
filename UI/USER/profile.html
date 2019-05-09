@@ -61,18 +61,18 @@
 
                 </div>
                 <div class="pro_pic_details">
-                    <p><span id="firstName"></span></p>
-                    <p>Male</p>
+                    <p><span id="firstName" style="text-transform:capitalize;"></span></p>
+                    <p>Gender</p>
                     <p>25 Years Old</p>
-                    <p class="userEmail"></p>
+                    <p class="userEmail" style="text-transform:capitalize;"></p>
                     <p class="green">Active <i class="fas fa-circle"></i></p>
                 </div>
 
             </div>
             <div class="main_balance">
                 <p id="thick">Balance</p>
-                <p id="main_bal">8,129.04<sup>₦</sup></p>
-                <p id="fade">Previous month: ₦ 200,93.02</p>
+                <p id="main_bal"></p>
+                <p id="fade">Previous month: ₦ 000,00.00</p>
                 <button class="btn">Delete Account</button>
             </div>
 
@@ -80,53 +80,31 @@
         <!---------------PROFILE ACCOUNTS-------------->
         <div class="prof_down">
             <div class="prof_accts">
+                <div>
                 <h1>Account details</h1>
-                <table class="rwd-table">
+                <table id="proRwdTable"class="rwd-table">
                     <tr>
                         <th>Account Type</th>
                         <th>Balance</th>
-                        <th>Last Month</th>
+                        <th>Account No</th>
                         <th>Status</th>
                     </tr>
-                    <tr>
-                        <td data-th="Acct Type">Savings</td>
-                        <td data-th="Balance">₦435,234</td>
-                        <td data-th="Last Month">₦625,134</td>
-                        <td data-th="Status" class="green">Active <i class="fas fa-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td data-th="Acct Type">Investment</td>
-                        <td data-th="Balance">₦135,093</td>
-                        <td data-th="Last Month">₦435,123</td>
-                        <td data-th="Status" class="green">Active <i class="fas fa-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td data-th="Acct Type">Credit Card</td>
-                        <td data-th="Balance">₦12,971</td>
-                        <td data-th="Last Month">₦35,109</td>
-                        <td data-th="Status" class="red">Inactive <i class="fas fa-circle"></i></td>
-                    </tr>
-                    <tr>
-                        <td data-th="Acct Type">Current</td>
-                        <td data-th="Balance">₦12,971</td>
-                        <td data-th="Last Month">₦35,109</td>
-                        <td data-th="Status" class="green">Active <i class="fas fa-circle"></i></td>
-                    </tr>
                 </table>
+                </div>
                 <button class="btn" onclick="toggleCreateAccoutn('create_account_modal')">CREATE ACCOUNT</button>
 
             </div>
             <div class="prof_details">
                 <h1>User details</h1>
-                <span> <label for="email">Email: </label><input type="email" placeholder="Aleshinloyelukmony@gmail.com"
-                        id="email" disabled></span>
-                <span><label for="phone">Phone: </label><input type="tel" placeholder="+234554565454" id="phone"
+                <span> <label for="email">Email: </label><input type="email" placeholder=""
+                        id="email" class="userEmail" style="text-transform:capitalize;" disabled></span>
+                <span><label for="phone">Phone: </label><input type="tel" placeholder="Edit Profile to add Phone" id="phone"
                         disabled> </span>
-                <span><label for="mothers_name">Mother's Name: </label><input type="text" placeholder="Barbie"
+                <span><label for="mothers_name">Mother's Name: </label><input type="text" placeholder="Edit profile to add name"
                         id="mothers_name" disabled></span>
-                <span><label for="state">State of origin: </label><input type="text" placeholder="Lagos" id="state"
+                <span><label for="state">State of origin: </label><input type="text" placeholder="Edit Profile to add State" id="state"
                         disabled></span>
-                <span><label for="address">Address: </label><input type="text" placeholder="Address" id="address"
+                <span><label for="address">Address: </label><input type="text" placeholder="Edit Profile to add Address" id="address"
                         disabled></span>
                 <span><label for="BVN">BVN: </label><input type="number" placeholder="3229043477554" disabled></span>
                 <div class="edit_save">
@@ -172,13 +150,19 @@
                 </p>
                 </form>
             </div>
+                <!-- // hide -->
+            <p id="card_type" style="visibility:hidden;"></p>
+            <p id="acct_num" style="visibility:hidden;"></p>
+            <p id="boolean" style="color:transparent;">true</p>
+            <p id="isProfile" style="visibility:hidden;">true</p>
+                <!-- // hide -->
+
         </div>
         <div id="snackbar">Account created succcesfully...</div>
     </section>
     <footer>
         <p>&copy; Copyright Banka 2019</p>
     </footer>
-    <p id="boolean" style="color:transparent;">true</p>
     <script src="../scripts/app.js"></script>
     <script src="../scripts/dashboard.js"></script>
     <script src="../scripts/createAccount.js"></script>

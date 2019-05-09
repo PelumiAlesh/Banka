@@ -11,7 +11,7 @@ submit.addEventListener('click', (e) => {
   const password = document.getElementById('password').value;
   const firstName = document.getElementById('firstName').value;
 
-  fetch('http://localhost:3000/api/v1/auth/signup', {
+  fetch('https://pelumi-banka.herokuapp.com/api/v1/auth/signup', {
     headers: {
       'Content-Type': 'application/json',
     },
