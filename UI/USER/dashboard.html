@@ -53,26 +53,26 @@
         <section class="body">
 
             <div class="welcome_message">
-                <p><b>Hi <span id="firstName"></span></b>, Welcome back.</p>
+                <p><b>Hi <span id="firstName" style="text-transform:capitalize;"></span></b>, Welcome back.</p>
             </div>
             <!-- ------------Account Details ------------------- -->
             <div class="account_details">
                 <div class="card_info">
                     <p id="thick">Account</p>
-                    <p id="acct_num">**** **** **** 9873</p>
-                    <p id="card_type">Master Card</p>
+                    <p id="acct_num"></p>
+                    <p id="card_type" style="text-transform:capitalize;"></p>
                     <p id="fade" class="userEmail"></p>
                 </div>
                 <div class="main_balance">
                     <p id="thick">Balance</p>
-                    <p id="main_bal">8,129.04<sup>₦</sup></p>
-                    <p id="fade">Previous month: ₦ 200,93.02</p>
+                    <p id="main_bal"></p>
+                    <p id="fade">Previous month: ₦ 000,00.00</p>
                 </div>
                 <div class="accounts_info">
                     <div class="accounts_balance">
-                        <p class="green"><span id="fade">Savings: </span>455,123.05 NGN</p>
-                        <p class="green"><span id="fade">Investment: </span>120,432.12 NGN</p>
-                        <p class="red"><span id="fade">Credit Card: </span>-34,234 NGN</p>
+                        <p class="green"><span id="fade">Savings: </span>00,000.00 NGN</p>
+                        <p class="green"><span id="fade">Investment: </span>00,000.00 NGN</p>
+                        <p class="red"><span id="fade">Credit Card: </span>00,000.00 NGN</p>
                     </div>
                     <div class="full_profile_btn">
                         <input type="button" id="btn" value="full profile"
@@ -143,31 +143,31 @@
                 <div class="modal_content">
                     <div class="content_header">
                         <span class="close" onclick="closemodal('create_account_modal_')">&times;</span>
-                        <h1>Create new account</h1>
+                        <h1>Create new account</h1>             
                     </div>
+                    <div class="errorDiv">
+                        <p id="errDiv"></p>
+                      </div>
                     <!-- Account Type -->
-                    <form action="">
+                    <form method="POST">
                     <div class="acct-type">
                         <label>Account type:</label>
                         <div class="select-wrap">
                             <select name="acct-type" id="acct-type">
                                 <option value="" selected="selected">Account Type</option>
-                                <option value="savings-acct">Savings Account</option>
-                                <option value="Checkings-acct">Checkings Account</option>
-                                <option value="Retirement-acct">Retirement Account</option>
-                                <option value="Budget-acct">Budget Account</option>
-                                <option value="Property-acct">Property Account</option>
+                                <option value="savings">Savings Account</option>
+                                <option value="current">Current Account</option>
                             </select>
                             <span class="select__arrow"></span>
                         </div>
                     </div>
-                    <!-- password -->
+                    <!-- Initial deposit -->
                     <label>Initial deposit:</label>
                     <div class="bvn">
-                        <input type="number" placeholder="Initial Deposit " required />
+                        <input type="number" id="initialDeposit" placeholder="Initial Deposit " required />
                     </div>
                     <!-- button -->
-                    <button class="btn">CREATE </button>
+                    <button class="btn" id="createAcct">CREATE </button>
                     <p>
                         By clicking create. It means you agree to our <a href="#" class="link">terms and condition?
                             <span class="entypo-right-thin"></span></a>
@@ -175,14 +175,21 @@
                     </form>
                 </div>
             </div>
+             <!-- // Hide -->
+            <p class="userEmail" style="visibility:hidden;"></p>
+            <p id="isProfile" style="visibility:hidden;">false</p>
+            <!-- // Hide -->
+            <div id="snackbar">Account created succcesfully...</div>
         </section>
 
         <!-- --------------------------FOOTER ------------------- -->
         <footer>
             <p>&copy; Copyright Banka 2019</p>
         </footer>
+        <p id="boolean" style="color:transparent;">true</p>
         <script src="../scripts/app.js"></script>
         <script src="../scripts/dashboard.js"></script>
+        <script src="../scripts/createAccount.js"></script>
     </div>
 </body>
 

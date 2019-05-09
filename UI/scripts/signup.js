@@ -46,7 +46,7 @@ submit.addEventListener('click', (e) => {
 
         localStorage.setItem('userDetails', JSON.stringify(response.data));
         setTimeout(() => {
-          window.location = './USER/dashboard.html';
+          window.location = './USER/create_account.html';
         }, 2000);
       }
     });
