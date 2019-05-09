@@ -217,10 +217,10 @@ section .transaction_message p {
 .prof_top #main_bal {
   color: yellowgreen;
   font-size: 4vw;
-  letter-spacing: 5px;
+  letter-spacing: 1px;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  line-height: 3rem;
+  line-height: 2rem;
 }
 .account_details sup {
   color: yellowgreen;
