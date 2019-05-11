@@ -2,9 +2,13 @@
 
 const submit = document.querySelector('#submit');
 const errorDiv = document.getElementById('errDiv');
+const signtext = document.getElementById('sign_text');
+const loader = document.getElementsByClassName('lds-ellipsis');
 
 submit.addEventListener('click', (e) => {
   e.preventDefault();
+  loader[0].style.display = 'inline-block';
+  signtext.style.display = 'none';
 
   const email = document.getElementById('email').value;
   const lastName = document.getElementById('lastName').value;
@@ -26,11 +30,19 @@ submit.addEventListener('click', (e) => {
     .then(res => res.json())
     .then((response) => {
       if (response.status === 409) {
+        // Loader indicator
+        loader[0].style.display = 'none';
+        signtext.style.display = 'inline-block';
+
         errorDiv.style.border = '1px solid rgb(126, 1, 1)';
         errorDiv.style.padding = '1rem';
         errorDiv.innerHTML = response.error;
       }
       if (response.status === 400) {
+        // Loader indicator
+        loader[0].style.display = 'none';
+        signtext.style.display = 'inline-block';
+
         errorDiv.style.border = '1px solid rgb(126, 1, 1)';
         errorDiv.style.padding = '1rem';
         let errors = '';
@@ -46,6 +58,10 @@ submit.addEventListener('click', (e) => {
 
         localStorage.setItem('userDetails', JSON.stringify(response.data));
         setTimeout(() => {
+        // Loader indicator
+          loader[0].style.display = 'none';
+          signtext.style.display = 'inline-block';
+
           window.location = './USER/create_account.html';
         }, 2000);
       }

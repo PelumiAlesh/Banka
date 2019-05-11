@@ -34,6 +34,9 @@ const loadTransactions = () => {
         </div>
       `;
       const transactions = response.data;
+      if (transactions.length === 0) {
+        html += '<div class="row"><div class="cell">No transactions yet. . .</div></div>';
+      }
       const formatter = new Intl.NumberFormat('en-US', {
         minimumFractionDigits: 2,
       });

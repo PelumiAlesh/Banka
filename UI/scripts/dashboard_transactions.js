@@ -19,7 +19,9 @@ const loadTransactions = () => {
     .then((response) => {
       let html = '';
       const transactions = response.data;
-
+      if (transactions.length === 0) {
+        html += '   <div class="row">No Transactions Yet. . .</div>';
+      }
       transactions.forEach((trans) => {
         const type = trans.type === 'credit' ? 'recieved' : 'sent';
         const transDate = new Date(trans.createdOn);
