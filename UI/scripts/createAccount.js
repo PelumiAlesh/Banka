@@ -4,6 +4,9 @@ const errorDiv = document.getElementById('errDiv');
 // eslint-disable-next-line no-var
 const isModal = document.getElementById('boolean').innerText;
 const profile = document.getElementById('isProfile').innerText;
+const signtext = document.getElementById('sign_text');
+const loader = document.getElementsByClassName('lds-ellipsis');
+
 
 // ---------------- Load all user account to dashboard
 const loadAccounts = () => {
@@ -65,6 +68,9 @@ if (profile === 'true') {
 create.addEventListener('click', (e) => {
   e.preventDefault();
 
+  loader[0].style.display = 'inline-block';
+  signtext.style.display = 'none';
+
   const type = document.getElementById('acct-type').value;
   const initialDeposit = document.getElementById('initialDeposit').value;
 
@@ -84,6 +90,10 @@ create.addEventListener('click', (e) => {
     .then(res => res.json())
     .then((response) => {
       if (response.status === 400) {
+        // Remove loader
+        loader[0].style.display = 'none';
+        signtext.style.display = 'inline-block';
+
         errorDiv.style.border = '1px solid rgb(126, 1, 1)';
         errorDiv.style.padding = '1rem';
         let errors = '';
@@ -93,6 +103,10 @@ create.addEventListener('click', (e) => {
         errorDiv.innerHTML = errors;
       }
       if (response.status === 201 && isModal === 'true') {
+        // Remove loader
+        loader[0].style.display = 'none';
+        signtext.style.display = 'inline-block';
+
         errorDiv.style.border = '0px solid transparent';
         errorDiv.style.padding = '0rem';
         errorDiv.innerHTML = '';
@@ -103,12 +117,15 @@ create.addEventListener('click', (e) => {
         setTimeout(() => { x.className = x.className.replace('show', ''); }, 3000);
       }
       if (response.status === 201 && isModal === 'false') {
+        // Remove loader
         errorDiv.style.border = '0px solid transparent';
         errorDiv.style.padding = '0rem';
         errorDiv.innerHTML = '';
 
         localStorage.setItem('firstAccount', JSON.stringify(response.data[0]));
         setTimeout(() => {
+          loader[0].style.display = 'none';
+          signtext.style.display = 'inline-block';
           window.location = './dashboard.html';
         }, 2000);
       }

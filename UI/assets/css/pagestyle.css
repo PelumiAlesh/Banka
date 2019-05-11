@@ -27,6 +27,8 @@ html, body{
   max-width: 100vw !important;
   margin: 0;
   overflow-x: hidden !important;
+  height: 100%;
+  margin-bottom: -50px;
 }
 
 body {
@@ -55,7 +57,8 @@ footer {
   text-align: center;
   max-width: 100vw;
   color: whitesmoke;
-  bottom: 0;
+  height: 50px;
+  bottom: 0 !important;
   padding: 1rem;
 }
 table {
@@ -451,9 +454,7 @@ section .create_acct_div .btn:hover,
     padding-left: 25vw !important;
     font-size: 1.5rem !important;
   }
-  .trans_body .investment_transactions_div,
-  .trans_body .savings_transaction_div,
-  .trans_body .credit_transactions_div {
+  .trans_body .investment_transactions_div{
     margin: 3rem 1rem 2rem 1rem;
     background-color: white;
     padding: 1rem 1.5rem 1rem 1.5rem;
@@ -462,9 +463,7 @@ section .create_acct_div .btn:hover,
     min-width: 93vw;
     overflow: hidden;
   }
-  .trans_body .investment_transactions_div .row .cell:nth-child(2),
-  .trans_body .savings_transaction_div .row .cell:nth-child(2),
-  .trans_body .credit_transactions_div .row .cell:nth-child(2) {
+  .trans_body .investment_transactions_div .row .cell:nth-child(2){
     display: none !important;
   }
 }
@@ -476,22 +475,16 @@ section .create_acct_div .btn:hover,
   .trans_body .cell:nth-child(4) {
     display: none !important;
   }
-  .trans_body .investment_transactions_div .cell,
-  .trans_body .savings_transaction_div .cell,
-  .trans_body .credit_transactions_div .cell {
+  .trans_body .investment_transactions_div .cell {
     width: 33% !important;
   }
 }
-.trans_body .investment_transactions_div .cell,
-.trans_body .savings_transaction_div .cell,
-.trans_body .credit_transactions_div .cell {
+.trans_body .investment_transactions_div .cell{
   display: table-cell;
   padding: 0.3rem 5vw !important;
   width: 12%;
 }
-.trans_body .investment_transactions_div .cell:nth-child(2),
-.trans_body .savings_transaction_div .cell:nth-child(2),
-.trans_body .credit_transactions_div .cell:nth-child(2) {
+.trans_body .investment_transactions_div .cell:nth-child(2){
   width: 40%;
 }
 .trans_body .investment_transactions_div .cell:nth-child(1),
@@ -506,9 +499,7 @@ section .create_acct_div .btn:hover,
   font-weight: bold !important;
 }
 @media screen and (max-width: 1065px) {
-  .trans_body .investment_transactions_div,
-  .trans_body .savings_transaction_div,
-  .trans_body .credit_transactions_div {
+  .trans_body .investment_transactions_div{
     width: 95vw !important;
   }
   .cell {
@@ -1324,3 +1315,60 @@ background-color: rgba(231, 54, 121, 0.9);
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
 } 
+
+/* ---------------------   LOADING STYLING -----------------------------*/
+.lds-ellipsis {
+  display: none;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: white;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
