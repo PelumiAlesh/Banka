@@ -21,8 +21,6 @@
             <input type="checkbox" id="toggle">
             <ul class="desktop">
                 <li> <a href="dashboard.html"> <i class="fas fa-home" title="Home"></i></a></li>
-                <li> <a href="../USER/account_transactions.html"><i class="fas fa-exchange-alt"
-                            title="Transactions"></i> </a></li>
                 <li onclick="toggleDropdown()">
                     <img src="../assets/images/avatar-1577909__340.png" alt="img_you">
                 </li>
@@ -40,7 +38,6 @@
                 <li>
                     <a href="dashboard.html">Home</a>
                 </li>
-                <li><a href="account_transactions.html">Transactions</a> </li>
                 <li><a href="./profile.html">Profile</a></li>
                 <li> <a href="../index.html"> Log out</a></li>
                 <li><a href="../ADMIN/accounts.html">Admin</a></li>
@@ -156,7 +153,14 @@
         <script src="../scripts/app.js"></script>
         <script src="../scripts/dashboard.js"></script>
         <script src="../scripts/createAccount.js"></script>
-        <script src="../scripts/dashboard_transactions.js"></script>
+        <script>
+            setTimeout(() => {
+          const script = document.createElement('script');
+          const scripts = document.getElementsByTagName('script')[0];
+          script.src = '../scripts/dashboard_transactions.js';
+          scripts.parentNode.insertBefore(script, scripts);
+        }, 2000);
+            </script>
     </div>
 </body>
 
