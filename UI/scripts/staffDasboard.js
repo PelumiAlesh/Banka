@@ -87,7 +87,7 @@ function loadData() {
         html += `
         <tr>
         <td data-th="Status" id="button${no}" class="${color}"><i class="fas fa-circle"></i></td>
-        <td data-th="Email">${account.ownerEmail}</td>
+        <td data-th="Email"> <a href="./single_profile.html">${account.ownerEmail}<a/></td>
         <td data-th="Balance">${formatter.format(account.balance)}</td>
         <td data-th="Account Type">${account.type}</td>
         <td data-th="Account N0">${account.accountNumber}</td>
