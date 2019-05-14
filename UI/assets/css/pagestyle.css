@@ -736,7 +736,7 @@ section .create_acct_div .btn:hover,
     border:none !important;
   }
 }
-@media (min-width: 960px) {
+@media (min-width: 630px) {
   .rwd-table td:before {
     display: none;
   }
@@ -745,7 +745,7 @@ section .create_acct_div .btn:hover,
 .rwd-table td {
   text-align: left;
 }
-@media (min-width: 960px) {
+@media (min-width: 630px) {
   .rwd-table th,
   .rwd-table td {
     display: table-cell;
@@ -755,6 +755,7 @@ section .create_acct_div .btn:hover,
   .rwd-table th:first-child,
   .rwd-table td:first-child {
     padding-left: 0;
+    width: 5%;
   }
   .rwd-table th:last-child,
   .rwd-table td:last-child {
@@ -765,10 +766,11 @@ section .create_acct_div .btn:hover,
 .rwd-table td {
   margin: 0.5em 1em;
 }
-@media (min-width: 960px) {
+@media (min-width: 630px) {
   .rwd-table th,
   .rwd-table td {
     padding: 1em !important;
+    width: 20%;
   }
 }
 .rwd-table th,
@@ -898,7 +900,7 @@ section .create_acct_div .btn:hover,
   flex-wrap: wrap;
 }
 .body #all_accounts_info .tot_name {
-  font-size: 2rem;
+  font-size: 1rem;
   text-transform: uppercase;
   color: black
 }
@@ -971,7 +973,7 @@ section .create_acct_div .btn:hover,
   color: black;
   cursor: pointer;
   width: 100%;
-  font-size: 0.9rem;
+  font-size: 0.9em;
   height: 2rem;
 
 }
@@ -994,9 +996,14 @@ section .create_acct_div .btn:hover,
 }
 
 @media screen and (min-width: 960px) {
-  #all_bank_accounts .rwd-table th,
-  #all_bank_accounts .rwd-table td {
-    width: 14%;
+  #all_bank_accounts .rwd-table tr th,
+  #all_bank_accounts .rwd-table tr td {
+    width: 20%;
+  }
+  .rwd-table th:first-child,
+  .rwd-table td:first-child {
+    padding-left: 0;
+    width: 0% !important;
   }
 }
 @media screen and (max-width: 630px) {
