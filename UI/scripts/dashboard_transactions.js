@@ -1,13 +1,14 @@
 /* eslint-disable no-undef */
 
-const firstAccountT = JSON.parse(localStorage.getItem('firstAccount'));
+const firstAccountT = JSON.parse(localStorage.getItem('accountDetail'));
+
 
 const { accountNumber } = firstAccountT;
 const bearer = `Bearer ${userDetails[0].token}`;
 const table = document.getElementsByClassName('table_body');
-const url = `https://pelumi-banka.herokuapp.com/api/v1/accounts/${accountNumber}/transactions`;
+const urll = `https://pelumi-banka.herokuapp.com/api/v1/accounts/${accountNumber}/transactions`;
 const loadTransactions = () => {
-  fetch(url, {
+  fetch(urll, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: bearer,

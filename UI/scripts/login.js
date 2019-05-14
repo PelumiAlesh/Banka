@@ -38,7 +38,7 @@ submit.addEventListener('click', (e) => {
         errorDiv.innerHTML = errors;
       }
       if (response.status === 401) {
-      // Loader indicator
+        // Loader indicator
         loader[0].style.display = 'none';
         signtext.style.display = 'inline-block';
 
@@ -77,5 +77,13 @@ submit.addEventListener('click', (e) => {
           }, 2000);
         }
       }
+    })
+    .catch(() => {
+      loader[0].style.display = 'none';
+      signtext.style.display = 'inline-block';
+
+      errorDiv.style.border = '1px solid rgb(126, 1, 1)';
+      errorDiv.style.padding = '1rem';
+      errorDiv.innerHTML = 'Error connecting to server, please check you internet.';
     });
 });
