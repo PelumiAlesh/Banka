@@ -35,7 +35,7 @@ function fetchData() {
       <p class="column">${account.type}</p>
       <p class="column" id="${color}">${account.status}</p>
       <p class="column">NG ${account.balance}</p>
-      <button class="column" id="delAcct">Delete Account</button>
+      <button class="column" id="delAcct" onClick="deleteAccount('${account.accountNumber}')">Delete Account</button>
       </div>
              `;
       });
@@ -74,6 +74,27 @@ function transact() {
       if (response.status === 201) {
         const x = document.getElementById('snackbar');
         x.innerText = 'Trasanction succesfully made';
+        x.className = 'show';
+        setTimeout(() => { x.className = x.className.replace('show', ''); }, 3000);
+        fetchData();
+      }
+    });
+}
+
+// Function to delete an account
+function deleteAccount(acctNo) {
+  fetch(`https://pelumi-banka.herokuapp.com/api/v1/accounts/${acctNo}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: bearer,
+    },
+    method: 'DELETE',
+  })
+    .then(res => res.json())
+    .then((response) => {
+      if (response.status) {
+        const x = document.getElementById('snackbar');
+        x.innerText = 'Account succesfully deleted!';
         x.className = 'show';
         setTimeout(() => { x.className = x.className.replace('show', ''); }, 3000);
         fetchData();
