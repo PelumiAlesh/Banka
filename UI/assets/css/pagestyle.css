@@ -280,7 +280,8 @@ section .transaction_message p {
   border: 0.9px solid #95bbdf;
 }
 @media screen and (max-width: 630px) {
-  .transactions .row .column:nth-child(3) {
+  .transactions .row .column:nth-child(3),
+  .transactions .row .column:nth-child(2) {
     display: none;
   }
   .transactions {
@@ -334,10 +335,6 @@ section .transaction_message p {
   text-align: left;
   line-height: 28px;
   vertical-align: middle;
-}
-.transactions .table_body .column:nth-last-child(1) {
-  text-align: right;
-  padding-right: 1rem;
 }
 .transactions .row {
   padding: 1rem;
@@ -1045,7 +1042,18 @@ Inherited from profile.html and user dashboard
   width: 6.5em;
   display: inline-block;
 }
-
+#delAcct{
+  background: #ea4c88;
+  text-align: center;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: auto;
+  border-radius: 4px;
+}
+#delAcct:hover{
+  background-color: #d44179;
+}
 
 
 /* 
