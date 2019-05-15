@@ -28,6 +28,7 @@ function abbreviateNumber(number) {
   return formatted + postfix;
 }
 
+
 // Calculate total balance function
 function calcBalance(bals) {
   let totalBal = 0;
@@ -87,7 +88,7 @@ function loadData() {
         html += `
         <tr>
         <td data-th="Status" id="button${no}" class="${color}"><i class="fas fa-circle"></i></td>
-        <td data-th="Email"> <a href="./single_profile.html">${account.ownerEmail}<a/></td>
+        <td data-th="Email"> <span onClick="saveEmail('${account.ownerEmail}', '${account.accountNumber}')" style="color:green;cursor:pointer;">${account.ownerEmail}<span/></td>
         <td data-th="Balance">${formatter.format(account.balance)}</td>
         <td data-th="Account Type">${account.type}</td>
         <td data-th="Account N0">${account.accountNumber}</td>

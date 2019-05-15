@@ -54,32 +54,29 @@
 
                 </div>
                 <div class="pro_pic_details">
-                    <p>Aleshinloye Pelumi</p>
-                    <p>Male</p>
-                    <p>25 Years Old</p>
-                    <p>AleshinloyePelumi@gmail.com</p>
-                    <p class="green">Active <i class="fas fa-circle"></i></p>
+                    <p id="clickName"></p>
+                    <p id="clickEmail"></p>
                 </div>
 
             </div>
             <div class="main_balance">
                 <p id="thick">Balance</p>
-                <p id="main_bal">8,129.04<sup>₦</sup></p>
-                <p id="fade">Previous month: ₦ 200,93.02</p>
-                <button class="btn">Delete Account</button>
+                <p id="main_bal" class="clickBal">8,129.04<sup>₦</sup></p>
+                <p id="fade" class="clickNo">Account Number: </p>
             </div>
-
         </div>
         <!-------------------DEBIT n CREDIT---------------->
         <p id="iicenter">DEBIT OR CREDIT USER</p>
         <div class="d_c">
+                <select name="D_C" id="acctNo">
+                        <option value="Acct No">Acct No</option>
+                    </select>
             <select name="D_C" id="action">
-                <option value="Credit">Credit</option>
-                <option value="Debit">Debit</option>
+                <option value="credit">Credit</option>
+                <option value="debit">Debit</option>
             </select>
             <input type="text" class="amt" placeholder="Amount">
-            <input type="text" class="desc" placeholder="Description">
-            <button>COMPLETE</button>
+            <button onclick="transact()">COMPLETE</button>
         </div>
         <!---------------PROFILE ACCOUNTS-------------->
         <div class="prof_down prof_prof">
@@ -87,58 +84,31 @@
             <div class="transactions">
                 <div class="table_head">
                     <div class="row">
-                        <div class="column">Date</div>
-                        <div class="column">Account</div>
+                        <div class="column">Account No</div>
+                        <div class="column">Type</div>
+
                         <div class="column">Status</div>
-                        <div class="column">Amount</div>
+                        <div class="column">Balance</div>
+                        <div class="column"></div>
+
                     </div>
                 </div>
                 <div class="table_body">
                     <div class="row">
-                        <p class="column">02-03-19</p>
-                        <p class="column">Savings</p>
-                        <p class="column" id="green">Active</p>
-                        <p class="column amt" id="recieved"> + ₦34,987</p>
+                        <p class="column">NO</p>
+                        <p class="column">Transactions</p>
+                        <p class="column" >Yet!</p>
                     </div>
-                    <div class="row">
-                        <p class="column">02-02-19</p>
-                        <p class="column">Savings</p>
-                        <p class="column" id="green">Active</p>
-                        <p class="column amt" id="recieved">+ ₦53,787</p>
-                    </div>
-                    <div class="row">
-                        <p class="column">02-02-19</p>
-                        <p class="column">Credit Card</p>
-                        <p class="column" id="red">Deactivated</p>
-                        <p class="column amt" id="sent"> - ₦34,987</p>
-                    </div>
-                    <div class="row">
-                        <p class="column">02-01-19</p>
-                        <p class="column">Investment</p>
-                        <p class="column" id="green">Active</p>
-                        <p class="column amt" id="sent"> - ₦1,027</p>
-                    </div>
-                    <div class="row">
-                        <p class="column">01-03-19</p>
-                        <p class="column">Investment</p>
-                        <p class="column" id="green">Active</p>
-                        <p class="column amt" id="recieved"> + ₦70,187</p>
-                    </div>
-                    <div class="row">
-                        <p class="column">02-03-19</p>
-                        <p class="column">Credit Card</p>
-                        <p class="column" id="red">Deactivated</p>
-                        <p class="column amt" id="sent"> - 3₦4,987</p>
-                    </div>
-
                 </div>
             </div>
         </div>
     </section>
+    <div id="snackbar"></div>
     <footer>
         <p>&copy; Copyright Banka 2019</p>
     </footer>
     <script src="../scripts/app.js"></script>
+    <script src="../scripts/staffProfile.js"></script>
 </body>
 
 </html>
