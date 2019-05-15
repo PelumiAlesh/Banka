@@ -15,7 +15,7 @@ class notificationEmail {
   * @param {object} message - The email address
   * @returns {*} nothing
   */
-  static async alert(email, type, transaction, req) {
+  static async alert(email, type, transaction) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -28,7 +28,7 @@ class notificationEmail {
       to: email,
       subject: 'Banka Transaction Alert',
       html: `<img src="http://i65.tinypic.com/w05n2g.jpg" alt="logo" width="100px" height="50px"></img><br/><hr/>
-        <p>Dear <b style="text-transform: capitalize">${req.user.firstName} ${req.user.lastName}</p>
+        <p>Dear <b style="text-transform: capitalize">Customer</b></p>
         <p>We wish to inform you that a <b>${type}</b> transaction recently occurred on your bank account.</p>
         <p>
         <table style="border: 1px dashed">
@@ -40,10 +40,6 @@ class notificationEmail {
         <tr>
           <td style="border: 1px solid"><b>Transaction Type</b></td>
           <td style="border: 1px solid">${type}</td> 
-        </tr>
-        <tr>
-          <td style="border: 1px solid"><b>Time of Transaction</b></td>
-          <td style="border: 1px solid">${transaction.createdOn}</td> 
         </tr>
         <tr>
           <td style="border: 1px solid"><b>Amount</b></td>

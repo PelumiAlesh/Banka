@@ -128,3 +128,15 @@ window.onclick = function (event) {
     toggle.checked = false;
   }
 };
+
+/*
+====================
+// Function to save the email clicked details
+====================
+*/
+
+
+function saveEmail(email, acctNo) {
+  sessionStorage.setItem('clickedEmail', JSON.stringify({ email, acctNo }));
+  window.location = './single_profile.html';
+}

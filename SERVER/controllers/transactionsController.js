@@ -16,7 +16,7 @@ class TransactionController {
       const transactionDetails = response.rows[0];
       const email = await Transactions.getEmail(req.params.accountNumber);
 
-      await notificationEmail.alert(email, 'credit', transactionDetails, req);
+      await notificationEmail.alert(email, 'credit', transactionDetails);
       return res.status(201).json({
         status: res.statusCode,
         data: [{
@@ -50,7 +50,7 @@ class TransactionController {
       const transactionDetails = response.rows[0];
       const email = await Transactions.getEmail(req.params.accountNumber);
 
-      await notificationEmail.alert(email, 'debit', transactionDetails, req);
+      await notificationEmail.alert(email, 'debit', transactionDetails);
       return res.status(201).json({
         status: res.statusCode,
         data: [{
