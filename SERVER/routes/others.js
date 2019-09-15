@@ -9,7 +9,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 
 router.get('/:email/accounts',
-  Authenticate.verifyStaff,
+  Authenticate.verifyClient,
   AccountController.getAllAccountsOwnedByUser);
 
 // Admin create user
