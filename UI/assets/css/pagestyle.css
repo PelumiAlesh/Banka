@@ -291,7 +291,7 @@ section .transaction_message p {
     white-space: nowrap;
   }
   .transactions .table_body .column:nth-last-child(1) {
-    text-align: right !important;
+    text-align: center !important;
   }
   .transactions .row {
     justify-content: space-between !important;
